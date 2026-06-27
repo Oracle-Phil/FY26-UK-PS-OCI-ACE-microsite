@@ -772,6 +772,129 @@
       .universal-shell { display: none !important; }
     }
   
+    .article-hero {
+      --hero-accent: var(--teal-deep, #315f5b);
+      --hero-accent-strong: var(--teal-deep, #315f5b);
+      --hero-accent-soft: rgba(49, 95, 91, 0.13);
+      position: relative;
+      overflow: hidden;
+      width: min(var(--max, 1180px), calc(100% - 2rem));
+      margin: 1rem auto 0;
+      border: 1px solid rgba(222, 212, 202, 0.9);
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(255, 250, 245, 0.98), rgba(241, 235, 228, 0.94)),
+        linear-gradient(90deg, var(--hero-accent-soft), transparent 58%);
+      box-shadow: var(--shadow);
+      padding: clamp(1.25rem, 4vw, 3.5rem);
+    }
+    .article-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 6px;
+      background: var(--hero-accent);
+    }
+    .article-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 0 72%, var(--hero-accent-soft) 72% 100%);
+      pointer-events: none;
+    }
+    .article-hero__grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.72fr);
+      gap: clamp(1.25rem, 4vw, 3rem);
+      align-items: stretch;
+    }
+    .article-hero__main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+    .article-hero__chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin: 0 0 1rem;
+    }
+    .article-hero__chip {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid color-mix(in srgb, var(--hero-accent) 32%, transparent);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--hero-accent) 10%, white);
+      color: var(--hero-accent-strong);
+      padding: 0.38rem 0.72rem;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    .article-hero__title {
+      max-width: 13ch;
+      margin: 0;
+      color: var(--ink);
+      font-size: 4.75rem;
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+    .article-hero__subtitle {
+      max-width: 62ch;
+      margin: 1.15rem 0 0;
+      color: var(--muted);
+      font-size: 1.28rem;
+      line-height: 1.46;
+      font-weight: 650;
+    }
+    .article-hero__summary {
+      max-width: 68ch;
+      margin: 1rem 0 0;
+      color: #4f463f;
+      font-size: 1.02rem;
+      line-height: 1.62;
+    }
+    .article-hero__aside {
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+    .article-hero__card {
+      border: 1px solid rgba(222, 212, 202, 0.92);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 10px 30px rgba(58, 54, 50, 0.06);
+      padding: 1.15rem;
+    }
+    .article-hero__card--key {
+      border-color: color-mix(in srgb, var(--hero-accent) 28%, transparent);
+      background: linear-gradient(145deg, color-mix(in srgb, var(--hero-accent) 10%, white), rgba(255, 250, 245, 0.9));
+    }
+    .article-hero__label {
+      margin: 0 0 0.55rem;
+      color: var(--hero-accent-strong);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    .article-hero__card p { margin: 0; }
+    @media (max-width: 900px) {
+      .article-hero__grid { grid-template-columns: 1fr; }
+      .article-hero__title { max-width: none; font-size: 3.3rem; }
+    }
+    @media (max-width: 560px) {
+      .article-hero { padding: 1rem; border-radius: 18px; }
+      .article-hero__title { font-size: 2.45rem; }
+      .article-hero__subtitle { font-size: 1.08rem; }
+    }
+
     .harmonised-breadcrumb {
       width: min(var(--max, 1180px), calc(100% - 2rem));
       margin: 0 auto;
@@ -878,30 +1001,30 @@
     <span aria-current="page">Sovereignty and Trust in Cloud</span>
   </nav>
 
-<section class="article-hero" aria-labelledby="page-title">
-    <div class="hero-panel">
-      <div class="hero-content">
-        <div>
-          <p class="paper-kicker">Trust, Sovereignty and Assurance</p>
-          <h1 id="page-title">Sovereignty and Trust in Cloud</h1>
-          <p class="subtitle">How providers are tackling regulatory demands and earning customer confidence.</p>
-          <p class="summary">A field-oriented web conversion of Paper 04, focused on why sovereignty has become strategic in UK Public Sector cloud adoption, what buyers now demand, how major providers respond, and how OCI architects should position Oracle sovereign models with precision.</p>
-          <div class="hero-badges" aria-label="Primary themes">
-            <span class="chip">Sovereignty</span>
-            <span class="chip">Trust</span>
-            <span class="chip">UK Public Sector</span>
-            <span class="chip">OC4</span>
-            <span class="chip">Exit and portability</span>
-          </div>
+  <section class="article-hero article-hero--trust" aria-labelledby="page-title">
+    <div class="article-hero__grid">
+      <div class="article-hero__main">
+        <div class="article-hero__chips" aria-label="Article context">
+          <span class="article-hero__chip">Trust, Sovereignty and Assurance</span>
+          <span class="article-hero__chip">Sovereignty</span>
+          <span class="article-hero__chip">Trust</span>
+          <span class="article-hero__chip">UK Public Sector</span>
+          <span class="article-hero__chip">OC4</span>
+          <span class="article-hero__chip">Exit and portability</span>
         </div>
-        <aside class="hero-card" aria-label="Key takeaway">
-          <div>
-            <h2>Key takeaway</h2>
-            <p class="keyline">Sovereignty is not a product feature. It is a condition of use, tested through jurisdiction, operational control, auditability, keys, exit rights and evidence.</p>
-          </div>
-          <p class="note">Best used for regulated cloud conversations, UK Public Sector assurance, sovereign deployment model selection, and early-stage customer qualification.</p>
-        </aside>
+        <h1 id="page-title" class="article-hero__title">Sovereignty and Trust in Cloud</h1>
+        <p class="article-hero__subtitle">How providers are tackling regulatory demands and earning customer confidence.</p>
+        <p class="article-hero__summary">A field-oriented web conversion of Paper 04, focused on why sovereignty has become strategic in UK Public Sector cloud adoption, what buyers now demand, how major providers respond, and how OCI architects should position Oracle sovereign models with precision.</p>
       </div>
+      <aside class="article-hero__aside" aria-label="Key takeaway">
+        <div class="article-hero__card article-hero__card--key">
+          <h2 class="article-hero__label">Key takeaway</h2>
+          <p class="keyline">Sovereignty is not a product feature. It is a condition of use, tested through jurisdiction, operational control, auditability, keys, exit rights and evidence.</p>
+        </div>
+        <div class="article-hero__card article-hero__card--mini">
+          <p class="note">Best used for regulated cloud conversations, UK Public Sector assurance, sovereign deployment model selection, and early-stage customer qualification.</p>
+        </div>
+      </aside>
     </div>
   </section>
 
