@@ -1,0 +1,949 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper 01 - The Visionaries Who Shaped Our Cloud | FY26 UK-PS Whitepapers Series</title>
+  <meta name="description" content="Internal Oracle field paper converted into a static HTML article for the FY26 UK-PS Whitepapers Series.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="classification" content="Confidential - Oracle Internal">
+  <meta name="series" content="FY26 UK-PS Whitepapers Series">
+  <meta name="paper-number" content="01">
+  <meta name="paper-version" content="1.0">
+  <meta name="conversion-version" content="1.0">
+  <style>
+    :root {
+      --series-bg: #f7f3ee;
+      --surface: #fffaf5;
+      --surface-alt: #f1ebe4;
+      --ink: #241c18;
+      --muted: #6f625a;
+      --line: #ded4ca;
+      --oracle-red-soft: #c74634;
+      --clay: #b45f36;
+      --clay-deep: #78462f;
+      --sage: #789c96;
+      --teal-deep: #315f5b;
+      --sand: #d7b98c;
+      --charcoal: #3a3632;
+      --success-soft: #e5efe9;
+      --warning-soft: #f6ead8;
+      --risk-soft: #f3dfdc;
+      --info-soft: #e5eef0;
+      --focus: #1f6feb;
+      --shadow: 0 24px 70px rgba(58, 54, 50, 0.12);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --measure: 74ch;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(180, 95, 54, 0.14), transparent 34rem),
+        radial-gradient(circle at top right, rgba(120, 156, 150, 0.18), transparent 38rem),
+        var(--series-bg);
+      color: var(--ink);
+      font-family: "Oracle Sans", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    a { color: var(--teal-deep); text-decoration-thickness: 0.08em; text-underline-offset: 0.18em; }
+    a:hover { color: var(--clay-deep); }
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 1rem;
+      z-index: 50;
+      background: var(--ink);
+      color: #fff;
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+    }
+    .skip-link:focus { left: 1rem; }
+
+    .utility-bar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.8rem clamp(1rem, 4vw, 3rem);
+      border-bottom: 1px solid rgba(222, 212, 202, 0.8);
+      background: rgba(255, 250, 245, 0.92);
+      backdrop-filter: blur(16px);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      min-width: 0;
+    }
+    .wordmark {
+      letter-spacing: 0.18em;
+      color: var(--oracle-red-soft);
+      font-weight: 800;
+      font-size: 0.85rem;
+      line-height: 1;
+    }
+    .series-name {
+      color: var(--muted);
+      font-size: 0.9rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .classification-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid rgba(180, 95, 54, 0.35);
+      border-radius: 999px;
+      background: rgba(246, 234, 216, 0.74);
+      color: var(--clay-deep);
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .site-header {
+      padding: clamp(1.2rem, 4vw, 3rem) clamp(1rem, 5vw, 5rem) 0;
+    }
+    .top-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      align-items: center;
+      justify-content: flex-end;
+      max-width: 1240px;
+      margin: 0 auto 1rem;
+    }
+    .top-nav a, .tool-btn {
+      border: 1px solid rgba(222, 212, 202, 0.9);
+      background: rgba(255, 250, 245, 0.72);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 0.48rem 0.8rem;
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .top-nav a:hover, .tool-btn:hover { border-color: var(--clay); color: var(--clay-deep); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      max-width: 1240px;
+      margin: 0 auto;
+      border: 1px solid rgba(222, 212, 202, 0.86);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(135deg, rgba(255, 250, 245, 0.98), rgba(241, 235, 228, 0.92)),
+        var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: auto -8rem -10rem auto;
+      width: 30rem;
+      height: 30rem;
+      background: radial-gradient(circle, rgba(180, 95, 54, 0.20), transparent 64%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.75fr);
+      gap: clamp(1.5rem, 5vw, 4rem);
+      padding: clamp(1.5rem, 5vw, 4.5rem);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: var(--clay-deep);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 2.4rem;
+      height: 3px;
+      background: var(--clay);
+      border-radius: 999px;
+    }
+    h1 {
+      max-width: 12ch;
+      margin: 0;
+      font-size: clamp(2.6rem, 7vw, 5.35rem);
+      line-height: 0.94;
+      letter-spacing: -0.065em;
+    }
+    .subtitle {
+      max-width: 60ch;
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 2vw, 1.32rem);
+      line-height: 1.48;
+    }
+    .hero-summary {
+      margin-top: 1.6rem;
+      max-width: 68ch;
+      font-size: 1.02rem;
+    }
+    .hero-side {
+      align-self: stretch;
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+    .key-card, .meta-card, .panel, .profile-card, .timeline-card, .lesson-card, .source-card, .related-card {
+      border: 1px solid rgba(222, 212, 202, 0.92);
+      background: rgba(255, 250, 245, 0.82);
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 30px rgba(58, 54, 50, 0.06);
+    }
+    .key-card {
+      padding: 1.25rem;
+      background: linear-gradient(145deg, rgba(246, 234, 216, 0.92), rgba(255, 250, 245, 0.9));
+      border-color: rgba(180, 95, 54, 0.28);
+    }
+    .key-card h2, .meta-card h2, .panel h2, .source-card h2 { margin-top: 0; }
+    .key-card h2 {
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--clay-deep);
+    }
+    .meta-card { padding: 1.2rem; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.55rem;
+      font-size: 0.86rem;
+    }
+    .meta-row {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      gap: 0.75rem;
+      padding-bottom: 0.55rem;
+      border-bottom: 1px solid rgba(222, 212, 202, 0.62);
+    }
+    .meta-row dt { color: var(--muted); font-weight: 800; }
+    .meta-row dd { margin: 0; }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(240px, 290px) minmax(0, 1fr);
+      gap: clamp(1.2rem, 3vw, 2.4rem);
+      max-width: 1240px;
+      margin: clamp(1.5rem, 4vw, 3rem) auto;
+      padding: 0 clamp(1rem, 5vw, 5rem);
+      align-items: start;
+    }
+    .toc {
+      position: sticky;
+      top: 4.8rem;
+      max-height: calc(100vh - 6rem);
+      overflow: auto;
+      border: 1px solid rgba(222, 212, 202, 0.88);
+      border-radius: var(--radius-md);
+      background: rgba(255, 250, 245, 0.82);
+      padding: 1rem;
+    }
+    .toc h2 {
+      margin: 0 0 0.75rem;
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    .toc ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.35rem; }
+    .toc a {
+      display: block;
+      padding: 0.45rem 0.55rem;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.88rem;
+      line-height: 1.3;
+    }
+    .toc a:hover, .toc a[aria-current="true"] { background: var(--surface-alt); color: var(--clay-deep); }
+
+    main { min-width: 0; }
+    article {
+      display: grid;
+      gap: clamp(1.25rem, 3vw, 2rem);
+    }
+    section, .article-block {
+      scroll-margin-top: 6rem;
+    }
+    .panel {
+      padding: clamp(1.2rem, 3vw, 2rem);
+    }
+    .panel.wide { background: rgba(255, 250, 245, 0.92); }
+    .panel h2 {
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      line-height: 1.12;
+      letter-spacing: -0.035em;
+      margin-bottom: 0.75rem;
+    }
+    .panel h3 {
+      font-size: clamp(1.22rem, 2vw, 1.55rem);
+      line-height: 1.22;
+      margin-bottom: 0.5rem;
+    }
+    .panel p, .panel li { max-width: var(--measure); }
+    .section-kicker {
+      display: inline-block;
+      margin-bottom: 0.55rem;
+      color: var(--clay-deep);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .orientation-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+    .orientation-card {
+      border-radius: var(--radius-sm);
+      background: var(--surface-alt);
+      padding: 1rem;
+      border: 1px solid rgba(222, 212, 202, 0.9);
+    }
+    .orientation-card h3 { margin-top: 0; font-size: 1.05rem; }
+    .orientation-card p { margin-bottom: 0; font-size: 0.96rem; }
+
+    .tool-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 1rem;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.4rem;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 1.35rem;
+      top: 0.7rem;
+      bottom: 0.7rem;
+      width: 2px;
+      background: linear-gradient(var(--clay), rgba(120, 156, 150, 0.52));
+    }
+    .timeline-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 3.5rem minmax(0, 1fr);
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .timeline-marker {
+      display: grid;
+      place-items: center;
+      width: 2.7rem;
+      height: 2.7rem;
+      border-radius: 999px;
+      background: var(--clay);
+      color: #fff;
+      font-weight: 900;
+      z-index: 1;
+    }
+    .timeline-card h3 { margin: 0; }
+    .timeline-card p { margin: 0.45rem 0 0; }
+    .timeline-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.75rem;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      border: 1px solid rgba(180, 95, 54, 0.25);
+      background: rgba(246, 234, 216, 0.65);
+      color: var(--clay-deep);
+      padding: 0.23rem 0.6rem;
+      font-size: 0.78rem;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .quote-grid, .lesson-grid, .profile-grid, .related-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+    .lesson-card {
+      display: grid;
+      grid-template-columns: 3.2rem 1fr;
+      gap: 0.8rem;
+      padding: 1rem;
+      background: rgba(246, 234, 216, 0.58);
+    }
+    .lesson-number {
+      display: grid;
+      place-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 12px;
+      background: var(--charcoal);
+      color: #fff;
+      font-weight: 900;
+    }
+    .lesson-card p { margin: 0; font-weight: 720; line-height: 1.45; }
+    .lesson-card:nth-child(even) { background: rgba(229, 238, 240, 0.74); }
+    .lesson-card:nth-child(even) .lesson-number { background: var(--teal-deep); }
+
+    .callout {
+      border-left: 5px solid var(--clay);
+      padding: 1rem 1.1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      background: rgba(246, 234, 216, 0.55);
+      margin: 1.1rem 0;
+      max-width: var(--measure);
+    }
+    .callout h3 { margin: 0 0 0.4rem; font-size: 1rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--clay-deep); }
+    .callout p { margin: 0; }
+
+    .profile-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin: 1.2rem 0;
+    }
+    .filter-btn {
+      border: 1px solid rgba(222, 212, 202, 0.95);
+      background: var(--surface);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 0.45rem 0.72rem;
+      font: inherit;
+      font-size: 0.84rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .filter-btn[aria-pressed="true"] {
+      background: var(--clay);
+      color: #fff;
+      border-color: var(--clay);
+    }
+    .profile-card {
+      padding: 1rem;
+    }
+    .profile-card h3 { margin-top: 0; font-size: 1.08rem; }
+    .profile-card p { margin-bottom: 0; font-size: 0.95rem; }
+    .profile-card .chip { margin-bottom: 0.75rem; }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .source-card { padding: 1.2rem; }
+    .source-card h3 { margin-top: 0; }
+
+    .related-card { padding: 1rem; text-decoration: none; color: var(--ink); display: block; }
+    .related-card:hover { border-color: var(--clay); transform: translateY(-1px); }
+    .related-card strong { display: block; margin-bottom: 0.35rem; color: var(--clay-deep); }
+    .related-card span { display: block; color: var(--muted); font-size: 0.9rem; line-height: 1.42; }
+
+    .pager {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+    .pager a, .pager span {
+      flex: 1;
+      border: 1px solid rgba(222, 212, 202, 0.92);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      background: var(--surface);
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .pager .disabled { color: var(--muted); background: rgba(241, 235, 228, 0.72); }
+    .pager small { display: block; color: var(--muted); font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    .site-footer {
+      margin-top: 3rem;
+      padding: 2rem clamp(1rem, 5vw, 5rem);
+      border-top: 1px solid rgba(222, 212, 202, 0.86);
+      background: rgba(36, 28, 24, 0.94);
+      color: #fffaf5;
+    }
+    .footer-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.4rem;
+      align-items: start;
+    }
+    .site-footer p { margin: 0.3rem 0; color: rgba(255, 250, 245, 0.82); }
+    .site-footer a { color: #fffaf5; }
+
+    .progress {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 60;
+      width: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--clay), var(--teal-deep));
+    }
+
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 980px) {
+      .hero-inner, .layout { grid-template-columns: 1fr; }
+      .toc { position: static; max-height: none; }
+      h1 { max-width: 14ch; }
+    }
+    @media (max-width: 720px) {
+      body { font-size: 16px; }
+      .utility-bar { align-items: flex-start; flex-direction: column; }
+      .series-name { white-space: normal; }
+      .orientation-grid, .quote-grid, .lesson-grid, .profile-grid, .related-grid, .two-col { grid-template-columns: 1fr; }
+      .timeline::before { left: 1.2rem; }
+      .timeline-card { grid-template-columns: 3rem minmax(0, 1fr); }
+      .meta-row { grid-template-columns: 1fr; gap: 0.12rem; }
+      .pager { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+    }
+    @media print {
+      body { background: #fff; color: #000; font-size: 11.5pt; }
+      .utility-bar, .top-nav, .toc, .tool-row, .progress, .profile-tools { display: none !important; }
+      .site-header, .layout, .site-footer { padding: 0; margin: 0; }
+      .hero, .panel, .key-card, .meta-card, .profile-card, .timeline-card, .lesson-card, .source-card { box-shadow: none; border-color: #aaa; background: #fff; break-inside: avoid; }
+      .hero-inner { grid-template-columns: 1fr; padding: 1rem 0; }
+      h1 { font-size: 30pt; max-width: none; }
+      a[href]::after { content: ""; }
+      .site-footer { color: #000; background: #fff; border-top: 1px solid #aaa; margin-top: 1rem; }
+      .site-footer p { color: #000; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="utility-bar" role="banner">
+    <div class="brand" aria-label="Oracle inspired series mark">
+      <span class="wordmark">ORACLE</span>
+      <span class="series-name">FY26 UK-PS Whitepapers Series</span>
+    </div>
+    <span class="classification-pill">Confidential - Oracle Internal</span>
+  </div>
+
+  <header class="site-header">
+    <nav class="top-nav" aria-label="Series navigation">
+      <a href="../index.html">Index</a>
+      <a href="#toc">Contents</a>
+      <a href="#pioneer-profiles">Pioneer profiles</a>
+      <a href="#source-handling">Source notes</a>
+      <button class="tool-btn" type="button" id="printBtn">Print / save as PDF</button>
+    </nav>
+
+    <div class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Paper 01 | Cloud history and competition</div>
+          <h1>The Visionaries Who Shaped Our Cloud</h1>
+          <p class="subtitle">Learning from the Pioneers Who Defined the Modern Infrastructure Landscape</p>
+          <p class="hero-summary">This first paper places OCI inside the wider history of cloud infrastructure. It traces the people and decisions behind public cloud, virtualisation, warehouse-scale computing, cloud-native software, Microsoft’s cloud transformation and Oracle’s second-generation cloud reimagination.</p>
+        </div>
+        <aside class="hero-side" aria-label="Article metadata and key takeaway">
+          <div class="key-card">
+            <h2>Key takeaway</h2>
+            <p>OCI’s present architecture should be understood as part of a broader lineage: technical progress comes from deliberate design decisions, not market momentum alone.</p>
+          </div>
+          <div class="meta-card">
+            <h2 class="visually-hidden">Metadata</h2>
+            <dl class="meta-grid">
+              <div class="meta-row"><dt>Version</dt><dd>1.0</dd></div>
+              <div class="meta-row"><dt>Source</dt><dd>Paper 1 - The Visionaries Who Shaped Our Cloud v1.0.pdf</dd></div>
+              <div class="meta-row"><dt>Copyright</dt><dd>Copyright © 2025, Oracle and/or its affiliates</dd></div>
+              <div class="meta-row"><dt>Route</dt><dd>/paper-01-visionaries-who-shaped-our-cloud/</dd></div>
+              <div class="meta-row"><dt>Status</dt><dd>Draft HTML conversion</dd></div>
+              <div class="meta-row"><dt>Reading time</dt><dd>Approx. 18 minutes</dd></div>
+              <div class="meta-row"><dt>Themes</dt><dd>Cloud history, leadership, infrastructure evolution</dd></div>
+            </dl>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="toc" id="toc" aria-label="Table of contents">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#orientation">Executive orientation</a></li>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#timeline">Infrastructure lineage</a></li>
+        <li><a href="#cloud-native">Cloud-native revolution</a></li>
+        <li><a href="#microsoft">Microsoft’s transformation</a></li>
+        <li><a href="#oracle">Oracle’s reimagination</a></li>
+        <li><a href="#mission">Reflections for our mission</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+        <li><a href="#pioneer-profiles">Pioneer profiles</a></li>
+        <li><a href="#source-handling">Source and handling notes</a></li>
+      </ol>
+    </aside>
+
+    <main id="main-content">
+      <article>
+        <section class="panel wide" id="orientation">
+          <span class="section-kicker">Executive orientation</span>
+          <h2>Why this paper matters</h2>
+          <p>The paper opens the series by establishing context. It treats modern cloud infrastructure as the result of repeated acts of imagination, engineering discipline and commercial courage. For UK Public Sector ACEs, that history is useful because it explains why today’s customer expectations exist, and why OCI’s architecture was deliberately shaped as an answer to earlier cloud constraints.</p>
+          <div class="orientation-grid">
+            <div class="orientation-card">
+              <h3>Who should read it</h3>
+              <p>ACE teams who need a concise story of how cloud evolved, why competitors deserve respect, and how OCI fits into the wider infrastructure landscape.</p>
+            </div>
+            <div class="orientation-card">
+              <h3>What it helps with</h3>
+              <p>Opening strategic conversations, explaining OCI’s design intent, and grounding Oracle’s cloud narrative in industry history rather than isolated product claims.</p>
+            </div>
+            <div class="orientation-card">
+              <h3>What to preserve</h3>
+              <p>The balanced respect for AWS, VMware, Google, Microsoft, IBM, Docker, Kubernetes, Terraform and Oracle pioneers. The paper is not a competitor-dismissal piece.</p>
+            </div>
+            <div class="orientation-card">
+              <h3>What not to overclaim</h3>
+              <p>Do not imply Oracle alone shaped modern cloud. The source argument is that many pioneers set expectations, and OCI’s choices should be understood in that context.</p>
+            </div>
+          </div>
+          <div class="tool-row" aria-label="Reading tools">
+            <button class="tool-btn" type="button" data-copy-section="orientation">Copy section link</button>
+            <button class="tool-btn" type="button" id="expandAll">Expand all profiles</button>
+            <button class="tool-btn" type="button" id="collapseAll">Collapse all profiles</button>
+          </div>
+        </section>
+
+        <section class="panel" id="introduction">
+          <span class="section-kicker">Source-derived article section</span>
+          <h2>Introduction</h2>
+          <p>Cloud infrastructure did not simply appear. It was imagined, engineered and evangelised by people who looked beyond the constraints of their time and chose to reshape how technology is consumed.</p>
+          <p>Elasticity, virtualisation, scale, resilience and portability each began as ideas that many considered impossible or impractical. Understanding the people behind those ideas helps us see why the competitive landscape looks the way it does today.</p>
+          <p>The paper deliberately asks us to respect competitors and pioneers alike. Their contributions set standards that still inform the work Oracle does and the expectations customers bring to cloud conversations.</p>
+        </section>
+
+        <section class="panel" id="timeline">
+          <span class="section-kicker">Paper-specific pattern</span>
+          <h2>Infrastructure lineage</h2>
+          <p>This timeline preserves the source paper’s narrative sequence and turns it into a field-readable map of how major cloud ideas entered the market.</p>
+          <div class="timeline" aria-label="Timeline of infrastructure ideas">
+            <div class="timeline-card">
+              <div class="timeline-marker">1</div>
+              <div>
+                <h3>The early vision: the birth of cloud</h3>
+                <p>When Amazon Web Services launched in 2006, many saw rented infrastructure over the internet as a limited experiment. Andy Jassy, Werner Vogels and James Hamilton recognised a deeper need: rapid scale, lower risk and pay-as-you-go consumption.</p>
+                <p>Jassy guided AWS from an internal project into a platform that redefined how organisations build and run software. Vogels applied distributed systems principles such as designing for failure. Hamilton contributed data centre power, cooling and network design that helped hyperscale economics work.</p>
+                <div class="timeline-meta"><span class="chip">AWS</span><span class="chip">Elasticity</span><span class="chip">Utility computing</span></div>
+              </div>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-marker">2</div>
+              <div>
+                <h3>Virtualisation and hybrid thinking</h3>
+                <p>Before public cloud could take hold, the industry had to share computing resources securely and efficiently. VMware pioneers Diane Greene and Pat Gelsinger helped make virtual machines the essential building block for modern infrastructure.</p>
+                <p>At IBM, Arvind Krishna pushed hybrid thinking further through the Red Hat acquisition, placing open-source platforms such as Kubernetes at the centre of enterprise modernisation.</p>
+                <div class="timeline-meta"><span class="chip">VMware</span><span class="chip">Hybrid cloud</span><span class="chip">Open source</span></div>
+              </div>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-marker">3</div>
+              <div>
+                <h3>Engineering for scale: the Google approach</h3>
+                <p>Google’s cloud impact began with its internal need to run enormous services reliably and cost-effectively. Urs Hölzle treated infrastructure as a single unified system, with warehouse-scale computing replacing traditional hardware silos.</p>
+                <p>Google pioneered software-defined networking, automated resource management and cluster orchestration through systems such as Borg. Thomas Kurian later shifted Google Cloud towards enterprise adoption, industry solutions, multi-cloud and more predictable customer engagement.</p>
+                <div class="timeline-meta"><span class="chip">Google</span><span class="chip">Warehouse-scale computing</span><span class="chip">Enterprise focus</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="lesson-grid" aria-label="Lessons 1 to 3">
+            <div class="lesson-card"><div class="lesson-number">1</div><p>Vision beyond the obvious can create entirely new industries.</p></div>
+            <div class="lesson-card"><div class="lesson-number">2</div><p>Technical courage often means trusting in an abstraction before others see its value.</p></div>
+            <div class="lesson-card"><div class="lesson-number">3</div><p>Scale and efficiency alone do not guarantee success; infrastructure gains purpose when it meets real-world needs.</p></div>
+          </div>
+        </section>
+
+        <section class="panel" id="cloud-native">
+          <span class="section-kicker">Article section</span>
+          <h2>The cloud-native revolution</h2>
+          <p>While hyperscalers built global infrastructure, a new wave of innovators reimagined how software should run on it. Solomon Hykes created Docker, popularising lightweight containers that made applications easier to deploy, scale and move across environments.</p>
+          <p>Google engineers Joe Beda, Brendan Burns and Craig McLuckie recognised that thousands of containers needed a new control plane. Kubernetes, released as open source in 2014, became the standard for orchestrating containerised workloads.</p>
+          <p>Mitchell Hashimoto added another foundation with Terraform. By making infrastructure as code accessible and practical, Terraform allowed teams to treat cloud resources like software: version-controlled, repeatable and transparent.</p>
+          <div class="callout">
+            <h3>Field lesson 4</h3>
+            <p>Lasting impact often starts with smaller teams who share practical ideas. Open collaboration can set new standards faster than any single company could achieve alone.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="microsoft">
+          <span class="section-kicker">Article section</span>
+          <h2>Microsoft’s transformation</h2>
+          <p>Satya Nadella became CEO of Microsoft in 2014 and repositioned the company around a mobile-first, cloud-first principle. That shift meant embracing open source, supporting Linux and investing heavily in Azure as a developer and enterprise platform.</p>
+          <p>Mark Russinovich helped guide Azure’s architecture for scale, security and reliability, including support for confidential computing, live-site debugging and broad Linux compatibility. Scott Guthrie brought a developer-first mindset through services such as Azure App Service, Cosmos DB and Visual Studio integration.</p>
+          <p>The source paper’s point is cultural as much as technical: Azure’s rise required Microsoft to challenge its own legacy thinking and build a more open, collaborative operating model.</p>
+          <div class="callout">
+            <h3>Field lesson 5</h3>
+            <p>Cultural shifts can be as transformative as technical breakthroughs. Openness and a willingness to challenge legacy thinking have reshaped entire organisations.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="oracle">
+          <span class="section-kicker">Article section</span>
+          <h2>Oracle’s reimagination</h2>
+          <p>Oracle’s second-generation cloud reflected conviction and urgency. Larry Ellison judged that extending Oracle’s existing enterprise software portfolio would not be enough to compete with hyperscalers. Instead, he prioritised a clean-sheet architecture centred on security boundaries, predictable performance and dedicated infrastructure for critical workloads.</p>
+          <p>Ellison appointed Don Johnson, who had previously helped grow AWS, to establish an engineering organisation capable of designing OCI from the ground up. Johnson assembled teams with experience from across the industry and set the mandate to deliver a distinctly enterprise-focused proposition.</p>
+          <p>Clay Magouyrk translated that vision into foundational architecture, including non-blocking networks, off-box virtualisation and bare-metal compute models optimised for demanding workloads such as HPC and large-scale AI training.</p>
+          <p>As OCI expanded, Karan Batta shaped product direction for HPC and AI infrastructure, including GPU instances, Supercluster architecture and AI-optimised compute. Mahesh Thiagarajan drove engineering execution, scaling OCI globally while introducing advanced networking and storage designs. Chris Gandolfo helped bring these capabilities to market, working with customers to demonstrate OCI’s strengths in AI and high-performance workloads.</p>
+          <p>Oracle’s approach to distributed cloud and multi-cloud also reflects the source paper’s theme of customer choice. Dedicated Region, Alloy and partnerships with other hyperscalers signal that providers can align around customer needs without compromising capability.</p>
+          <div class="callout">
+            <h3>Field lesson 6</h3>
+            <p>Clear priorities and focused engineering made OCI possible when many doubted it could be done. The same discipline will be needed as the platform adapts to new demands.</p>
+          </div>
+        </section>
+
+        <section class="panel" id="mission">
+          <span class="section-kicker">Practical field interpretation</span>
+          <h2>Reflections for our mission</h2>
+          <p>The paper identifies repeated qualities across the pioneers: curiosity, willingness to test constraints, technical courage, and focus on customer benefit. Many breakthroughs began as unpopular opinions: virtual machines, pay-as-you-go compute, containers and infrastructure as code.</p>
+          <p>Technical elegance alone is not enough. AWS, Azure, Kubernetes and OCI each mattered because they removed friction and helped customers focus on their own goals.</p>
+          <p>For OCI teams, this history creates perspective. OCI’s dedicated isolation, predictable performance, distributed cloud and multi-cloud approach did not emerge by accident. They reflect deliberate choices about where Oracle would differentiate and which customer needs earlier cloud generations did not fully address.</p>
+          <div class="lesson-grid" aria-label="Reflections for field use">
+            <div class="lesson-card"><div class="lesson-number">A</div><p>Use this paper to open conversations about cloud history and design intent.</p></div>
+            <div class="lesson-card"><div class="lesson-number">B</div><p>Respect competitor contributions; the argument is stronger when it is not defensive.</p></div>
+            <div class="lesson-card"><div class="lesson-number">C</div><p>Connect OCI’s current design to customer problems, not to abstract pride.</p></div>
+            <div class="lesson-card"><div class="lesson-number">7</div><p>Progress comes from thoughtful decisions, not from momentum alone.</p></div>
+          </div>
+        </section>
+
+        <section class="panel" id="conclusion">
+          <span class="section-kicker">Conclusion</span>
+          <h2>Purpose grounded in experience</h2>
+          <p>The competitive landscape was shaped by people willing to reimagine what technology could become. Clear technical priorities, combined with persistence, can redefine what is possible and set expectations that others must follow.</p>
+          <p>Looking back at these milestones helps explain why some ideas succeed. It also reminds us that progress depends on detail, questioning assumptions and making deliberate decisions.</p>
+          <p>As OCI work continues, this history helps Oracle teams see their own contributions in context and approach what comes next with purpose grounded in experience rather than sentiment.</p>
+        </section>
+
+        <section class="panel" id="pioneer-profiles">
+          <span class="section-kicker">Appendix rebuilt as cards</span>
+          <h2>Profiles of the pioneers</h2>
+          <p>The appendix is rebuilt here as accessible profile cards. Use the filters to focus on a domain without losing access to the full set.</p>
+          <div class="profile-tools" role="toolbar" aria-label="Filter pioneer profiles">
+            <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter-btn" type="button" data-filter="aws" aria-pressed="false">AWS</button>
+            <button class="filter-btn" type="button" data-filter="google" aria-pressed="false">Google</button>
+            <button class="filter-btn" type="button" data-filter="microsoft" aria-pressed="false">Microsoft</button>
+            <button class="filter-btn" type="button" data-filter="oracle" aria-pressed="false">Oracle</button>
+            <button class="filter-btn" type="button" data-filter="vmware-ibm" aria-pressed="false">VMware / IBM</button>
+            <button class="filter-btn" type="button" data-filter="cloud-native" aria-pressed="false">Cloud-native</button>
+          </div>
+          <div class="profile-grid" id="profiles">
+            <details class="profile-card" data-group="aws" open><summary><h3>Andy Jassy</h3></summary><span class="chip">AWS</span><p>As the founding leader of Amazon Web Services, Andy Jassy took AWS from a small internal experiment to the world’s largest cloud platform. His conviction that infrastructure could be sold as a utility service changed how businesses consume technology and helped create the global cloud market.</p></details>
+            <details class="profile-card" data-group="aws" open><summary><h3>Werner Vogels</h3></summary><span class="chip">AWS</span><p>Amazon’s CTO established principles of scalable and resilient distributed systems. His philosophy that “everything fails” drove designs that anticipate faults rather than only reacting to them.</p></details>
+            <details class="profile-card" data-group="aws" open><summary><h3>James Hamilton</h3></summary><span class="chip">AWS</span><p>James Hamilton led innovations in power, cooling and network design for hyperscale data centres, contributing to the efficiency and performance that underpin modern cloud economics.</p></details>
+            <details class="profile-card" data-group="google" open><summary><h3>Urs Hölzle</h3></summary><span class="chip">Google</span><p>Google’s first Senior Vice President of Technical Infrastructure built warehouse-scale computing into reality. His teams pioneered software-defined networking and automated resource management.</p></details>
+            <details class="profile-card" data-group="oracle" open><summary><h3>Larry Ellison</h3></summary><span class="chip">Oracle</span><p>Oracle co-founder Larry Ellison championed OCI by insisting on secure isolation, predictable performance and autonomous services, enabling a differentiated alternative to first-generation cloud providers.</p></details>
+            <details class="profile-card" data-group="oracle" open><summary><h3>Don Johnson</h3></summary><span class="chip">Oracle</span><p>Recruited from AWS, Don Johnson led the engineering effort behind Oracle’s Gen 2 Cloud, building the teams and designs that helped turn Oracle into a credible hyperscale competitor.</p></details>
+            <details class="profile-card" data-group="oracle" open><summary><h3>Clay Magouyrk</h3></summary><span class="chip">Oracle</span><p>One of OCI’s founding engineering leaders, Clay Magouyrk guided architecture from early design through global expansion, with focus on performance, security and large-scale AI infrastructure.</p></details>
+            <details class="profile-card" data-group="oracle" open><summary><h3>Karan Batta</h3></summary><span class="chip">Oracle</span><p>Karan Batta led product management for OCI high-performance computing and AI services, guiding GPU instances, Supercluster architecture and AI-optimised compute offerings.</p></details>
+            <details class="profile-card" data-group="oracle" open><summary><h3>Mahesh Thiagarajan</h3></summary><span class="chip">Oracle</span><p>Mahesh Thiagarajan oversaw OCI’s global expansion and delivery of advanced networking, storage and compute capabilities central to large-scale distributed training.</p></details>
+            <details class="profile-card" data-group="oracle" open><summary><h3>Chris Gandolfo</h3></summary><span class="chip">Oracle</span><p>Chris Gandolfo helped bring OCI’s AI infrastructure to market and worked with enterprise and AI-focused organisations to demonstrate Oracle’s performance, scalability and efficiency.</p></details>
+            <details class="profile-card" data-group="google" open><summary><h3>Thomas Kurian</h3></summary><span class="chip">Google</span><p>After two decades at Oracle, Thomas Kurian became CEO of Google Cloud in 2019 and shifted the platform towards enterprise adoption, multi-cloud capabilities and industry-specific solutions.</p></details>
+            <details class="profile-card" data-group="microsoft" open><summary><h3>Satya Nadella</h3></summary><span class="chip">Microsoft</span><p>As Microsoft CEO, Satya Nadella introduced a cloud-first strategy that transformed the company’s culture and made Azure a core part of Microsoft’s identity.</p></details>
+            <details class="profile-card" data-group="microsoft" open><summary><h3>Mark Russinovich</h3></summary><span class="chip">Microsoft</span><p>Azure CTO Mark Russinovich brought deep operating systems expertise to building secure and scalable cloud, influencing live-site debugging, confidential computing and Linux support.</p></details>
+            <details class="profile-card" data-group="microsoft" open><summary><h3>Scott Guthrie</h3></summary><span class="chip">Microsoft</span><p>Scott Guthrie, EVP of Cloud and AI at Microsoft, co-founded .NET and oversaw Azure engineering, with a focus on developer experience and approachability.</p></details>
+            <details class="profile-card" data-group="vmware-ibm" open><summary><h3>Pat Gelsinger</h3></summary><span class="chip">VMware</span><p>As VMware CEO, Pat Gelsinger promoted hybrid cloud as the enterprise default, with initiatives such as VMware Cloud on AWS helping bridge on-premises and cloud environments.</p></details>
+            <details class="profile-card" data-group="vmware-ibm" open><summary><h3>Diane Greene</h3></summary><span class="chip">VMware / Google</span><p>Diane Greene co-founded VMware and led the commercialisation of x86 virtualisation. Later, she served as CEO of Google Cloud, bringing an enterprise perspective.</p></details>
+            <details class="profile-card" data-group="vmware-ibm" open><summary><h3>Arvind Krishna</h3></summary><span class="chip">IBM</span><p>IBM CEO Arvind Krishna architected the Red Hat acquisition that reshaped IBM’s hybrid cloud strategy around open-source platforms and Kubernetes.</p></details>
+            <details class="profile-card" data-group="cloud-native" open><summary><h3>Solomon Hykes</h3></summary><span class="chip">Docker</span><p>Founder of Docker, Solomon Hykes helped popularise containers as a standard way to package and deploy applications across environments.</p></details>
+            <details class="profile-card" data-group="cloud-native" open><summary><h3>Joe Beda, Brendan Burns and Craig McLuckie</h3></summary><span class="chip">Kubernetes</span><p>This group created Kubernetes at Google and released it as open source. Kubernetes became the de facto standard for orchestrating container workloads.</p></details>
+            <details class="profile-card" data-group="cloud-native" open><summary><h3>Mitchell Hashimoto</h3></summary><span class="chip">Terraform</span><p>As HashiCorp co-founder, Mitchell Hashimoto created Terraform and related tools that made infrastructure as code accessible and practical across clouds.</p></details>
+            <details class="profile-card" data-group="cloud-native" open><summary><h3>Adrian Cockcroft</h3></summary><span class="chip">Netflix / AWS</span><p>Adrian Cockcroft pioneered microservices, chaos engineering and open-sourced tools such as Simian Army, influencing best practices for resilient scalable systems.</p></details>
+          </div>
+        </section>
+
+        <section class="panel" id="related-papers">
+          <span class="section-kicker">Navigation</span>
+          <h2>Related papers</h2>
+          <div class="related-grid">
+            <a class="related-card" href="../paper-02-masters-of-many-champions-of-choice/"><strong>Paper 02: Masters of Many: Champions of Choice</strong><span>Continues the context-building work by mapping Oracle’s unusually broad competitive field.</span></a>
+            <a class="related-card" href="../paper-03-evolving-expectations-enterprise-cloud-market/"><strong>Paper 03: Evolving Expectations in the Enterprise Cloud Market</strong><span>Connects cloud history to today’s buyer mindset around AI, cost pressure and data control.</span></a>
+            <a class="related-card" href="../paper-12-oci-rich-differentiation/"><strong>Paper 12: OCI’s Rich Differentiation</strong><span>Builds on OCI design intent by explaining differentiation as composition rather than isolated feature claims.</span></a>
+            <a class="related-card" href="../paper-13-misconceptions-of-oci/"><strong>Paper 13: Misconceptions of OCI</strong><span>Helps translate historical context into field handling for persistent Oracle and OCI assumptions.</span></a>
+          </div>
+          <div class="pager" aria-label="Previous and next paper navigation">
+            <span class="disabled"><small>Previous</small>This is the first paper in the series.</span>
+            <a href="../paper-02-masters-of-many-champions-of-choice/"><small>Next</small>Paper 02 - Masters of Many: Champions of Choice</a>
+          </div>
+        </section>
+
+        <section class="panel" id="source-handling">
+          <span class="section-kicker">Source and handling notes</span>
+          <h2>Conversion record</h2>
+          <div class="two-col">
+            <div class="source-card">
+              <h3>Source fidelity</h3>
+              <p>Built from the source PDF cover, article sections and appendix. The conversion restructures the content into timeline, field interpretation and profile card patterns while preserving the source argument and named pioneers.</p>
+            </div>
+            <div class="source-card">
+              <h3>Known handling choices</h3>
+              <p>No external research was used. Claims were not refreshed, expanded or corrected. The source contains no complex tables requiring rebuild, so the main visual treatment is timeline and card-based.</p>
+            </div>
+            <div class="source-card">
+              <h3>Internal classification</h3>
+              <p>Classification is visible in the top bar, metadata, source notes and footer. The page includes no public SEO language, public sharing links, analytics scripts or external dependencies.</p>
+            </div>
+            <div class="source-card">
+              <h3>Accessibility treatment</h3>
+              <p>The page uses semantic landmarks, one H1, keyboard-accessible navigation, visible focus states, responsive layout, printable styling and text-based equivalents for the visual timeline and profile cards.</p>
+            </div>
+          </div>
+        </section>
+      </article>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <p><strong>FY26 UK-PS Whitepapers Series</strong></p>
+        <p>Internal Oracle enablement page. Source: Paper 1 - The Visionaries Who Shaped Our Cloud v1.0.pdf.</p>
+        <p>Confidential - Oracle Internal. Copyright © 2025, Oracle and/or its affiliates.</p>
+      </div>
+      <div>
+        <p>Paper 01</p>
+        <p>Conversion version 1.0</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="application/json" id="paper-meta">
+  {
+    "series": "FY26 UK-PS Whitepapers Series",
+    "number": "01",
+    "title": "The Visionaries Who Shaped Our Cloud",
+    "subtitle": "Learning from the Pioneers Who Defined the Modern Infrastructure Landscape",
+    "version": "1.0",
+    "sourceFile": "Paper 1 - The Visionaries Who Shaped Our Cloud v1.0.pdf",
+    "classification": "Confidential - Oracle Internal",
+    "copyright": "Copyright © 2025, Oracle and/or its affiliates",
+    "route": "/paper-01-visionaries-who-shaped-our-cloud/",
+    "themes": ["Cloud history", "Leadership", "Infrastructure evolution"],
+    "group": "Market and Cloud Context",
+    "conversionVersion": "1.0",
+    "conversionStatus": "Draft",
+    "lastReviewed": "2026-06-22"
+  }
+  </script>
+  <script>
+    (function () {
+      const progress = document.getElementById('progress');
+      const tocLinks = Array.from(document.querySelectorAll('.toc a'));
+      const sections = tocLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+
+      function updateProgress() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progress.style.width = pct + '%';
+
+        let current = sections[0];
+        for (const section of sections) {
+          if (section.getBoundingClientRect().top <= 140) current = section;
+        }
+        tocLinks.forEach(link => {
+          const match = current && link.getAttribute('href') === '#' + current.id;
+          if (match) link.setAttribute('aria-current', 'true');
+          else link.removeAttribute('aria-current');
+        });
+      }
+
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+
+      document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+      document.querySelectorAll('[data-copy-section]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const id = btn.getAttribute('data-copy-section');
+          const url = window.location.href.split('#')[0] + '#' + id;
+          try {
+            await navigator.clipboard.writeText(url);
+            const original = btn.textContent;
+            btn.textContent = 'Copied';
+            setTimeout(() => { btn.textContent = original; }, 1500);
+          } catch (e) {
+            window.location.hash = id;
+          }
+        });
+      });
+
+      const details = Array.from(document.querySelectorAll('details.profile-card'));
+      document.getElementById('expandAll').addEventListener('click', () => details.forEach(d => d.open = true));
+      document.getElementById('collapseAll').addEventListener('click', () => details.forEach(d => d.open = false));
+
+      const filterButtons = Array.from(document.querySelectorAll('[data-filter]'));
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+          filterButtons.forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+          details.forEach(card => {
+            const show = filter === 'all' || card.dataset.group === filter;
+            card.hidden = !show;
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1242 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper 02 - Masters of Many: Champions of Choice | FY26 UK-PS Whitepapers Series</title>
+  <meta name="description" content="Internal Oracle field paper converted into a static HTML article for the FY26 UK-PS Whitepapers Series.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="classification" content="Confidential - Oracle Internal">
+  <meta name="series" content="FY26 UK-PS Whitepapers Series">
+  <meta name="paper-number" content="02">
+  <meta name="paper-version" content="1.0">
+  <meta name="conversion-version" content="1.0">
+  <style>
+    :root {
+      --series-bg: #f7f3ee;
+      --surface: #fffaf5;
+      --surface-alt: #f1ebe4;
+      --ink: #241c18;
+      --muted: #6f625a;
+      --line: #ded4ca;
+      --oracle-red-soft: #c74634;
+      --clay: #b45f36;
+      --clay-dark: #7f3e25;
+      --sage: #789c96;
+      --teal-deep: #315f5b;
+      --sand: #d7b98c;
+      --charcoal: #3a3632;
+      --success-soft: #e5efe9;
+      --warning-soft: #f6ead8;
+      --risk-soft: #f3dfdc;
+      --info-soft: #e5eef0;
+      --focus: #1f6f78;
+      --shadow: 0 18px 48px rgba(47, 37, 31, 0.10);
+      --shadow-soft: 0 8px 24px rgba(47, 37, 31, 0.08);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --measure: 74ch;
+      --page-max: 1220px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(199, 70, 52, 0.10), transparent 30rem),
+        radial-gradient(circle at 82% 8%, rgba(120, 156, 150, 0.20), transparent 34rem),
+        linear-gradient(180deg, #fbf7f2 0%, var(--series-bg) 52%, #f3ece4 100%);
+      color: var(--ink);
+      font-family: "Oracle Sans", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: var(--teal-deep); text-decoration-thickness: 0.08em; text-underline-offset: 0.18em; }
+    a:hover { color: var(--oracle-red-soft); }
+    a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      z-index: 1000;
+      background: var(--ink);
+      color: #fff;
+      padding: .75rem 1rem;
+      border-radius: 0 0 12px 12px;
+    }
+    .skip-link:focus { top: 0; }
+
+    .progress {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 4px;
+      z-index: 900;
+      background: linear-gradient(90deg, var(--oracle-red-soft), var(--sage), var(--sand));
+      transform-origin: 0 50%;
+      transform: scaleX(0);
+    }
+
+    .utility {
+      background: rgba(36, 28, 24, 0.94);
+      color: #fff;
+      font-size: .82rem;
+      line-height: 1.3;
+    }
+    .utility-inner {
+      max-width: var(--page-max);
+      margin: 0 auto;
+      padding: .68rem 1.2rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .wordmark {
+      letter-spacing: .18em;
+      font-weight: 800;
+      color: #ffdad3;
+      font-size: .9rem;
+    }
+    .classification-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      border: 1px solid rgba(255,255,255,.28);
+      padding: .28rem .6rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .classification-pill::before {
+      content: "";
+      width: .55rem;
+      height: .55rem;
+      border-radius: 50%;
+      background: var(--sand);
+    }
+
+    .series-header {
+      border-bottom: 1px solid rgba(222, 212, 202, 0.9);
+      background: rgba(255, 250, 245, 0.74);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 800;
+    }
+    .series-header-inner {
+      max-width: var(--page-max);
+      margin: 0 auto;
+      padding: .9rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+    .series-title {
+      font-weight: 800;
+      color: var(--charcoal);
+      letter-spacing: -.01em;
+    }
+    .global-nav {
+      display: flex;
+      gap: .35rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-size: .92rem;
+    }
+    .global-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: .42rem .65rem;
+      border-radius: 999px;
+    }
+    .global-nav a:hover { background: var(--surface-alt); color: var(--ink); }
+
+    .shell {
+      max-width: var(--page-max);
+      margin: 0 auto;
+      padding: 1rem 1.2rem 4rem;
+    }
+    .breadcrumb {
+      font-size: .9rem;
+      color: var(--muted);
+      display: flex;
+      gap: .45rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+    .breadcrumb a { color: inherit; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      background:
+        linear-gradient(135deg, rgba(180,95,54,.16), rgba(120,156,150,.12) 48%, rgba(255,250,245,.9)),
+        var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      padding: clamp(1.5rem, 4vw, 4rem);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -7rem;
+      top: -8rem;
+      width: 24rem;
+      height: 24rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(199, 70, 52, 0.18), transparent 62%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .35rem .68rem;
+      border-radius: 999px;
+      background: rgba(49, 95, 91, 0.10);
+      color: var(--teal-deep);
+      border: 1px solid rgba(49, 95, 91, 0.18);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+    .badge.clay { background: rgba(180,95,54,.10); color: var(--clay-dark); border-color: rgba(180,95,54,.22); }
+    h1 {
+      max-width: 12ch;
+      margin: 0;
+      font-size: clamp(2.65rem, 8vw, 5.55rem);
+      line-height: .94;
+      letter-spacing: -.065em;
+      position: relative;
+      z-index: 1;
+    }
+    .subtitle {
+      max-width: 58rem;
+      margin: 1.25rem 0 0;
+      font-size: clamp(1.1rem, 2.1vw, 1.55rem);
+      color: var(--charcoal);
+      line-height: 1.35;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-grid {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(270px, .75fr);
+      gap: 1rem;
+      align-items: stretch;
+      position: relative;
+      z-index: 1;
+    }
+    .key-takeaway {
+      background: rgba(255,250,245,.78);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+    }
+    .key-takeaway strong { display: block; color: var(--clay-dark); margin-bottom: .25rem; }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .7rem;
+      margin-top: 1.25rem;
+    }
+    .button, button.button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: .68rem .95rem;
+      font: inherit;
+      font-size: .94rem;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      background: var(--charcoal);
+      color: #fff;
+    }
+    .button.secondary {
+      color: var(--ink);
+      background: rgba(255,250,245,.74);
+      border-color: var(--line);
+    }
+    .button.ghost {
+      color: var(--teal-deep);
+      background: transparent;
+      border-color: rgba(49,95,91,.28);
+    }
+    .button:hover { transform: translateY(-1px); box-shadow: var(--shadow-soft); color: #fff; }
+    .button.secondary:hover, .button.ghost:hover { color: var(--ink); background: #fff; }
+
+    .meta-card {
+      background: rgba(36, 28, 24, 0.92);
+      color: #fff;
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-soft);
+    }
+    .meta-card h2 {
+      margin: 0 0 .8rem;
+      font-size: 1rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #ffe1d8;
+    }
+    .meta-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: .52rem;
+      margin: 0;
+      font-size: .9rem;
+    }
+    .meta-list div { display: grid; grid-template-columns: 7.5rem 1fr; gap: .5rem; align-items: start; }
+    .meta-list dt { color: rgba(255,255,255,.66); }
+    .meta-list dd { margin: 0; color: #fff; }
+
+    .reading-tools {
+      margin: 1.1rem 0 0;
+      display: flex;
+      gap: .55rem;
+      flex-wrap: wrap;
+      align-items: center;
+      background: rgba(255,250,245,.72);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: .75rem;
+    }
+    .tool-label { color: var(--muted); font-size: .86rem; font-weight: 800; margin: 0 .25rem; }
+    .tool-btn {
+      border: 1px solid var(--line);
+      background: #fffdf9;
+      color: var(--charcoal);
+      border-radius: 999px;
+      padding: .44rem .68rem;
+      font: inherit;
+      font-size: .86rem;
+      cursor: pointer;
+    }
+    .tool-btn:hover { background: var(--surface-alt); }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 292px;
+      gap: 1.6rem;
+      align-items: start;
+      margin-top: 1.6rem;
+    }
+    main {
+      min-width: 0;
+    }
+    article {
+      background: rgba(255,250,245,.84);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+    .article-section {
+      padding: clamp(1.35rem, 3vw, 2.35rem);
+      border-top: 1px solid var(--line);
+    }
+    .article-section:first-child { border-top: none; }
+    .section-kicker {
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      color: var(--clay-dark);
+      font-weight: 900;
+      margin: 0 0 .35rem;
+    }
+    h2 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.75rem, 3.6vw, 2.65rem);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+    h3 {
+      margin: 1.5rem 0 .55rem;
+      font-size: clamp(1.22rem, 2vw, 1.55rem);
+      line-height: 1.18;
+      letter-spacing: -.02em;
+    }
+    h4 { margin: 1.1rem 0 .4rem; font-size: 1.08rem; }
+    p { max-width: var(--measure); margin: .7rem 0 0; }
+    ul, ol { max-width: var(--measure); margin: .7rem 0 0; padding-left: 1.35rem; }
+    li { margin: .42rem 0; }
+    .lead { font-size: 1.1rem; color: var(--charcoal); }
+    .muted { color: var(--muted); }
+    .small { font-size: .88rem; }
+
+    .toc {
+      position: sticky;
+      top: 5.3rem;
+      background: rgba(255,250,245,.9);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 1rem;
+      box-shadow: var(--shadow-soft);
+      max-height: calc(100vh - 7rem);
+      overflow: auto;
+    }
+    .toc h2 {
+      font-size: .84rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin: 0 0 .65rem;
+      color: var(--muted);
+    }
+    .toc a {
+      display: block;
+      text-decoration: none;
+      padding: .48rem .55rem;
+      border-radius: 10px;
+      color: var(--charcoal);
+      font-size: .9rem;
+      line-height: 1.25;
+    }
+    .toc a:hover, .toc a[aria-current="true"] { background: var(--surface-alt); color: var(--clay-dark); }
+    .toc .toc-sub { padding-left: .8rem; font-size: .82rem; color: var(--muted); }
+
+    .orientation-grid,
+    .card-grid,
+    .takeaway-grid,
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .9rem;
+      margin-top: 1.05rem;
+    }
+    .card-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .card-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .info-card,
+    .field-card,
+    .evidence-card,
+    .domain-card,
+    .related-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: #fffdf9;
+      padding: 1rem;
+      box-shadow: 0 1px 0 rgba(255,255,255,.75) inset;
+    }
+    .info-card h3,
+    .field-card h3,
+    .evidence-card h3,
+    .domain-card h3,
+    .related-card h3 { margin-top: 0; font-size: 1.05rem; }
+    .info-card p, .field-card p, .evidence-card p, .domain-card p, .related-card p { font-size: .94rem; line-height: 1.55; }
+    .info-card:nth-child(1) { background: var(--success-soft); }
+    .info-card:nth-child(2) { background: var(--info-soft); }
+    .info-card:nth-child(3) { background: var(--warning-soft); }
+    .info-card:nth-child(4) { background: var(--risk-soft); }
+    .label {
+      display: inline-block;
+      color: var(--clay-dark);
+      font-weight: 900;
+      font-size: .76rem;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      margin-bottom: .45rem;
+    }
+
+    .portfolio-map {
+      margin-top: 1.2rem;
+      padding: 1.1rem;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(199,70,52,.15), transparent 11rem),
+        linear-gradient(135deg, #fffdf9, #f4eee7);
+    }
+    .map-core {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(112px, 1fr));
+      gap: .65rem;
+      align-items: stretch;
+    }
+    .map-node {
+      min-height: 138px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: .85rem;
+      border: 1px solid rgba(49,95,91,.20);
+      border-radius: 18px;
+      background: rgba(255,250,245,.82);
+    }
+    .map-node strong { line-height: 1.15; }
+    .map-node span { color: var(--muted); font-size: .82rem; margin-top: .5rem; }
+    .map-centre {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: minmax(180px, .8fr) minmax(0, 1.2fr);
+      gap: .8rem;
+      align-items: center;
+      margin-bottom: .65rem;
+    }
+    .oracle-core {
+      background: var(--charcoal);
+      color: #fff;
+      border-radius: 22px;
+      padding: 1rem;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .oracle-core strong { font-size: 1.55rem; letter-spacing: .06em; color: #ffd7cd; }
+    .map-explain {
+      background: rgba(255,255,255,.68);
+      border: 1px dashed rgba(180,95,54,.32);
+      border-radius: 22px;
+      padding: 1rem;
+    }
+
+    .table-wrap {
+      margin-top: 1rem;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fffdf9;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 760px;
+      font-size: .94rem;
+      line-height: 1.45;
+    }
+    caption {
+      text-align: left;
+      font-weight: 900;
+      color: var(--clay-dark);
+      padding: .9rem 1rem .35rem;
+    }
+    th, td {
+      vertical-align: top;
+      text-align: left;
+      padding: .8rem .9rem;
+      border-top: 1px solid var(--line);
+    }
+    thead th {
+      background: rgba(180,95,54,.10);
+      color: var(--clay-dark);
+      border-top: none;
+      font-size: .86rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    tbody tr:nth-child(odd) td { background: rgba(229, 238, 240, 0.55); }
+    tbody th { color: var(--ink); font-weight: 900; }
+
+    .domain-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin: 1rem 0 .2rem;
+    }
+    .filter-btn {
+      border: 1px solid rgba(49,95,91,.22);
+      background: #fffdf9;
+      color: var(--teal-deep);
+      padding: .45rem .7rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font: inherit;
+      font-size: .85rem;
+      font-weight: 800;
+    }
+    .filter-btn[aria-pressed="true"] {
+      background: var(--teal-deep);
+      color: #fff;
+      border-color: var(--teal-deep);
+    }
+    .domain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .9rem;
+      margin-top: 1rem;
+    }
+    .domain-card { position: relative; }
+    .domain-card[hidden] { display: none; }
+    .chip-row { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .65rem; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: .24rem .52rem;
+      background: rgba(255,255,255,.72);
+      font-size: .78rem;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+    .chip.specialist { border-color: rgba(180,95,54,.28); color: var(--clay-dark); }
+    .chip.diversified { border-color: rgba(49,95,91,.26); color: var(--teal-deep); }
+
+    .evidence-card { border-left: 5px solid var(--clay); }
+    .evidence-type {
+      font-size: .74rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: .35rem;
+    }
+    .callout {
+      border: 1px solid rgba(180,95,54,.22);
+      border-radius: 24px;
+      background: var(--warning-soft);
+      padding: 1rem 1.1rem;
+      margin-top: 1rem;
+    }
+    .callout h3 { margin-top: 0; color: var(--clay-dark); }
+    .caveat { background: var(--risk-soft); border-color: rgba(199,70,52,.22); }
+    .success { background: var(--success-soft); border-color: rgba(120,156,150,.24); }
+    .quote-panel {
+      border-left: 6px solid var(--clay);
+      padding: .5rem 0 .5rem 1rem;
+      margin: 1.2rem 0;
+      color: var(--charcoal);
+      font-size: 1.18rem;
+      line-height: 1.45;
+      max-width: var(--measure);
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fffdf9;
+      padding: .65rem .9rem;
+      margin-top: .75rem;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: 900;
+      color: var(--charcoal);
+    }
+    details p, details ul { font-size: .94rem; }
+
+    .paper-nav {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .9rem;
+      margin-top: 1.2rem;
+    }
+    .paper-nav a {
+      text-decoration: none;
+      background: rgba(255,250,245,.86);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 1rem;
+      color: var(--ink);
+    }
+    .paper-nav a:hover { border-color: rgba(180,95,54,.45); box-shadow: var(--shadow-soft); }
+    .paper-nav span { display: block; color: var(--muted); font-size: .82rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 900; }
+    .paper-nav strong { display: block; margin-top: .25rem; }
+
+    footer {
+      margin-top: 2rem;
+      border-top: 1px solid var(--line);
+      padding: 1.5rem 0 0;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: start;
+    }
+    .status-msg { color: var(--teal-deep); font-weight: 800; margin-left: .4rem; }
+
+    body.reading-mode .layout { grid-template-columns: minmax(0, 850px); justify-content: center; }
+    body.reading-mode .toc { display: none; }
+    body.reading-mode article { box-shadow: none; }
+
+    @media (max-width: 1040px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc { position: static; max-height: none; order: -1; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .orientation-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .card-grid.three { grid-template-columns: 1fr; }
+      .card-grid.two, .takeaway-grid, .related-grid, .domain-grid { grid-template-columns: 1fr; }
+      .map-core { grid-template-columns: repeat(3, minmax(112px, 1fr)); }
+    }
+    @media (max-width: 720px) {
+      body { font-size: 16px; }
+      .series-header { position: static; }
+      .series-header-inner { align-items: flex-start; flex-direction: column; }
+      .global-nav { justify-content: flex-start; }
+      .hero { border-radius: 24px; }
+      .meta-list div { grid-template-columns: 1fr; gap: .1rem; }
+      .orientation-grid { grid-template-columns: 1fr; }
+      .map-centre { grid-template-columns: 1fr; }
+      .map-core { grid-template-columns: 1fr; }
+      .paper-nav { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+
+    @media print {
+      body { background: #fff; color: #000; font-size: 11pt; }
+      .progress, .utility, .series-header, .breadcrumb, .reading-tools, .toc, .paper-nav, .hero-actions { display: none !important; }
+      .shell { max-width: none; padding: 0; }
+      .hero, article, .meta-card, .info-card, .field-card, .evidence-card, .domain-card, .related-card, .callout, details { box-shadow: none; background: #fff; color: #000; border-color: #888; }
+      .hero { padding: 0 0 1rem; border: none; }
+      h1 { font-size: 32pt; max-width: none; }
+      .subtitle { font-size: 14pt; }
+      .layout { display: block; }
+      .article-section { padding: 1rem 0; page-break-inside: auto; }
+      a::after { content: ""; }
+      table { font-size: 9pt; min-width: 0; }
+      .table-wrap { overflow: visible; }
+      .classification-pill { border: 1px solid #444; color: #000; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <div class="utility" role="banner">
+    <div class="utility-inner">
+      <div><span class="wordmark">ORACLE</span> <span aria-hidden="true">/</span> FY26 UK-PS Whitepapers Series</div>
+      <div class="classification-pill">Confidential - Oracle Internal</div>
+    </div>
+  </div>
+
+  <header class="series-header">
+    <div class="series-header-inner">
+      <div class="series-title">FY26 UK-PS Whitepapers Series</div>
+      <nav class="global-nav" aria-label="Series navigation">
+        <a href="../index.html">Index</a>
+        <a href="../index.html#all-papers">All papers</a>
+        <a href="../index.html#reading-paths">Reading paths</a>
+        <a href="../index.html#themes">Themes</a>
+        <a href="../index.html#about">About this series</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="shell">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Series</a><span>/</span><span>Paper 02</span><span>/</span><span>Masters of Many: Champions of Choice</span>
+    </nav>
+
+    <section class="hero" aria-labelledby="paper-title">
+      <div class="eyebrow">
+        <span class="badge clay">Paper 02</span>
+        <span class="badge">Market and Cloud Context</span>
+        <span class="classification-pill" style="color: var(--ink); border-color: rgba(36,28,24,.25);">Confidential - Oracle Internal</span>
+      </div>
+      <h1 id="paper-title">Masters of Many: Champions of Choice</h1>
+      <p class="subtitle">Why Oracle has so many competitors and why that fact defines who we are</p>
+      <div class="hero-grid">
+        <div class="key-takeaway">
+          <strong>Key takeaway</strong>
+          Oracle’s crowded competitive field should be read as evidence of portfolio breadth, platform maturity, and customer choice, not as proof that Oracle should be positioned as stronger in every domain or every workload scenario.
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button" href="#executive-orientation">Start reading</a>
+            <a class="button secondary" href="#competitive-panorama">View competitive map</a>
+            <a class="button ghost" href="#field-use">Use in the field</a>
+          </div>
+        </div>
+        <aside class="meta-card" aria-labelledby="metadata-title">
+          <h2 id="metadata-title">Article metadata</h2>
+          <dl class="meta-list">
+            <div><dt>Paper</dt><dd>02</dd></div>
+            <div><dt>Version</dt><dd>1.0</dd></div>
+            <div><dt>Source</dt><dd>Paper 2 - Masters of Many - Champions of Choice v1.0.pdf</dd></div>
+            <div><dt>Copyright</dt><dd>Copyright © 2026, Oracle and/or its affiliates</dd></div>
+            <div><dt>Classification</dt><dd>Confidential - Oracle Internal</dd></div>
+            <div><dt>Route</dt><dd>/paper-02-masters-of-many-champions-of-choice/</dd></div>
+            <div><dt>Themes</dt><dd>Competition, Portfolio breadth, Customer choice</dd></div>
+            <div><dt>Conversion</dt><dd>v1.0, Draft, 2026-06-22</dd></div>
+            <div><dt>Reading time</dt><dd>Approximately 13 minutes</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section class="reading-tools" aria-label="Reading tools">
+      <span class="tool-label">Reading tools</span>
+      <a class="tool-btn" href="../index.html">Back to index</a>
+      <button class="tool-btn" type="button" data-copy-page>Copy page link</button>
+      <button class="tool-btn" type="button" data-copy-section>Copy current section link</button>
+      <button class="tool-btn" type="button" data-print>Print / save as PDF</button>
+      <button class="tool-btn" type="button" data-expand>Expand all</button>
+      <button class="tool-btn" type="button" data-collapse>Collapse all</button>
+      <button class="tool-btn" type="button" data-reading-mode>Reading mode</button>
+      <span class="status-msg" role="status" aria-live="polite"></span>
+    </section>
+
+    <div class="layout">
+      <main id="main-content">
+        <article>
+          <section class="article-section" id="executive-orientation">
+            <p class="section-kicker">Executive orientation</p>
+            <h2>What the source paper is really saying</h2>
+            <p class="lead">This paper reframes Oracle’s unusually wide competitive field. It argues that Oracle now operates across so many layers of enterprise technology that it naturally meets both diversified hyperscalers and single-focus specialists. The useful point is not that Oracle is universally superior. The source argument is that breadth, where matched by depth and evidence, becomes a sign of strategic maturity.</p>
+            <div class="orientation-grid">
+              <div class="info-card">
+                <span class="label">Why it matters</span>
+                <h3>It reframes competition</h3>
+                <p>The paper helps ACEs treat competitor presence as a signal of relevance, not as a reason to become defensive about Oracle’s reach.</p>
+              </div>
+              <div class="info-card">
+                <span class="label">Who should read it</span>
+                <h3>ACEs, DBP, OCI and AI teams</h3>
+                <p>It is strongest for colleagues who need concise language to explain Oracle’s breadth, competitive overlap, and platform choice narrative.</p>
+              </div>
+              <div class="info-card">
+                <span class="label">What it helps with</span>
+                <h3>Legacy narrative correction</h3>
+                <p>It supports conversations where customers still view Oracle primarily as a database company or assume breadth implies shallow capability.</p>
+              </div>
+              <div class="info-card">
+                <span class="label">Do not overclaim</span>
+                <h3>Choice is not inevitability</h3>
+                <p>Do not present the paper as proof that Oracle wins every comparison. The correct use is to connect relevant capability to workload fit and customer objectives.</p>
+              </div>
+            </div>
+            <details>
+              <summary>Known source caveats and conversion handling</summary>
+              <p>The competitor lists are representative rather than exhaustive. Analyst, benchmark, and customer claims have been preserved as source claims from the paper and have not been refreshed with external research during this conversion.</p>
+            </details>
+          </section>
+
+          <section class="article-section" id="introduction">
+            <p class="section-kicker">Source-derived section</p>
+            <h2>Introduction</h2>
+            <p>Oracle now operates across almost every layer of enterprise technology: custom silicon, global cloud regions, autonomous databases, analytics, integration, AI services and sector-specific applications. Breadth on this scale naturally attracts two distinct groups of competitors. Diversified providers such as AWS, Microsoft and Google mirror large parts of the portfolio, while single-focus specialists concentrate on one or two layers and work to perfect them.</p>
+            <p>The idea for this review came during the FY26 Momentum Training and Strategy Updates. In a June 2025 Making Connections session, guest speaker Cormac Watters noted that Oracle’s unusually wide competitive field is itself evidence of how far the portfolio has evolved and why he is proud of what Oracle has achieved. That observation prompted a systematic look at who Oracle competes with, in which domains, and what the data say about performance.</p>
+            <div class="card-grid three">
+              <div class="field-card">
+                <span class="label">Practical use 01</span>
+                <h3>External perspective</h3>
+                <p>For customers or partners who still view Oracle mainly as a database company, the evidence shows leadership positions in cloud, analytics, integration, AI and SaaS.</p>
+              </div>
+              <div class="field-card">
+                <span class="label">Practical use 02</span>
+                <h3>Competitive bids</h3>
+                <p>When a best-of-breed rival is focused on one domain, such as integration or BI, the paper provides a way to show Oracle’s wider platform context alongside specialist capability.</p>
+              </div>
+              <div class="field-card">
+                <span class="label">Practical use 03</span>
+                <h3>Internal insight</h3>
+                <p>For colleagues who want a grounded measure of company reach, the counts and proof-points provide a clearer view of the progress Oracle has made.</p>
+              </div>
+            </div>
+            <p>Competing effectively with diversified giants is necessary to remain relevant, but surpassing single-focus specialists inside their own domain is a rarer achievement. The material documents both scenarios and explains why Oracle can accurately be described as a master of many.</p>
+          </section>
+
+          <section class="article-section" id="portfolio-design">
+            <p class="section-kicker">Design model</p>
+            <h2>Why the portfolio is broad by design</h2>
+            <p>Oracle’s wide competitive field is intentional, not accidental. A deliberate focus on vertical integration and end-to-end design means each new layer brings additional specialist rivals into view. The table below summarises how that strategy translates into everyday practice and where it places Oracle on the competitive map.</p>
+            <div class="table-wrap" role="region" aria-label="Strategic pillars table" tabindex="0">
+              <table>
+                <caption>Strategic pillars and competitive implications</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Strategic pillar</th>
+                    <th scope="col">What it looks like in practice</th>
+                    <th scope="col">Where it places Oracle competitively</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Chip-to-cloud control</th>
+                    <td>Ownership of SPARC and M-series silicon, Exadata systems, a global OCI footprint, and large-scale GPU clusters.</td>
+                    <td>Oracle competes with hyperscale cloud providers such as AWS, Microsoft Azure, Google Cloud and with hardware manufacturers such as Dell, HPE and IBM.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Data-to-apps continuum</th>
+                    <td>A single engineering roadmap links Oracle Database 23c, Autonomous Data, Integration Cloud, Fusion Applications, and industry suites.</td>
+                    <td>Oracle meets database specialists such as Snowflake and MongoDB, integration leaders like Boomi and MuleSoft, and SaaS vendors including SAP, Salesforce and Workday.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Multi-cloud ethos</th>
+                    <td>Oracle Database@Azure and @AWS, low-latency interconnects, open APIs, and low data-egress pricing.</td>
+                    <td>Oracle competes, and sometimes cooperates, inside other cloud providers’ data centres.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Industry depth</th>
+                    <td>Solutions such as Cerner for healthcare, Flexcube for banking, plus offerings for utilities, retail, and communications.</td>
+                    <td>Each vertical brings its own focused rivals, for example Epic in healthcare, Temenos in banking, Amdocs in telecommunications, and Blue Yonder in retail.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="portfolio-map" role="img" aria-label="Portfolio map showing Oracle positioned across seven domains that attract diversified rivals and single-focus specialists.">
+              <div class="map-centre">
+                <div class="oracle-core"><strong>ORACLE</strong><span>Broad portfolio, coherent platform, multiple competitive arenas.</span></div>
+                <div class="map-explain"><strong>Reading the map</strong><br>Each domain broadens the field of competition. The source argument is that the same breadth which attracts rivals can also support customer choice when the capability is evidenced and relevant.</div>
+              </div>
+              <div class="map-core" aria-hidden="true">
+                <div class="map-node"><strong>Cloud Infrastructure</strong><span>Hyperscalers and infrastructure providers</span></div>
+                <div class="map-node"><strong>Database & Data Platforms</strong><span>Data specialists and platform vendors</span></div>
+                <div class="map-node"><strong>Analytics & BI</strong><span>BI suites and focused analytics players</span></div>
+                <div class="map-node"><strong>Integration & Automation</strong><span>iPaaS and automation specialists</span></div>
+                <div class="map-node"><strong>AI & Machine Learning</strong><span>AI platforms and focused ML firms</span></div>
+                <div class="map-node"><strong>SaaS Applications</strong><span>Enterprise application providers</span></div>
+                <div class="map-node"><strong>Industry Verticals</strong><span>Sector-specific software leaders</span></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="article-section" id="integrated-platforms">
+            <p class="section-kicker">Customer lens</p>
+            <h2>Customer preference for integrated platforms</h2>
+            <p>Designing the portfolio this way means Oracle enters more arenas than a single-product company could, but it also means Oracle can address a wider range of customer needs without relying on external integrations for core functions.</p>
+            <p>Modern enterprises look for an environment where transactions, analytics, AI and industry workflows share a single security model and consistent data semantics. Point solutions can excel in isolation, but combining them often extends project timelines, increases integration effort and fragments governance.</p>
+            <p>Oracle’s response is breadth with coherence: each layer is engineered to work with the one above and exposes open interfaces for what sits beside it.</p>
+            <div class="callout success">
+              <h3>What breadth demonstrates</h3>
+              <ul>
+                <li>Every additional product line introduces a new group of focused rivals, yet independent analysts still place Oracle in leadership positions across cloud, database, analytics and integration.</li>
+                <li>Making Oracle Database available inside Azure and AWS, together with low data-egress pricing, illustrates confidence in the product and a commitment to open choice for customers.</li>
+              </ul>
+            </div>
+            <p>Broad competition is therefore both a consequence and a validation of Oracle’s strategy. The same scope that attracts many specialist rivals also provides customers the flexibility to mix Oracle technology with other platforms as their requirements evolve.</p>
+          </section>
+
+          <section class="article-section" id="competitive-panorama">
+            <p class="section-kicker">Competitive landscape</p>
+            <h2>The competitive panorama</h2>
+            <p>Oracle’s portfolio reaches into seven broad technology domains. The source table gives a representative, not exhaustive, view of principal rivals in each area. Many additional regional or niche vendors also compete with Oracle in specific markets. Single-focus firms are marked as specialists.</p>
+            <div class="domain-filter" aria-label="Filter domains">
+              <button class="filter-btn" type="button" data-domain-filter="all" aria-pressed="true">All domains</button>
+              <button class="filter-btn" type="button" data-domain-filter="cloud" aria-pressed="false">Cloud</button>
+              <button class="filter-btn" type="button" data-domain-filter="data" aria-pressed="false">Data</button>
+              <button class="filter-btn" type="button" data-domain-filter="analytics" aria-pressed="false">Analytics</button>
+              <button class="filter-btn" type="button" data-domain-filter="integration" aria-pressed="false">Integration</button>
+              <button class="filter-btn" type="button" data-domain-filter="ai" aria-pressed="false">AI</button>
+              <button class="filter-btn" type="button" data-domain-filter="saas" aria-pressed="false">SaaS</button>
+              <button class="filter-btn" type="button" data-domain-filter="verticals" aria-pressed="false">Verticals</button>
+            </div>
+            <div class="domain-grid">
+              <div class="domain-card" data-domain="cloud"><h3>Cloud Infrastructure</h3><span class="label">Diversified rivals</span><div class="chip-row"><span class="chip diversified">AWS</span><span class="chip diversified">Microsoft Azure</span><span class="chip diversified">Google Cloud</span><span class="chip diversified">IBM Cloud</span><span class="chip diversified">Alibaba Cloud</span></div><span class="label" style="margin-top:.8rem;">Single-focus specialists</span><div class="chip-row"><span class="chip specialist">DigitalOcean</span></div></div>
+              <div class="domain-card" data-domain="data"><h3>Database & Data Platforms</h3><span class="label">Diversified rivals</span><div class="chip-row"><span class="chip diversified">Microsoft</span><span class="chip diversified">AWS</span><span class="chip diversified">Google</span><span class="chip diversified">IBM</span><span class="chip diversified">SAP</span></div><span class="label" style="margin-top:.8rem;">Single-focus specialists</span><div class="chip-row"><span class="chip specialist">Snowflake</span><span class="chip specialist">MongoDB</span><span class="chip specialist">MariaDB</span><span class="chip specialist">EnterpriseDB</span></div></div>
+              <div class="domain-card" data-domain="analytics"><h3>Analytics & BI</h3><span class="label">Diversified rivals</span><div class="chip-row"><span class="chip diversified">Microsoft Power BI</span><span class="chip diversified">Salesforce Tableau</span><span class="chip diversified">SAP</span><span class="chip diversified">IBM</span></div><span class="label" style="margin-top:.8rem;">Single-focus specialists</span><div class="chip-row"><span class="chip specialist">Qlik</span><span class="chip specialist">SAS</span><span class="chip specialist">ThoughtSpot</span></div></div>
+              <div class="domain-card" data-domain="integration"><h3>Integration & Automation</h3><span class="label">Diversified rivals</span><div class="chip-row"><span class="chip diversified">Microsoft</span><span class="chip diversified">IBM</span><span class="chip diversified">SAP</span></div><span class="label" style="margin-top:.8rem;">Single-focus specialists</span><div class="chip-row"><span class="chip specialist">MuleSoft</span><span class="chip specialist">Boomi</span><span class="chip specialist">Informatica</span><span class="chip specialist">Workato</span><span class="chip specialist">SnapLogic</span><span class="chip specialist">Software AG</span></div></div>
+              <div class="domain-card" data-domain="ai"><h3>AI & Machine Learning</h3><span class="label">Diversified rivals</span><div class="chip-row"><span class="chip diversified">AWS</span><span class="chip diversified">Microsoft</span><span class="chip diversified">Google</span><span class="chip diversified">IBM</span></div><span class="label" style="margin-top:.8rem;">Single-focus specialists</span><div class="chip-row"><span class="chip specialist">Databricks</span><span class="chip specialist">H2O.ai</span><span class="chip specialist">DataRobot</span><span class="chip specialist">C3.ai</span></div></div>
+              <div class="domain-card" data-domain="saas"><h3>SaaS Applications</h3><span class="label">Diversified rivals</span><div class="chip-row"><span class="chip diversified">SAP</span><span class="chip diversified">Microsoft Dynamics 365</span></div><span class="label" style="margin-top:.8rem;">Single-focus specialists</span><div class="chip-row"><span class="chip specialist">Salesforce</span><span class="chip specialist">Workday</span><span class="chip specialist">Infor</span><span class="chip specialist">Epicor</span><span class="chip specialist">HubSpot</span></div></div>
+              <div class="domain-card" data-domain="verticals"><h3>Industry Verticals</h3><span class="label">Diversified rivals</span><div class="chip-row"><span class="chip diversified">SAP industry clouds</span></div><span class="label" style="margin-top:.8rem;">Single-focus specialists</span><div class="chip-row"><span class="chip specialist">Epic Systems</span><span class="chip specialist">Temenos</span><span class="chip specialist">Amdocs</span><span class="chip specialist">Blue Yonder</span><span class="chip specialist">Tyler Technologies</span></div></div>
+            </div>
+            <details>
+              <summary>View the original table layout</summary>
+              <div class="table-wrap" role="region" aria-label="Competitive panorama source table" tabindex="0">
+                <table>
+                  <caption>Representative competitor panorama by domain</caption>
+                  <thead><tr><th scope="col">Domain</th><th scope="col">Diversified rivals</th><th scope="col">Single-focus specialists</th></tr></thead>
+                  <tbody>
+                    <tr><th scope="row">Cloud Infrastructure</th><td>AWS, Microsoft Azure, Google Cloud, IBM Cloud, Alibaba Cloud</td><td>DigitalOcean</td></tr>
+                    <tr><th scope="row">Database & Data Platforms</th><td>Microsoft, AWS, Google, IBM, SAP</td><td>Snowflake, MongoDB, MariaDB, EnterpriseDB</td></tr>
+                    <tr><th scope="row">Analytics & BI</th><td>Microsoft (Power BI), Salesforce (Tableau), SAP, IBM</td><td>Qlik, SAS, ThoughtSpot</td></tr>
+                    <tr><th scope="row">Integration & Automation</th><td>Microsoft, IBM, SAP</td><td>MuleSoft, Boomi, Informatica, Workato, SnapLogic, Software AG</td></tr>
+                    <tr><th scope="row">AI & Machine Learning</th><td>AWS, Microsoft, Google, IBM</td><td>Databricks, H2O.ai, DataRobot, C3.ai</td></tr>
+                    <tr><th scope="row">SaaS Applications</th><td>SAP, Microsoft (Dynamics 365)</td><td>Salesforce, Workday, Infor, Epicor, HubSpot</td></tr>
+                    <tr><th scope="row">Industry Verticals</th><td>SAP (industry clouds)</td><td>Epic Systems, Temenos, Amdocs, Blue Yonder, Tyler Technologies</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+            <p>This snapshot shows why Oracle meets more challengers than most technology companies. The portfolio overlaps the territory of dozens of firms, nearly half of which devote themselves to perfecting one narrow slice of the stack.</p>
+          </section>
+
+          <section class="article-section" id="evidence">
+            <p class="section-kicker">Evidence panels</p>
+            <h2>Evidence of performance across the portfolio</h2>
+            <p>The paper uses analyst references, benchmark references and large-scale deployment signals to show that Oracle’s broad portfolio is not presented merely as scope. The evidence is used to support the claim that breadth is matched by depth in several important domains.</p>
+            <div class="table-wrap" role="region" aria-label="Evidence across the portfolio table" tabindex="0">
+              <table>
+                <caption>Evidence of performance across the portfolio</caption>
+                <thead>
+                  <tr><th scope="col">Domain</th><th scope="col">Oracle reference point</th><th scope="col">Why it matters</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Cloud Infrastructure</th><td>Leader position in Gartner Strategic Cloud Platform Services assessment.</td><td>Oracle is the only vendor also rated as a leader in both database and applications categories, indicating full-stack credibility.</td></tr>
+                  <tr><th scope="row">Database & Data Platforms</th><td>Oracle Database and MySQL hold the #1 and #2 positions on the DB-Engines popularity index; Exadata X10M records throughput roughly 63× that of AWS RDS.</td><td>Confirms Oracle’s ownership of the two most widely adopted databases and shows that performance leadership extends from flagship Exadata systems to the open-source MySQL family.</td></tr>
+                  <tr><th scope="row">Analytics & BI</th><td>Leader in the Gartner Analytics & BI Magic Quadrant.</td><td>Demonstrates competitive strength beyond the database core, offering an integrated analytics layer customers can rely on.</td></tr>
+                  <tr><th scope="row">Integration & Automation</th><td>Seven consecutive years classified as Leader or Challenger in Gartner Enterprise iPaaS.</td><td>Underlines the integration capabilities that allow Oracle to support multi-cloud and hybrid estates.</td></tr>
+                  <tr><th scope="row">AI & Machine Learning</th><td>OCI super-clusters scale to 131,072 NVIDIA Blackwell GPUs; multi-year OpenAI commitment valued at roughly 30 billion USD.</td><td>Shows capacity and trust at the high end of AI workloads, achieved by few providers.</td></tr>
+                  <tr><th scope="row">SaaS Applications and Industry Verticals</th><td>Continued Fusion ERP and HCM wins; Cerner Health and Flexcube Banking in production at critical institutions.</td><td>Indicates competence in business outcomes as well as technology, giving the portfolio relevance across sectors.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="small muted">Source note: Oracle is described in the paper as the only vendor holding both the first and second spots in an independent global popularity ranking, underscoring sustained depth and breadth in core data technology.</p>
+            <div class="card-grid three">
+              <div class="evidence-card"><span class="evidence-type">Analyst reference</span><h3>Leadership across multiple categories</h3><p>The source uses Gartner and other independent assessments as objective support for breadth and depth discussions.</p></div>
+              <div class="evidence-card"><span class="evidence-type">Benchmark reference</span><h3>Performance claims need context</h3><p>Benchmark references are used to support technical credibility, but they should still be tied to workload fit rather than used as isolated proof of universal superiority.</p></div>
+              <div class="evidence-card"><span class="evidence-type">Deployment signal</span><h3>Trust at scale</h3><p>Large AI infrastructure commitments and production application footprints are used as signals that Oracle participates at the high end of enterprise technology demand.</p></div>
+            </div>
+            <div class="callout caveat">
+              <h3>Handle carefully</h3>
+              <p>The evidence table should not become a catalogue recital. Use it selectively, only where the customer’s question requires proof that Oracle belongs in a domain or that breadth does not imply superficiality.</p>
+            </div>
+          </section>
+
+          <section class="article-section" id="oracle-position">
+            <p class="section-kicker">Interpretation</p>
+            <h2>What the crowded field says about Oracle’s position</h2>
+            <p>Oracle’s presence in a busy marketplace highlights three observations about the company and its portfolio.</p>
+            <div class="card-grid three">
+              <div class="field-card">
+                <span class="label">Observation 01</span>
+                <h3>Masters of Many</h3>
+                <p>A broad product range does not automatically imply superficial coverage. Independent assessments place Oracle in leadership positions for cloud infrastructure, databases, analytics, and other domains. The evidence indicates competence across several fields rather than narrow concentration on one.</p>
+              </div>
+              <div class="field-card">
+                <span class="label">Observation 02</span>
+                <h3>Champions of Choice</h3>
+                <p>Oracle’s distributed-cloud options illustrate how the company expands, rather than restricts, deployment freedom. OCI Dedicated Region and Oracle Alloy deliver full IaaS and PaaS capabilities inside a customer data centre or a partner’s cloud. Low-latency links to OCI regions and the OCI-Azure Interconnect allow services to operate alongside other providers’ workloads.</p>
+              </div>
+              <div class="field-card">
+                <span class="label">Observation 03</span>
+                <h3>Competition maintains standards</h3>
+                <p>Specialist vendors focus intensely on chosen areas. Engaging with them keeps Oracle product teams attentive to performance, price, and release cadence. Benchmarks, analyst evaluations and shared customer projects provide external reference points that help sustain quality across the portfolio.</p>
+              </div>
+            </div>
+            <p>Together, these factors show that a wide field of competitors is a consequence of Oracle’s strategy and also a practical measure of its effectiveness.</p>
+          </section>
+
+          <section class="article-section" id="key-takeaways">
+            <p class="section-kicker">Field reference</p>
+            <h2>Key takeaways for Oracle Cloud Architects</h2>
+            <div class="takeaway-grid">
+              <div class="field-card"><h3>Competition is validation</h3><p>When a specialist’s logo appears next to Oracle’s on a customer slide, it signals that the capability set overlaps theirs. The overlap itself confirms credible presence in that space.</p></div>
+              <div class="field-card"><h3>Breadth can underpin confidence</h3><p>Oracle earns leadership marks in cloud infrastructure, AI infrastructure, analytics, integration and more. Few suppliers demonstrate strength across so many layers, so scope should not be mistaken for lack of depth.</p></div>
+              <div class="field-card"><h3>Analyst coverage supports discussion</h3><p>Independent firms such as Gartner, Forrester, IDC, and the DB-Engines index track Oracle in multiple assessments. Citing those sources provides a measurable reference for capability conversations.</p></div>
+              <div class="field-card"><h3>Multi-cloud design is concrete</h3><p>The OCI-Azure Interconnect, low-cost egress policies and the option to run GPU super-clusters in OCI regions adjacent to workloads on other clouds show that Oracle’s AI and infrastructure services can coexist with external platforms.</p></div>
+            </div>
+            <div class="callout">
+              <h3>Rivalry helps maintain standards</h3>
+              <p>Awareness that a single-focus provider may excel in one slice of the stack keeps Oracle’s product teams attentive to performance, cost and release cadence. Benchmarks and joint customer projects sustain that feedback loop.</p>
+            </div>
+          </section>
+
+          <section class="article-section" id="field-use">
+            <p class="section-kicker">Practical field interpretation</p>
+            <h2>How an ACE should use this paper without overclaiming</h2>
+            <div class="card-grid two">
+              <div class="field-card">
+                <span class="label">Use when a customer asks</span>
+                <h3>“Isn’t Oracle mainly a database company?”</h3>
+                <p>Use the paper to expand the frame. Acknowledge Oracle’s database heritage, then show that the current portfolio competes across cloud, data platforms, analytics, integration, AI, SaaS and industry solutions.</p>
+              </div>
+              <div class="field-card">
+                <span class="label">Strongest proof point</span>
+                <h3>Breadth plus external scrutiny</h3>
+                <p>The most credible line is that Oracle is assessed across many categories by independent analysts and indices, while also competing against specialists in their own domains.</p>
+              </div>
+              <div class="field-card">
+                <span class="label">Handle carefully</span>
+                <h3>Representative competitor lists</h3>
+                <p>The source competitor table is representative. Avoid implying it is a complete market taxonomy, especially where regional, niche or fast-moving AI providers may be relevant.</p>
+              </div>
+              <div class="field-card">
+                <span class="label">Avoid saying</span>
+                <h3>“Oracle wins because it does everything”</h3>
+                <p>The better formulation is that Oracle can offer depth and range where the customer values an integrated platform, open choice, and measurable capability across several layers.</p>
+              </div>
+            </div>
+            <details>
+              <summary>Suggested one-minute talk track</summary>
+              <p>“Oracle’s competitive field is unusually wide because the portfolio now spans infrastructure, data, integration, analytics, AI, applications and industry solutions. That breadth naturally puts Oracle beside hyperscalers and specialist vendors. The important point is not that Oracle should be chosen for every requirement. The point is that the old view of Oracle as only a database company is incomplete. Where a customer values platform coherence, data strength, multi-cloud choice, and evidence-backed capability, Oracle deserves to be evaluated seriously.”</p>
+            </details>
+          </section>
+
+          <section class="article-section" id="conclusion">
+            <p class="section-kicker">Conclusion</p>
+            <h2>Breadth is intentional; choice is the point</h2>
+            <p>The evidence presented in the source paper leads to a clear finding. Oracle’s decision to build and operate a complete stack, from silicon and global cloud regions to data, AI and industry solutions, means it now meets more rivals than almost any other technology provider. Those rivals include diversified hyperscalers as well as specialists who focus on a single layer.</p>
+            <p>The breadth is intentional. It lets customers depend on Oracle for an end-to-end platform or combine OCI services with other clouds when that design suits them better. Independent analyst reports, benchmark results and large-scale deployments are used in the paper to confirm that Oracle’s services meet the performance levels set by both groups of competitors.</p>
+            <p>For teams working in DBP, OCI and AI, this perspective matters because it reframes the legacy narrative. The crowded competitive field is not evidence of an attempt at control; it is the result of a strategy that prioritises completeness and customer choice. Each time Oracle succeeds against a single-focus rival, it shows that a broad platform can provide depth as well as range.</p>
+            <div class="quote-panel">Competition should not automatically be read as threat. In this paper, it becomes a disciplined way to explain relevance, maturity, and choice.</div>
+          </section>
+
+          <section class="article-section" id="related-papers">
+            <p class="section-kicker">Series navigation</p>
+            <h2>Related papers</h2>
+            <div class="related-grid">
+              <a class="related-card" href="../paper-01-visionaries-who-shaped-our-cloud/"><span class="label">Previous paper</span><h3>Paper 01 - The Visionaries Who Shaped Our Cloud</h3><p>Useful background for the cloud history and competitive lineage that sets up this paper.</p></a>
+              <a class="related-card" href="../paper-03-evolving-expectations-enterprise-cloud-market/"><span class="label">Next paper</span><h3>Paper 03 - Evolving Expectations in the Enterprise Cloud Market</h3><p>Connects Oracle breadth to how modern cloud buyers think about AI, cost, data control and resilience.</p></a>
+              <a class="related-card" href="../paper-12-oci-rich-differentiation/"><span class="label">Linked narrative</span><h3>Paper 12 - OCI’s Rich Differentiation</h3><p>Extends the breadth argument into a more nuanced discussion of composable differentiation.</p></a>
+              <a class="related-card" href="../paper-13-misconceptions-of-oci/"><span class="label">Objection handling</span><h3>Paper 13 - Misconceptions of OCI</h3><p>Uses this paper’s breadth argument to handle outdated assumptions about Oracle and OCI.</p></a>
+            </div>
+            <div class="paper-nav" aria-label="Previous and next paper navigation">
+              <a href="../paper-01-visionaries-who-shaped-our-cloud/"><span>Previous</span><strong>Paper 01 - The Visionaries Who Shaped Our Cloud</strong></a>
+              <a href="../paper-03-evolving-expectations-enterprise-cloud-market/"><span>Next</span><strong>Paper 03 - Evolving Expectations in the Enterprise Cloud Market</strong></a>
+            </div>
+          </section>
+
+          <section class="article-section" id="source-notes">
+            <p class="section-kicker">Source and handling notes</p>
+            <h2>Source notes</h2>
+            <ul>
+              <li><strong>Source PDF:</strong> Paper 2 - Masters of Many - Champions of Choice v1.0.pdf.</li>
+              <li><strong>Source version:</strong> 1.0.</li>
+              <li><strong>Source classification:</strong> Confidential - Oracle Internal.</li>
+              <li><strong>Source copyright on cover:</strong> Copyright © 2026, Oracle and/or its affiliates.</li>
+              <li><strong>Metadata note:</strong> the cover and running page metadata use 2026; the legal disclaimer text on the final pages uses 2025. This conversion follows the cover metadata for the article chrome.</li>
+              <li><strong>Conversion approach:</strong> source tables rebuilt as semantic HTML; competitive panorama also expressed as domain cards for field reuse.</li>
+              <li><strong>External research:</strong> none used. Source claims were not independently refreshed or replaced.</li>
+              <li><strong>Intentional compression:</strong> legal disclaimer retained as source handling context in this section rather than repeated in full prose.</li>
+            </ul>
+            <details>
+              <summary>Legal and trademark handling note</summary>
+              <p>The source paper states that the document is provided for information purposes only, is subject to change without notice, is not warranted to be error-free, creates no contractual obligations, and may not be reproduced or transmitted without prior written permission. It also notes that Oracle, Java, MySQL and NetSuite are registered trademarks of Oracle and/or its affiliates, and that other names may be trademarks of their respective owners.</p>
+            </details>
+          </section>
+        </article>
+      </main>
+
+      <aside class="toc" aria-labelledby="toc-title">
+        <h2 id="toc-title">On this page</h2>
+        <nav aria-label="Table of contents">
+          <a href="#executive-orientation">Executive orientation</a>
+          <a href="#introduction">Introduction</a>
+          <a href="#portfolio-design">Portfolio by design</a>
+          <a href="#integrated-platforms">Integrated platforms</a>
+          <a href="#competitive-panorama">Competitive panorama</a>
+          <a class="toc-sub" href="#evidence">Evidence across portfolio</a>
+          <a href="#oracle-position">Oracle’s position</a>
+          <a href="#key-takeaways">Key takeaways</a>
+          <a href="#field-use">Field use</a>
+          <a href="#conclusion">Conclusion</a>
+          <a href="#related-papers">Related papers</a>
+          <a href="#source-notes">Source notes</a>
+        </nav>
+      </aside>
+    </div>
+
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <strong>FY26 UK-PS Whitepapers Series</strong><br>
+          Internal field papers for Oracle Cloud Infrastructure, AI, UK Public Sector strategy, assurance, differentiation, and customer conversation readiness.<br>
+          <strong>Classification:</strong> Confidential - Oracle Internal. <strong>Conversion:</strong> Paper 02 v1.0, Draft, 2026-06-22.
+        </div>
+        <div class="wordmark" aria-hidden="true">ORACLE</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const PAPER_META = {
+      series: "FY26 UK-PS Whitepapers Series",
+      number: "02",
+      title: "Masters of Many: Champions of Choice",
+      subtitle: "Why Oracle has so many competitors and why that fact defines who we are",
+      version: "1.0",
+      sourceFile: "Paper 2 - Masters of Many - Champions of Choice v1.0.pdf",
+      classification: "Confidential - Oracle Internal",
+      copyright: "Copyright © 2026, Oracle and/or its affiliates",
+      route: "/paper-02-masters-of-many-champions-of-choice/",
+      themes: ["Competition", "Portfolio breadth", "Customer choice"],
+      group: "Market and Cloud Context",
+      conversionVersion: "1.0",
+      conversionStatus: "Draft",
+      conversionDate: "2026-06-22",
+      lastReviewed: "2026-06-22"
+    };
+
+    const progress = document.querySelector('.progress');
+    const statusMsg = document.querySelector('.status-msg');
+    const tocLinks = [...document.querySelectorAll('.toc a')];
+    const sections = tocLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+
+    function setStatus(message) {
+      statusMsg.textContent = message;
+      window.setTimeout(() => { if (statusMsg.textContent === message) statusMsg.textContent = ''; }, 2200);
+    }
+
+    function updateProgress() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = height > 0 ? Math.min(1, Math.max(0, scrollTop / height)) : 0;
+      progress.style.transform = `scaleX(${pct})`;
+    }
+
+    function updateCurrentSection() {
+      let current = sections[0];
+      const offset = 140;
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= offset) current = section;
+      }
+      tocLinks.forEach(link => {
+        const active = current && link.getAttribute('href') === `#${current.id}`;
+        if (active) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
+      });
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        setStatus('Copied');
+      } catch (error) {
+        setStatus('Copy unavailable');
+      }
+    }
+
+    document.querySelector('[data-copy-page]').addEventListener('click', () => copyText(window.location.href.split('#')[0]));
+    document.querySelector('[data-copy-section]').addEventListener('click', () => {
+      const current = document.querySelector('.toc a[aria-current="true"]');
+      const hash = current ? current.getAttribute('href') : '#executive-orientation';
+      copyText(window.location.href.split('#')[0] + hash);
+    });
+    document.querySelector('[data-print]').addEventListener('click', () => window.print());
+    document.querySelector('[data-expand]').addEventListener('click', () => { document.querySelectorAll('details').forEach(d => d.open = true); setStatus('Expanded'); });
+    document.querySelector('[data-collapse]').addEventListener('click', () => { document.querySelectorAll('details').forEach(d => d.open = false); setStatus('Collapsed'); });
+    document.querySelector('[data-reading-mode]').addEventListener('click', (event) => {
+      document.body.classList.toggle('reading-mode');
+      event.currentTarget.textContent = document.body.classList.contains('reading-mode') ? 'Exit reading mode' : 'Reading mode';
+    });
+
+    document.querySelectorAll('[data-domain-filter]').forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.domainFilter;
+        document.querySelectorAll('[data-domain-filter]').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+        document.querySelectorAll('.domain-card[data-domain]').forEach(card => {
+          card.hidden = filter !== 'all' && card.dataset.domain !== filter;
+        });
+      });
+    });
+
+    window.addEventListener('scroll', () => { updateProgress(); updateCurrentSection(); }, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+    updateCurrentSection();
+  </script>
+</body>
+</html>

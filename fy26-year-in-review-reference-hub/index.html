@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="generator" content="Human-led, AI-assisted static HTML conversion">
+  <meta name="classification" content="Confidential - Oracle Restricted Employees Only">
+  <title>OCI UK Public Sector Architects: FY26 Year in Review</title>
+  <style>
+    :root {
+      --series-bg:#f7f3ee;
+      --surface:#fffaf5;
+      --surface-alt:#f1ebe4;
+      --ink:#241c18;
+      --muted:#6f625a;
+      --line:#ded4ca;
+      --oracle-red-soft:#c74634;
+      --clay:#b45f36;
+      --sage:#789c96;
+      --teal-deep:#315f5b;
+      --sand:#d7b98c;
+      --charcoal:#3a3632;
+      --success-soft:#e5efe9;
+      --warning-soft:#f6ead8;
+      --risk-soft:#f3dfdc;
+      --info-soft:#e5eef0;
+      --shadow: 0 18px 48px rgba(36, 28, 24, .10);
+      --radius: 24px;
+      --max: 1180px;
+      --article: 820px;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(199,70,52,.13), transparent 34rem),
+        radial-gradient(circle at 85% 15%, rgba(49,95,91,.12), transparent 31rem),
+        linear-gradient(180deg, #f7f3ee 0%, #f1ebe4 60%, #f7f3ee 100%);
+      font-family:"Oracle Sans","Inter","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      font-size:18px;
+      line-height:1.65;
+    }
+    a { color:var(--teal-deep); text-decoration-thickness:.08em; text-underline-offset:.18em; }
+    a:hover { color:var(--oracle-red-soft); }
+    .skip-link { position:absolute; left:-999px; top:1rem; background:#fff; color:#000; padding:.75rem 1rem; z-index:1000; border:2px solid var(--oracle-red-soft); border-radius:.75rem; }
+    .skip-link:focus { left:1rem; }
+    .utility {
+      position:sticky; top:0; z-index:30;
+      backdrop-filter:saturate(1.1) blur(18px);
+      background:rgba(255,250,245,.88);
+      border-bottom:1px solid rgba(222,212,202,.9);
+    }
+    .utility-inner { max-width:var(--max); margin:auto; padding:.72rem 1.25rem; display:flex; gap:1rem; align-items:center; justify-content:space-between; }
+    .brand { display:flex; gap:.75rem; align-items:center; font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; color:var(--charcoal); font-weight:800; }
+    .oracle-mark { color:#b64032; font-weight:900; letter-spacing:.16em; }
+    .classification-pill { display:inline-flex; align-items:center; gap:.4rem; border:1px solid var(--line); background:#fffdf9; padding:.35rem .6rem; border-radius:999px; font-size:.78rem; color:var(--muted); white-space:nowrap; }
+    .classification-pill::before { content:""; width:.5rem; height:.5rem; border-radius:99px; background:var(--oracle-red-soft); display:inline-block; }
+    header.hero { max-width:var(--max); margin:0 auto; padding:5rem 1.25rem 3rem; }
+    .breadcrumb { color:var(--muted); font-size:.9rem; margin-bottom:1.1rem; }
+    .hero-grid { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr); gap:1.5rem; align-items:stretch; }
+    .hero-main {
+      border:1px solid rgba(222,212,202,.88);
+      border-radius:calc(var(--radius) + 8px);
+      background:linear-gradient(135deg, rgba(255,250,245,.96), rgba(241,235,228,.9));
+      padding:clamp(2rem,4vw,4rem);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-main::after { content:""; position:absolute; right:-4rem; bottom:-4rem; width:15rem; height:15rem; border-radius:50%; background:rgba(199,70,52,.10); }
+    .eyebrow { text-transform:uppercase; letter-spacing:.14em; font-size:.78rem; color:var(--clay); font-weight:850; }
+    h1 { margin:.35rem 0 1rem; font-size:clamp(2.65rem,6vw,5.2rem); line-height:.98; letter-spacing:-.055em; max-width:12ch; }
+    .subtitle { font-size:clamp(1.12rem,2vw,1.45rem); line-height:1.45; color:#443a34; max-width:62rem; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1.75rem; }
+    .button, button.button {
+      border:1px solid var(--line); background:#fffdf9; color:var(--ink); padding:.75rem 1rem; border-radius:999px; font-weight:750; cursor:pointer; text-decoration:none; display:inline-flex; gap:.4rem; align-items:center; font-size:.95rem;
+    }
+    .button.primary { background:var(--ink); color:#fffaf5; border-color:var(--ink); }
+    .button:hover { transform:translateY(-1px); }
+    .hero-side { display:grid; gap:1rem; }
+    .meta-card, .takeaway-card { background:rgba(255,250,245,.88); border:1px solid var(--line); border-radius:var(--radius); padding:1.25rem; box-shadow:0 10px 30px rgba(36,28,24,.06); }
+    .meta-list { display:grid; gap:.65rem; margin:0; }
+    .meta-list div { display:grid; grid-template-columns:8rem 1fr; gap:.75rem; align-items:start; border-bottom:1px solid rgba(222,212,202,.7); padding-bottom:.55rem; }
+    .meta-list dt { color:var(--muted); font-size:.82rem; }
+    .meta-list dd { margin:0; font-weight:720; font-size:.9rem; }
+    .takeaway-card { background:linear-gradient(145deg, var(--charcoal), #4a433b); color:#fffaf5; }
+    .takeaway-card h2 { color:#fffaf5; margin:0 0 .5rem; font-size:1.05rem; letter-spacing:.02em; }
+    .takeaway-card p { margin:0; color:#f6ead8; }
+    .layout { max-width:var(--max); margin:0 auto; padding:0 1.25rem 5rem; display:grid; grid-template-columns:270px minmax(0,1fr); gap:2rem; align-items:start; }
+    nav.toc { position:sticky; top:4.3rem; max-height:calc(100vh - 5rem); overflow:auto; border:1px solid var(--line); background:rgba(255,250,245,.85); border-radius:var(--radius); padding:1rem; box-shadow:0 12px 28px rgba(36,28,24,.06); }
+    .toc h2 { font-size:.82rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:.2rem 0 .75rem; }
+    .toc a { display:block; text-decoration:none; color:var(--charcoal); padding:.48rem .55rem; border-radius:.65rem; font-size:.92rem; line-height:1.25; }
+    .toc a:hover, .toc a.active { background:var(--surface-alt); color:var(--oracle-red-soft); }
+    main { min-width:0; }
+    section { scroll-margin-top:5rem; margin-bottom:2rem; }
+    .section-shell { background:rgba(255,250,245,.82); border:1px solid rgba(222,212,202,.9); border-radius:calc(var(--radius) + 6px); padding:clamp(1.35rem,3vw,2.4rem); box-shadow:0 14px 40px rgba(36,28,24,.06); }
+    .section-head { display:flex; gap:1rem; align-items:flex-start; justify-content:space-between; margin-bottom:1.4rem; }
+    .section-kicker { font-size:.78rem; text-transform:uppercase; letter-spacing:.14em; color:var(--clay); font-weight:850; }
+    h2 { margin:.15rem 0 .6rem; font-size:clamp(1.85rem,3.5vw,3rem); line-height:1.05; letter-spacing:-.035em; }
+    h3 { margin:.1rem 0 .45rem; font-size:1.16rem; line-height:1.18; letter-spacing:-.015em; }
+    p { margin:.55rem 0 0; }
+    .lede { color:#4f453e; font-size:1.1rem; max-width:70ch; }
+    .quote-panel { margin:1.25rem 0; border-left:5px solid var(--oracle-red-soft); background:#fff; padding:1rem 1.1rem; border-radius:0 1rem 1rem 0; }
+    .quote-panel p { margin:0; font-size:1.14rem; line-height:1.55; }
+    .precision { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.2rem; }
+    .precision article { border:1px solid var(--line); border-radius:1rem; padding:1rem; background:var(--surface); }
+    .precision article:first-child { background:var(--risk-soft); }
+    .precision article:last-child { background:var(--success-soft); }
+    .grid { display:grid; gap:1rem; }
+    .grid.two { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .grid.three { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .signal-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.9rem; }
+    .signal-card, .capability-card, .load-card, .sector-card, .lesson-card, .forward-card, .person-card { border:1px solid var(--line); background:#fffdf9; border-radius:1.1rem; padding:1rem; }
+    .signal-card { border-top:5px solid var(--clay); }
+    .signal-card p, .capability-card p, .load-card p, .sector-card p, .lesson-card p, .forward-card p, .person-card p { color:#4f453e; font-size:.98rem; }
+    .path-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.9rem; }
+    .path-card { border:1px solid var(--line); border-radius:1.1rem; background:linear-gradient(180deg,#fffdf9,#f7f3ee); padding:1rem; }
+    .path-card strong { display:block; margin-bottom:.4rem; }
+    .path-card a { display:inline-block; margin-top:.65rem; font-weight:800; text-decoration:none; }
+    .diagram { display:grid; grid-template-columns:1fr auto 1fr; gap:1rem; align-items:center; margin-top:1.1rem; }
+    .pillar { border:1px solid var(--line); border-radius:1.1rem; background:#fffdf9; padding:1rem; min-height:12rem; }
+    .pillar h3 { color:var(--teal-deep); }
+    .bridge { width:7rem; aspect-ratio:1; border-radius:50%; display:grid; place-items:center; background:var(--charcoal); color:#fffaf5; text-align:center; font-size:.78rem; font-weight:850; padding:.7rem; box-shadow:var(--shadow); }
+    .timeline { position:relative; display:grid; gap:1rem; margin-top:1rem; }
+    .timeline::before { content:""; position:absolute; left:7.4rem; top:.5rem; bottom:.5rem; width:2px; background:linear-gradient(var(--clay),var(--teal-deep)); }
+    .timeline-item { display:grid; grid-template-columns:7rem minmax(0,1fr); gap:1.4rem; position:relative; }
+    .timeline-date { font-weight:900; color:var(--clay); font-size:.95rem; padding-top:.3rem; }
+    .timeline-body { border:1px solid var(--line); border-radius:1.1rem; background:#fffdf9; padding:1rem; }
+    .chips { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.75rem; }
+    .chips span, .filter-btn { border:1px solid var(--line); background:var(--surface-alt); color:var(--charcoal); border-radius:999px; padding:.28rem .55rem; font-size:.76rem; font-weight:750; }
+    .filters { display:flex; gap:.5rem; flex-wrap:wrap; margin:1rem 0; }
+    .filter-btn { cursor:pointer; font-size:.82rem; }
+    .filter-btn[aria-pressed="true"] { background:var(--ink); color:#fffaf5; border-color:var(--ink); }
+    .person-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; }
+    .person-card { background:linear-gradient(180deg,#fffdf9,#faf3eb); }
+    .person-meta { color:var(--clay); font-size:.78rem; text-transform:uppercase; letter-spacing:.09em; font-weight:850; margin-bottom:.35rem; }
+    .recognition { border-top:1px solid var(--line); margin-top:.85rem !important; padding-top:.75rem; }
+    .lesson-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:.75rem; }
+    .lesson-card span { display:inline-grid; place-items:center; width:2rem; height:2rem; border-radius:50%; background:var(--teal-deep); color:#fffaf5; font-size:.82rem; font-weight:900; margin-bottom:.55rem; }
+    .forward-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.9rem; }
+    .method-note { background:var(--info-soft); border:1px solid #c7d9dc; border-radius:1.1rem; padding:1rem; }
+    .section-tools { display:flex; gap:.4rem; flex-wrap:wrap; }
+    .mini-button { border:1px solid var(--line); background:#fff; padding:.35rem .55rem; border-radius:999px; font-size:.76rem; cursor:pointer; }
+    .search-box { width:100%; border:1px solid var(--line); background:#fffdf9; border-radius:999px; padding:.8rem 1rem; font:inherit; }
+    .hidden { display:none !important; }
+    footer { background:#29231f; color:#fffaf5; margin-top:4rem; }
+    .footer-inner { max-width:var(--max); margin:auto; padding:2rem 1.25rem; display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+    footer a { color:#f6ead8; }
+    .small { font-size:.86rem; color:#d8cdc2; }
+    @media (max-width: 980px) {
+      body { font-size:16px; }
+      .hero-grid, .layout, .precision, .diagram { grid-template-columns:1fr; }
+      nav.toc { position:relative; top:auto; max-height:none; }
+      .signal-grid, .person-grid, .forward-grid, .grid.two, .grid.three, .path-grid, .lesson-grid { grid-template-columns:1fr; }
+      .timeline::before { left:.4rem; }
+      .timeline-item { grid-template-columns:1fr; gap:.5rem; padding-left:1.6rem; }
+      .timeline-date { padding-top:0; }
+      .bridge { width:100%; aspect-ratio:auto; border-radius:1rem; }
+      .footer-inner { grid-template-columns:1fr; }
+    }
+    @media print {
+      body { background:#fff; color:#000; font-size:12pt; }
+      .utility, .toc, .hero-actions, .section-tools, .filters, .search-box { display:none !important; }
+      .hero-main, .section-shell, .meta-card, .takeaway-card { box-shadow:none; border-color:#aaa; background:#fff; color:#000; }
+      .layout, .hero-grid { display:block; }
+      section { break-inside:avoid; }
+      a { color:#000; text-decoration:none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="utility" role="banner">
+    <div class="utility-inner">
+      <div class="brand"><span class="oracle-mark">Oracle</span><span>FY26 UK-PS Reference Hub</span></div>
+      <span class="classification-pill">Confidential - Oracle Restricted \Employees Only</span>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="breadcrumb">Series / FY26 Year in Review / Reference Hub</div>
+    <div class="hero-grid">
+      <div class="hero-main">
+        <div class="eyebrow">Oracle Cloud Infrastructure · UK Public Sector Architects</div>
+        <h1>FY26 Year in Review</h1>
+        <p class="subtitle">A permanent internal reference for how Oracle’s FY26 direction became field reality for the UK Public Sector OCI ACE team: strategically, operationally, commercially, technically and culturally.</p>
+        <div class="hero-actions" aria-label="Primary actions">
+          <a class="button primary" href="#start-here">Start here</a>
+          <a class="button" href="#timeline">Explore the year</a>
+          <a class="button" href="#fy27">Carry forward into FY27</a>
+          <button class="button" type="button" onclick="window.print()">Print / save as PDF</button>
+        </div>
+      </div>
+      <aside class="hero-side" aria-label="Article metadata">
+        <div class="takeaway-card">
+          <h2>Key takeaway</h2>
+          <p>FY26 was not only busy. It changed how the team needed to think, prepare, qualify, explain, challenge, evidence and follow through.</p>
+        </div>
+        <div class="meta-card">
+          <dl class="meta-list">
+            <div><dt>Source</dt><dd>OCI_UK_Public_Sector_FY26_Year_in_Review.pdf</dd></div>
+            <div><dt>Pages</dt><dd>28-page source reflection</dd></div>
+            <div><dt>Status</dt><dd>Release Candidate for review</dd></div>
+            <div><dt>Conversion</dt><dd>v0.9 · 26 June 2026</dd></div>
+            <div><dt>Route</dt><dd>/fy26-year-in-review/</dd></div>
+            <div><dt>Classification</dt><dd>Confidential - Oracle Restricted \Employees Only</dd></div>
+          </dl>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Page contents">
+      <h2>Reference map</h2>
+      <a href="#start-here">Start Here</a>
+      <a href="#signals">FY26 Strategic Signals</a>
+      <a href="#oracle-context">Oracle FY26 Around Us</a>
+      <a href="#public-sector">UK Public Sector Meaning</a>
+      <a href="#gtm">GTM Reality</a>
+      <a href="#timeline">The Team’s Year</a>
+      <a href="#built">What We Built</a>
+      <a href="#carried">What We Carried</a>
+      <a href="#people">People and Contribution</a>
+      <a href="#lessons">What FY26 Taught Us</a>
+      <a href="#fy27">What We Carry into FY27</a>
+      <a href="#closing">Closing and Method</a>
+    </nav>
+
+    <main id="main" tabindex="-1">
+      <section id="start-here">
+        <div class="section-shell">
+          <div class="section-head">
+            <div><div class="section-kicker">Start Here</div><h2>What this hub is for</h2></div>
+            <div class="section-tools"><button class="mini-button copy-link" data-target="start-here">Copy link</button></div>
+          </div>
+          <p class="lede">This is not a corporate bulletin. It is not a team yearbook. It is a reference hub for the point between the two: a structured reflection on what happened when Oracle’s FY26 direction became field reality for the UK Public Sector OCI ACE team.</p>
+          <div class="quote-panel"><p>“The team’s FY26 was not separate from Oracle’s FY26. It was one local expression of it.”</p></div>
+          <div class="path-grid" aria-label="Reading paths">
+            <article class="path-card"><strong>Read the year</strong>Follow the timeline from early-year uncertainty to Q4 pressure and steadiness.<a href="#timeline">Open timeline →</a></article>
+            <article class="path-card"><strong>Find the theme</strong>Use the signal cards and quick filters to revisit AI, sovereignty, multicloud, One Oracle and execution pressure.<a href="#signals">View signals →</a></article>
+            <article class="path-card"><strong>Recognise contribution</strong>Use the people section to understand how different parts of the mission were carried.<a href="#people">View contribution →</a></article>
+            <article class="path-card"><strong>Bridge to FY27</strong>Use the carry-forward section to connect FY26 learning to FY27 behaviour and priorities.<a href="#fy27">View FY27 carry-forward →</a></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="signals">
+        <div class="section-shell">
+          <div class="section-head">
+            <div><div class="section-kicker">FY26 at a glance</div><h2>Strategic signals that shaped the year</h2></div>
+            <div class="section-tools"><button class="mini-button copy-link" data-target="signals">Copy link</button></div>
+          </div>
+          <p class="lede">None of these signals tells the whole story on its own. Together they explain why FY26 felt significant and why the team’s year required more judgement, translation and follow-through.</p>
+          <label for="signal-search" class="section-kicker">Search this reference hub</label>
+          <input id="signal-search" class="search-box" type="search" placeholder="Search AI, sovereignty, DBP, forecast, healthcare, defence, FY27…" aria-label="Search page content">
+          <div class="filters" aria-label="Theme filters">
+            <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter-btn" type="button" data-filter="ai">AI</button>
+            <button class="filter-btn" type="button" data-filter="sovereignty">Sovereignty</button>
+            <button class="filter-btn" type="button" data-filter="one-oracle">One Oracle</button>
+            <button class="filter-btn" type="button" data-filter="defence">Defence</button>
+            <button class="filter-btn" type="button" data-filter="execution">Execution</button>
+            <button class="filter-btn" type="button" data-filter="multicloud">Multicloud</button>
+          </div>
+          <div class="signal-grid filter-scope">
+            <article class="signal-card" data-tags="ai responsibility"><h3>AI moved into the enterprise centre of gravity</h3><p>Oracle’s AI message became tied to trusted data, applications, workflows, security, governance and measurable outcomes. For UK Public Sector, the conversation moved from excitement to responsible deployment.</p></article>
+<article class="signal-card" data-tags="oci proof"><h3>OCI gained greater strategic visibility</h3><p>Oracle’s public cloud and OCI narrative strengthened through cloud revenue, OCI revenue and RPO momentum, giving the team a stronger platform story and a higher burden of careful positioning.</p></article>
+<article class="signal-card" data-tags="leadership oracle"><h3>Leadership shifted for the AI and cloud era</h3><p>Clay Magouyrk and Mike Sicilia moving into CEO roles, with Safra Catz becoming Executive Vice Chair, gave visible weight to infrastructure, applications, industries and AI growth.</p></article>
+<article class="signal-card" data-tags="one-oracle gtm"><h3>One Oracle became an operating expectation</h3><p>Leadership messaging repeatedly emphasised applications, data, OCI, AI, industries, partners and people coming together around outcomes. Locally, that meant making Oracle feel coherent to customers.</p></article>
+<article class="signal-card" data-tags="sovereignty public-sector"><h3>UK sovereign cloud became more concrete</h3><p>OCI Generative AI availability in UK Gov South, later security and control enhancements, and wider UK Sovereign Cloud availability made sovereign AI and secure cloud conversations more specific.</p></article>
+<article class="signal-card" data-tags="defence sovereignty"><h3>UK government and defence relevance became more visible</h3><p>Public announcements relating to UK government and defence, including the MoD agreement, gave stronger reference points for sensitive discussions while still requiring careful language around adoption and scope.</p></article>
+<article class="signal-card" data-tags="proof public-sector"><h3>Public sector proof points improved, but remained selective</h3><p>DWP Digital and other Oracle-published references strengthened the evidence base, but did not remove the need for precision.</p></article>
+<article class="signal-card" data-tags="multicloud data"><h3>Multicloud became more usable for UK customers</h3><p>Oracle AI Database@AWS availability in London and Ireland strengthened the UK multicloud story for organisations already invested in AWS estates.</p></article>
+<article class="signal-card" data-tags="execution commercial"><h3>Execution pressure sharpened</h3><p>Oracle leadership messaging moved from momentum to impact. Locally that appeared through consumption focus, forecast scrutiny, Best Case discipline, SDD hygiene and qualification pressure.</p></article>
+<article class="signal-card" data-tags="ai working-methods"><h3>AI changed how the team worked</h3><p>The team’s own AI journey moved from workshops and commentary into objection handling, evidence checking, customer storytelling, meeting preparation and the GPT Concierge direction.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="oracle-context">
+        <div class="section-shell">
+          <div class="section-head"><div><div class="section-kicker">Oracle FY26 around us</div><h2>More energy, more opportunity, more visibility, more expectation</h2></div><div class="section-tools"><button class="mini-button copy-link" data-target="oracle-context">Copy link</button></div></div>
+          <p class="lede">Oracle’s FY26 was shaped by a stronger and more visible story around AI, OCI, data, sovereign cloud, multicloud and customer-centred execution. The local task was not to repeat that story. It was to make it usable in environments where precision counts.</p>
+        </div>
+      </section>
+
+      <section id="public-sector">
+        <div class="section-shell">
+          <div class="section-head"><div><div class="section-kicker">UK Public Sector meaning</div><h2>More to say, more responsibility for how carefully it was said</h2></div><div class="section-tools"><button class="mini-button copy-link" data-target="public-sector">Copy link</button></div></div>
+          <p class="lede">Public sector customers do not respond well to loose claims, generic hype or messages detached from operating reality. Their questions are harder, slower and more consequential: data location, operating authority, control, policy alignment, procurement, resilience, risk and proof.</p>
+          <div class="grid three">
+            <article class="sector-card"><h3>Sovereign cloud</h3><p>OCI Generative AI availability in UK Gov South, private endpoint capability, wider UK Sovereign Cloud availability and UK government and defence announcements made sovereignty more tangible.</p></article>
+            <article class="sector-card"><h3>AI responsibility</h3><p>Customers did not need AI enthusiasm. They needed help distinguishing what was real, ready, appropriate, uncertain and responsibly applicable.</p></article>
+            <article class="sector-card"><h3>Multicloud choice</h3><p>Oracle AI Database@AWS in London and Ireland offered a stronger way to discuss Oracle data value within existing AWS estates and complex operating realities.</p></article>
+          </div>
+          <div class="grid two" style="margin-top:1rem;">
+            <article class="sector-card"><h3>Credibility through restraint</h3><p>A strong message becomes weaker when it runs ahead of proof. Public sector credibility is often built by knowing what can be said confidently, what needs qualification and what should be positioned as emerging.</p></article>
+            <article class="sector-card"><h3>The ACE translation role</h3><p>The work was not to amplify every message. It was to interpret, test and translate Oracle’s direction into the customer’s mission, constraints and assurance environment.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="gtm">
+        <div class="section-shell">
+          <div class="section-head"><div><div class="section-kicker">GTM reality</div><h2>Two technology pillars, one customer experience</h2></div><div class="section-tools"><button class="mini-button copy-link" data-target="gtm">Copy link</button></div></div>
+          <p class="lede">OCI and DBP / Data Platform had distinct roles. The difficulty was ensuring that internal clarity did not become external confusion. The customer should not have to assemble Oracle for themselves.</p>
+          <div class="diagram" role="img" aria-label="OCI and DBP/Data Platform working together to create one customer experience">
+            <article class="pillar"><h3>OCI</h3><p>Infrastructure, sovereign cloud, second-vendor, workload migration and GenAI platform lens.</p></article>
+            <div class="bridge">One Oracle customer experience</div>
+            <article class="pillar"><h3>DBP / Data Platform</h3><p>Database, data modernisation, multicloud database and AI data strategy lens.</p></article>
+          </div>
+          <p class="quote-panel">The operating model is important, but the customer experience is more important. Where the internal model becomes more specialised, our responsibility is to become clearer.</p>
+        </div>
+      </section>
+
+      <section id="timeline">
+        <div class="section-shell">
+          <div class="section-head"><div><div class="section-kicker">The team’s year</div><h2>Oracle strategy lived locally</h2></div><div class="section-tools"><button class="mini-button copy-link" data-target="timeline">Copy link</button></div></div>
+          <p class="lede">The UK Public Sector OCI ACE team did not experience FY26 as a clean sequence of strategy themes. The year arrived through operating-model change, customer conversations, sector coverage, internal handovers, forecast scrutiny, AI adoption, public sector assurance and the daily work of making Oracle credible.</p>
+          <div class="timeline">
+            <article class="timeline-item" data-tags="readiness grounding clarity-before-certainty"><div class="timeline-date">May to June</div><div class="timeline-body"><h3>Finding footing before certainty</h3><p>FY26 began with movement before the year had fully settled. New tools, process updates, WWB changes, Fast Start activity, compensation plans and support-access changes signalled that the year would not be a simple continuation of FY25.</p><div class="chips"><span>Readiness</span><span>Grounding</span><span>Clarity before certainty</span></div></div></article>
+<article class="timeline-item" data-tags="ai-learning sovereign-cloud dbp-collaboration"><div class="timeline-date">July to August</div><div class="timeline-body"><h3>Building fluency</h3><p>AI learning accelerated through Meta, NVIDIA and broader GenAI enablement. Sovereign cloud and OC4 capability gave the team more material for public sector conversations, while performance, trust and multicloud became recurring discussion threads.</p><div class="chips"><span>AI learning</span><span>Sovereign cloud</span><span>DBP collaboration</span></div></div></article>
+<article class="timeline-item" data-tags="rhythm recognition strategic-confidence"><div class="timeline-date">September to October</div><div class="timeline-body"><h3>Turning energy into rhythm</h3><p>Q2 kick-offs, Monthly Wins, Obstacle Breaker, the weekly focus rhythm, One Horse Race, Player Swap and the Innovation Lab gave the year more structure and turned energy into shared language and weekly action.</p><div class="chips"><span>Rhythm</span><span>Recognition</span><span>Strategic confidence</span></div></div></article>
+<article class="timeline-item" data-tags="reusable-assets h2-intent professional-habits"><div class="timeline-date">November to December</div><div class="timeline-body"><h3>Turning intent into shared priorities</h3><p>Sovereign Snapshots and the Blueprint Project showed the team building approaches that could outlast individual meetings. H1 reflection, Best Case roles and year-end appreciation helped move ideas into reusable practices.</p><div class="chips"><span>Reusable assets</span><span>H2 intent</span><span>Professional habits</span></div></div></article>
+<article class="timeline-item" data-tags="q4-pressure forecast customer-confidence"><div class="timeline-date">January to March</div><div class="timeline-body"><h3>Proving strategy through execution</h3><p>Consumption focus, diary discipline, Best Case syncs, SDD hygiene, workload qualification, OCVS BYOL, CSS assurance and war-room style activity brought the mechanics of FY26 closer to the surface.</p><div class="chips"><span>Q4 pressure</span><span>Forecast</span><span>Customer confidence</span></div></div></article>
+<article class="timeline-item" data-tags="steadiness ai-in-practice transition"><div class="timeline-date">April to May</div><div class="timeline-body"><h3>Holding steady through the sharpest point</h3><p>Consumption outlooks, SE forecast reductions, missing SDDs, maintenance communications and Edge Infrastructure changes arrived alongside people transitions. The AI in Practice series became a major applied capability-building thread.</p><div class="chips"><span>Steadiness</span><span>AI in Practice</span><span>Transition</span></div></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="built">
+        <div class="section-shell">
+          <div class="section-head"><div><div class="section-kicker">Capability built</div><h2>What we built in response</h2></div><div class="section-tools"><button class="mini-button copy-link" data-target="built">Copy link</button></div></div>
+          <p class="lede">The team’s output was not confined to accounts, meetings or opportunities. Several of the most useful things built during the year were repeatable ways of working: rhythms, narratives, AI-supported methods, sector understanding and sharper commercial habits.</p>
+          <div class="grid two"><article class="capability-card"><h3>Operating rhythm</h3><p>Weekly focus across strategy, growth, business execution and wellbeing; Monthly Wins; Obstacle Breaker; Q2 kick-offs; One Horse Race; Player Swap; Best Case roles; and the Q4/FY27 workshop created a deliberate operating pattern.</p></article>
+<article class="capability-card"><h3>OCI narrative system</h3><p>Performance, sovereignty, enterprise cloud expectations, procurement, UK policy, economics, differentiation, misconceptions, industry-tailored Why OCI narratives, policing strategy and blueprinting became part of a wider content system.</p></article>
+<article class="capability-card"><h3>AI-enabled working methods</h3><p>AI moved from learning and commentary into objection handling, evidence review, qualification, customer storytelling, meeting preparation, follow-through and the GPT Concierge direction.</p></article>
+<article class="capability-card"><h3>Sector fluency</h3><p>Defence, Defence Industry, Healthcare, Higher Education, Central Government, Law Enforcement, Public Safety, Home Office, Local Government, Scottish Government, NHS SBS and HES each required a deliberate approach.</p></article>
+<article class="capability-card"><h3>Commercial clarity</h3><p>Consumption focus, Best Case coordination, pipeline validation, SDD hygiene, workload qualification, forecast reductions and account scrutiny sharpened the distinction between possibility, intent and reality.</p></article></div>
+          <div class="quote-panel"><p>The deeper output was a team becoming more deliberate about how it prepared, qualified, explained, evidenced, collaborated and followed through. It leaves FY26 with better habits.</p></div>
+        </div>
+      </section>
+
+      <section id="carried">
+        <div class="section-shell">
+          <div class="section-head"><div><div class="section-kicker">Load absorbed</div><h2>What we carried</h2></div><div class="section-tools"><button class="mini-button copy-link" data-target="carried">Copy link</button></div></div>
+          <p class="lede">A proper review of the year should recognise both output and load. FY26 was not only about what the team produced. It was also about what the team absorbed.</p>
+          <div class="grid two"><article class="load-card"><h3>Change</h3><p>The team worked through OCI and DBP operating-model adaptation, Katie’s return from DBP, Darren Goff joining to strengthen Defence coverage, Mark Jackson’s resignation, Dan Westley’s departure and the wider RIF context.</p></article>
+<article class="load-card"><h3>Customer confidence</h3><p>CSS assurance, maintenance communications, Edge Infrastructure changes and sensitive public sector conversations required care, timing, context and follow-through.</p></article>
+<article class="load-card"><h3>Commercial scrutiny</h3><p>Consumption outlooks, SE forecast reductions, workload hygiene, SDD completion, Best Case discipline and pipeline validation required a sharper distinction between possibility, intent and reality.</p></article>
+<article class="load-card"><h3>Human load</h3><p>Heavy weeks, uncertainty, illness, leave, disruption, handover and fatigue were real. The team kept finding ways to remain useful, connected and professional.</p></article></div>
+        </div>
+      </section>
+
+      <section id="people">
+        <div class="section-shell">
+          <div class="section-head"><div><div class="section-kicker">People and contribution</div><h2>The people who carried the mission</h2></div><div class="section-tools"><button class="mini-button copy-link" data-target="people">Copy link</button></div></div>
+          <p class="lede">Different people carried different parts of FY26. The examples below are not intended to compare contribution, scale or value. They recognise how team strength came from sector ownership, customer confidence, technical judgement, resilience, collaboration and willingness to step into complexity.</p>
+          <div class="person-grid"><article class="person-card" data-tags="people sector"><div class="person-meta">Defence and Defence Industry</div><h3>Jackson Walmsley</h3><p>Carried Defence and Defence Industry from the start of FY26, putting significant energy behind the core-to-edge story and helping create senior-level conversations that extended beyond one product narrative.</p><p class="recognition"><strong>Recognise for:</strong> Sustained sector commitment through complexity; kept the Defence conversation moving when the surrounding story was far from simple.</p></article>
+<article class="person-card" data-tags="people sector"><div class="person-meta">Defence and MoD</div><h3>Darren Goff</h3><p>Joined just past the halfway point, strengthening Defence coverage while continuing existing MoD work and bringing grounded understanding of Defence customers.</p><p class="recognition"><strong>Recognise for:</strong> Brought stability, sector understanding and delivery discipline where credibility cannot be improvised.</p></article>
+<article class="person-card" data-tags="people sector"><div class="person-meta">Higher Education and OCI/DBP collaboration</div><h3>Mark Jackson</h3><p>Led Higher Education for OCI through much of FY26, supported University of Manchester’s adoption journey, and developed a practical OCI and DBP collaboration forum.</p><p class="recognition"><strong>Recognise for:</strong> Contributed Higher Education ownership, University of Manchester continuity and a practical bridge across OCI and DBP before leaving the team.</p></article>
+<article class="person-card" data-tags="people sector"><div class="person-meta">Healthcare, Central Government and Higher Education support</div><h3>Katie Armstrong</h3><p>Returned to OCI after a quarter as a DBP ACE, retained Healthcare alignment, took on Central Government and later stepped into Trinity College London and Open University complexity.</p><p class="recognition"><strong>Recognise for:</strong> Showed adaptability, practical commitment and willingness to support the team where additional coverage was needed.</p></article>
+<article class="person-card" data-tags="people sector"><div class="person-meta">Law Enforcement, Public Safety and Home Office</div><h3>Brendan Griffin</h3><p>Continued to own Law Enforcement, Public Safety and Home Office without an OCI Rep for much of the year, while building momentum across South Yorkshire Police, Humberside Police, Home Office, SSCL, Met Police and Police Digital Service.</p><p class="recognition"><strong>Recognise for:</strong> Demonstrated sector leadership, persistence and energy in markets that require patience, relevance and sustained confidence.</p></article>
+<article class="person-card" data-tags="people sector"><div class="person-meta">Local Government, Scottish Government, NHS SBS and HES</div><h3>Darren Atack</h3><p>Carried Local Government across the UK, Scottish Government, NHS SBS and HES, bringing steadiness across varied customer environments.</p><p class="recognition"><strong>Recognise for:</strong> Contributed breadth, steadiness, security judgement and credibility in complex relationships.</p></article>
+<article class="person-card" data-tags="people sector"><div class="person-meta">Healthcare</div><h3>Stefan Slatter</h3><p>Carried the largest share of Healthcare nationally, including NHS Blood and Transplant and NHS England, with the FDP programme and Palantir dimension adding scale and complexity.</p><p class="recognition"><strong>Recognise for:</strong> Maintained patience, persistence and credibility across one of the team’s most complex sector portfolios.</p></article></div>
+          <div class="quote-panel"><p>No single person carried FY26 alone. The value was found in how different people held different parts of a complicated year and still formed a coherent team around customers, colleagues and Oracle’s public sector mission.</p></div>
+        </div>
+      </section>
+
+      <section id="lessons">
+        <div class="section-shell">
+          <div class="section-head"><div><div class="section-kicker">Learning</div><h2>What FY26 taught us</h2></div><div class="section-tools"><button class="mini-button copy-link" data-target="lessons">Copy link</button></div></div>
+          <p class="lede">FY26 did not teach one lesson. It sharpened a way of working. Its deeper value was in the judgement developed through pressure.</p>
+          <div class="lesson-grid"><article class="lesson-card"><span>01</span><h3>Strategy has to become useful</h3><p>Customers do not need Oracle’s strategy repeated back to them. They need it translated into credible options that respect their operating environment, constraints, procurement path, data posture, risk appetite, technical dependencies and mission.</p></article>
+<article class="lesson-card"><span>02</span><h3>One Oracle has to be experienced</h3><p>Customers experience One Oracle when Oracle brings the right people together, removes confusion, clarifies ownership and makes engagement easier.</p></article>
+<article class="lesson-card"><span>03</span><h3>AI should strengthen judgement</h3><p>AI should make preparation stronger, expose weak claims, help people think more clearly and raise the quality of work. The advantage is not in using AI the most, but in using it with the most care.</p></article>
+<article class="lesson-card"><span>04</span><h3>Trust is built through behaviour</h3><p>Public sector confidence is built through accuracy, consistency, restraint and follow-through. Credibility is technical and behavioural.</p></article>
+<article class="lesson-card"><span>05</span><h3>Discipline and care belong together</h3><p>Best Case discipline, SDD completion, workload hygiene, consumption focus, forecast scrutiny and account clarity help avoid wishful thinking, expose gaps early and make care operational.</p></article></div>
+        </div>
+      </section>
+
+      <section id="fy27">
+        <div class="section-shell">
+          <div class="section-head"><div><div class="section-kicker">FY27 carry-forward</div><h2>A fresh page, not a blank one</h2></div><div class="section-tools"><button class="mini-button copy-link" data-target="fy27">Copy link</button></div></div>
+          <p class="lede">The point of reflecting on FY26 is not to preserve the year behind us. It is to decide what deserves to come forward. FY26 gave the team sharper habits, clearer lessons and stronger instincts.</p>
+          <div class="forward-grid"><article class="forward-card"><h3>Evidence-led confidence</h3><p>Confidence should be anchored in proof: clear about what Oracle can evidence, honest about what still needs qualification, and disciplined about the difference between capability, customer interest, adoption and delivered outcome.</p></article>
+<article class="forward-card"><h3>AI as a disciplined working habit</h3><p>AI should improve preparation, test logic, strengthen evidence, draft better questions, rehearse difficult conversations, summarise complex input, challenge assumptions and make follow-through more consistent.</p></article>
+<article class="forward-card"><h3>Sharper sector plays</h3><p>Sector knowledge should become more deliberate: clearer customer missions, stronger awareness of buying paths, better sector-specific language, more thoughtful examples, more disciplined qualification and reusable narratives.</p></article>
+<article class="forward-card"><h3>Cleaner OCI and DBP collaboration</h3><p>Customers should not feel internal handoffs, unclear ownership or competing narratives. They should experience one Oracle team that understands the problem and brings the right expertise at the right time.</p></article>
+<article class="forward-card"><h3>Public sector trust as a standard</h3><p>Careful language, proof, assurance awareness, sovereignty, procurement, security, service communications and operational risk should remain defining standards.</p></article>
+<article class="forward-card"><h3>Rigour without losing care</h3><p>FY27 will need forecast quality, workload hygiene, SDD completion, account clarity, qualification and consumption focus, balanced with support, purpose, connection and honesty.</p></article>
+<article class="forward-card"><h3>A fresh page, not a blank one</h3><p>FY27 should respect what FY26 revealed: stronger habits, clearer sector understanding, better AI practice, sharper evidence discipline and deeper appreciation of how public sector confidence is built.</p></article></div>
+        </div>
+      </section>
+
+      <section id="closing">
+        <div class="section-shell">
+          <div class="section-head"><div><div class="section-kicker">Closing reflection and method</div><h2>We were not observers of Oracle’s FY26</h2></div><div class="section-tools"><button class="mini-button copy-link" data-target="closing">Copy link</button></div></div>
+          <p class="lede">FY26 was Oracle’s strategy becoming real in the field. AI became more than a topic. OCI became more central to the company’s story. Sovereign cloud became more concrete. Multicloud became more usable. One Oracle became a customer experience standard.</p>
+          <div class="quote-panel"><p>The point is not to pretend the year was neat. It was not. Yet the year leaves behind a team that understands more clearly what it holds.</p></div>
+          <div class="method-note">
+            <h3>Method note</h3>
+            <p>This reference hub draws together the source reflection’s FY26 team communications, Oracle public announcements, senior leadership themes, corporate bulletin messages, Tech Cloud go-to-market context, sector coverage and contribution notes.</p>
+            <p>It preserves the source’s method: human-led, AI-assisted and judgement-protected. AI was used here to organise evidence, connect themes, preserve nuance and turn a complex year into a navigable internal reference. The final shape still depends on human judgement: what to include, what to soften, what to omit, what not to overclaim and how to make the message useful.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <strong>OCI UK Public Sector Architects: FY26 Year in Review</strong>
+        <p class="small">Permanent internal reference hub · Release Candidate · 26 June 2026</p>
+      </div>
+      <div>
+        <p class="small"><strong>Classification:</strong> Confidential - Oracle Restricted \Employees Only</p>
+        <p class="small"><strong>Source:</strong> OCI_UK_Public_Sector_FY26_Year_in_Review.pdf. Static HTML. No external dependencies. No analytics. No IndexedDB. No local storage.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const qs = (s, root=document) => root.querySelector(s);
+      const qsa = (s, root=document) => Array.from(root.querySelectorAll(s));
+      const filterButtons = qsa('.filter-btn');
+      const signalCards = qsa('.signal-card');
+      const search = qs('#signal-search');
+      function applyFilter() {
+        const active = qs('.filter-btn[aria-pressed="true"]')?.dataset.filter || 'all';
+        const term = (search?.value || '').trim().toLowerCase();
+        qsa('section').forEach(section => section.classList.remove('hidden'));
+        signalCards.forEach(card => {
+          const tags = card.dataset.tags || '';
+          const text = card.innerText.toLowerCase();
+          const tagMatch = active === 'all' || tags.includes(active);
+          const searchMatch = !term || text.includes(term) || card.closest('section')?.innerText.toLowerCase().includes(term);
+          card.classList.toggle('hidden', !(tagMatch && searchMatch));
+        });
+        if (term) {
+          qsa('section').forEach(section => {
+            const isSignals = section.id === 'signals';
+            const match = section.innerText.toLowerCase().includes(term);
+            if (!isSignals && !match) section.classList.add('hidden');
+          });
+        }
+      }
+      filterButtons.forEach(btn => btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.setAttribute('aria-pressed','false'));
+        btn.setAttribute('aria-pressed','true');
+        applyFilter();
+      }));
+      if (search) search.addEventListener('input', applyFilter);
+      qsa('.copy-link').forEach(btn => btn.addEventListener('click', async () => {
+        const id = btn.dataset.target;
+        const url = location.origin + location.pathname + '#' + id;
+        try { await navigator.clipboard.writeText(url); btn.textContent = 'Copied'; setTimeout(() => btn.textContent='Copy link', 1200); }
+        catch(e) { location.hash = id; }
+      }));
+      const tocLinks = qsa('.toc a');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+      qsa('main section[id]').forEach(sec => observer.observe(sec));
+    })();
+  </script>
+</body>
+</html>

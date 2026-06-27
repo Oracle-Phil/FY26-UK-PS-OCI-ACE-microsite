@@ -1,0 +1,1181 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper 09 - The Mechanics of Public Sector Procurement | FY26 UK-PS Whitepapers Series</title>
+  <meta name="description" content="Internal Oracle field paper converted into a static HTML article for the FY26 UK-PS Whitepapers Series. Paper 09 explains how UK buyers choose, evaluate, and assure cloud infrastructure.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="classification" content="Confidential - Oracle Internal">
+  <meta name="series" content="FY26 UK-PS Whitepapers Series">
+  <meta name="paper-number" content="09">
+  <meta name="paper-version" content="1.0">
+  <meta name="conversion-version" content="1.0">
+  <style>
+    :root {
+      --series-bg: #f7f3ee;
+      --surface: #fffaf5;
+      --surface-alt: #f1ebe4;
+      --ink: #241c18;
+      --muted: #6f625a;
+      --line: #ded4ca;
+      --oracle-red-soft: #c74634;
+      --clay: #b45f36;
+      --sage: #789c96;
+      --teal-deep: #315f5b;
+      --sand: #d7b98c;
+      --sand-soft: #f6ead8;
+      --charcoal: #3a3632;
+      --success-soft: #e5efe9;
+      --warning-soft: #f6ead8;
+      --risk-soft: #f3dfdc;
+      --info-soft: #e5eef0;
+      --white: #ffffff;
+      --shadow-soft: 0 18px 50px rgba(36, 28, 24, 0.10);
+      --shadow-tight: 0 8px 24px rgba(36, 28, 24, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --measure: 74ch;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 9% 0%, rgba(215, 185, 140, .35), transparent 32rem),
+        radial-gradient(circle at 94% 7%, rgba(120, 156, 150, .20), transparent 32rem),
+        linear-gradient(180deg, #fbf7f1 0%, var(--series-bg) 42%, #f2ece5 100%);
+      font-family: "Oracle Sans", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: var(--teal-deep); text-decoration-color: rgba(49, 95, 91, .35); text-underline-offset: 0.2em; }
+    a:hover { text-decoration-color: currentColor; }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 1rem;
+      z-index: 1000;
+      padding: .75rem 1rem;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--surface);
+    }
+    .skip-link:focus { left: 1rem; }
+
+    .utility-bar {
+      border-bottom: 1px solid rgba(222, 212, 202, .82);
+      background: rgba(255, 250, 245, .86);
+      backdrop-filter: blur(18px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .utility-inner {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: .7rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: .86rem;
+      color: var(--muted);
+    }
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      color: var(--ink);
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .wordmark .mark {
+      display: inline-grid;
+      place-items: center;
+      width: 5.5rem;
+      height: 1.7rem;
+      border: 2px solid var(--oracle-red-soft);
+      border-radius: 999px;
+      color: var(--oracle-red-soft);
+      font-size: .72rem;
+      letter-spacing: .11em;
+      background: rgba(255, 255, 255, .45);
+    }
+    .utility-links { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .classification-pill {
+      display: inline-flex;
+      gap: .45rem;
+      align-items: center;
+      border: 1px solid rgba(199, 70, 52, .22);
+      border-radius: 999px;
+      padding: .26rem .7rem;
+      color: #7c3328;
+      background: rgba(243, 223, 220, .62);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    header.series-header {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 1.5rem 1.2rem 0;
+    }
+    .series-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border: 1px solid rgba(222, 212, 202, .9);
+      background: rgba(255, 250, 245, .72);
+      border-radius: 999px;
+      padding: .45rem .55rem .45rem 1rem;
+      box-shadow: var(--shadow-tight);
+    }
+    .series-nav strong { font-size: .9rem; }
+    .series-nav nav { display: flex; gap: .25rem; flex-wrap: wrap; justify-content: flex-end; }
+    .series-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.1rem;
+      padding: .32rem .75rem;
+      border-radius: 999px;
+      color: var(--charcoal);
+      text-decoration: none;
+      font-size: .84rem;
+      font-weight: 700;
+    }
+    .series-nav a:hover, .series-nav a:focus-visible { background: var(--surface-alt); }
+
+    .breadcrumb {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 1rem 1.2rem 0;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+    .breadcrumb ol {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      list-style: none;
+      gap: .55rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .breadcrumb li + li::before { content: "/"; margin-right: .55rem; color: #9a8d83; }
+
+    .hero-wrap {
+      max-width: 1220px;
+      margin: 1.15rem auto 0;
+      padding: 0 1.2rem 1.4rem;
+    }
+    .article-hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(222, 212, 202, .92);
+      background:
+        linear-gradient(135deg, rgba(255, 250, 245, .96) 0%, rgba(246, 234, 216, .92) 52%, rgba(229, 239, 233, .86) 100%);
+      box-shadow: var(--shadow-soft);
+    }
+    .article-hero::before {
+      content: "";
+      position: absolute;
+      inset: auto -12% -38% auto;
+      width: 38rem;
+      height: 38rem;
+      background:
+        radial-gradient(circle, rgba(180, 95, 54, .16), transparent 62%),
+        repeating-linear-gradient(45deg, rgba(49,95,91,.07) 0 8px, transparent 8px 22px);
+      border-radius: 50%;
+      transform: rotate(-12deg);
+    }
+    .article-hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: .58rem;
+      background: linear-gradient(180deg, var(--sand), var(--sage), var(--clay));
+    }
+    .hero-content {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 2rem;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      align-items: stretch;
+    }
+    .eyebrow {
+      display: flex;
+      gap: .65rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-weight: 800;
+      color: var(--clay);
+    }
+    .hero-content h1 {
+      max-width: 11ch;
+      margin: 0;
+      font-size: clamp(2.35rem, 7vw, 5rem);
+      line-height: .96;
+      letter-spacing: -.055em;
+    }
+    .subtitle {
+      margin: 1.05rem 0 0;
+      max-width: 44rem;
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      line-height: 1.38;
+      color: #51463f;
+      font-weight: 650;
+    }
+    .hero-summary {
+      margin: 1.25rem 0 0;
+      max-width: 58rem;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+    .hero-card {
+      position: relative;
+      align-self: stretch;
+      border-radius: 24px;
+      border: 1px solid rgba(120, 156, 150, .38);
+      background: rgba(255, 250, 245, .72);
+      box-shadow: 0 14px 35px rgba(49, 95, 91, .09);
+      padding: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .hero-card h2 {
+      margin: 0;
+      font-size: 1rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--teal-deep);
+    }
+    .hero-card p { margin: .4rem 0 0; color: #4e443d; font-size: .98rem; }
+    .hero-card .route {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .76rem;
+      overflow-wrap: anywhere;
+      color: var(--muted);
+      padding: .7rem;
+      border-radius: 14px;
+      background: rgba(241, 235, 228, .88);
+    }
+
+    .page-shell {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 1rem 1.2rem 4rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 1.35rem;
+      align-items: start;
+    }
+    main { min-width: 0; }
+    .side-rail {
+      position: sticky;
+      top: 5rem;
+      display: grid;
+      gap: 1rem;
+    }
+    .toc, .metadata-card, .tools-card {
+      border: 1px solid rgba(222, 212, 202, .9);
+      border-radius: 22px;
+      background: rgba(255, 250, 245, .82);
+      box-shadow: var(--shadow-tight);
+      overflow: hidden;
+    }
+    .toc h2, .metadata-card h2, .tools-card h2 {
+      margin: 0;
+      padding: 1rem 1rem .45rem;
+      font-size: .84rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--clay);
+    }
+    .toc nav { padding: .35rem .55rem .85rem; }
+    .toc a {
+      display: block;
+      text-decoration: none;
+      color: var(--charcoal);
+      font-size: .87rem;
+      line-height: 1.25;
+      padding: .55rem .65rem;
+      border-radius: 12px;
+      border: 1px solid transparent;
+    }
+    .toc a:hover, .toc a:focus-visible { background: var(--surface-alt); border-color: var(--line); }
+
+    .metadata-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: .65rem;
+      padding: .25rem 1rem 1rem;
+    }
+    .meta-row {
+      padding-bottom: .6rem;
+      border-bottom: 1px solid rgba(222, 212, 202, .74);
+    }
+    .meta-row:last-child { border-bottom: 0; padding-bottom: 0; }
+    .meta-label {
+      display: block;
+      color: var(--muted);
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 800;
+    }
+    .meta-value { display: block; font-size: .88rem; line-height: 1.3; margin-top: .1rem; }
+    .tools-card .tool-grid { display: grid; gap: .45rem; padding: .25rem 1rem 1rem; }
+    button, .button-link {
+      font: inherit;
+      border: 1px solid rgba(49, 95, 91, .25);
+      background: var(--white);
+      color: var(--teal-deep);
+      border-radius: 999px;
+      padding: .55rem .85rem;
+      cursor: pointer;
+      font-size: .86rem;
+      font-weight: 800;
+      text-decoration: none;
+      text-align: center;
+    }
+    button:hover, .button-link:hover, button:focus-visible, .button-link:focus-visible { background: var(--info-soft); }
+
+    .content-card {
+      border: 1px solid rgba(222, 212, 202, .9);
+      border-radius: var(--radius-xl);
+      background: rgba(255, 250, 245, .88);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+    .content-inner { padding: clamp(1.25rem, 3vw, 2.5rem); }
+    .section {
+      margin: 0 0 3rem;
+      scroll-margin-top: 6rem;
+    }
+    .section:last-child { margin-bottom: 0; }
+    .section-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .section h2 {
+      margin: 0;
+      font-size: clamp(1.65rem, 4vw, 2.55rem);
+      letter-spacing: -.035em;
+      line-height: 1.08;
+    }
+    .section h3 {
+      margin: 1.45rem 0 .55rem;
+      color: #322a25;
+      font-size: clamp(1.18rem, 2.5vw, 1.55rem);
+      line-height: 1.18;
+      letter-spacing: -.02em;
+    }
+    .section p, .section li { max-width: var(--measure); }
+    .section p { margin: .75rem 0 0; }
+    .lead {
+      font-size: 1.14rem;
+      color: #51463f;
+      line-height: 1.58;
+    }
+    .copy-link {
+      flex: 0 0 auto;
+      padding: .35rem .65rem;
+      font-size: .72rem;
+      border-color: rgba(180, 95, 54, .28);
+      color: var(--clay);
+      background: rgba(246, 234, 216, .62);
+    }
+
+    .orientation-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .85rem;
+      margin-top: 1.35rem;
+    }
+    .orientation-card, .sector-card, .route-card, .field-card, .lesson-card, .related-card {
+      border: 1px solid rgba(222, 212, 202, .85);
+      background: rgba(255, 255, 255, .5);
+      border-radius: 20px;
+      padding: 1rem;
+    }
+    .orientation-card h3, .sector-card h3, .route-card h3, .field-card h3, .lesson-card h3, .related-card h3 {
+      margin-top: 0;
+      font-size: 1.02rem;
+      letter-spacing: -.01em;
+    }
+    .orientation-card p, .sector-card p, .route-card p, .field-card p, .lesson-card p, .related-card p { font-size: .92rem; line-height: 1.48; }
+    .orientation-card strong {
+      display: inline-block;
+      color: var(--clay);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: .35rem;
+    }
+    .orientation-card:nth-child(1) { background: rgba(229,239,233,.65); }
+    .orientation-card:nth-child(2) { background: rgba(229,238,240,.65); }
+    .orientation-card:nth-child(3) { background: rgba(246,234,216,.70); }
+    .orientation-card:nth-child(4) { background: rgba(243,223,220,.54); }
+
+    .callout {
+      position: relative;
+      margin: 1.4rem 0;
+      padding: 1.05rem 1.15rem 1.05rem 1.35rem;
+      border-radius: 20px;
+      border: 1px solid rgba(120, 156, 150, .34);
+      background: linear-gradient(135deg, rgba(229, 239, 233, .75), rgba(255, 250, 245, .7));
+    }
+    .callout::before {
+      content: "";
+      position: absolute;
+      left: .75rem;
+      top: 1.1rem;
+      bottom: 1.1rem;
+      width: .22rem;
+      border-radius: 999px;
+      background: var(--sage);
+    }
+    .callout strong { color: var(--teal-deep); }
+
+    .sector-grid, .route-grid, .field-grid, .lesson-grid, .related-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .9rem;
+      margin: 1.1rem 0 0;
+    }
+    .sector-card { background: rgba(229,238,240,.48); }
+    .sector-card .tag, .route-card .tag, .lesson-card .tag {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: .18rem .55rem;
+      background: rgba(49,95,91,.10);
+      color: var(--teal-deep);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      margin-bottom: .6rem;
+    }
+    .sector-card ul, .field-card ul { margin: .7rem 0 0; padding-left: 1.15rem; }
+    .sector-card li, .field-card li { font-size: .9rem; line-height: 1.42; margin: .35rem 0; }
+
+    .gate-flow {
+      margin: 1.2rem 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      gap: .55rem;
+      list-style: none;
+      counter-reset: gates;
+    }
+    .gate-flow li {
+      position: relative;
+      min-height: 8.3rem;
+      padding: .85rem .7rem;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(120, 156, 150, .92), rgba(49, 95, 91, .9));
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 22px rgba(49,95,91,.13);
+      counter-increment: gates;
+      max-width: none;
+    }
+    .gate-flow li::before {
+      content: counter(gates, decimal-leading-zero);
+      font-size: .7rem;
+      letter-spacing: .09em;
+      opacity: .82;
+      font-weight: 800;
+    }
+    .gate-flow strong {
+      font-size: .9rem;
+      line-height: 1.18;
+      letter-spacing: -.01em;
+    }
+    .gate-flow span { font-size: .71rem; opacity: .82; line-height: 1.25; }
+
+    .table-wrap {
+      margin: 1.1rem 0;
+      overflow-x: auto;
+      border: 1px solid rgba(222, 212, 202, .9);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .54);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: .89rem;
+      line-height: 1.38;
+    }
+    caption {
+      text-align: left;
+      color: var(--clay);
+      font-weight: 850;
+      padding: .9rem .95rem .55rem;
+      letter-spacing: .02em;
+    }
+    th, td { padding: .78rem .9rem; text-align: left; vertical-align: top; border-top: 1px solid rgba(222, 212, 202, .85); }
+    thead th { border-top: 0; background: rgba(241, 235, 228, .7); color: #3a302b; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; }
+    tbody tr:nth-child(odd) td { background: rgba(229, 238, 240, .46); }
+    td:first-child, th:first-child { font-weight: 800; }
+
+    details {
+      border: 1px solid rgba(222, 212, 202, .85);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .46);
+      margin: .75rem 0;
+      overflow: hidden;
+    }
+    summary {
+      cursor: pointer;
+      padding: .9rem 1rem;
+      font-weight: 850;
+      color: #332b26;
+      background: rgba(241, 235, 228, .65);
+    }
+    details[open] summary { border-bottom: 1px solid rgba(222, 212, 202, .85); }
+    details .details-body { padding: .2rem 1rem 1rem; }
+
+    .assurance-flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: .7rem;
+      margin-top: 1.2rem;
+    }
+    .assurance-step {
+      border: 1px solid rgba(49,95,91,.18);
+      border-radius: 18px;
+      padding: .85rem;
+      background: rgba(229,239,233,.55);
+    }
+    .assurance-step strong { display: block; color: var(--teal-deep); margin-bottom: .4rem; }
+    .assurance-step ul { margin: 0; padding-left: 1.05rem; }
+    .assurance-step li { font-size: .85rem; line-height: 1.35; }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+      display: grid;
+      gap: .6rem;
+    }
+    .checklist li {
+      position: relative;
+      max-width: none;
+      padding: .75rem .85rem .75rem 2.35rem;
+      border: 1px solid rgba(222, 212, 202, .78);
+      border-radius: 16px;
+      background: rgba(255,255,255,.54);
+    }
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: .8rem;
+      top: .7rem;
+      display: grid;
+      place-items: center;
+      width: 1.1rem;
+      height: 1.1rem;
+      border-radius: 50%;
+      background: var(--success-soft);
+      color: var(--teal-deep);
+      font-size: .8rem;
+      font-weight: 900;
+    }
+
+    .split-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .9rem;
+      margin-top: 1rem;
+    }
+    .panel {
+      border-radius: 22px;
+      padding: 1.1rem;
+      border: 1px solid rgba(222,212,202,.82);
+      background: rgba(255,255,255,.48);
+    }
+    .panel h3 { margin-top: 0; }
+    .panel.defined { background: rgba(229,238,240,.58); }
+    .panel.complex { background: rgba(246,234,216,.72); }
+
+    .source-note {
+      margin-top: 2rem;
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(241, 235, 228, .75);
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    .paper-nav {
+      max-width: 1220px;
+      margin: 0 auto 4rem;
+      padding: 0 1.2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .paper-nav a {
+      display: block;
+      border: 1px solid rgba(222,212,202,.88);
+      border-radius: 22px;
+      background: rgba(255,250,245,.84);
+      padding: 1rem;
+      text-decoration: none;
+      color: var(--ink);
+      box-shadow: var(--shadow-tight);
+    }
+    .paper-nav span { display: block; color: var(--muted); font-size: .82rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .paper-nav strong { display: block; margin-top: .25rem; line-height: 1.25; }
+
+    footer {
+      border-top: 1px solid rgba(222,212,202,.9);
+      background: rgba(58,54,50,.96);
+      color: rgba(255,250,245,.86);
+    }
+    .footer-inner {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 1.6rem 1.2rem;
+      display: grid;
+      grid-template-columns: 1.4fr .9fr .9fr;
+      gap: 1rem;
+      font-size: .86rem;
+    }
+    footer strong { color: white; }
+    footer a { color: white; text-decoration-color: rgba(255,255,255,.35); }
+
+    @media (max-width: 1020px) {
+      .hero-content, .page-shell { grid-template-columns: 1fr; }
+      .hero-content h1 { max-width: 14ch; }
+      .side-rail { position: static; grid-template-columns: 1fr 1fr; }
+      .toc { grid-column: 1 / -1; }
+      .orientation-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gate-flow { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .assurance-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      body { font-size: 16px; }
+      .utility-inner, .series-nav, .utility-links { align-items: flex-start; flex-direction: column; }
+      .series-nav { border-radius: 24px; }
+      .series-nav nav { justify-content: flex-start; }
+      .hero-content { padding: 1.35rem 1.1rem; }
+      .orientation-grid, .sector-grid, .route-grid, .field-grid, .lesson-grid, .related-grid, .split-panel, .paper-nav, .side-rail { grid-template-columns: 1fr; }
+      .gate-flow { grid-template-columns: 1fr; }
+      .gate-flow li { min-height: auto; gap: .7rem; }
+      .assurance-flow { grid-template-columns: 1fr; }
+      .section-head { flex-direction: column; }
+    }
+
+    @media print {
+      .utility-bar, .series-header, .breadcrumb, .side-rail, .paper-nav, .copy-link, .tools-card { display: none !important; }
+      body { background: #fff; color: #111; }
+      .hero-wrap, .page-shell { max-width: none; padding: 0; }
+      .article-hero, .content-card { box-shadow: none; border: 0; border-radius: 0; }
+      .hero-content { grid-template-columns: 1fr; padding: 1rem 0; }
+      .content-inner { padding: 0; }
+      a { color: inherit; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="utility-bar" role="banner">
+    <div class="utility-inner">
+      <div class="wordmark" aria-label="Oracle-inspired internal series mark"><span class="mark">Oracle</span><span>FY26 UK-PS Whitepapers Series</span></div>
+      <div class="utility-links">
+        <a href="../index.html">Index</a>
+        <a href="#reading-tools">Reading tools</a>
+        <span class="classification-pill">Confidential - Oracle Internal</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="series-header">
+    <div class="series-nav" aria-label="Series navigation">
+      <strong>Internal field papers for OCI, AI, UK Public Sector strategy, assurance, differentiation, and customer conversation readiness.</strong>
+      <nav aria-label="Global navigation">
+        <a href="../index.html">Index</a>
+        <a href="../index.html#all-papers">All papers</a>
+        <a href="../index.html#reading-paths">Reading paths</a>
+        <a href="../index.html#themes">Themes</a>
+        <a href="../index.html#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../index.html">Series</a></li>
+      <li>Paper 09</li>
+      <li aria-current="page">The Mechanics of Public Sector Procurement</li>
+    </ol>
+  </nav>
+
+  <div class="hero-wrap">
+    <section class="article-hero" aria-labelledby="page-title">
+      <div class="hero-content">
+        <div>
+          <div class="eyebrow"><span>Paper 09</span><span>Public Sector Operating Context</span><span>Version 1.0</span></div>
+          <h1 id="page-title">The Mechanics of Public Sector Procurement</h1>
+          <p class="subtitle">How UK Buyers Choose, Evaluate, and Assure Cloud Infrastructure</p>
+          <p class="hero-summary">A web-native field guide explaining how public sector cloud decisions move through approval gates, procurement routes, evaluation criteria, assurance checkpoints, and board-level scrutiny.</p>
+        </div>
+        <aside class="hero-card" aria-labelledby="key-takeaway-title">
+          <div>
+            <h2 id="key-takeaway-title">Key takeaway</h2>
+            <p>OCI proposals advance when the architecture is supported by the right evidence pack, aligned to the buyer’s route to market, and framed in the language of risk, assurance, reversibility, resilience, and governance.</p>
+          </div>
+          <div class="route" aria-label="Canonical route">/paper-09-public-sector-procurement-mechanics/</div>
+          <span class="classification-pill">Confidential - Oracle Internal</span>
+        </aside>
+      </div>
+    </section>
+  </div>
+
+  <div class="page-shell">
+    <main id="main-content" tabindex="-1">
+      <article class="content-card">
+        <div class="content-inner">
+          <section class="section" id="orientation">
+            <div class="section-head">
+              <h2>Executive orientation</h2>
+              <button class="copy-link" data-copy-link="#orientation" type="button">Copy link</button>
+            </div>
+            <p class="lead">Procurement is not administrative background. It is the mechanism through which UK public sector cloud choices are justified, scrutinised, defended, and eventually converted into contracts.</p>
+            <div class="orientation-grid" aria-label="Executive orientation cards">
+              <div class="orientation-card">
+                <strong>Why it matters</strong>
+                <p>Cloud designs are tested against decision gates, route constraints, evaluation criteria, and assurance obligations before they can become live services.</p>
+              </div>
+              <div class="orientation-card">
+                <strong>Who should read it</strong>
+                <p>OCI architects, account teams, bid contributors, and technical leaders preparing for UK public sector engagements where cloud infrastructure needs to withstand formal scrutiny.</p>
+              </div>
+              <div class="orientation-card">
+                <strong>What it helps with</strong>
+                <p>Preparing evidence packs, anticipating approval boards, selecting the right language for each procurement route, and aligning technical design to sector-specific assurance.</p>
+              </div>
+              <div class="orientation-card">
+                <strong>What not to overclaim</strong>
+                <p>Do not imply that technical capability alone wins public sector work, that one framework fits every sector, or that Oracle can pre-approve a customer’s assurance decision.</p>
+              </div>
+            </div>
+            <div class="callout"><strong>Field interpretation:</strong> the practical question is not only whether OCI can meet the requirement. It is whether the customer can evidence, defend, and approve the choice within their own governance model.</div>
+          </section>
+
+          <section class="section" id="how-buyers-decide">
+            <div class="section-head">
+              <h2>How UK public bodies decide</h2>
+              <button class="copy-link" data-copy-link="#how-buyers-decide" type="button">Copy link</button>
+            </div>
+            <p>UK public sector procurement is deliberately protracted. It moves through a chain of decision gates designed to test need, value, compliance, and risk before an award is signed. The same broad pattern applies across central government, the NHS, policing, and defence, but each sector layers in its own oversight.</p>
+            <div class="sector-grid">
+              <article class="sector-card">
+                <span class="tag">Central government</span>
+                <h3>Spend controls and programme boards</h3>
+                <p>Departments and arm’s-length bodies must clear Cabinet Office Digital and Technology Spend Controls for significant cloud projects. Outline cases are expected to show alignment with the Technology Code of Practice and Government Functional Standard GovS 005.</p>
+                <ul>
+                  <li>Review by programme boards, design authorities, or architecture authorities.</li>
+                  <li>Final approvals usually rest with the SRO, advised by CIO/CDO, SIRO, CISO, Finance Director, and Commercial Lead.</li>
+                </ul>
+              </article>
+              <article class="sector-card">
+                <span class="tag">NHS</span>
+                <h3>Information governance and clinical safety</h3>
+                <p>NHS England, Integrated Care Boards, and NHS Trusts shape assurance around information governance, DSPT alignment, DPIAs, and clinical safety where systems affect care pathways.</p>
+                <ul>
+                  <li>Patient data commonly triggers DPIA and DSPT evidence requirements.</li>
+                  <li>Sign-off may involve Trust Boards, ICB committees, SIROs, Caldicott Guardians, and clinical safety officers.</li>
+                </ul>
+              </article>
+              <article class="sector-card">
+                <span class="tag">Policing</span>
+                <h3>Local autonomy under national influence</h3>
+                <p>Police forces buy independently but operate under national strategy and assurance influence from the Police Digital Service and the National Policing Digital Strategy 2025 to 2030.</p>
+                <ul>
+                  <li>National boards review business cases and live services.</li>
+                  <li>Local approvals commonly involve CIOs, Force Information Assurance Leads, Commercial Leads, and PASF where hosting or interconnection is relevant.</li>
+                </ul>
+              </article>
+              <article class="sector-card">
+                <span class="tag">Defence</span>
+                <h3>Classification-specific accreditation</h3>
+                <p>The Ministry of Defence operates under the Procurement Act 2023 but applies further accreditation through Defence Digital, the Cloud Strategic Roadmap for Defence, and the Defence Digital Foundry.</p>
+                <ul>
+                  <li>Decision-making flows through programme boards, Defence Commercial, security accreditors, SROs, and senior finance officers.</li>
+                  <li>Defence primes may act as intermediaries and carry responsibility for alignment evidence.</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <section class="section" id="decision-gates">
+            <div class="section-head">
+              <h2>Decision gates in cloud procurement</h2>
+              <button class="copy-link" data-copy-link="#decision-gates" type="button">Copy link</button>
+            </div>
+            <p>The source paper’s page 3 diagram has been rebuilt as an accessible HTML flow. It shows procurement as a sequence of gates, not a single purchasing event.</p>
+            <ol class="gate-flow" aria-label="Decision gates in UK public sector cloud procurement">
+              <li><strong>Business need</strong><span>Define the service, policy driver, operational requirement, or transformation outcome.</span></li>
+              <li><strong>Outline business case</strong><span>Describe value, cost, route options, risk, delivery, and strategic alignment.</span></li>
+              <li><strong>Departmental or sector assurance</strong><span>Spend controls, DSPT, PASF, Defence accreditation, or equivalent gates.</span></li>
+              <li><strong>Programme Board / Design Authority</strong><span>Test technical approach, governance, delivery model, and assurance readiness.</span></li>
+              <li><strong>Procurement route selected</strong><span>Choose G-Cloud, Cloud Compute 2, Find a Tender, PDS, NHS, defence route, or prime-led path.</span></li>
+              <li><strong>Evaluation and assessment</strong><span>Score against quality, price, social value, resilience, support, and portability.</span></li>
+              <li><strong>Final approvals</strong><span>SRO, CFO, Commercial Lead, security, finance, and senior accountable officers.</span></li>
+              <li><strong>Award and contract assurance</strong><span>Complete contract checks, mobilisation conditions, KPI publication, and go-live readiness.</span></li>
+            </ol>
+            <div class="callout"><strong>Architectural implication:</strong> each gate asks for a different kind of evidence. A strong architecture diagram is important, but it will not substitute for DPIA support, NCSC principle mapping, exit commitments, cost control evidence, and sector artefacts.</div>
+          </section>
+
+          <section class="section" id="routes-to-market">
+            <div class="section-head">
+              <h2>Default routes to market</h2>
+              <button class="copy-link" data-copy-link="#routes-to-market" type="button">Copy link</button>
+            </div>
+            <p>Public sector buyers in the UK do not simply choose cloud providers directly. They use approved commercial routes that define how requirements are expressed, how competition is conducted, and how awards are documented.</p>
+            <details open>
+              <summary>Route explanations</summary>
+              <div class="details-body">
+                <p><strong>G-Cloud 14:</strong> the most widely used catalogue for cloud hosting, software, and support. Buyers can direct award from catalogue listings or run a further competition, with call-offs constrained by published service definitions.</p>
+                <p><strong>Cloud Compute 2 (RM6292):</strong> used for larger infrastructure and platform services, especially where requirements exceed catalogue call-offs or require multi-year, outcome-based contracts.</p>
+                <p><strong>Procurement Act 2023 procedures:</strong> used where frameworks do not apply. The Competitive Flexible Procedure is common for complex data-centre exits or multi-tower transitions, while the Open Procedure suits well-specified requirements.</p>
+                <p><strong>NHS, PDS, and defence routes:</strong> sector-specific routes overlay central rules with DSPT, PASF, Defence Digital, accreditation packs, national boards, or prime-led models.</p>
+              </div>
+            </details>
+            <div class="table-wrap">
+              <table>
+                <caption>Routes to market by sector</caption>
+                <thead>
+                  <tr><th scope="col">Route</th><th scope="col">Sector fit</th><th scope="col">When to use</th><th scope="col">Evaluation constraints</th><th scope="col">Example award pattern</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>G-Cloud 14 (RM1557.14)</td><td>Central, NHS, Police, Defence-adjacent</td><td>Defined cloud services and catalogue listings</td><td>Must use published definitions, call-offs max 3+1 years</td><td>2025 Heritage Gateway API hosting, direct award</td></tr>
+                  <tr><td>Cloud Compute 2 (RM6292)</td><td>Central departments, large NHS</td><td>Larger IaaS/PaaS buys and outcome-based contracts</td><td>Mini-competition, outcome-focused criteria</td><td>Ongoing CCS call-offs for compute</td></tr>
+                  <tr><td>Competitive Flexible Procedure</td><td>All sectors</td><td>Complex transitions or data-centre exits</td><td>Buyer designs stages, requires transparency notices</td><td>HMRC hyperscaler procurement</td></tr>
+                  <tr><td>Open Procedure</td><td>All sectors</td><td>Straightforward, well-defined requirements</td><td>Single-stage, full tender on Find a Tender</td><td>Commodity cloud tooling procurements</td></tr>
+                  <tr><td>NHS national prospectuses / models</td><td>NHS England, Trusts, ICBs</td><td>Clinical or data-driven programmes</td><td>Must show DSPT compliance and IG artefacts</td><td>Federated Data Platform procurement model</td></tr>
+                  <tr><td>PDS frameworks and agreements</td><td>Police forces, national policing</td><td>Multi-force or national services</td><td>Oversight from national boards, PASF where relevant</td><td>PDS Xchange platform supporting biometrics</td></tr>
+                  <tr><td>Defence via CCS or primes</td><td>MoD and defence primes</td><td>OFFICIAL to SECRET workloads with defence overlays</td><td>Defence accreditation packs, Act compliance</td><td>Defence Digital Foundry procurements</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="section" id="evaluation-criteria">
+            <div class="section-head">
+              <h2>Evaluation criteria that decide outcomes</h2>
+              <button class="copy-link" data-copy-link="#evaluation-criteria" type="button">Copy link</button>
+            </div>
+            <p>UK public sector procurements are commonly assessed through a blend of quality, price, and social value. The balance varies by route and complexity, but the source paper highlights recurring patterns that ACEs should prepare for.</p>
+            <div class="field-grid">
+              <article class="field-card"><h3>Quality versus price splits</h3><p>Central government procurements must apply the Social Value Model, with at least 10 percent of the total score allocated to social value. A typical pattern is 60 percent quality, 30 percent price, and 10 percent social value.</p></article>
+              <article class="field-card"><h3>Technical merit and assurance</h3><p>Quality is often measured through technical merit, compliance with the Technology Code of Practice, and alignment to NCSC cloud security principles.</p></article>
+              <article class="field-card"><h3>Predictability of cost and delivery</h3><p>Evaluators look for evidence of tagging, budgeting, showback or chargeback, anomaly detection, and consumption monitoring. Confidence that budgets will not be destabilised matters more than isolated price-performance claims.</p></article>
+              <article class="field-card"><h3>Portability, resilience, and support</h3><p>Exit planning, switching support, disaster recovery design, RTO/RPO commitments, incident management, escalation, and ongoing reporting are all common scoring concerns.</p></article>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <caption>Evaluation criteria and evidence patterns</caption>
+                <thead>
+                  <tr><th scope="col">Criterion</th><th scope="col">How evidenced</th><th scope="col">Typical weighting examples</th><th scope="col">Notes for OCI architects</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Technical merit</td><td>Mapping to TCoP, NCSC principles, architecture diagrams</td><td>Often the majority of the quality score</td><td>Prepare NCSC principle mappings early</td></tr>
+                  <tr><td>Compliance and assurance</td><td>DSPT for NHS, PASF for Police, Defence accreditation packs</td><td>Usually pass/fail with scored risk</td><td>Align responses to sector-specific artefacts</td></tr>
+                  <tr><td>Social value</td><td>Delivery against national model themes</td><td>Minimum 10 percent in central government, NHS guidance to keep themes proportionate</td><td>Provide measurable, relevant commitments</td></tr>
+                  <tr><td>Price predictability</td><td>Cost control tooling, FinOps practices, KPI examples</td><td>Part of price or quality depending on route</td><td>Show evidence of tagging, budgeting, anomaly detection</td></tr>
+                  <tr><td>Portability and exit</td><td>Exit plans, migration tooling, data export commitments</td><td>Quality sub-criterion, sometimes explicit requirement</td><td>Document switching support without making TCO claims</td></tr>
+                  <tr><td>Resilience</td><td>Multi-region design, DR testing, RTO/RPO commitments</td><td>Quality sub-criterion</td><td>Evidence patterns and test artefacts are valuable</td></tr>
+                  <tr><td>Support model</td><td>SLAs, incident management, escalation pathways</td><td>Quality sub-criterion</td><td>Provide clarity on Oracle support tiers and escalation</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="section" id="assurance-checkpoints">
+            <div class="section-head">
+              <h2>Assurance and compliance checkpoints</h2>
+              <button class="copy-link" data-copy-link="#assurance-checkpoints" type="button">Copy link</button>
+            </div>
+            <p>Procurement decisions are not final when an award notice is issued. Major contracts must still pass assurance and compliance checks before services go live. The common sequence is data protection, security, and sector-specific assurance.</p>
+            <details open>
+              <summary>Checkpoint domains</summary>
+              <div class="details-body">
+                <p><strong>Data protection and privacy:</strong> most cloud procurements require a DPIA. Buyers expect suppliers to support this with data flow diagrams, storage locations, and retention practices.</p>
+                <p><strong>Security:</strong> the NCSC Cloud Security Principles remain the baseline assurance framework. Security teams assess data protection in transit, identity and access control, audit logging, incident response, and the shared responsibility model.</p>
+                <p><strong>NHS:</strong> DSPT compliance is mandatory, and clinical safety artefacts such as hazard logs and safety cases may be required when systems affect clinical decisions.</p>
+                <p><strong>Policing:</strong> PASF remains relevant where cloud services interconnect with facilities or require specific secure handling.</p>
+                <p><strong>Defence:</strong> cloud services at OFFICIAL or above must map to NCSC principles and pass Defence accreditation regimes.</p>
+                <p><strong>Portability and switching:</strong> authorities increasingly ask for termination, exit, switching, and data portability evidence up front.</p>
+              </div>
+            </details>
+            <div class="assurance-flow" aria-label="Assurance checkpoints overlay">
+              <div class="assurance-step"><strong>Business case</strong><ul><li>DPIA screening</li></ul></div>
+              <div class="assurance-step"><strong>Pre-procurement</strong><ul><li>Security mapping to NCSC principles</li></ul></div>
+              <div class="assurance-step"><strong>Procurement</strong><ul><li>DSPT</li><li>PASF</li><li>Defence accreditation</li></ul></div>
+              <div class="assurance-step"><strong>Award</strong><ul><li>Contract assurance conditions</li></ul></div>
+              <div class="assurance-step"><strong>Mobilisation</strong><ul><li>KPI definition and publication</li></ul></div>
+            </div>
+            <h3>Checklist for assurance readiness</h3>
+            <ul class="checklist">
+              <li>Prepare a DPIA support pack covering data flows, storage, retention, and processing locations.</li>
+              <li>Map services against the 14 NCSC Cloud Security Principles.</li>
+              <li>Document the shared responsibility model, logging, and incident response.</li>
+              <li>For NHS bids, supply DSPT evidence, information governance alignment, and clinical safety artefacts if required.</li>
+              <li>For police bids, confirm PASF requirements and provide accreditation evidence.</li>
+              <li>For defence bids, assemble a security case aligned to Defence Digital accreditation.</li>
+              <li>Include exit and portability commitments in the bid pack.</li>
+            </ul>
+          </section>
+
+          <section class="section" id="recent-patterns">
+            <div class="section-head">
+              <h2>Recent awards, patterns, and lessons</h2>
+              <button class="copy-link" data-copy-link="#recent-patterns" type="button">Copy link</button>
+            </div>
+            <p>Public buyers leave a trail. Award notices set out the route chosen, the criteria applied, and the justification given. Read collectively, they show how cloud is actually being bought during 2024 and 2025.</p>
+            <div class="split-panel">
+              <article class="panel defined">
+                <h3>Defined and familiar services</h3>
+                <p>G-Cloud 14 continues to dominate hosting and hosting-adjacent awards. Departments, NHS bodies, police forces, and even the MoD use it through direct awards or mini-competitions, commonly within the familiar 3+1 structure.</p>
+                <p>Where scope is narrow, evaluation can follow suit. Price-only decisions may look like commoditisation, but often reflect how tightly the service has been defined.</p>
+              </article>
+              <article class="panel complex">
+                <h3>Complex and strategic transitions</h3>
+                <p>Complex transitions are increasingly channelled through the Competitive Flexible Procedure. The source paper cites HMRC’s data-centre exit as a visible example, with staged governance running to 2028.</p>
+                <p>The critical distinction is governance: risk logs, migration controls, accreditation milestones, and performance measures that can be published in assessment summaries.</p>
+              </article>
+            </div>
+            <div class="callout"><strong>The rhythm to absorb:</strong> catalogue awards for the defined and familiar, flexible procedures for the complex and strategic, and desktop assessments as connective tissue between the two.</div>
+          </section>
+
+          <section class="section" id="implications">
+            <div class="section-head">
+              <h2>Implications for OCI architects</h2>
+              <button class="copy-link" data-copy-link="#implications" type="button">Copy link</button>
+            </div>
+            <p>Procurement mechanics decide whether an OCI proposal advances, stalls, or is ruled ineligible. Every design must be backed by an evidence pack aligned to decision gates, evaluation criteria, and assurance requirements.</p>
+            <div class="lesson-grid">
+              <article class="lesson-card"><span class="tag">Practice 01</span><h3>Build the evidence early</h3><p>Bids rarely succeed on technical diagrams alone. DPIAs, NCSC-aligned mappings, portability statements, and cost-predictability notes are faster to tailor when a baseline set already exists.</p></article>
+              <article class="lesson-card"><span class="tag">Practice 02</span><h3>Select the route with the customer</h3><p>A G-Cloud call-off constrains evaluation to service descriptions, while a staged procedure under the Procurement Act 2023 allows dialogue and iteration. NHS and policing add overlays such as DSPT or PASF.</p></article>
+              <article class="lesson-card"><span class="tag">Practice 03</span><h3>Anticipate the boards</h3><p>Spend controls, programme boards, and assurance committees test risk mitigation, reversibility, resilience, and governance. Architects who use this language help sponsors defend OCI under scrutiny.</p></article>
+              <article class="lesson-card"><span class="tag">Practice 04</span><h3>Keep the artefact alive</h3><p>Frameworks evolve, weighting shifts, and assurance expectations rise. Awareness must remain current, just as the designs themselves must remain current.</p></article>
+            </div>
+          </section>
+
+          <section class="section" id="field-use">
+            <div class="section-head">
+              <h2>Practical field use</h2>
+              <button class="copy-link" data-copy-link="#field-use" type="button">Copy link</button>
+            </div>
+            <p>This paper is best used when an engagement needs to become procurement-aware, not just technically persuasive. It should inform discovery questions, bid preparation, evidence packs, and customer workshops where assurance, value, and risk are being shaped.</p>
+            <div class="field-grid">
+              <article class="field-card"><h3>Discovery questions to ask</h3><ul><li>Which route to market is being considered?</li><li>Which boards or assurance bodies will review the design?</li><li>Which sector artefacts are mandatory?</li><li>Which criteria will be scored, and what evidence is expected?</li></ul></article>
+              <article class="field-card"><h3>Evidence to prepare</h3><ul><li>NCSC Cloud Security Principles mapping.</li><li>DPIA support pack.</li><li>Shared responsibility summary.</li><li>Cost predictability and FinOps notes.</li><li>Exit and portability statement.</li></ul></article>
+              <article class="field-card"><h3>Language to use</h3><ul><li>Risk mitigation.</li><li>Reversibility.</li><li>Resilience and tested DR.</li><li>Governance and accountability.</li><li>Board-defensible evidence.</li></ul></article>
+              <article class="field-card"><h3>Language to avoid</h3><ul><li>Price-first positioning without full lifecycle evidence.</li><li>Implied pre-approval from assurance bodies.</li><li>Generic public sector claims that ignore sector overlays.</li><li>Technical superiority claims without route-specific relevance.</li></ul></article>
+            </div>
+          </section>
+
+          <section class="section" id="conclusion">
+            <div class="section-head">
+              <h2>Conclusion</h2>
+              <button class="copy-link" data-copy-link="#conclusion" type="button">Copy link</button>
+            </div>
+            <p>Procurement is where strategy meets reality. It is the process through which public sector bodies turn ambition into contracts, and where OCI must demonstrate not only technical capability but also compliance, portability, and accountability.</p>
+            <p>The source paper traces how decisions are made, which routes to market are available, what criteria tip the balance, and where assurance is tested. Its value is not in memorising every notice, but in understanding the structure and parallels across sectors.</p>
+            <p>The knowledge should be treated as a living artefact. Frameworks evolve, weighting shifts, and assurance expectations rise. Keeping awareness current is as important as refining the designs themselves.</p>
+          </section>
+
+          <section class="section" id="related-papers">
+            <div class="section-head">
+              <h2>Related papers</h2>
+              <button class="copy-link" data-copy-link="#related-papers" type="button">Copy link</button>
+            </div>
+            <div class="related-grid">
+              <a class="related-card" href="../paper-10-aligning-oci-uk-public-sector-policy/">
+                <h3>Paper 10 - Aligning OCI to UK Public Sector Policy</h3>
+                <p>Procurement mechanics naturally connect to policy alignment, sector imperatives, and assurance-aware architecture.</p>
+              </a>
+              <a class="related-card" href="../paper-04-sovereignty-and-trust-in-cloud/">
+                <h3>Paper 04 - Sovereignty and Trust in Cloud</h3>
+                <p>Procurement decisions often test sovereignty, control, jurisdiction, operator access, and auditability.</p>
+              </a>
+              <a class="related-card" href="../paper-11-real-economics-of-oci/">
+                <h3>Paper 11 - The Real Economics of OCI</h3>
+                <p>Economic arguments need to be procurement-ready, auditable, predictable, and tied to full lifecycle cost.</p>
+              </a>
+              <a class="related-card" href="../paper-03-evolving-expectations-enterprise-cloud-market/">
+                <h3>Paper 03 - Evolving Expectations in the Enterprise Cloud Market</h3>
+                <p>Buyer expectations around AI, cost control, data control, resilience, and sustainability shape evaluation criteria.</p>
+              </a>
+            </div>
+          </section>
+
+          <section class="section" id="source-notes">
+            <div class="section-head">
+              <h2>Source and handling notes</h2>
+              <button class="copy-link" data-copy-link="#source-notes" type="button">Copy link</button>
+            </div>
+            <div class="source-note">
+              <p><strong>Source PDF:</strong> Paper 9 - The Mechanics of Public Sector Procurement v1.0.pdf.</p>
+              <p><strong>Conversion approach:</strong> source arguments have been preserved and reorganised into web-native sections, summary cards, accessible HTML tables, and rebuilt decision-flow and assurance-flow diagrams. The conversion does not add external claims or update the 2025 source position.</p>
+              <p><strong>Known caveat:</strong> procurement routes, policy instruments, framework availability, weightings, and assurance expectations can change. Treat this as an internal enablement artefact, not legal, commercial, or procurement advice.</p>
+            </div>
+          </section>
+        </div>
+      </article>
+    </main>
+
+    <aside class="side-rail" aria-label="Article tools and metadata">
+      <section class="toc" aria-labelledby="toc-title">
+        <h2 id="toc-title">On this page</h2>
+        <nav>
+          <a href="#orientation">Executive orientation</a>
+          <a href="#how-buyers-decide">How buyers decide</a>
+          <a href="#decision-gates">Decision gates</a>
+          <a href="#routes-to-market">Routes to market</a>
+          <a href="#evaluation-criteria">Evaluation criteria</a>
+          <a href="#assurance-checkpoints">Assurance checkpoints</a>
+          <a href="#recent-patterns">Recent patterns</a>
+          <a href="#implications">Implications</a>
+          <a href="#field-use">Field use</a>
+          <a href="#related-papers">Related papers</a>
+          <a href="#source-notes">Source notes</a>
+        </nav>
+      </section>
+
+      <section class="metadata-card" aria-labelledby="metadata-title">
+        <h2 id="metadata-title">Metadata</h2>
+        <div class="metadata-grid">
+          <div class="meta-row"><span class="meta-label">Paper number</span><span class="meta-value">09</span></div>
+          <div class="meta-row"><span class="meta-label">Title</span><span class="meta-value">The Mechanics of Public Sector Procurement</span></div>
+          <div class="meta-row"><span class="meta-label">Version</span><span class="meta-value">1.0</span></div>
+          <div class="meta-row"><span class="meta-label">Source copyright</span><span class="meta-value">Copyright © 2025, Oracle and/or its affiliates</span></div>
+          <div class="meta-row"><span class="meta-label">Classification</span><span class="meta-value">Confidential - Oracle Internal</span></div>
+          <div class="meta-row"><span class="meta-label">Conversion</span><span class="meta-value">v1.0, 2026-06-22, Draft</span></div>
+          <div class="meta-row"><span class="meta-label">Themes</span><span class="meta-value">Procurement, Assurance, UK Public Sector, Routes to Market, Evidence Packs</span></div>
+          <div class="meta-row"><span class="meta-label">Reading time</span><span class="meta-value">Approx. 14 minutes</span></div>
+        </div>
+      </section>
+
+      <section class="tools-card" id="reading-tools" aria-labelledby="tools-title">
+        <h2 id="tools-title">Reading tools</h2>
+        <div class="tool-grid">
+          <a class="button-link" href="../index.html">Back to index</a>
+          <button type="button" id="copy-page">Copy page link</button>
+          <button type="button" id="print-page">Print / save as PDF</button>
+          <button type="button" id="expand-all">Expand all</button>
+          <button type="button" id="collapse-all">Collapse all</button>
+        </div>
+      </section>
+    </aside>
+  </div>
+
+  <nav class="paper-nav" aria-label="Previous and next paper navigation">
+    <a href="../paper-08-ai-risks-and-cloud-realities/"><span>Previous paper</span><strong>Paper 08 - AI Risks and Cloud Realities</strong></a>
+    <a href="../paper-10-aligning-oci-uk-public-sector-policy/"><span>Next paper</span><strong>Paper 10 - Aligning OCI to UK Public Sector Policy</strong></a>
+  </nav>
+
+  <footer>
+    <div class="footer-inner">
+      <div><strong>FY26 UK-PS Whitepapers Series</strong><br>Internal Oracle enablement material converted into static HTML for field readability and reuse.</div>
+      <div><strong>Classification</strong><br>Confidential - Oracle Internal</div>
+      <div><strong>Source</strong><br>Paper 9 - The Mechanics of Public Sector Procurement v1.0.pdf<br>Conversion status: Draft</div>
+    </div>
+  </footer>
+
+  <script>
+    const PAPER_META = {
+      series: "FY26 UK-PS Whitepapers Series",
+      number: "09",
+      title: "The Mechanics of Public Sector Procurement",
+      subtitle: "How UK Buyers Choose, Evaluate, and Assure Cloud Infrastructure",
+      version: "1.0",
+      sourceFile: "Paper 9 - The Mechanics of Public Sector Procurement v1.0.pdf",
+      classification: "Confidential - Oracle Internal",
+      copyright: "Copyright © 2025, Oracle and/or its affiliates",
+      route: "/paper-09-public-sector-procurement-mechanics/",
+      themes: ["Procurement", "Assurance", "UK Public Sector", "Routes to Market", "Evidence Packs"],
+      conversionVersion: "1.0",
+      conversionStatus: "Draft",
+      conversionDate: "2026-06-22",
+      lastReviewed: "2026-06-22"
+    };
+
+    function absoluteUrlForHash(hash) {
+      const base = window.location.href.split('#')[0];
+      return base + hash;
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (error) {
+        const input = document.createElement('textarea');
+        input.value = text;
+        document.body.appendChild(input);
+        input.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(input);
+        return ok;
+      }
+    }
+
+    document.querySelectorAll('[data-copy-link]').forEach(button => {
+      button.addEventListener('click', async () => {
+        const hash = button.getAttribute('data-copy-link');
+        const original = button.textContent;
+        const ok = await copyText(absoluteUrlForHash(hash));
+        button.textContent = ok ? 'Copied' : 'Copy failed';
+        setTimeout(() => button.textContent = original, 1500);
+      });
+    });
+
+    document.getElementById('copy-page').addEventListener('click', async () => {
+      const button = document.getElementById('copy-page');
+      const original = button.textContent;
+      const ok = await copyText(window.location.href.split('#')[0]);
+      button.textContent = ok ? 'Copied' : 'Copy failed';
+      setTimeout(() => button.textContent = original, 1500);
+    });
+
+    document.getElementById('print-page').addEventListener('click', () => window.print());
+    document.getElementById('expand-all').addEventListener('click', () => document.querySelectorAll('details').forEach(d => d.open = true));
+    document.getElementById('collapse-all').addEventListener('click', () => document.querySelectorAll('details').forEach(d => d.open = false));
+  </script>
+</body>
+</html>

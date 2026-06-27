@@ -1,0 +1,1236 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper 03 - Evolving Expectations in the Enterprise Cloud Market | FY26 UK-PS Whitepapers Series</title>
+  <meta name="description" content="Internal Oracle field paper converted into a static HTML article for the FY26 UK-PS Whitepapers Series.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="classification" content="Confidential - Oracle Internal">
+  <meta name="series" content="FY26 UK-PS Whitepapers Series">
+  <meta name="paper-number" content="03">
+  <meta name="paper-version" content="1.0">
+  <meta name="conversion-version" content="1.0">
+  <style>
+    :root {
+      --series-bg: #f7f3ee;
+      --surface: #fffaf5;
+      --surface-alt: #f1ebe4;
+      --ink: #241c18;
+      --muted: #6f625a;
+      --line: #ded4ca;
+      --oracle-red-soft: #c74634;
+      --clay: #b45f36;
+      --sage: #789c96;
+      --teal-deep: #315f5b;
+      --sand: #d7b98c;
+      --charcoal: #3a3632;
+      --success-soft: #e5efe9;
+      --warning-soft: #f6ead8;
+      --risk-soft: #f3dfdc;
+      --info-soft: #e5eef0;
+      --focus: #7d3f98;
+      --shadow: 0 20px 55px rgba(36, 28, 24, .10);
+      --shadow-soft: 0 12px 28px rgba(36, 28, 24, .08);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max: 1180px;
+      --measure: 74ch;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(199, 70, 52, .09), transparent 28rem),
+        radial-gradient(circle at 88% 12%, rgba(120, 156, 150, .18), transparent 30rem),
+        linear-gradient(180deg, #fbf7f1 0%, var(--series-bg) 52%, #f2ebe3 100%);
+      font-family: "Oracle Sans", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: var(--teal-deep); text-decoration-thickness: .08em; text-underline-offset: .18em; }
+    a:hover { color: var(--oracle-red-soft); }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; border-radius: 8px; }
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      z-index: 999;
+      padding: .7rem 1rem;
+      border-radius: 999px;
+      background: var(--ink);
+      color: #fff;
+      text-decoration: none;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--oracle-red-soft), var(--sage));
+      z-index: 200;
+    }
+
+    .utility-bar {
+      border-bottom: 1px solid rgba(222, 212, 202, .72);
+      background: rgba(255, 250, 245, .82);
+      backdrop-filter: blur(18px);
+      position: sticky;
+      top: 0;
+      z-index: 80;
+    }
+    .utility-inner {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .78rem 0;
+      font-size: .86rem;
+      color: var(--muted);
+    }
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      min-width: 0;
+    }
+    .wordmark {
+      color: var(--oracle-red-soft);
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .series-name { font-weight: 700; color: var(--charcoal); white-space: nowrap; }
+    .classification-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .28rem .65rem;
+      border: 1px solid rgba(199, 70, 52, .28);
+      border-radius: 999px;
+      color: #8c3328;
+      background: rgba(199, 70, 52, .08);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .classification-dot {
+      width: .52rem;
+      height: .52rem;
+      border-radius: 999px;
+      background: var(--oracle-red-soft);
+      display: inline-block;
+    }
+
+    .series-header {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1.1rem 0 .5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .global-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      justify-content: flex-end;
+    }
+    .global-nav a, .tool-button {
+      border: 1px solid rgba(49, 95, 91, .18);
+      background: rgba(255, 250, 245, .72);
+      border-radius: 999px;
+      color: var(--charcoal);
+      font-size: .86rem;
+      font-weight: 650;
+      padding: .45rem .76rem;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .global-nav a:hover, .tool-button:hover {
+      background: var(--info-soft);
+      color: var(--teal-deep);
+      border-color: rgba(49, 95, 91, .34);
+    }
+    .breadcrumb {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: .9rem;
+      padding: .2rem 0 1rem;
+    }
+    .breadcrumb ol {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .breadcrumb li:not(:last-child)::after { content: "/"; margin-left: .4rem; color: #9e8f82; }
+
+    .hero-wrap {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1rem 0 2rem;
+    }
+    .article-hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(222, 212, 202, .92);
+      border-radius: 34px;
+      background:
+        linear-gradient(135deg, rgba(255, 250, 245, .98), rgba(241, 235, 228, .92)),
+        radial-gradient(circle at 85% 20%, rgba(120, 156, 150, .23), transparent 25rem);
+      box-shadow: var(--shadow);
+      padding: clamp(1.25rem, 3vw, 3.25rem);
+    }
+    .article-hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -6rem -8rem auto;
+      width: 24rem;
+      height: 24rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(199, 70, 52, .16), transparent 64%);
+      pointer-events: none;
+    }
+    .hero-kicker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .65rem;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      border-radius: 999px;
+      border: 1px solid rgba(49, 95, 91, .22);
+      background: rgba(229, 238, 240, .8);
+      color: var(--teal-deep);
+      font-size: .83rem;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      padding: .35rem .75rem;
+    }
+    h1, h2, h3, h4 { line-height: 1.13; margin: 0 0 .75rem; color: var(--ink); letter-spacing: -.02em; }
+    h1 {
+      font-size: clamp(2.55rem, 7vw, 5.35rem);
+      max-width: 12ch;
+      margin-bottom: 1rem;
+      letter-spacing: -.055em;
+    }
+    .hero-subtitle {
+      font-size: clamp(1.08rem, 2.1vw, 1.46rem);
+      line-height: 1.45;
+      color: var(--teal-deep);
+      max-width: 63ch;
+      font-weight: 650;
+      margin: 0 0 1.15rem;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-summary {
+      max-width: 72ch;
+      color: var(--muted);
+      font-size: 1.04rem;
+      margin: 0 0 1.45rem;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(280px, .82fr);
+      gap: 1.15rem;
+      align-items: stretch;
+      position: relative;
+      z-index: 1;
+    }
+    .key-takeaway {
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--teal-deep), #244542);
+      color: #fff;
+      padding: 1.15rem;
+      box-shadow: var(--shadow-soft);
+    }
+    .key-takeaway strong {
+      display: block;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: .45rem;
+      color: rgba(255, 255, 255, .78);
+    }
+    .key-takeaway p { margin: 0; font-size: 1.02rem; line-height: 1.55; }
+    .hero-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .72rem;
+    }
+    .hero-stat {
+      border: 1px solid rgba(49, 95, 91, .16);
+      background: rgba(255, 250, 245, .74);
+      border-radius: var(--radius-md);
+      padding: .85rem;
+      min-height: 100%;
+    }
+    .hero-stat b { display: block; color: var(--clay); font-size: 1.35rem; line-height: 1.05; }
+    .hero-stat span { display: block; color: var(--muted); font-size: .82rem; line-height: 1.28; margin-top: .28rem; }
+
+    .meta-panel {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto 2rem;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 1rem;
+    }
+    .meta-card, .tools-card, .toc-card, .content-card, .callout, .related-card {
+      border: 1px solid rgba(222, 212, 202, .86);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 250, 245, .82);
+      box-shadow: var(--shadow-soft);
+    }
+    .meta-card, .tools-card { padding: 1rem; }
+    .meta-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .7rem .95rem;
+      margin: 0;
+    }
+    .meta-list div { min-width: 0; }
+    .meta-list dt {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+      font-weight: 800;
+      margin-bottom: .12rem;
+    }
+    .meta-list dd {
+      margin: 0;
+      font-size: .92rem;
+      color: var(--charcoal);
+      overflow-wrap: anywhere;
+    }
+    .tools-card h2, .toc-card h2 { font-size: 1rem; margin-bottom: .65rem; }
+    .tool-row { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+    .layout {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+    aside.toc { position: sticky; top: 5.3rem; align-self: start; }
+    .toc-card { padding: 1rem; }
+    .toc-card nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: .28rem;
+    }
+    .toc-card a {
+      display: block;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: .88rem;
+      line-height: 1.3;
+      padding: .42rem .52rem;
+      border-radius: 10px;
+    }
+    .toc-card a:hover, .toc-card a[aria-current="true"] {
+      background: var(--info-soft);
+      color: var(--teal-deep);
+    }
+
+    article { min-width: 0; }
+    section.content-section {
+      margin-bottom: 1.1rem;
+      scroll-margin-top: 6.25rem;
+    }
+    .content-card { padding: clamp(1.15rem, 2.4vw, 2rem); }
+    .content-card h2 { font-size: clamp(1.75rem, 3.4vw, 2.55rem); margin-bottom: .8rem; }
+    .content-card h3 { font-size: clamp(1.28rem, 2.4vw, 1.6rem); margin-top: 1.3rem; }
+    .content-card h4 { font-size: 1.03rem; margin-top: 1rem; color: var(--teal-deep); }
+    .content-card p { max-width: var(--measure); margin: 0 0 1rem; }
+    .content-card ul, .content-card ol { max-width: var(--measure); margin: .2rem 0 1rem 1.25rem; padding: 0; }
+    .content-card li { margin: .38rem 0; }
+    .lede { font-size: 1.08rem; color: var(--charcoal); }
+    .muted { color: var(--muted); }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .28rem .62rem;
+      border-radius: 999px;
+      background: rgba(180, 95, 54, .1);
+      color: #8a4225;
+      font-size: .76rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 850;
+      margin-bottom: .8rem;
+    }
+    .anchor-tools {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: .35rem;
+    }
+    .copy-link {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-family: inherit;
+      font-size: .78rem;
+      font-weight: 750;
+      cursor: pointer;
+      padding: .35rem .45rem;
+      border-radius: 8px;
+    }
+    .copy-link:hover { background: var(--surface-alt); color: var(--teal-deep); }
+
+    .orientation-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .8rem;
+      margin-top: 1rem;
+    }
+    .orientation-card, .priority-card, .reg-card, .pattern-card, .metric-card, .evidence-panel, .caveat-panel {
+      border: 1px solid rgba(222, 212, 202, .78);
+      background: rgba(255, 250, 245, .7);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+    }
+    .orientation-card h3, .priority-card h3, .reg-card h3, .pattern-card h3, .metric-card h3 {
+      font-size: 1rem;
+      margin: 0 0 .45rem;
+      color: var(--teal-deep);
+    }
+    .orientation-card p, .priority-card p, .reg-card p, .pattern-card p, .metric-card p { margin: 0; font-size: .94rem; line-height: 1.5; color: var(--muted); }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .9rem;
+      margin-top: 1rem;
+    }
+    .era-card {
+      border-radius: var(--radius-lg);
+      padding: 1.1rem;
+      border: 1px solid rgba(222, 212, 202, .82);
+      background: linear-gradient(180deg, rgba(255, 250, 245, .92), rgba(241, 235, 228, .72));
+      position: relative;
+      overflow: hidden;
+    }
+    .era-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      background: var(--sage);
+    }
+    .era-card.new::before { background: var(--oracle-red-soft); }
+    .era-card .date { font-size: .8rem; font-weight: 850; letter-spacing: .08em; color: var(--clay); text-transform: uppercase; }
+    .era-card h3 { margin-top: .25rem; }
+    .shift-arrow {
+      margin: .85rem auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: .9rem;
+    }
+    .shift-arrow span { height: 1px; flex: 1; background: var(--line); }
+
+    .priority-dashboard {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: .78rem;
+      margin: 1rem 0 1.25rem;
+    }
+    .priority-card {
+      background: linear-gradient(180deg, rgba(255, 250, 245, .94), rgba(229, 238, 240, .42));
+      min-height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .priority-card::after {
+      content: attr(data-num);
+      position: absolute;
+      right: .75rem;
+      top: .45rem;
+      font-size: 2.7rem;
+      color: rgba(49, 95, 91, .09);
+      line-height: 1;
+      font-weight: 900;
+    }
+    .priority-card b {
+      display: block;
+      color: var(--clay);
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      margin-bottom: .32rem;
+    }
+    .priority-card ul { margin: .65rem 0 0 1rem; font-size: .88rem; color: var(--muted); }
+    .priority-card li { margin: .24rem 0; }
+
+    .signal-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+      margin: 1rem 0;
+    }
+    .signal {
+      padding: .95rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(49, 95, 91, .18);
+      background: rgba(229, 238, 240, .56);
+    }
+    .signal b { display: block; color: var(--teal-deep); font-size: .95rem; margin-bottom: .25rem; }
+    .signal span { display: block; color: var(--muted); font-size: .9rem; line-height: 1.42; }
+
+    .reg-grid, .pattern-grid, .metric-grid, .related-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .85rem;
+      margin-top: 1rem;
+    }
+    .reg-card { background: rgba(229, 239, 233, .62); }
+    .pattern-card { background: rgba(246, 234, 216, .54); }
+    .metric-card { background: rgba(229, 238, 240, .55); }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1rem 0 1.25rem;
+      border: 1px solid rgba(222, 212, 202, .85);
+      border-radius: var(--radius-md);
+      background: rgba(255, 250, 245, .8);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      font-size: .9rem;
+      line-height: 1.42;
+    }
+    caption {
+      caption-side: top;
+      text-align: left;
+      padding: .9rem 1rem .55rem;
+      color: var(--clay);
+      font-weight: 850;
+      letter-spacing: .02em;
+    }
+    th, td {
+      border-top: 1px solid rgba(222, 212, 202, .88);
+      vertical-align: top;
+      text-align: left;
+      padding: .78rem .88rem;
+    }
+    thead th {
+      background: rgba(49, 95, 91, .10);
+      color: var(--teal-deep);
+      font-weight: 850;
+      border-top: 0;
+    }
+    tbody tr:nth-child(even) td, tbody tr:nth-child(even) th { background: rgba(229, 238, 240, .38); }
+    tbody th { color: var(--charcoal); font-weight: 850; width: 20%; }
+    td ul { margin: 0 0 0 1rem !important; max-width: none !important; }
+
+    .callout {
+      padding: 1rem 1.1rem;
+      margin: 1rem 0;
+      background: rgba(229, 239, 233, .65);
+      border-color: rgba(120, 156, 150, .35);
+    }
+    .callout h3 { margin: 0 0 .35rem; color: var(--teal-deep); font-size: 1.05rem; }
+    .callout p { margin: 0; color: var(--charcoal); }
+    .callout.warning { background: var(--warning-soft); border-color: rgba(180, 95, 54, .28); }
+    .callout.caveat { background: var(--risk-soft); border-color: rgba(199, 70, 52, .28); }
+    .evidence-panel { margin-top: 1rem; background: rgba(241, 235, 228, .62); }
+    .evidence-panel strong, .caveat-panel strong {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: .22rem .55rem;
+      background: rgba(49, 95, 91, .12);
+      color: var(--teal-deep);
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: .5rem;
+    }
+    .evidence-panel p, .caveat-panel p { margin: 0; }
+
+    details.playbook-item {
+      border: 1px solid rgba(222, 212, 202, .86);
+      border-radius: var(--radius-md);
+      background: rgba(255, 250, 245, .7);
+      padding: 0;
+      overflow: hidden;
+      margin: .65rem 0;
+    }
+    details.playbook-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: .95rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-weight: 850;
+      color: var(--teal-deep);
+    }
+    details.playbook-item summary::-webkit-details-marker { display: none; }
+    details.playbook-item summary::before {
+      content: "+";
+      width: 1.55rem;
+      height: 1.55rem;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--info-soft);
+      color: var(--teal-deep);
+      flex: 0 0 auto;
+    }
+    details.playbook-item[open] summary::before { content: "−"; }
+    .playbook-body { padding: 0 1rem 1rem 3.3rem; }
+    .playbook-body ul { margin-bottom: 0; }
+
+    .next-prev {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 1.5rem auto 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .related-card {
+      padding: 1rem;
+      text-decoration: none;
+      color: var(--ink);
+      display: block;
+    }
+    .related-card span {
+      display: block;
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      margin-bottom: .25rem;
+    }
+    .related-card b { display: block; color: var(--teal-deep); line-height: 1.25; margin-bottom: .35rem; }
+    .related-card p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.45; }
+
+    footer {
+      margin-top: 2rem;
+      border-top: 1px solid rgba(222, 212, 202, .86);
+      background: rgba(255, 250, 245, .76);
+    }
+    .footer-inner {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1.5rem 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+    .footer-inner p { margin: 0 0 .35rem; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 1.2rem;
+      transform: translateX(-50%) translateY(120%);
+      border-radius: 999px;
+      background: var(--ink);
+      color: #fff;
+      padding: .65rem 1rem;
+      font-size: .9rem;
+      z-index: 300;
+      opacity: 0;
+      transition: transform .2s ease, opacity .2s ease;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+    @media (max-width: 1040px) {
+      .layout { grid-template-columns: 1fr; }
+      aside.toc { position: static; order: -1; }
+      .toc-card nav ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .priority-dashboard { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .orientation-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-grid, .meta-panel { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 740px) {
+      body { font-size: 16px; }
+      .utility-inner, .series-header { align-items: flex-start; flex-direction: column; }
+      .series-name { white-space: normal; }
+      .hero-stat-grid, .signal-strip, .timeline, .reg-grid, .pattern-grid, .metric-grid, .related-grid, .next-prev { grid-template-columns: 1fr; }
+      .priority-dashboard { grid-template-columns: 1fr; }
+      .orientation-grid { grid-template-columns: 1fr; }
+      .meta-list { grid-template-columns: 1fr; }
+      .toc-card nav ul { grid-template-columns: 1fr; }
+      .playbook-body { padding-left: 1rem; }
+      h1 { max-width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+    @media print {
+      body { background: white; color: black; font-size: 12pt; }
+      .utility-bar, .series-header, .breadcrumb, .tools-card, .toc, .reading-progress, .copy-link, .toast { display: none !important; }
+      .hero-wrap, .meta-panel, .layout, .next-prev, .footer-inner { width: 100%; max-width: none; margin: 0; }
+      .article-hero, .meta-card, .content-card, .related-card, .callout { box-shadow: none; border-color: #999; background: white; }
+      .layout { display: block; }
+      a { color: black; text-decoration: none; }
+      table { min-width: 0; font-size: 9pt; }
+      section.content-section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+
+  <header class="utility-bar" role="banner">
+    <div class="utility-inner">
+      <div class="brand-lockup" aria-label="Oracle internal series">
+        <span class="wordmark">Oracle</span>
+        <span class="series-name">FY26 UK-PS Whitepapers Series</span>
+      </div>
+      <span class="classification-pill"><span class="classification-dot" aria-hidden="true"></span>Confidential - Oracle Internal</span>
+    </div>
+  </header>
+
+  <div class="series-header" aria-label="Series navigation">
+    <div>
+      <strong>Paper 03</strong>
+      <span class="muted">Market and Cloud Context</span>
+    </div>
+    <nav class="global-nav" aria-label="Global navigation">
+      <a href="/index.html">Index</a>
+      <a href="/index.html#papers">All papers</a>
+      <a href="/index.html#reading-paths">Reading paths</a>
+      <a href="/index.html#themes">Themes</a>
+      <a href="#source-notes">Source notes</a>
+    </nav>
+  </div>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/index.html">Series</a></li>
+      <li>Paper 03</li>
+      <li aria-current="page">Evolving Expectations in the Enterprise Cloud Market</li>
+    </ol>
+  </nav>
+
+  <div class="hero-wrap">
+    <section class="article-hero" aria-labelledby="paper-title">
+      <div class="hero-kicker">
+        <span class="eyebrow">Paper 03</span>
+        <span class="eyebrow">Buyer expectations</span>
+        <span class="eyebrow">Version 1.0</span>
+      </div>
+      <h1 id="paper-title">Evolving Expectations in the Enterprise Cloud Market</h1>
+      <p class="hero-subtitle">How AI, cost pressure, and data control are changing the cloud buyer’s mindset in UK Public Sector.</p>
+      <p class="hero-summary">This web conversion turns the source paper into an evolving priorities dashboard. It traces how public sector cloud evaluation has moved from migration and cost avoidance towards AI capacity, financial predictability, sovereignty, resilience, sustainability, and evidence-led outcome measurement.</p>
+      <div class="hero-grid">
+        <div class="key-takeaway">
+          <strong>Key takeaway</strong>
+          <p>Cloud conversations now need to start with measurable outcomes, governance confidence and workload fit. OCI should be positioned as an adaptable component within multi-cloud, regulation-conscious architectures, not as an all-or-nothing platform choice.</p>
+        </div>
+        <div class="hero-stat-grid" aria-label="Source-derived headline signals">
+          <div class="hero-stat"><b>5</b><span>Intertwined buyer priorities now shape cloud evaluation.</span></div>
+          <div class="hero-stat"><b>70%</b><span>Source paper cites organisations reporting hybrid use of at least two public clouds.</span></div>
+          <div class="hero-stat"><b>7</b><span>Field prompts form the OCI architects’ conversation playbook.</span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="meta-panel" aria-labelledby="metadata-title">
+    <div class="meta-card">
+      <h2 id="metadata-title">Article metadata</h2>
+      <dl class="meta-list">
+        <div><dt>Paper number</dt><dd>03</dd></div>
+        <div><dt>Version</dt><dd>1.0</dd></div>
+        <div><dt>Source PDF</dt><dd>Paper 3 - Evolving Expectations in the Enterprise Cloud Market v1.0.pdf</dd></div>
+        <div><dt>Source copyright</dt><dd>Copyright © 2025, Oracle and/or its affiliates</dd></div>
+        <div><dt>Classification</dt><dd>Confidential - Oracle Internal</dd></div>
+        <div><dt>Route</dt><dd>/paper-03-evolving-expectations-enterprise-cloud-market/</dd></div>
+        <div><dt>Conversion version</dt><dd>1.0</dd></div>
+        <div><dt>Conversion date</dt><dd>2026-06-22</dd></div>
+        <div><dt>Status</dt><dd>Draft conversion</dd></div>
+        <div><dt>Themes</dt><dd>Buyer expectations, AI scale, FinOps, sovereignty, resilience, sustainability</dd></div>
+      </dl>
+    </div>
+    <div class="tools-card" aria-labelledby="tools-title">
+      <h2 id="tools-title">Reading tools</h2>
+      <div class="tool-row">
+        <a class="tool-button" href="/index.html">Back to index</a>
+        <button class="tool-button" type="button" id="printPage">Print / save as PDF</button>
+        <button class="tool-button" type="button" id="expandAll">Expand all</button>
+        <button class="tool-button" type="button" id="collapseAll">Collapse all</button>
+      </div>
+    </div>
+  </section>
+
+  <main id="main" class="layout">
+    <aside class="toc" aria-label="Article table of contents">
+      <div class="toc-card">
+        <h2>On this page</h2>
+        <nav>
+          <ul>
+            <li><a href="#orientation">Executive orientation</a></li>
+            <li><a href="#cloud-shift">From Cloud 1.0 to today</a></li>
+            <li><a href="#priorities">Five evolving priorities</a></li>
+            <li><a href="#regulation">Regulation and sovereign cloud</a></li>
+            <li><a href="#multi-cloud">Multi-cloud and strategic hedging</a></li>
+            <li><a href="#metrics">Outcome-based success metrics</a></li>
+            <li><a href="#market-response">How hyperscalers are responding</a></li>
+            <li><a href="#oci-benchmark">Oracle OCI benchmark table</a></li>
+            <li><a href="#oracle-signals">Oracle differentiation signals</a></li>
+            <li><a href="#playbook">OCI architects’ playbook</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+            <li><a href="#source-notes">Source notes</a></li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+
+    <article aria-labelledby="paper-title">
+      <section id="orientation" class="content-section content-card">
+        <div class="anchor-tools"><span class="section-label">Executive orientation</span><button class="copy-link" type="button" data-copy="#orientation">Copy section link</button></div>
+        <h2>Why this paper matters</h2>
+        <p class="lede">The paper explains why cloud evaluation has become more complex for UK public sector organisations. Earlier buying cases focused on agility, capex reduction and basic standardisation. Current conversations are shaped by GPU capacity, model governance, FinOps discipline, data sovereignty, operational resilience, sustainability and measurable public value.</p>
+        <div class="orientation-grid">
+          <div class="orientation-card">
+            <h3>Who should read it</h3>
+            <p>OCI architects and field teams preparing for cloud, AI, sovereignty, FinOps or multi-cloud conversations with UK public sector customers.</p>
+          </div>
+          <div class="orientation-card">
+            <h3>What it helps with</h3>
+            <p>Reframing cloud value through outcomes: cost-per-inference, carbon ceilings, RTO/RPO, citizen service performance and auditable governance.</p>
+          </div>
+          <div class="orientation-card">
+            <h3>Best used for</h3>
+            <p>Early account planning, discovery preparation, customer workshops, procurement-aware technical positioning and internal enablement.</p>
+          </div>
+          <div class="orientation-card">
+            <h3>What not to overclaim</h3>
+            <p>Several claims are time-sensitive. Treat GPU roadmaps, market share, provider commitments, commercial arrangements and policy dates as source-paper evidence to review before external reuse.</p>
+          </div>
+        </div>
+        <div class="callout caveat">
+          <h3>Caveat is credibility</h3>
+          <p>The source paper includes direct comparisons with other hyperscalers and forward-looking infrastructure claims. This web version keeps the structure useful while framing those points as internal, source-derived signals rather than public campaign language.</p>
+        </div>
+      </section>
+
+      <section id="cloud-shift" class="content-section content-card">
+        <div class="anchor-tools"><span class="section-label">Context shift</span><button class="copy-link" type="button" data-copy="#cloud-shift">Copy section link</button></div>
+        <h2>From Cloud 1.0 to today</h2>
+        <p>The first mainstream enterprise cloud wave, described by the source as roughly 2015 to 2020, was judged through relatively simple IT scorecards. Organisations wanted faster delivery, lower upfront spend and simplified infrastructure standardisation.</p>
+        <div class="timeline" aria-label="Cloud buying expectation shift">
+          <div class="era-card">
+            <span class="date">Cloud 1.0</span>
+            <h3>Migration, agility and capex avoidance</h3>
+            <p>Success was often measured by migrated workloads, closed data centres, reduced procurement cycles and headline run-rate savings.</p>
+          </div>
+          <div class="era-card new">
+            <span class="date">Current buyer mindset</span>
+            <h3>Capability, control and scrutiny</h3>
+            <p>Steering boards now ask how cloud unlocks AI, manages cost variance, controls data, proves resilience and supports carbon and ESG commitments.</p>
+          </div>
+        </div>
+        <div class="shift-arrow"><span></span>the centre of gravity has shifted<span></span></div>
+        <p>For OCI architects, this change matters because the technical conversation no longer begins with virtual machine migration alone. It now reaches model governance, carbon reporting, multi-region design, portability, service resilience and the evidence required to withstand internal assurance.</p>
+      </section>
+
+      <section id="priorities" class="content-section content-card">
+        <div class="anchor-tools"><span class="section-label">Dashboard</span><button class="copy-link" type="button" data-copy="#priorities">Copy section link</button></div>
+        <h2>Five evolving priorities</h2>
+        <p class="lede">The source paper identifies five priorities that today's buyers bring into cloud proposals. They are interconnected rather than sequential, and the strongest architecture conversations should treat them as a combined decision frame.</p>
+        <div class="priority-dashboard" aria-label="Five evolving priorities dashboard">
+          <div class="priority-card" data-num="01">
+            <b>Priority 1</b>
+            <h3>AI capability</h3>
+            <p>Buyers ask whether capacity exists, whether the full toolchain is ready, and how models and data are secured.</p>
+            <ul><li>GPU availability</li><li>Managed AI services</li><li>Governance and audit trails</li></ul>
+          </div>
+          <div class="priority-card" data-num="02">
+            <b>Priority 2</b>
+            <h3>Cost predictability and FinOps</h3>
+            <p>Bill shock has become a board concern. CFOs want forecasting discipline, controls and variance management.</p>
+            <ul><li>Forecast variance</li><li>Reserved instance planning</li><li>Anomaly detection</li></ul>
+          </div>
+          <div class="priority-card" data-num="03">
+            <b>Priority 3</b>
+            <h3>Data control and sovereignty</h3>
+            <p>Customers want encryption control, in-jurisdiction operations, residency guarantees and open exit paths.</p>
+            <ul><li>BYOK and HYOK</li><li>Local authority</li><li>Portability evidence</li></ul>
+          </div>
+          <div class="priority-card" data-num="04">
+            <b>Priority 4</b>
+            <h3>Resilience and continuity</h3>
+            <p>Critical services require tested fail-over, multi-region patterns and resilience obligations that can be evidenced.</p>
+            <ul><li>RTO and RPO</li><li>Geo-redundancy</li><li>Game-day testing</li></ul>
+          </div>
+          <div class="priority-card" data-num="05">
+            <b>Priority 5</b>
+            <h3>Sustainability and ESG</h3>
+            <p>Environmental impact is increasingly evaluated alongside price-performance and operational assurance.</p>
+            <ul><li>Carbon dashboards</li><li>Renewable energy evidence</li><li>Workload-level reporting</li></ul>
+          </div>
+        </div>
+        <div class="signal-strip">
+          <div class="signal"><b>Design implication</b><span>Architecture must expose evidence, not merely consume services.</span></div>
+          <div class="signal"><b>Stakeholder implication</b><span>CFO, CISO, ESG lead and programme owner now all shape the cloud decision.</span></div>
+          <div class="signal"><b>Field implication</b><span>Discovery should surface constraints before product positioning.</span></div>
+        </div>
+      </section>
+
+      <section id="regulation" class="content-section content-card">
+        <div class="anchor-tools"><span class="section-label">Assurance context</span><button class="copy-link" type="button" data-copy="#regulation">Copy section link</button></div>
+        <h2>Regulation and sovereign cloud</h2>
+        <p>UK public sector architects operate inside a policy and regulatory landscape that shapes every serious cloud decision. The paper names four instruments that buyers will translate into procurement, security and assurance questions.</p>
+        <div class="reg-grid">
+          <div class="reg-card">
+            <h3>UK GDPR and Data Protection Act 2018</h3>
+            <p>Services that store personal data must show where data resides, who can access it, and how it can be exported or deleted on demand.</p>
+          </div>
+          <div class="reg-card">
+            <h3>EU Data Act 2024 / 2025</h3>
+            <p>Although not directly UK law, it influences UK authorities handling European data through expectations on switching barriers, exit fees and portability.</p>
+          </div>
+          <div class="reg-card">
+            <h3>Cabinet Office and DSIT guidance</h3>
+            <p>Multi-region cloud guidance supports controlled use of overseas regions where resilience, capacity or innovation benefits are legally and securely justified.</p>
+          </div>
+          <div class="reg-card">
+            <h3>NCSC cloud security framework</h3>
+            <p>NCSC cloud principles shape baseline controls for classification, encryption, logging and personnel vetting across OFFICIAL and SECRET patterns.</p>
+          </div>
+        </div>
+        <div class="callout">
+          <h3>Procurement preference created by these rules</h3>
+          <p>Cloud providers must be able to offer guaranteed data residency, transparent portability and locally administered control planes. The paper positions UK Government Cloud and Dedicated Region as ways to address that need through UK law, operational control and open exit paths.</p>
+        </div>
+      </section>
+
+      <section id="multi-cloud" class="content-section content-card">
+        <div class="anchor-tools"><span class="section-label">Strategic hedging</span><button class="copy-link" type="button" data-copy="#multi-cloud">Copy section link</button></div>
+        <h2>Multi-cloud and strategic hedging</h2>
+        <p>Multi-cloud is framed less as an ideological split of workloads and more as strategic hedging: placing each component where compliance, performance and economics are strongest, while keeping exit paths deliberately open.</p>
+        <div class="signal-strip">
+          <div class="signal"><b>Risk distribution</b><span>Critical services can fail over to a second cloud or remain portable during commercial or geopolitical disruption.</span></div>
+          <div class="signal"><b>Best-of-breed access</b><span>AI teams may choose a specific GPU generation or managed foundation-model service where it best fits the workload.</span></div>
+          <div class="signal"><b>Data gravity</b><span>Large datasets anchor applications, making compute placement a cost and latency decision.</span></div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <caption>Interoperability in practice</caption>
+            <thead><tr><th>Capability</th><th>What it is</th><th>Why it matters</th></tr></thead>
+            <tbody>
+              <tr><th>OCI-Azure Interconnect</th><td>Private, dual-provider network link with zero ingress or egress fees on either side.</td><td>Allows low-latency access to Oracle databases from Azure VMs without unpredictable network charges.</td></tr>
+              <tr><th>Oracle Database@Azure</th><td>Fully managed Oracle Autonomous Database and Exadata services co-located inside Azure data centres, with no latency or egress costs between services and native Azure workloads.</td><td>Lets UK public sector teams keep existing Azure tooling while exploiting Oracle’s flagship database and AI features.</td></tr>
+              <tr><th>OCI standard egress pricing</th><td>Flat, market-leading rates and no charge for intra-region or availability-domain traffic, unlike most providers.</td><td>Simplifies TCO modelling and discourages bill shock when traffic grows.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Design patterns from the source paper</h3>
+        <div class="pattern-grid">
+          <div class="pattern-card"><h3>Train in OCI, infer in Azure</h3><p>Run large-scale model training on OCI’s high-density clusters and serve low-latency inference from a nearby Azure region.</p></div>
+          <div class="pattern-card"><h3>Sovereign store, elastic burst</h3><p>Keep regulated datasets in UK Government Cloud and burst peak-period analytics to a commercial OCI region where policy allows.</p></div>
+          <div class="pattern-card"><h3>Database@Azure, micro-services on OCI</h3><p>Migrate the legacy Oracle database into Database@Azure, then deploy new micro-services on OCI to exploit the zero-egress interconnect.</p></div>
+          <div class="pattern-card"><h3>Open exit path by design</h3><p>Keep deployment patterns portable with open formats, Terraform-based infrastructure and explicit migration support.</p></div>
+        </div>
+      </section>
+
+      <section id="metrics" class="content-section content-card">
+        <div class="anchor-tools"><span class="section-label">Outcome measurement</span><button class="copy-link" type="button" data-copy="#metrics">Copy section link</button></div>
+        <h2>Outcome-based success metrics</h2>
+        <p>Early cloud scorecards measured estate migration and avoided capex. The source argues those are now insufficient. Current governance boards track business, financial, environmental and operational outcomes that map directly to organisational performance.</p>
+        <div class="table-wrap">
+          <table>
+            <caption>Cloud success metrics now expected by governance boards</caption>
+            <thead><tr><th>Metric</th><th>Typical KPI</th><th>Why it matters</th><th>Current benchmark from source paper</th></tr></thead>
+            <tbody>
+              <tr><th>Financial, FinOps</th><td><ul><li>Forecast variance no more than 5%</li><li>Cost-per-inference for AI models</li><li>Commit-utilisation ratio</li></ul></td><td>Boards demand predictable run-rates and business-unit charge-backs rather than headline savings.</td><td>IDC Cloud Pulse is cited for overspend levels, and the FinOps Foundation is cited for maturity gaps in optimisation.</td></tr>
+              <tr><th>Carbon and ESG</th><td><ul><li>Kg CO₂e per workload-hour</li><li>Percentage of workloads on more than 90% renewable power</li><li>Supplier CDP or SBTi scores</li></ul></td><td>Cloud emissions now appear on CFO dashboards because government and listed organisations face Scope 3 disclosure pressure.</td><td>The source notes OCI reached 86% renewable electricity in 2023 and targeted 100% by 2025, while peers publish their own carbon tools and energy targets.</td></tr>
+              <tr><th>Operational resilience</th><td><ul><li>RTO less than 30 minutes</li><li>Dual-region or multi-cloud fail-over tested quarterly</li></ul></td><td>Outages, cyber incidents and supply-chain risk place uptime directly into board risk registers.</td><td>Cabinet Office guidance is cited as encouraging controlled multi-region deployment to improve continuity.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="metric-grid">
+          <div class="metric-card"><h3>CFO lens</h3><p>Cloud spend scrutiny and FinOps reporting increasingly sit with Finance, not only technology teams.</p></div>
+          <div class="metric-card"><h3>CISO lens</h3><p>Security and resilience thresholds can materially influence or block data sovereignty decisions.</p></div>
+          <div class="metric-card"><h3>ESG lens</h3><p>Carbon ceilings and supply-chain criteria are increasingly part of cloud evaluation and ongoing governance.</p></div>
+          <div class="metric-card"><h3>Architect lens</h3><p>Design needs to expose cost, carbon and uptime evidence through OCI telemetry and decision records.</p></div>
+        </div>
+      </section>
+
+      <section id="market-response" class="content-section content-card">
+        <div class="anchor-tools"><span class="section-label">Competitive context</span><button class="copy-link" type="button" data-copy="#market-response">Copy section link</button></div>
+        <h2>How other hyperscalers are responding</h2>
+        <p>The paper provides a snapshot of how major cloud providers have responded to the same buying priorities. This is useful internal context for anticipating competitor claims, not a substitute for current external validation before use in a customer-facing setting.</p>
+        <div class="table-wrap">
+          <table>
+            <caption>Source-paper snapshot of hyperscaler responses</caption>
+            <thead><tr><th>Theme</th><th>AWS</th><th>Microsoft Azure</th><th>Google Cloud</th></tr></thead>
+            <tbody>
+              <tr><th>AI infrastructure and services</th><td>Trainium 2 based Trn2 clusters, with Amazon Bedrock AgentCore for enterprise AI agents.</td><td>Blackwell Ultra GPU VMs expected late 2025, with Azure noted as first to preview GB200 at production scale.</td><td>Ironwood seventh-generation TPU for inference and Trillium sixth-generation TPU for training.</td></tr>
+              <tr><th>Cost management and FinOps</th><td>Trusted Advisor and Cost Optimisation Hub checks.</td><td>Monthly Cost Management releases, Copilot for Azure cost insights and native FOCUS exports to Microsoft Fabric.</td><td>FinOps Hub and BigQuery FOCUS export for cost allocation and AI-driven forecasting.</td></tr>
+              <tr><th>Sovereign and data-control options</th><td>Independent AWS European Sovereign Cloud with separate control plane and EU-resident staff, source paper says launch by end 2025.</td><td>New EU sovereign cloud services announced in 2025, with UK G-Cloud certifications still relevant.</td><td>Expanded EU Sovereign Cloud with local operators and data-boundary controls.</td></tr>
+              <tr><th>Resilience and multi-cloud interoperability</th><td>Cross-region patterns, Outposts and Local Zones for edge continuity.</td><td>Azure Arc governance across infrastructure and Microsoft-Oracle roadmap activity.</td><td>Anthos and Multi-Cluster Ingress for hybrid control planes.</td></tr>
+              <tr><th>Sustainability pledges</th><td>Matched 100% of global electricity with renewables in 2023.</td><td>Carbon-negative by 2030 goal, with emissions pressure noted from AI demand.</td><td>24/7 carbon-free energy in every region by 2030, with stronger CFE levels in some European regions.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout warning">
+          <h3>Field handling note</h3>
+          <p>The safest use of this table is to anticipate customer language. Avoid treating it as a live market-comparison authority without checking current provider announcements, service availability and Oracle-approved collateral.</p>
+        </div>
+      </section>
+
+      <section id="oci-benchmark" class="content-section content-card">
+        <div class="anchor-tools"><span class="section-label">Source evidence table</span><button class="copy-link" type="button" data-copy="#oci-benchmark">Copy section link</button></div>
+        <h2>Oracle OCI benchmark table</h2>
+        <p>The source paper consolidates Oracle’s position against the evolving buyer priorities. This conversion presents those claims as internal evidence prompts to validate and reuse carefully.</p>
+        <div class="table-wrap">
+          <table>
+            <caption>Oracle OCI benchmark table, converted from source paper</caption>
+            <thead><tr><th>Theme</th><th>Key facts and capabilities from source paper</th></tr></thead>
+            <tbody>
+              <tr><th>AI infrastructure and services</th><td><ul><li>Supercluster scale supports up to 131,072 NVIDIA Blackwell GPUs.</li><li>64,000-GPU liquid-cooled GB200 cluster under construction, with first capacity described as FY26 Q1.</li><li>OCI Generative AI integrates with Autonomous DB vector search and OCI Data Science.</li><li>RDMA v3 network fabric and MLPerf GPT-3 benchmark claim are cited by the source paper.</li></ul></td></tr>
+              <tr><th>Cost management and FinOps</th><td><ul><li>FinOps Hub, Cloud Advisor and six-hourly FOCUS cost reports.</li><li>What-if RI planner and automatic anomaly detection.</li><li>Zero egress on OCI-Azure Interconnect and flat global egress tiers.</li><li>Premier member, FinOps Foundation.</li></ul></td></tr>
+              <tr><th>Sovereign and data-control options</th><td><ul><li>Dual-region UK Government and Defence Cloud, London and Newport, for OFFICIAL-SENSITIVE workloads.</li><li>Dedicated Region and Oracle Alloy for on-premises or partner data centre deployment.</li><li>BYOK, HYOK and external KMS for storage, with NCSC CS-14 compliance referenced in the source.</li><li>EU Sovereign Cloud roadmap for Frankfurt and Madrid in H1 2026.</li></ul></td></tr>
+              <tr><th>Resilience and multi-cloud interoperability</th><td><ul><li>OCI-Azure Interconnect with less than two millisecond latency and zero egress or ingress.</li><li>Database@Azure places Exadata inside Azure data centres.</li><li>Documented DR fail-over between London and Newport, with RTO objectives available under NDA.</li><li>Cross-cloud Autonomous DB support and Data Guard preview noted by the source.</li></ul></td></tr>
+              <tr><th>Sustainability pledges</th><td><ul><li>100% renewable energy target for all OCI regions by 2025, with 86% achieved globally in 2023.</li><li>Net-zero target for Scopes 1 to 3 by 2050.</li><li>Performance-per-watt improvement from 2019 to 2024.</li><li>iMasons Climate Accord membership and Environmental Product Declarations referenced.</li></ul></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="oracle-signals" class="content-section content-card">
+        <div class="anchor-tools"><span class="section-label">Oracle signals</span><button class="copy-link" type="button" data-copy="#oracle-signals">Copy section link</button></div>
+        <h2>Oracle differentiation signals</h2>
+        <p>The source paper’s argument is that Oracle has taken a concentrated path: sovereign-ready capacity, reduced cost barriers to multi-cloud designs, and AI infrastructure partnerships. The table below keeps the evidence while softening the heading into a more reusable internal field format.</p>
+        <div class="table-wrap">
+          <table>
+            <caption>Oracle differentiation signals for UK Public Sector conversations</caption>
+            <thead><tr><th>Differentiator</th><th>What Oracle has done</th><th>Why it matters for UK Public Sector</th></tr></thead>
+            <tbody>
+              <tr><th>£5 billion UK build-out</th><td>Committed to spend £5 billion over five years to expand OCI regions, GPU clusters and renewable-energy projects in Britain.</td><td>Signals long-term presence and provides capacity headroom for departments anticipating AI-driven growth.</td></tr>
+              <tr><th>Stargate and OpenAI deal</th><td>Oracle is named by the source as an initial equity funder and technology partner in OpenAI’s Stargate initiative, with a reported annual contract to supply AI datacentre power.</td><td>Demonstrates claimed ability to provision hyperscale AI infrastructure under intense governance scrutiny.</td></tr>
+              <tr><th>Strategic alliance with NVIDIA</th><td>Building a 64,000-GPU, liquid-cooled NVIDIA GB200 super-cluster and offering NVIDIA AI Enterprise tools and NIM micro-services natively in OCI.</td><td>Supports conversations about access to state-of-the-art GPU capacity and pre-integrated software tooling.</td></tr>
+              <tr><th>Zero-egress, low-latency multi-cloud</th><td>OCI-Azure Interconnect waives network charges and delivers sub-two millisecond latency. Database@hyperscaler places Exadata inside competitor cloud facilities, billed at OCI rates according to the source.</td><td>Helps departments align to multi-region guidance while reducing data-gravity cost concerns.</td></tr>
+              <tr><th>Sovereign deployment choices</th><td>Dual-region UK Government and Defence Cloud for OFFICIAL-SENSITIVE workloads, plus Dedicated Region and Alloy for on-premises or partner-hosted control planes.</td><td>Addresses localisation and personnel-clearing requirements without positioning sovereignty as a single-region tick box.</td></tr>
+              <tr><th>Flat, transparent network pricing</th><td>Uniform low egress rates, free intra-region and availability-domain traffic, and waived cross-cloud egress on Azure Interconnect.</td><td>Simplifies FinOps forecasting and supports portability expectations influenced by the EU Data Act.</td></tr>
+              <tr><th>Renewable-energy target</th><td>86% renewable electricity in 2023, with a 100% target for all OCI regions by 2025.</td><td>Supports departmental net-zero roadmaps and reduces the need to move workloads solely to reach greener regions.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="playbook" class="content-section content-card">
+        <div class="anchor-tools"><span class="section-label">Field use</span><button class="copy-link" type="button" data-copy="#playbook">Copy section link</button></div>
+        <h2>OCI architects’ playbook for enterprise cloud conversations</h2>
+        <p class="lede">The final section of the source paper becomes a practical field playbook. Each prompt is designed to frame value, risk and cost when advising UK public sector customers.</p>
+        <details class="playbook-item" open>
+          <summary>1. Start with the outcome scorecard</summary>
+          <div class="playbook-body"><ul><li>Clarify success measures upfront, such as cost-per-inference, carbon ceiling, RTO/RPO and citizen-service KPIs.</li><li>Map to telemetry including OCI Cost Analysis, FOCUS exports, Carbon Footprint report and built-in service objectives.</li><li>Agree a baseline metric and review cadence.</li></ul></div>
+        </details>
+        <details class="playbook-item">
+          <summary>2. Quantify AI scale and spend discipline</summary>
+          <div class="playbook-body"><ul><li>Use tangible capacity evidence, including GB200 cluster size, Blackwell GPU counts and total power envelope where approved.</li><li>Show zero-egress interconnects, flat egress tiers, anomaly alerts and RI planning.</li><li>Connect capacity headroom to FinOps practice and forecast variance.</li></ul></div>
+        </details>
+        <details class="playbook-item">
+          <summary>3. Address lock-in and multi-cloud upfront</summary>
+          <div class="playbook-body"><ul><li>Demonstrate live paths such as OCI-Azure Interconnect and Database@hyperscaler.</li><li>Produce an exit plan with open-format export, object storage lifecycle policies and Terraform modules.</li><li>Reference tooling such as OCI Resource Manager, Cloud Guard and Data Transfer Service.</li></ul></div>
+        </details>
+        <details class="playbook-item">
+          <summary>4. Match sovereignty to classification</summary>
+          <div class="playbook-body"><ul><li>Confirm data class first: OFFICIAL, OFFICIAL-SENSITIVE or SECRET.</li><li>Default to OC4 where feasible for UK Public Sector customers, while recognising service catalogue and GPU availability trade-offs.</li><li>Escalate to Dedicated Region or Alloy only where personnel-cleared or air-gapped mandates require it.</li><li>Surface BYOK, HYOK, external KMS, Data Safe and audit log patterns.</li></ul></div>
+        </details>
+        <details class="playbook-item">
+          <summary>5. Tie sustainability to risk management</summary>
+          <div class="playbook-body"><ul><li>Quote firm, validated milestones, including renewable energy targets and performance-per-watt evidence.</li><li>Compare objectively with current carbon-intensity tables and published EPDs where available.</li><li>Embed carbon forecasting alongside cost and uptime reporting.</li></ul></div>
+        </details>
+        <details class="playbook-item">
+          <summary>6. Prove operational resilience</summary>
+          <div class="playbook-body"><ul><li>Describe documented disaster recovery fail-over between London and Newport for UK Government Cloud, with RTO objectives available under NDA.</li><li>Use multi-cloud DR options only where current availability and customer classification permit.</li><li>Connect logging, events and Service Connector Hub to the department’s SIEM.</li></ul></div>
+        </details>
+        <details class="playbook-item">
+          <summary>7. Engage every stakeholder early</summary>
+          <div class="playbook-body"><ul><li>Run Day 0 alignment with CFO or FinOps, CISO, ESG lead and programme owner.</li><li>Use a shared-responsibility matrix that separates Oracle responsibilities from customer data lifecycle, application resilience and policy compliance responsibilities.</li><li>Maintain a one-page decision record covering chosen region, portability plan, carbon target and cost guardrails.</li></ul></div>
+        </details>
+      </section>
+
+      <section id="conclusion" class="content-section content-card">
+        <div class="anchor-tools"><span class="section-label">Conclusion</span><button class="copy-link" type="button" data-copy="#conclusion">Copy section link</button></div>
+        <h2>Cloud choice now sits at the intersection of capability and trust</h2>
+        <p>Enterprise cloud decisions now hinge on AI scale, cost predictability, data sovereignty, operational resilience and sustainability. The source paper argues that Oracle has evidence across those priorities, including Blackwell-class Superclusters, zero-egress multi-cloud links, UK Government Cloud, built-in FinOps tooling and a near-term renewable-energy target.</p>
+        <p>Technical proof is only valuable when translated into outcomes. OCI architects need to connect benchmark data to stakeholder questions, design trade-offs and compliance checkpoints. That allows OCI to be framed as an adaptable component in a multi-cloud, regulation-conscious strategy, rather than a binary replacement for every platform a customer already uses.</p>
+        <p>Continuous learning remains essential. GPU roadmaps, FinOps practices and sovereignty rules evolve faster than project lifecycles, so this paper should be treated as a structured field reference, supported by current validation before reuse in externally visible customer artefacts.</p>
+      </section>
+
+      <section id="source-notes" class="content-section content-card">
+        <div class="anchor-tools"><span class="section-label">Source and handling notes</span><button class="copy-link" type="button" data-copy="#source-notes">Copy section link</button></div>
+        <h2>Source and handling notes</h2>
+        <ul>
+          <li>This HTML site is derived from <em>Paper 3 - Evolving Expectations in the Enterprise Cloud Market v1.0.pdf</em>.</li>
+          <li>The source paper is marked <strong>Confidential - Oracle Internal</strong>. That classification is visible in the top utility bar, metadata panel and footer.</li>
+          <li>All third-party, policy, hyperscaler, energy, benchmark, roadmap and commercial claims are source-derived. Validate them against current Oracle-approved sources before using externally.</li>
+          <li>The original source heading “Oracle is More Differentiated than any Other” has been reframed as “Oracle differentiation signals” to preserve the evidence while maintaining a measured internal enablement tone.</li>
+          <li>No external scripts, web fonts, image assets or proprietary font files are used.</li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <nav class="next-prev" aria-label="Previous and next papers">
+    <a class="related-card" href="/paper-02-masters-of-many-champions-of-choice/">
+      <span>Previous paper</span>
+      <b>Paper 02 - Masters of Many: Champions of Choice</b>
+      <p>Oracle portfolio breadth, competition and customer choice.</p>
+    </a>
+    <a class="related-card" href="/paper-04-sovereignty-and-trust-in-cloud/">
+      <span>Next paper</span>
+      <b>Paper 04 - Sovereignty and Trust in Cloud</b>
+      <p>The legal and operational foundations of sovereignty, control and trust.</p>
+    </a>
+  </nav>
+
+  <section class="next-prev" aria-label="Related papers">
+    <a class="related-card" href="/paper-10-aligning-oci-uk-public-sector-policy/">
+      <span>Related paper</span>
+      <b>Paper 10 - Aligning OCI to UK Public Sector Policy</b>
+      <p>Connects the buyer expectation shift to live UK policy and sector assurance signals.</p>
+    </a>
+    <a class="related-card" href="/paper-11-real-economics-of-oci/">
+      <span>Related paper</span>
+      <b>Paper 11 - The Real Economics of OCI</b>
+      <p>Develops the cost predictability and economic-value strand in greater depth.</p>
+    </a>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <p><strong>FY26 UK-PS Whitepapers Series</strong></p>
+        <p>Internal field paper converted into a static HTML article for Oracle UK Public Sector OCI enablement.</p>
+        <p>Confidential - Oracle Internal. Copyright © 2025, Oracle and/or its affiliates.</p>
+      </div>
+      <div>
+        <p>Paper 03</p>
+        <p>Conversion v1.0</p>
+        <p>Last reviewed: 2026-06-22</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Section link copied</div>
+
+  <script>
+    const PAPER_META = {
+      series: "FY26 UK-PS Whitepapers Series",
+      number: "03",
+      title: "Evolving Expectations in the Enterprise Cloud Market",
+      subtitle: "How AI, Cost Pressure, and Data Control Are Changing the Cloud Buyer’s Mindset in UK Public Sector",
+      version: "1.0",
+      sourceFile: "Paper 3 - Evolving Expectations in the Enterprise Cloud Market v1.0.pdf",
+      classification: "Confidential - Oracle Internal",
+      copyright: "Copyright © 2025, Oracle and/or its affiliates",
+      route: "/paper-03-evolving-expectations-enterprise-cloud-market/",
+      themes: ["Buyer Expectations", "AI Capability", "FinOps", "Sovereignty", "Resilience", "Sustainability"],
+      conversionVersion: "1.0",
+      conversionStatus: "Draft conversion",
+      lastReviewed: "2026-06-22"
+    };
+
+    const toast = document.getElementById('toast');
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      window.setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+
+    document.querySelectorAll('[data-copy]').forEach(button => {
+      button.addEventListener('click', async () => {
+        const hash = button.getAttribute('data-copy');
+        const url = `${window.location.origin}${window.location.pathname}${hash}`;
+        try {
+          await navigator.clipboard.writeText(url);
+          showToast('Section link copied');
+        } catch (error) {
+          window.location.hash = hash;
+          showToast('Section opened');
+        }
+      });
+    });
+
+    document.getElementById('printPage').addEventListener('click', () => window.print());
+    document.getElementById('expandAll').addEventListener('click', () => {
+      document.querySelectorAll('details.playbook-item').forEach(item => item.open = true);
+      showToast('All playbook items expanded');
+    });
+    document.getElementById('collapseAll').addEventListener('click', () => {
+      document.querySelectorAll('details.playbook-item').forEach(item => item.open = false);
+      showToast('All playbook items collapsed');
+    });
+
+    const progress = document.getElementById('readingProgress');
+    const updateProgress = () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const percent = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      progress.style.width = `${Math.min(100, Math.max(0, percent))}%`;
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    const tocLinks = Array.from(document.querySelectorAll('.toc-card a'));
+    const sections = tocLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+    const observer = new IntersectionObserver(entries => {
+      const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      tocLinks.forEach(link => link.removeAttribute('aria-current'));
+      const active = document.querySelector(`.toc-card a[href="#${visible.target.id}"]`);
+      if (active) active.setAttribute('aria-current', 'true');
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: [0, .15, .35, .6] });
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>

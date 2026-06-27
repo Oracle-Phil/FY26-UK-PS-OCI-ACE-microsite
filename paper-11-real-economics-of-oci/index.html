@@ -1,0 +1,1009 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper 11 - The Real Economics of OCI | FY26 UK-PS Whitepapers Series</title>
+  <meta name="description" content="Internal Oracle field paper converted into a static HTML article for the FY26 UK-PS Whitepapers Series.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="classification" content="Confidential - Oracle Internal">
+  <meta name="series" content="FY26 UK-PS Whitepapers Series">
+  <meta name="paper-number" content="11">
+  <meta name="paper-version" content="1.0">
+  <meta name="conversion-version" content="1.0">
+  <style>
+    :root {
+      --series-bg: #f7f3ee;
+      --surface: #fffaf5;
+      --surface-alt: #f1ebe4;
+      --ink: #241c18;
+      --muted: #6f625a;
+      --line: #ded4ca;
+      --oracle-red-soft: #c74634;
+      --clay: #b45f36;
+      --sage: #789c96;
+      --teal-deep: #315f5b;
+      --sand: #d7b98c;
+      --sand-soft: #f3e4c9;
+      --charcoal: #3a3632;
+      --success-soft: #e5efe9;
+      --warning-soft: #f6ead8;
+      --risk-soft: #f3dfdc;
+      --info-soft: #e5eef0;
+      --white: #fffdf9;
+      --shadow: 0 24px 80px rgba(58, 54, 50, 0.12);
+      --shadow-soft: 0 14px 40px rgba(58, 54, 50, 0.08);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --measure: 76ch;
+      --wrap: min(1180px, calc(100vw - 32px));
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 16% 4%, rgba(215, 185, 140, 0.38), transparent 34rem),
+        radial-gradient(circle at 92% 0%, rgba(120, 156, 150, 0.28), transparent 30rem),
+        linear-gradient(180deg, var(--series-bg), #f3ece4 46%, #f7f3ee);
+      font-family: "Oracle Sans", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; text-decoration-thickness: 0.08em; text-underline-offset: 0.18em; }
+    a:hover { color: var(--clay); }
+    :focus-visible { outline: 3px solid rgba(199, 70, 52, 0.62); outline-offset: 4px; border-radius: 8px; }
+    .skip-link {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      transform: translateY(-140%);
+      background: var(--ink);
+      color: var(--white);
+      padding: 10px 14px;
+      z-index: 30;
+      border-radius: 999px;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      width: 0%;
+      z-index: 50;
+      background: linear-gradient(90deg, var(--clay), var(--sage));
+      box-shadow: 0 0 14px rgba(180, 95, 54, 0.35);
+    }
+
+    .utility-bar {
+      background: rgba(36, 28, 24, 0.92);
+      color: #f8f1e8;
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+    }
+    .utility-inner, .series-inner, .hero, .content-shell, .footer-inner {
+      width: var(--wrap);
+      margin-inline: auto;
+    }
+    .utility-inner {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .classification-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 999px;
+      padding: 5px 11px;
+      background: rgba(255,255,255,0.08);
+      white-space: nowrap;
+    }
+    .classification-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--sand);
+    }
+
+    .series-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: rgba(247, 243, 238, 0.84);
+      border-bottom: 1px solid rgba(222, 212, 202, 0.78);
+    }
+    .series-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 18px 0;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 230px;
+      text-decoration: none;
+    }
+    .oracle-mark {
+      color: var(--oracle-red-soft);
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      font-size: 0.96rem;
+      line-height: 1;
+    }
+    .series-name {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.2;
+    }
+    nav.global-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+      font-size: 0.88rem;
+    }
+    nav.global-nav a {
+      text-decoration: none;
+      color: var(--charcoal);
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 8px 12px;
+    }
+    nav.global-nav a:hover { border-color: var(--line); background: rgba(255,250,245,0.72); }
+
+    .hero {
+      padding: 38px 0 26px;
+    }
+    .breadcrumb {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin: 10px 0 22px;
+    }
+    .breadcrumb a { text-decoration: none; }
+    .article-hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(255, 250, 245, 0.96), rgba(241, 235, 228, 0.96));
+      border: 1px solid rgba(222, 212, 202, 0.92);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      padding: clamp(26px, 5vw, 58px);
+    }
+    .article-hero::before {
+      content: "";
+      position: absolute;
+      inset: auto -9% -28% auto;
+      width: 420px;
+      height: 420px;
+      background:
+        radial-gradient(circle, rgba(215,185,140,0.62), rgba(215,185,140,0.12) 45%, transparent 70%);
+      border-radius: 999px;
+      pointer-events: none;
+    }
+    .article-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(120deg, transparent 0 76%, rgba(180,95,54,0.08) 76% 77%, transparent 77%),
+        linear-gradient(115deg, transparent 0 82%, rgba(120,156,150,0.13) 82% 83%, transparent 83%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+      gap: clamp(24px, 5vw, 58px);
+      align-items: end;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--clay);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin: 0 0 18px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 36px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 99px;
+    }
+    h1, h2, h3, h4 { line-height: 1.13; letter-spacing: -0.035em; }
+    h1 {
+      font-size: clamp(2.45rem, 6vw, 5.2rem);
+      max-width: 12ch;
+      margin: 0;
+    }
+    .subtitle {
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      color: var(--muted);
+      max-width: 52ch;
+      margin: 20px 0 0;
+      line-height: 1.45;
+    }
+    .hero-summary {
+      max-width: 60ch;
+      margin-top: 24px;
+      color: #4f463f;
+    }
+    .takeaway {
+      background: rgba(49, 95, 91, 0.1);
+      border: 1px solid rgba(49, 95, 91, 0.22);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: var(--shadow-soft);
+    }
+    .takeaway .label, .panel-label {
+      font-size: 0.76rem;
+      color: var(--teal-deep);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
+    }
+    .takeaway p { margin: 0; font-size: 1rem; }
+    .meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .tag {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 6px 11px;
+      background: rgba(215, 185, 140, 0.22);
+      border: 1px solid rgba(180, 95, 54, 0.16);
+      color: var(--charcoal);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .content-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 310px;
+      gap: 30px;
+      align-items: start;
+      padding: 20px 0 72px;
+    }
+    main { min-width: 0; }
+    .metadata-panel, .reading-tools, .article-section, .toc, .related-card, .source-note, .next-prev {
+      background: rgba(255, 250, 245, 0.92);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+    }
+    .metadata-panel {
+      margin-bottom: 20px;
+      padding: 22px;
+    }
+    .metadata-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .metadata-item {
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(241, 235, 228, 0.65);
+      border: 1px solid rgba(222, 212, 202, 0.65);
+    }
+    .metadata-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+    }
+    .metadata-item strong {
+      display: block;
+      margin-top: 3px;
+      font-size: 0.92rem;
+      line-height: 1.35;
+    }
+    .reading-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 14px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .tool-button, .button-link {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.55);
+      color: var(--charcoal);
+      border-radius: 999px;
+      font: inherit;
+      font-size: 0.86rem;
+      font-weight: 700;
+      padding: 9px 13px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tool-button:hover, .button-link:hover { background: var(--sand-soft); color: var(--ink); }
+
+    .article-section {
+      padding: clamp(24px, 4vw, 42px);
+      margin-bottom: 24px;
+    }
+    .article-section h2 {
+      font-size: clamp(1.75rem, 3vw, 2.6rem);
+      margin: 0 0 18px;
+    }
+    .article-section h3 {
+      font-size: clamp(1.25rem, 2vw, 1.7rem);
+      margin: 28px 0 10px;
+    }
+    .article-section h4 {
+      font-size: 1.05rem;
+      margin: 18px 0 8px;
+      letter-spacing: -0.015em;
+    }
+    .article-section p, .article-section li { max-width: var(--measure); }
+    .article-section p:first-child { margin-top: 0; }
+    .article-section ul, .article-section ol { padding-left: 1.2rem; }
+
+    .orientation-grid, .six-grid, .design-grid, .workload-grid, .trade-grid, .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .orientation-card, .mini-card, .design-card, .workload-card, .trade-card, .related-card-inner {
+      border: 1px solid rgba(222, 212, 202, 0.9);
+      border-radius: 18px;
+      padding: 18px;
+      background: rgba(255,255,255,0.48);
+    }
+    .orientation-card h3, .mini-card h3, .design-card h3, .workload-card h3, .trade-card h3 {
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+    .orientation-card p, .mini-card p, .design-card p, .workload-card p, .trade-card p { margin-bottom: 0; font-size: 0.94rem; }
+    .warning-card { background: rgba(246, 234, 216, 0.7); border-color: rgba(180,95,54,0.22); }
+    .risk-card { background: rgba(243, 223, 220, 0.72); border-color: rgba(199,70,52,0.2); }
+    .info-card { background: rgba(229, 238, 240, 0.72); border-color: rgba(49,95,91,0.2); }
+    .success-card { background: rgba(229, 239, 233, 0.8); border-color: rgba(120,156,150,0.2); }
+
+    .split-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+      gap: 16px;
+      align-items: stretch;
+      margin: 24px 0;
+    }
+    .price-box, .economics-box {
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+    }
+    .price-box { background: rgba(243, 223, 220, 0.68); }
+    .economics-box { background: rgba(229, 239, 233, 0.82); }
+    .big-word {
+      display: block;
+      font-size: clamp(2.2rem, 5vw, 4.1rem);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 20px 0;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.42);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 0.92rem;
+    }
+    caption {
+      text-align: left;
+      font-weight: 800;
+      padding: 16px 18px;
+      color: var(--clay);
+      background: rgba(241,235,228,0.5);
+    }
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 14px 16px;
+      border-top: 1px solid var(--line);
+    }
+    th { color: var(--ink); background: rgba(215,185,140,0.22); font-size: 0.84rem; text-transform: uppercase; letter-spacing: 0.055em; }
+    tbody tr:nth-child(even) td { background: rgba(229,238,240,0.36); }
+    td strong { color: var(--ink); }
+
+    .callout {
+      border-left: 5px solid var(--clay);
+      padding: 18px 20px;
+      background: rgba(246, 234, 216, 0.68);
+      border-radius: 0 18px 18px 0;
+      margin: 22px 0;
+      max-width: var(--measure);
+    }
+    .callout p { margin: 0; }
+    .principle {
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(49,95,91,0.12), rgba(215,185,140,0.22));
+      border: 1px solid rgba(49,95,91,0.22);
+      padding: 22px;
+      margin: 24px 0;
+      max-width: var(--measure);
+    }
+    .principle strong { display:block; color: var(--teal-deep); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.09em; font-size: 0.78rem; }
+
+    .stepper {
+      counter-reset: step;
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .step {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.44);
+      border-radius: 18px;
+      padding: 16px;
+    }
+    .step::before {
+      content: counter(step);
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: var(--teal-deep);
+      color: #fff;
+      font-weight: 900;
+    }
+    .step h3 { margin: 0 0 4px; font-size: 1.05rem; }
+    .step p { margin: 0; font-size: 0.92rem; }
+
+    aside.sidebar {
+      position: sticky;
+      top: 94px;
+      align-self: start;
+    }
+    .toc {
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+    .toc h2 {
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+    .toc ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 7px;
+      font-size: 0.88rem;
+      line-height: 1.35;
+    }
+    .toc a {
+      display: block;
+      text-decoration: none;
+      padding: 8px 10px;
+      border-radius: 12px;
+      color: var(--charcoal);
+    }
+    .toc a:hover, .toc a.active { background: rgba(215,185,140,0.28); color: var(--ink); }
+    .related-card {
+      padding: 18px;
+    }
+    .related-card h2 {
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+    .related-link {
+      display: block;
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(241,235,228,0.7);
+      text-decoration: none;
+      margin-top: 10px;
+      border: 1px solid rgba(222,212,202,0.7);
+    }
+    .related-link span { display:block; color: var(--muted); font-size: 0.78rem; font-weight: 800; }
+    .related-link strong { display:block; line-height: 1.25; }
+
+    .next-prev {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      padding: 18px;
+      margin-bottom: 24px;
+    }
+    .next-prev a {
+      display: block;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.48);
+      text-decoration: none;
+    }
+    .next-prev span { display:block; color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 800; }
+
+    .source-note {
+      padding: 22px;
+      margin-bottom: 24px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .source-note strong { color: var(--ink); }
+
+    footer {
+      background: rgba(36, 28, 24, 0.95);
+      color: #f8f1e8;
+      padding: 30px 0;
+      font-size: 0.86rem;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: center;
+    }
+    .footer-inner p { margin: 0; max-width: 80ch; color: rgba(248,241,232,0.82); }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.44);
+      padding: 0;
+      overflow: hidden;
+    }
+    details + details { margin-top: 12px; }
+    summary {
+      cursor: pointer;
+      font-weight: 800;
+      padding: 16px 18px;
+      background: rgba(241,235,228,0.62);
+    }
+    details .detail-body { padding: 0 18px 18px; }
+
+    @media (max-width: 980px) {
+      body { font-size: 16px; }
+      .hero-grid, .content-shell, .split-panel, .next-prev { grid-template-columns: 1fr; }
+      aside.sidebar { position: static; }
+      .orientation-grid, .six-grid, .design-grid, .workload-grid, .trade-grid, .related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .series-inner { align-items: flex-start; flex-direction: column; }
+      nav.global-nav { justify-content: flex-start; }
+    }
+    @media (max-width: 680px) {
+      .utility-inner, .footer-inner { grid-template-columns: 1fr; display: grid; }
+      .utility-inner { justify-content: start; }
+      .article-hero { border-radius: 22px; padding: 24px; }
+      .orientation-grid, .six-grid, .design-grid, .workload-grid, .trade-grid, .related-grid, .metadata-grid { grid-template-columns: 1fr; }
+      .brand { min-width: 0; }
+      .reading-tools { gap: 8px; }
+      .tool-button, .button-link { width: 100%; justify-content: center; }
+      table { min-width: 680px; }
+    }
+
+    @media print {
+      body { background: white; color: black; font-size: 12pt; }
+      .utility-bar, .series-header, .reading-tools, aside.sidebar, .progress { display: none !important; }
+      .hero, .content-shell, .footer-inner { width: auto; margin: 0; }
+      .article-hero, .article-section, .metadata-panel, .source-note, .next-prev { box-shadow: none; border-color: #bbb; background: white; break-inside: avoid; }
+      .content-shell { display: block; padding: 0; }
+      a { color: black; text-decoration: none; }
+      footer { background: white; color: black; border-top: 1px solid #bbb; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="utility-bar" role="banner">
+    <div class="utility-inner">
+      <div>FY26 UK-PS Whitepapers Series</div>
+      <div class="classification-pill"><span class="classification-dot" aria-hidden="true"></span> Confidential - Oracle Internal</div>
+    </div>
+  </div>
+
+  <header class="series-header" aria-label="Series header">
+    <div class="series-inner">
+      <a class="brand" href="../" aria-label="Back to FY26 UK-PS Whitepapers Series index">
+        <span class="oracle-mark">ORACLE</span>
+        <span class="series-name">UK Public Sector<br>Internal Field Papers</span>
+      </a>
+      <nav class="global-nav" aria-label="Global navigation">
+        <a href="../">Index</a>
+        <a href="../#all-papers">All papers</a>
+        <a href="../#reading-paths">Reading paths</a>
+        <a href="../#themes">Themes</a>
+        <a href="../#about">About this series</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" aria-labelledby="paper-title">
+    <div class="breadcrumb" aria-label="Breadcrumb"><a href="../">Series</a> / Paper 11 / The Real Economics of OCI</div>
+    <div class="article-hero">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Paper 11 · Economics and Field Narrative</p>
+          <h1 id="paper-title">The Real Economics of OCI</h1>
+          <p class="subtitle">Why Cloud Economics is Value, Not Cheapness</p>
+          <p class="hero-summary">A field-ready article that reframes OCI economics around useful work per pound, cost predictability, portability, sustainability, resilience, and transparent trade-offs for UK public sector buyers.</p>
+          <div class="meta-strip" aria-label="Theme tags">
+            <span class="tag">Economics</span>
+            <span class="tag">FinOps</span>
+            <span class="tag">Procurement</span>
+            <span class="tag">Sustainability</span>
+            <span class="tag">Cost Predictability</span>
+          </div>
+        </div>
+        <aside class="takeaway" aria-label="Key takeaway">
+          <div class="label">Key takeaway</div>
+          <p>OCI should not be positioned as the cheap alternative. The stronger argument is that its engineering choices reduce hidden taxes and make value easier to forecast, validate, and defend.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <div class="content-shell">
+    <main id="main-content" tabindex="-1">
+      <section class="metadata-panel" aria-labelledby="metadata-heading">
+        <h2 id="metadata-heading" class="panel-label">Article metadata</h2>
+        <div class="metadata-grid">
+          <div class="metadata-item"><span>Paper number</span><strong>11</strong></div>
+          <div class="metadata-item"><span>Version</span><strong>1.0</strong></div>
+          <div class="metadata-item"><span>Source PDF</span><strong>Paper 11 - The Real Economics of OCI v1.0.pdf</strong></div>
+          <div class="metadata-item"><span>Copyright year</span><strong>2026</strong></div>
+          <div class="metadata-item"><span>Classification</span><strong>Confidential - Oracle Internal</strong></div>
+          <div class="metadata-item"><span>Route</span><strong>/paper-11-real-economics-of-oci/</strong></div>
+          <div class="metadata-item"><span>Conversion version</span><strong>1.0</strong></div>
+          <div class="metadata-item"><span>Status</span><strong>Draft conversion</strong></div>
+          <div class="metadata-item"><span>Conversion date</span><strong>2026-06-23</strong></div>
+          <div class="metadata-item"><span>Reading time</span><strong>Approx. 18 minutes</strong></div>
+        </div>
+      </section>
+
+      <div class="reading-tools" aria-label="Reading tools">
+        <a class="button-link" href="../">Back to index</a>
+        <button class="tool-button" type="button" id="copy-link">Copy page link</button>
+        <button class="tool-button" type="button" onclick="window.print()">Print / save as PDF</button>
+        <button class="tool-button" type="button" id="expand-all">Expand all</button>
+        <button class="tool-button" type="button" id="collapse-all">Collapse all</button>
+      </div>
+
+      <section class="article-section" id="orientation">
+        <h2>Executive orientation</h2>
+        <div class="orientation-grid">
+          <article class="orientation-card success-card">
+            <h3>Why this paper matters</h3>
+            <p>UK public sector buyers do not assess cloud value through unit price alone. They need evidence that spend converts into predictable, efficient, policy-aligned outcomes over time.</p>
+          </article>
+          <article class="orientation-card info-card">
+            <h3>Who should read it</h3>
+            <p>Account Cloud Engineers, Sales teams, public sector architects, FinOps stakeholders, and anyone preparing economic arguments for OCI in regulated environments.</p>
+          </article>
+          <article class="orientation-card warning-card">
+            <h3>What not to overclaim</h3>
+            <p>Do not imply OCI is always the cheapest or universally best fit. The source is explicit that marketplace breadth, region footprint, niche service maturity, and multi-cloud complexity must be handled candidly.</p>
+          </article>
+        </div>
+        <div class="split-panel" aria-label="Price versus economics">
+          <div class="price-box">
+            <span class="big-word">Price</span>
+            <p>The published unit cost of a resource, such as an OCPU per hour, a gigabyte of storage, or a terabyte of outbound data. It is simple to compare, but rarely reflects true cost at workload scale.</p>
+          </div>
+          <div class="economics-box">
+            <span class="big-word">Economics</span>
+            <p>The full cost and value equation over time, including useful work completed, budget predictability, data movement, exit flexibility, sustainability, resilience, and operational assurance.</p>
+          </div>
+        </div>
+        <div class="principle"><strong>Field principle</strong>Economics is not what you pay per hour. It is what you get, what you can forecast, and what you can prove at the end of the year.</div>
+      </section>
+
+      <section class="article-section" id="cheapness">
+        <h2>Cheapness is not the objective</h2>
+        <p>Cloud is often sold as a lower-cost answer to legacy IT, but the public sector economic reality is more demanding. Selecting a platform only because its published unit price is lower can create hidden costs, operational compromises, reduced flexibility, and weaker audit defensibility.</p>
+        <p>OCI’s economic argument should therefore be expressed as cost-effectiveness, not cheapness. The source paper links that cost-effectiveness to deliberate engineering: bare metal, off-box virtualisation, high-throughput networking, open standards, and pricing structures designed to reduce avoidable inefficiency.</p>
+        <p>For ACE and Sales teams, the distinction is important. A cheap platform can sound fragile. A cost-effective platform sounds engineered, measurable, and defensible.</p>
+        <div class="six-grid" aria-label="Economic dimensions">
+          <article class="mini-card"><h3>Efficiency</h3><p>How much useful work is completed per unit of spend.</p></article>
+          <article class="mini-card"><h3>Predictability</h3><p>How confidently cost can be forecast, controlled, and justified.</p></article>
+          <article class="mini-card"><h3>Data movement</h3><p>How storage, access, replication, and egress influence the real bill.</p></article>
+          <article class="mini-card"><h3>Exit and portability</h3><p>How easily workloads and data can move without expensive lock-in.</p></article>
+          <article class="mini-card"><h3>Sustainability</h3><p>How energy, carbon reporting, and environmental scoring affect value.</p></article>
+          <article class="mini-card"><h3>Resilience</h3><p>How continuity and disaster recovery objectives affect the cost of assurance.</p></article>
+        </div>
+      </section>
+
+      <section class="article-section" id="hidden-taxes">
+        <h2>The hidden taxes of first-generation cloud</h2>
+        <p>The paper uses the term hidden taxes to describe cost patterns that sit beneath simple unit-price comparisons. These are not always visible in an initial quote, but they can shape total cost of ownership once real workload behaviour is applied.</p>
+        <div class="table-wrap">
+          <table>
+            <caption>Hidden tax map</caption>
+            <thead>
+              <tr><th scope="col">Hidden tax</th><th scope="col">Practical impact</th><th scope="col">Typical buyer response</th><th scope="col">Net result</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Egress charges</strong></td><td>Rising data transfer bills.</td><td>Restrict movement or avoid exits.</td><td>Vendor lock-in.</td></tr>
+              <tr><td><strong>Over-provisioning</strong></td><td>Chronic overspend on underused compute.</td><td>Buy bigger shapes than needed.</td><td>Wasted budget.</td></tr>
+              <tr><td><strong>Lock-in premiums</strong></td><td>High switching cost.</td><td>Delay or avoid migration.</td><td>Reduced flexibility.</td></tr>
+              <tr><td><strong>Tail latency</strong></td><td>Unpredictable application performance.</td><td>Buy more or larger nodes.</td><td>Expensive scaling.</td></tr>
+              <tr><td><strong>Regional surcharges</strong></td><td>Higher public sector bills.</td><td>Limit use of sovereign regions.</td><td>Budget distortion.</td></tr>
+              <tr><td><strong>Ancillary services</strong></td><td>Variable, surprise line items.</td><td>Disable or minimise monitoring.</td><td>Lower visibility and greater risk.</td></tr>
+              <tr><td><strong>Sustainability exposure</strong></td><td>Lower evaluation scores or future cost.</td><td>Defer, then scramble to comply.</td><td>Hidden liability.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>The paper also keeps the comparison disciplined. It notes that AWS, Azure, and Google Cloud have improved cost-management tooling, commitment models, and architectural optimisation, but argues that data transfer costs, performance variability, and integration overhead can still remain material at scale or in complex multi-cloud estates.</p>
+      </section>
+
+      <section class="article-section" id="design-choices">
+        <h2>OCI’s economic design choices</h2>
+        <p>OCI’s economic case is presented as an architectural result. The argument is not that lower cost appears by discount, but that the platform removes or reduces specific sources of waste.</p>
+        <div class="design-grid">
+          <article class="design-card success-card"><h3>Bare metal and off-box virtualisation</h3><p>Reduces the need to over-provision by improving performance consistency and removing noisy-neighbour effects from the customer workload path.</p></article>
+          <article class="design-card success-card"><h3>High-performance network fabric</h3><p>Uses non-blocking Clos topology and RDMA to reduce tail-latency penalties and support scalable throughput for analytics, AI/ML, and real-time databases.</p></article>
+          <article class="design-card success-card"><h3>NVMe-everywhere storage</h3><p>Provides high, consistent IOPS and bandwidth, improving low-latency database and analytics economics.</p></article>
+          <article class="design-card info-card"><h3>Region-consistent pricing</h3><p>Maintains consistent list pricing for core services across commercial and government regions, including OC4, avoiding explicit sovereign uplifts in the model described by the paper.</p></article>
+          <article class="design-card info-card"><h3>Liberal data egress model</h3><p>Provides a substantial free outbound allowance, subject to region and service, with comparatively low and transparent rates beyond the free tier.</p></article>
+          <article class="design-card info-card"><h3>Open standards and tooling</h3><p>Supports Terraform, Kubernetes, open APIs, and standard database export formats to lower lock-in risk and support exit planning.</p></article>
+          <article class="design-card warning-card"><h3>Observability and security free tiers</h3><p>Includes meaningful allowances for monitoring and logging, with core Cloud Guard capabilities included, while noting that some related functions remain metered.</p></article>
+          <article class="design-card warning-card"><h3>Embedded sustainability</h3><p>Turns renewable energy use and workload carbon reporting into auditable inputs for procurement, policy alignment, and long-term value.</p></article>
+          <article class="design-card"><h3>Outcome by design</h3><p>Taken together, the choices make the economic case measurable: lower waste, better forecasting, more controlled data movement, and more defensible procurement evidence.</p></article>
+        </div>
+      </section>
+
+      <section class="article-section" id="workloads">
+        <h2>Where the model pays off, by workload</h2>
+        <p>The paper maps OCI’s economics to workload patterns public sector organisations actually run. This section is particularly useful for moving a conversation from generic cost claims to practical, testable outcomes.</p>
+        <div class="workload-grid">
+          <article class="workload-card">
+            <h3>Data-intensive analytics</h3>
+            <p><strong>Hidden taxes:</strong> egress costs, over-provisioning, slow batch cycles.</p>
+            <p><strong>OCI effect:</strong> lower data transfer risk, faster batch analytics and ETL, right-sized resources, and more stable budgeting for multi-year analytics projects.</p>
+          </article>
+          <article class="workload-card">
+            <h3>Database and transaction processing</h3>
+            <p><strong>Hidden taxes:</strong> performance variability, oversized shapes, latency spikes.</p>
+            <p><strong>OCI effect:</strong> bare metal, off-box virtualisation, NVMe storage, and non-blocking fabric support more predictable cost-to-serve.</p>
+          </article>
+          <article class="workload-card">
+            <h3>AI, HPC, and scientific computing</h3>
+            <p><strong>Hidden taxes:</strong> tail latency, network constraints, variable job run-times.</p>
+            <p><strong>OCI effect:</strong> RDMA networking and predictable scaling reduce run-time variability and improve efficiency.</p>
+          </article>
+          <article class="workload-card">
+            <h3>General purpose and multi-cloud estates</h3>
+            <p><strong>Hidden taxes:</strong> monitoring costs, region-based pricing variation, integration overhead.</p>
+            <p><strong>OCI effect:</strong> built-in allowances, consistent pricing, and open tooling simplify cost management and reduce overhead.</p>
+          </article>
+          <article class="workload-card">
+            <h3>AI and large-scale model economics</h3>
+            <p><strong>Hidden taxes:</strong> GPU scarcity, unpredictable pricing, idle capacity, long training cycles.</p>
+            <p><strong>OCI effect:</strong> high-density GPU access, RDMA, predictable infrastructure performance, and lower data movement costs can reduce cost per outcome.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="article-section" id="procurement">
+        <h2>Economics in procurement</h2>
+        <p>UK public sector procurement assesses cloud economics alongside predictability, risk, and compliance. The source paper identifies three economic dimensions that consistently influence procurement outcomes.</p>
+        <details open>
+          <summary>1. Cost predictability, not just price</summary>
+          <div class="detail-body"><p>Buyers prioritise confidence in budget forecasts over nominally lower unit costs. Evaluation often examines tagging, budgeting, anomaly detection, transparent billing, and the ability to defend forecasts.</p></div>
+        </details>
+        <details open>
+          <summary>2. Total cost of operation, including hidden factors</summary>
+          <div class="detail-body"><p>Procurement teams expect lifecycle cost to include data transfer, resilience design, monitoring, integration overhead, and real workload patterns, not isolated service pricing.</p></div>
+        </details>
+        <details open>
+          <summary>3. Portability, exit, and commercial risk</summary>
+          <div class="detail-body"><p>Following the Procurement Act 2023 and the wider influence of EU Data Act principles, buyers expect clear exit pathways, data portability, and absence of punitive switching costs.</p></div>
+        </details>
+        <div class="callout"><p><strong>ACE framing:</strong> Economic discussions should focus on predictability, transparency, and risk reduction, supported by measurable artefacts rather than unit cost comparisons alone.</p></div>
+      </section>
+
+      <section class="article-section" id="evidence-spine">
+        <h2>Evidence without case studies: test it yourself</h2>
+        <p>The paper recommends a reproducible economic test rather than relying only on vendor-selected case studies. This gives customers a transparent way to test OCI economics with their own workloads.</p>
+        <div class="stepper" aria-label="Steps for a reproducible economic test">
+          <article class="step"><div><h3>Define baseline workload</h3><p>Select a representative scenario, such as a virtualised app tier or AI cluster, so the comparison starts fairly.</p></div></article>
+          <article class="step"><div><h3>Capture performance metrics</h3><p>Use standard tools and built-in monitoring to connect cost to useful work, not just time consumed.</p></div></article>
+          <article class="step"><div><h3>Capture all cost metrics</h3><p>Gather actual usage invoices and relevant compute, storage, and egress charges to reveal hidden taxes.</p></div></article>
+          <article class="step"><div><h3>Measure variability</h3><p>Repeat the run several times and record result stability to test whether over-provisioning is needed for reliability.</p></div></article>
+          <article class="step"><div><h3>Compute price-performance ratio</h3><p>Divide useful work by total cost for each run to create an objective efficiency metric.</p></div></article>
+          <article class="step"><div><h3>Record non-financial attributes</h3><p>Capture residency, sustainability, and portability factors, because procurement scoring includes more than price.</p></div></article>
+          <article class="step"><div><h3>Summarise findings</h3><p>Present cost and predictability clearly for boards, audit teams, technical buyers, and commercial stakeholders.</p></div></article>
+        </div>
+        <div class="principle"><strong>Key principle</strong>Cost-effectiveness is not a claim to be believed. It is an outcome to be demonstrated through local, transparent validation.</div>
+      </section>
+
+      <section class="article-section" id="sustainability">
+        <h2>Sustainability as an economic input</h2>
+        <p>Sustainability is treated as part of the economic model, not as corporate social responsibility language. UK government guidance, including Greening Government ICT and Government Buying Standards, makes carbon impact and renewable energy use scored criteria.</p>
+        <div class="orientation-grid">
+          <article class="orientation-card success-card"><h3>Policy mandates</h3><p>Contracts often require suppliers to show progress toward net zero, provide carbon reporting, and explain contribution to sustainability targets.</p></article>
+          <article class="orientation-card success-card"><h3>Evaluation weighting</h3><p>The paper notes that UK public sector procurements formally apply the Social Value Model, typically allocating at least 10% of scoring to sustainability and social value.</p></article>
+          <article class="orientation-card success-card"><h3>Regulatory risk</h3><p>Suppliers unable to meet rising sustainability standards may face future cost increases or lost evaluation points.</p></article>
+        </div>
+        <p>Oracle has stated that it now matches 100% of the annual electricity consumption of its cloud data centres and offices with renewable, carbon-free energy, with UK and European regions already operating at or near that level. The source paper connects this to built-in carbon tracking, annual reporting, procurement submissions, and reduced future exposure to carbon-related disadvantages.</p>
+        <div class="principle"><strong>Field principle</strong>True economic value in cloud is inseparable from sustainability. OCI should be positioned as enabling customers to quantify and prove environmental progress, not merely assert it.</div>
+      </section>
+
+      <section class="article-section" id="trade-offs">
+        <h2>Risks and trade-offs to declare upfront</h2>
+        <p>The paper’s credibility depends on preserving its caveats. OCI has clear structural advantages in economic design, but it is not the universal answer for every scenario.</p>
+        <div class="table-wrap">
+          <table>
+            <caption>Practical, candid summary</caption>
+            <thead>
+              <tr><th scope="col">Trade-off area</th><th scope="col">What to watch for</th><th scope="col">How to discuss</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Marketplace breadth</strong></td><td>Integration needs for specialised or less-common platforms, and ecosystem dependencies.</td><td>OCI’s ecosystem is expanding, particularly in core infrastructure, data, and AI services. Highly specialised requirements may still require additional planning or hybrid approaches.</td></tr>
+              <tr><td><strong>Region footprint</strong></td><td>Global reach, data residency requirements, and DR design constraints in certain geographies.</td><td>Assess region and residency needs early. OCI provides strong UK and sovereign coverage, but some global patterns may require deliberate design for resilience and compliance.</td></tr>
+              <tr><td><strong>Headline price</strong></td><td>Raw unit price comparisons versus total cost over time.</td><td>Where OCI is not the lowest unit price, evaluate total economics. Egress, performance consistency, and predictability often change the lifecycle cost profile.</td></tr>
+              <tr><td><strong>Service maturity</strong></td><td>Depth of specialised PaaS, developer tooling, and certain edge or niche capabilities.</td><td>OCI is strong in core enterprise, AI, and sovereign edge scenarios. Highly specialised or developer-centric capabilities should be validated against current features and roadmap before commitment.</td></tr>
+              <tr><td><strong>Multi-cloud and architectural complexity</strong></td><td>Increased design, governance, and cost-management overhead across environments.</td><td>Multi-cloud can optimise cost and capability, but it introduces complexity. Ensure benefits outweigh operational overhead and that cost visibility remains clear across platforms.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="principle"><strong>Key principle</strong>Trust is built by surfacing limitations as well as strengths. The best economic case is one that stands up to scrutiny, not one that avoids it.</div>
+      </section>
+
+      <section class="article-section" id="conclusion">
+        <h2>Conclusion: economics as design, not discount</h2>
+        <p>Public sector cloud decisions are no longer judged on the lowest sticker price. Real economic value comes from the structural choices a platform makes, because those choices determine how predictable, efficient, and defensible outcomes are over time.</p>
+        <p>OCI’s economic argument is therefore strongest when framed as an outcome of deliberate engineering: useful work per pound, reduced hidden charges, transparent pricing, open standards, sustainability, and reproducible validation.</p>
+        <p>Credible positioning also requires precision about fit. Marketplace breadth, global region coverage, and specialised service needs may influence platform choice in some scenarios. Transparent handling of those trade-offs is what makes the economic argument trusted.</p>
+      </section>
+
+      <nav class="next-prev" aria-label="Previous and next papers">
+        <a href="../paper-10-aligning-oci-uk-public-sector-policy/"><span>Previous paper</span><strong>Paper 10 · Aligning OCI to UK Public Sector Policy</strong></a>
+        <a href="../paper-12-oci-rich-differentiation/"><span>Next paper</span><strong>Paper 12 · OCI’s Rich Differentiation</strong></a>
+      </nav>
+
+      <section class="source-note" id="source-notes">
+        <h2 class="panel-label">Source and handling notes</h2>
+        <p><strong>Source:</strong> Paper 11 - The Real Economics of OCI v1.0.pdf. The conversion preserves the paper’s core argument, tables, caveats, and field guidance while adapting the structure into a web-native internal enablement article.</p>
+        <p><strong>Known caveats retained:</strong> OCI is not presented as universally cheapest or universally optimal. The article explicitly retains trade-offs around marketplace breadth, region footprint, headline price, niche service maturity, and multi-cloud complexity.</p>
+        <p><strong>Classification:</strong> Confidential - Oracle Internal. Do not publish externally.</p>
+      </section>
+    </main>
+
+    <aside class="sidebar" aria-label="Article navigation">
+      <nav class="toc" aria-labelledby="toc-heading">
+        <h2 id="toc-heading">Contents</h2>
+        <ol>
+          <li><a href="#orientation">Executive orientation</a></li>
+          <li><a href="#cheapness">Cheapness is not the objective</a></li>
+          <li><a href="#hidden-taxes">Hidden taxes</a></li>
+          <li><a href="#design-choices">Economic design choices</a></li>
+          <li><a href="#workloads">Where the model pays off</a></li>
+          <li><a href="#procurement">Economics in procurement</a></li>
+          <li><a href="#evidence-spine">Evidence spine</a></li>
+          <li><a href="#sustainability">Sustainability input</a></li>
+          <li><a href="#trade-offs">Risks and trade-offs</a></li>
+          <li><a href="#conclusion">Conclusion</a></li>
+        </ol>
+      </nav>
+      <section class="related-card" aria-labelledby="related-heading">
+        <h2 id="related-heading">Related papers</h2>
+        <a class="related-link" href="../paper-05-oci-technical-performance-is-real/"><span>Paper 05</span><strong>How and Why OCI’s Technical Performance Is Real</strong></a>
+        <a class="related-link" href="../paper-09-public-sector-procurement-mechanics/"><span>Paper 09</span><strong>The Mechanics of Public Sector Procurement</strong></a>
+        <a class="related-link" href="../paper-10-aligning-oci-uk-public-sector-policy/"><span>Paper 10</span><strong>Aligning OCI to UK Public Sector Policy</strong></a>
+        <a class="related-link" href="../paper-12-oci-rich-differentiation/"><span>Paper 12</span><strong>OCI’s Rich Differentiation</strong></a>
+      </section>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p><strong>FY26 UK-PS Whitepapers Series.</strong> Internal enablement site derived from the OCI UK Public Sector whitepaper set. Conversion status: Draft. Classification: Confidential - Oracle Internal.</p>
+      <p>© 2026 Oracle and/or its affiliates.</p>
+    </div>
+  </footer>
+
+  <script>
+    const PAPER_META = {
+      series: "FY26 UK-PS Whitepapers Series",
+      number: "11",
+      title: "The Real Economics of OCI",
+      subtitle: "Why Cloud Economics is Value, Not Cheapness",
+      version: "1.0",
+      sourceFile: "Paper 11 - The Real Economics of OCI v1.0.pdf",
+      classification: "Confidential - Oracle Internal",
+      copyright: "Copyright © 2026, Oracle and/or its affiliates",
+      route: "/paper-11-real-economics-of-oci/",
+      themes: ["Economics", "FinOps", "Procurement", "Sustainability", "Cost Predictability"],
+      conversionVersion: "1.0",
+      conversionStatus: "Draft",
+      conversionDate: "2026-06-23",
+      lastReviewed: "2026-06-23"
+    };
+
+    const progress = document.getElementById('progress');
+    const updateProgress = () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const pct = height > 0 ? (scrollTop / height) * 100 : 0;
+      progress.style.width = pct + '%';
+    };
+    document.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    document.getElementById('copy-link')?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        const btn = document.getElementById('copy-link');
+        const old = btn.textContent;
+        btn.textContent = 'Copied';
+        setTimeout(() => btn.textContent = old, 1300);
+      } catch (e) {
+        window.prompt('Copy this link', window.location.href);
+      }
+    });
+
+    document.getElementById('expand-all')?.addEventListener('click', () => {
+      document.querySelectorAll('details').forEach(d => d.open = true);
+    });
+    document.getElementById('collapse-all')?.addEventListener('click', () => {
+      document.querySelectorAll('details').forEach(d => d.open = false);
+    });
+
+    const sections = [...document.querySelectorAll('main section[id]')];
+    const tocLinks = [...document.querySelectorAll('.toc a')];
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+        }
+      });
+    }, { rootMargin: '-30% 0px -65% 0px', threshold: 0.01 });
+    sections.forEach(section => obs.observe(section));
+  </script>
+</body>
+</html>

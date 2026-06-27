@@ -1,0 +1,1148 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper 06 - From ChatGPT to Enterprise AI | FY26 UK-PS Whitepapers Series</title>
+  <meta name="description" content="Internal Oracle field paper converted into a static HTML article for the FY26 UK-PS Whitepapers Series.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="classification" content="Confidential - Oracle Internal">
+  <meta name="series" content="FY26 UK-PS Whitepapers Series">
+  <meta name="paper-number" content="06">
+  <meta name="paper-version" content="1.0">
+  <meta name="conversion-version" content="1.0">
+  <style>
+    :root {
+      --series-bg: #f7f3ee;
+      --surface: #fffaf5;
+      --surface-alt: #f1ebe4;
+      --ink: #241c18;
+      --muted: #6f625a;
+      --line: #ded4ca;
+      --oracle-red-soft: #c74634;
+      --clay: #b45f36;
+      --sage: #789c96;
+      --teal-deep: #315f5b;
+      --sand: #d7b98c;
+      --charcoal: #3a3632;
+      --success-soft: #e5efe9;
+      --warning-soft: #f6ead8;
+      --risk-soft: #f3dfdc;
+      --info-soft: #e5eef0;
+      --slate-soft: #e6e9ec;
+      --ai-amber: #c5802d;
+      --ai-red: #b23a2f;
+      --shadow: 0 18px 44px rgba(54, 45, 38, 0.12);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --max: 1180px;
+      --measure: 74ch;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behaviour: smooth; }
+    body {
+      margin: 0;
+      font-family: "Oracle Sans", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 14% 0%, rgba(199, 70, 52, 0.14), transparent 34rem),
+        radial-gradient(circle at 92% 8%, rgba(197, 128, 45, 0.16), transparent 32rem),
+        linear-gradient(180deg, #fbf6ef 0%, var(--series-bg) 50%, #efe8df 100%);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 18px;
+    }
+
+    a { color: #8d2d23; text-decoration-thickness: 0.08em; text-underline-offset: 0.18em; }
+    a:hover { color: var(--oracle-red-soft); }
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 3px solid rgba(199, 70, 52, 0.7);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -100px;
+      z-index: 999;
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      background: var(--ink);
+      color: white;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    .utility {
+      border-bottom: 1px solid rgba(36, 28, 24, 0.12);
+      background: rgba(255, 250, 245, 0.78);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    .utility-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.7rem 1.2rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 0;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+    .wordmark {
+      color: #b33126;
+      letter-spacing: 0.13em;
+      font-weight: 800;
+      font-size: 0.9rem;
+      line-height: 1;
+    }
+    .classification-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      white-space: nowrap;
+      border: 1px solid rgba(199, 70, 52, 0.26);
+      background: rgba(199, 70, 52, 0.08);
+      color: #6f1e17;
+      border-radius: 999px;
+      padding: 0.28rem 0.72rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    header.series-header {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.2rem 1.2rem 0;
+    }
+    .series-nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .series-nav nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .series-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.38rem 0.7rem;
+      background: rgba(255,255,255,0.45);
+    }
+    .series-nav a[aria-current="page"] {
+      color: #76251d;
+      border-color: rgba(199,70,52,0.35);
+      background: rgba(199,70,52,0.08);
+    }
+
+    .hero-wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2rem 1.2rem 1rem;
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(255,250,245,0.96) 0%, rgba(244,233,219,0.94) 62%, rgba(232,218,202,0.94) 100%);
+      border: 1px solid rgba(222, 212, 202, 0.92);
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+      padding: clamp(1.35rem, 4vw, 3.2rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+      gap: clamp(1.2rem, 4vw, 3rem);
+      isolation: isolate;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: auto -14rem -14rem auto;
+      width: 32rem;
+      height: 32rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(199,70,52,0.18), transparent 68%);
+      z-index: -1;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 1rem;
+      right: 1.1rem;
+      width: 9rem;
+      height: 9rem;
+      border: 1px solid rgba(49,95,91,0.14);
+      border-radius: 28px;
+      transform: rotate(10deg);
+      z-index: -1;
+    }
+    .eyebrow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 1rem;
+      color: #6f1e17;
+      font-weight: 800;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      border: 1px solid rgba(199,70,52,0.26);
+      background: rgba(199,70,52,0.08);
+      padding: 0.32rem 0.7rem;
+    }
+    h1 {
+      max-width: 13ch;
+      margin: 0;
+      font-size: clamp(2.35rem, 7vw, 5rem);
+      line-height: 0.94;
+      letter-spacing: -0.055em;
+    }
+    .subtitle {
+      max-width: 55rem;
+      margin: 1.35rem 0 0;
+      color: #594d45;
+      font-size: clamp(1.05rem, 2.2vw, 1.42rem);
+      line-height: 1.45;
+      font-weight: 650;
+    }
+    .summary {
+      max-width: var(--measure);
+      margin: 1.2rem 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+    .hero-panel {
+      align-self: stretch;
+      display: grid;
+      gap: 1rem;
+    }
+    .takeaway-card, .meta-card, .tool-card, .toc-card, .note-card, .field-card, .evidence-panel, .caveat-panel {
+      border: 1px solid rgba(222,212,202,0.94);
+      border-radius: var(--radius-md);
+      background: rgba(255,250,245,0.82);
+      box-shadow: 0 10px 28px rgba(54,45,38,0.06);
+    }
+    .takeaway-card {
+      background: linear-gradient(180deg, rgba(245, 230, 212, 0.92), rgba(255, 250, 245, 0.9));
+      padding: 1.1rem;
+    }
+    .takeaway-card h2, .takeaway-card h3, .meta-card h2, .tool-card h2, .toc-card h2 {
+      margin: 0 0 0.55rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #7b2b23;
+    }
+    .takeaway-card p, .meta-card p { margin: 0; }
+    .kicker {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .layout {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1rem 1.2rem 4rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 2rem;
+      align-items: start;
+    }
+    main {
+      min-width: 0;
+    }
+    .sidebar {
+      position: sticky;
+      top: 4.6rem;
+      display: grid;
+      gap: 1rem;
+    }
+    .meta-card, .tool-card, .toc-card, .note-card {
+      padding: 1rem;
+    }
+    .meta-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.62rem;
+      margin: 0;
+    }
+    .meta-list div {
+      display: grid;
+      gap: 0.05rem;
+      padding-bottom: 0.55rem;
+      border-bottom: 1px solid rgba(222,212,202,0.75);
+    }
+    .meta-list dt {
+      color: var(--muted);
+      font-size: 0.76rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+    .meta-list dd {
+      margin: 0;
+      color: var(--ink);
+      font-size: 0.92rem;
+      line-height: 1.35;
+    }
+    .tools {
+      display: grid;
+      gap: 0.55rem;
+    }
+    button, .button-link {
+      font: inherit;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.68);
+      color: var(--ink);
+      padding: 0.55rem 0.78rem;
+      cursor: pointer;
+      text-align: left;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      line-height: 1.15;
+    }
+    button:hover, .button-link:hover {
+      border-color: rgba(199,70,52,0.45);
+      background: rgba(199,70,52,0.07);
+      color: #6f1e17;
+    }
+    .toc-card nav { display: grid; gap: 0.35rem; }
+    .toc-card a {
+      text-decoration: none;
+      color: #473c35;
+      font-size: 0.92rem;
+      line-height: 1.32;
+      padding: 0.34rem 0.45rem;
+      border-radius: 10px;
+    }
+    .toc-card a:hover { background: rgba(199,70,52,0.08); color: #6f1e17; }
+
+    .article-card {
+      background: rgba(255,250,245,0.93);
+      border: 1px solid rgba(222,212,202,0.92);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .article-inner {
+      padding: clamp(1.1rem, 4vw, 3rem);
+    }
+    .breadcrumb {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 0 0 1rem;
+    }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 2.3rem;
+    }
+    .intro-card {
+      border: 1px solid var(--line);
+      background: var(--surface-alt);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+    }
+    .intro-card h3 {
+      margin: 0 0 0.45rem;
+      font-size: 1rem;
+      color: #76251d;
+    }
+    .intro-card p { margin: 0; color: #4f453e; font-size: 0.96rem; }
+
+    section.article-section {
+      padding-top: 2.1rem;
+      border-top: 1px solid rgba(222,212,202,0.85);
+      margin-top: 2.3rem;
+    }
+    section.article-section:first-of-type {
+      margin-top: 0;
+      border-top: 0;
+      padding-top: 0;
+    }
+    h2 {
+      font-size: clamp(1.75rem, 3vw, 2.65rem);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      margin: 0 0 1rem;
+    }
+    h3 {
+      font-size: clamp(1.2rem, 2vw, 1.55rem);
+      line-height: 1.2;
+      margin: 1.45rem 0 0.6rem;
+    }
+    p { max-width: var(--measure); margin: 0 0 1.05rem; }
+    .lead {
+      color: #4c4038;
+      font-size: 1.12rem;
+      font-weight: 500;
+    }
+    ul, ol { max-width: var(--measure); padding-left: 1.25rem; }
+    li { margin-bottom: 0.5rem; }
+    strong { font-weight: 800; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 1rem 0 0; }
+    .chip {
+      border: 1px solid rgba(49,95,91,0.22);
+      background: rgba(229,238,240,0.8);
+      color: #254f4a;
+      border-radius: 999px;
+      padding: 0.28rem 0.62rem;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .gap-map {
+      display: grid;
+      gap: 1rem;
+      margin: 1.4rem 0 1.8rem;
+    }
+    .gap-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 58px minmax(0, 1fr) 58px minmax(0, 1fr);
+      gap: 0.65rem;
+      align-items: stretch;
+    }
+    .gap-cell {
+      border: 1px solid var(--line);
+      background: #fffaf5;
+      border-radius: var(--radius-md);
+      padding: 0.95rem;
+      min-height: 100%;
+    }
+    .gap-cell.assumption { background: var(--warning-soft); }
+    .gap-cell.reality { background: var(--info-soft); }
+    .gap-cell.response { background: var(--success-soft); }
+    .gap-cell h3 {
+      margin: 0 0 0.38rem;
+      font-size: 0.92rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #5e211a;
+    }
+    .gap-cell p { margin: 0; font-size: 0.95rem; line-height: 1.45; }
+    .arrow {
+      display: grid;
+      place-items: center;
+      color: rgba(36,28,24,0.44);
+      font-weight: 900;
+      font-size: 1.35rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0 1.7rem;
+    }
+    .card-grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .field-card {
+      padding: 1rem;
+      background: rgba(255,250,245,0.9);
+    }
+    .field-card h3 {
+      margin: 0 0 0.45rem;
+      font-size: 1.06rem;
+      color: #6f1e17;
+    }
+    .field-card p, .field-card li { font-size: 0.95rem; line-height: 1.48; }
+    .field-card p:last-child, .field-card ul:last-child, .field-card ol:last-child { margin-bottom: 0; }
+    .field-card .label {
+      display: inline-flex;
+      margin-bottom: 0.55rem;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6f1e17;
+    }
+
+    .evidence-panel, .caveat-panel {
+      margin: 1.4rem 0;
+      padding: 1.1rem 1.15rem;
+      border-left: 6px solid var(--teal-deep);
+      background: var(--info-soft);
+    }
+    .caveat-panel {
+      border-left-color: var(--ai-amber);
+      background: var(--warning-soft);
+    }
+    .evidence-panel h3, .caveat-panel h3 {
+      margin: 0 0 0.45rem;
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #254f4a;
+    }
+    .caveat-panel h3 { color: #75410d; }
+    .evidence-panel p, .caveat-panel p { margin-bottom: 0.4rem; }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0 1.5rem;
+      font-size: 0.94rem;
+      line-height: 1.45;
+      background: #fffaf5;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    caption {
+      text-align: left;
+      font-weight: 800;
+      color: #76251d;
+      margin-bottom: 0.55rem;
+    }
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 0.75rem 0.8rem;
+      border-bottom: 1px solid rgba(222,212,202,0.92);
+      border-right: 1px solid rgba(222,212,202,0.62);
+    }
+    th:last-child, td:last-child { border-right: 0; }
+    tr:last-child td { border-bottom: 0; }
+    thead th {
+      background: rgba(199,70,52,0.09);
+      color: #5f1f18;
+      font-weight: 900;
+    }
+    tbody th {
+      width: 25%;
+      color: #3c312a;
+      background: rgba(229,238,240,0.62);
+      font-weight: 850;
+    }
+    .table-wrap { overflow-x: auto; margin: 1rem 0 1.6rem; }
+
+    blockquote {
+      margin: 1.4rem 0;
+      padding: 1.1rem 1.2rem;
+      border-left: 6px solid var(--oracle-red-soft);
+      background: rgba(199,70,52,0.06);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-size: 1.08rem;
+      font-weight: 650;
+      max-width: var(--measure);
+    }
+    blockquote p { margin: 0; }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255,250,245,0.82);
+      padding: 0.85rem 1rem;
+      margin: 0.8rem 0;
+    }
+    summary {
+      cursor: pointer;
+      font-weight: 850;
+      color: #56231d;
+    }
+    details p { margin-top: 0.8rem; }
+
+    .next-prev {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .nav-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      background: rgba(255,250,245,0.75);
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .nav-card small {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .nav-card:hover { background: rgba(199,70,52,0.07); }
+
+    footer {
+      border-top: 1px solid rgba(222,212,202,0.92);
+      background: rgba(58,54,50,0.96);
+      color: #f5eee6;
+      padding: 2rem 1.2rem;
+    }
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: start;
+      font-size: 0.9rem;
+    }
+    footer a { color: #f8d6cd; }
+    footer p { margin: 0 0 0.6rem; color: #efe5dc; }
+
+    .reading-mode .sidebar { display: none; }
+    .reading-mode .layout { grid-template-columns: minmax(0, 930px); justify-content: center; }
+    .reading-mode .article-card { box-shadow: none; }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      h1 { max-width: 16ch; }
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; grid-row: 1; }
+      .toc-card { display: none; }
+      .gap-row { grid-template-columns: 1fr; }
+      .arrow { transform: rotate(90deg); min-height: 24px; }
+      .card-grid, .card-grid.three, .intro-grid { grid-template-columns: 1fr; }
+      .next-prev { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+      .utility-inner { align-items: flex-start; flex-direction: column; gap: 0.55rem; }
+      .hero-wrap { padding-top: 1rem; }
+      .hero { border-radius: 24px; }
+      .article-card { border-radius: 24px; }
+      .series-nav { align-items: flex-start; }
+      .series-nav nav { width: 100%; }
+      table { font-size: 0.86rem; }
+      th, td { padding: 0.65rem; }
+    }
+
+    @media print {
+      body { background: white; color: black; font-size: 11pt; }
+      .utility, .series-header, .sidebar, .tools, .skip-link { display: none !important; }
+      .hero, .article-card { box-shadow: none; border: 1px solid #bbb; }
+      .layout, .hero-wrap { display: block; max-width: 100%; padding: 0; }
+      a { color: black; text-decoration: none; }
+      footer { background: white; color: black; border-top: 1px solid #bbb; }
+      footer p { color: black; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="utility" role="banner">
+    <div class="utility-inner">
+      <div class="brand"><span class="wordmark" aria-label="Oracle inspired text mark">ORACLE</span><span>FY26 UK-PS Whitepapers Series</span></div>
+      <span class="classification-pill">Confidential - Oracle Internal</span>
+    </div>
+  </div>
+
+  <header class="series-header" aria-label="Series navigation">
+    <div class="series-nav">
+      <div><strong>Standalone static article</strong> <span aria-hidden="true">/</span> Paper 06</div>
+      <nav aria-label="Global navigation">
+        <a href="../index.html">Index</a>
+        <a href="../index.html#papers">All papers</a>
+        <a href="../index.html#reading-paths">Reading paths</a>
+        <a href="../index.html#themes">Themes</a>
+        <a aria-current="page" href="#main-content">Current paper</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero-wrap">
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <div class="eyebrow"><span class="badge">Paper 06</span><span>Enterprise AI and Accountability</span></div>
+        <h1 id="page-title">From ChatGPT to Enterprise AI</h1>
+        <p class="subtitle">Closing the Expectation Gap: why consumer familiarity creates misleading assumptions and how Oracle Architects can reframe the conversation.</p>
+        <p class="summary">This web article converts the source paper into a field-ready experience for internal use. It keeps the core argument intact: consumer GenAI has opened the door to imagination, but enterprise AI must be designed for privacy, traceability, governance and scrutiny.</p>
+        <div class="chips" aria-label="Primary themes">
+          <span class="chip">Enterprise AI</span>
+          <span class="chip">Expectation Gap</span>
+          <span class="chip">Governance</span>
+          <span class="chip">Public Sector</span>
+          <span class="chip">OCI GenAI</span>
+        </div>
+      </div>
+      <aside class="hero-panel" aria-label="Key paper information">
+        <div class="takeaway-card">
+          <h2>Key takeaway</h2>
+          <p>Consumer AI creates enthusiasm, but also creates the wrong default mental model. Architects should reframe, not refute, by moving the conversation from impressive demos to governed, auditable and policy-aligned AI.</p>
+        </div>
+        <div class="takeaway-card">
+          <h2>Best used for</h2>
+          <p>Early AI discovery, shadow AI concerns, explaining why production AI requires infrastructure, and helping customers understand why fluency is not the same as enterprise trust.</p>
+        </div>
+      </aside>
+    </section>
+  </div>
+
+  <div class="layout">
+    <main id="main-content" tabindex="-1">
+      <article class="article-card">
+        <div class="article-inner">
+          <p class="breadcrumb"><a href="../index.html">Series</a> / <a href="../index.html#paper-06">Paper 06</a> / From ChatGPT to Enterprise AI</p>
+
+          <section class="article-section" id="orientation" aria-labelledby="orientation-title">
+            <p class="kicker">Executive orientation</p>
+            <h2 id="orientation-title">Why this paper matters</h2>
+            <p class="lead">AI is now part of everyday working life. That familiarity gives customers confidence, but it also creates assumptions that do not survive contact with regulated enterprise delivery. This paper helps architects convert curiosity into an accountable operating model.</p>
+            <div class="intro-grid">
+              <div class="intro-card">
+                <h3>Who should read it</h3>
+                <p>Oracle Cloud Architects, ACEs, sales teams, public sector account teams, and anyone supporting AI conversations with policy, security or data residency implications.</p>
+              </div>
+              <div class="intro-card">
+                <h3>What it helps with</h3>
+                <p>Explaining why consumer AI experience cannot be copied directly into enterprise systems, especially where data protection, audit, explainability and sovereign deployment matter.</p>
+              </div>
+              <div class="intro-card">
+                <h3>What not to overclaim</h3>
+                <p>Do not suggest that enterprise AI is simply safer because it is Oracle-branded. The argument depends on architecture, controls, lifecycle governance and evidence. Model availability and roadmap statements should be checked before customer-facing reuse.</p>
+              </div>
+              <div class="intro-card">
+                <h3>Field posture</h3>
+                <p>Respect the customer’s excitement. Use it as a door into a deeper conversation about privacy, grounding, traceability, role-based access, lifecycle management and accountability.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="article-section" id="ai-everywhere" aria-labelledby="ai-everywhere-title">
+            <p class="kicker">Source-derived article section</p>
+            <h2 id="ai-everywhere-title">AI is everywhere, but not all AI is equal</h2>
+            <p>Tools such as ChatGPT, Claude and Gemini have become familiar to many knowledge workers. They respond fluidly, produce useful drafts and make AI feel accessible through a natural language interface. That accessibility has normalised AI far beyond data science and specialist engineering circles.</p>
+            <p>The same familiarity creates a problem. Consumer tools are optimised for speed, breadth and engagement. Enterprise buyers often arrive with expectations shaped by playful experimentation rather than by production needs, compliance constraints or operating controls.</p>
+            <p>For architects, the gap becomes visible when questions about latency, training data, deployment location, auditability or model behaviour seem unnecessarily cautious to stakeholders whose baseline is a public chatbot. The role of the architect is to help those stakeholders understand why enterprise AI is architected not for novelty, but for accountability.</p>
+            <div class="evidence-panel" role="note" aria-label="Field guidance evidence panel">
+              <h3>Field guidance</h3>
+              <p>The paper’s central stance is not anti-consumer-AI. It recognises that consumer GenAI has increased curiosity and confidence. The discipline is to translate that energy into requirements that can withstand governance, assurance and scrutiny.</p>
+            </div>
+          </section>
+
+          <section class="article-section" id="mental-model" aria-labelledby="mental-model-title">
+            <p class="kicker">Dominant visual pattern</p>
+            <h2 id="mental-model-title">The consumer to enterprise expectation gap</h2>
+            <p class="lead">Consumer AI shapes a mental model through thousands of fast, informal prompts. Four assumptions become particularly influential: instantaneity, fluency, creativity and breadth.</p>
+
+            <div class="gap-map" role="list" aria-label="Consumer AI assumptions mapped to enterprise AI realities">
+              <div class="gap-row" role="listitem">
+                <div class="gap-cell assumption"><h3>Consumer assumption</h3><p><strong>Instantaneity:</strong> AI delivers answers in seconds, so production AI should feel equally frictionless.</p></div>
+                <div class="arrow" aria-hidden="true">›</div>
+                <div class="gap-cell reality"><h3>Enterprise reality</h3><p>Secure access, grounding pipelines, tenancy controls, logging, model selection and data residency all affect delivery.</p></div>
+                <div class="arrow" aria-hidden="true">›</div>
+                <div class="gap-cell response"><h3>Architect response</h3><p>Explain that speed is valuable, but only after the controls that protect data, users and decisions are in place.</p></div>
+              </div>
+              <div class="gap-row" role="listitem">
+                <div class="gap-cell assumption"><h3>Consumer assumption</h3><p><strong>Fluency:</strong> If an answer sounds confident, it must be correct.</p></div>
+                <div class="arrow" aria-hidden="true">›</div>
+                <div class="gap-cell reality"><h3>Enterprise reality</h3><p>Fluent hallucination can create legal, ethical and reputational risk in health, justice, finance and public services.</p></div>
+                <div class="arrow" aria-hidden="true">›</div>
+                <div class="gap-cell response"><h3>Architect response</h3><p>Prioritise fidelity, traceability and confidence signalling over polished language.</p></div>
+              </div>
+              <div class="gap-row" role="listitem">
+                <div class="gap-cell assumption"><h3>Consumer assumption</h3><p><strong>Creativity:</strong> The goal is novelty, surprise and broad usefulness.</p></div>
+                <div class="arrow" aria-hidden="true">›</div>
+                <div class="gap-cell reality"><h3>Enterprise reality</h3><p>Operational systems need reproducibility, audit trails, accountable review and bounded behaviours.</p></div>
+                <div class="arrow" aria-hidden="true">›</div>
+                <div class="gap-cell response"><h3>Architect response</h3><p>Celebrate experimentation, then move the customer towards an operating model.</p></div>
+              </div>
+              <div class="gap-row" role="listitem">
+                <div class="gap-cell assumption"><h3>Consumer assumption</h3><p><strong>Breadth:</strong> A single model appears to know everything.</p></div>
+                <div class="arrow" aria-hidden="true">›</div>
+                <div class="gap-cell reality"><h3>Enterprise reality</h3><p>Domain-specific work requires trusted data sources, governed retrieval, role-aware access and explainable boundaries.</p></div>
+                <div class="arrow" aria-hidden="true">›</div>
+                <div class="gap-cell response"><h3>Architect response</h3><p>Move the conversation from chat windows to infrastructure, trust boundaries and business outcomes.</p></div>
+              </div>
+            </div>
+
+            <p>The source paper makes an important balancing point. Consumer GenAI has not only created misunderstanding; it has also shortened the distance between AI capability and user imagination. Natural language interfaces, prompt-based interaction and retrieval-augmented generation are now easier to discuss with non-technical stakeholders because people have experienced something tangible.</p>
+            <p>The objective is not to replicate the consumer experience inside the enterprise. It is to learn from its accessibility while correcting for its omissions.</p>
+          </section>
+
+          <section class="article-section" id="enterprise-friction" aria-labelledby="enterprise-friction-title">
+            <p class="kicker">Customer conversation risk</p>
+            <h2 id="enterprise-friction-title">What happens when that mental model reaches the enterprise</h2>
+            <p>Once consumer-shaped enthusiasm enters an enterprise conversation, the questions are usually reasonable but incomplete. Customers ask why they cannot simply connect ChatGPT to internal data, why the solution needs infrastructure, or why a weekend prototype cannot become production immediately.</p>
+            <p>Each question points to the same underlying gap: experimentation hides constraints that production exposes.</p>
+
+            <div class="card-grid three">
+              <div class="field-card">
+                <span class="label">Risk signal</span>
+                <h3>Shadow AI</h3>
+                <p>Users may paste sensitive content into consumer tools to move faster. The paper cites examples such as draft contracts, patient notes, interview transcripts and source code. This bypasses organisational controls and may expose data to opaque retention or handling policies.</p>
+              </div>
+              <div class="field-card">
+                <span class="label">Risk signal</span>
+                <h3>Hallucination tolerance</h3>
+                <p>Consumer contexts may tolerate fabricated references or imprecise answers. Public services, health, justice and finance cannot safely accept systems that sound right while being wrong.</p>
+              </div>
+              <div class="field-card">
+                <span class="label">Risk signal</span>
+                <h3>Unrealistic time to value</h3>
+                <p>Public demos rarely show the work required to configure secure data access, grounding, role controls, latency management and sovereign hosting.</p>
+              </div>
+            </div>
+
+            <blockquote>
+              <p>Demos create belief that enterprise AI is easy. Deployment reveals that enterprise AI must also be accountable.</p>
+            </blockquote>
+
+            <p>The architect’s task is to honour the curiosity while re-establishing the non-negotiables: privacy, traceability, performance under constraint and resilience against misuse.</p>
+          </section>
+
+          <section class="article-section" id="accountability" aria-labelledby="accountability-title">
+            <p class="kicker">Architecture and policy</p>
+            <h2 id="accountability-title">Enterprise AI must be designed for accountability</h2>
+            <p>Enterprise AI becomes meaningful only when it can affect operational systems responsibly. This is especially true where outcomes touch citizens, clinicians, civil servants or regulated data. The source paper defines enterprise-grade AI architecturally rather than as a marketing phrase.</p>
+
+            <div class="table-wrap">
+              <table>
+                <caption>Enterprise AI accountability requirements</caption>
+                <thead>
+                  <tr><th scope="col">Requirement</th><th scope="col">What it means</th><th scope="col">Why it matters</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Isolated deployment</th>
+                    <td>Models must run with strong tenancy separation, clear data ingress and egress controls, and no mixing of unrelated customer inference.</td>
+                    <td>Shared, opaque consumer service patterns are not compatible with sensitive enterprise use.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Controllable security boundaries</th>
+                    <td>Customers need external key management, bounded inference, access control and verifiable audit trails.</td>
+                    <td>Trust depends on enforceable controls, not general assurances.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Reproducible and explainable output</th>
+                    <td>Model version, prompt structure, retrieval source and decision path must be traceable.</td>
+                    <td>Regulated decisions need inspection, correction and accountability over time.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Lifecycle governance</th>
+                    <td>Training data provenance, version control, fine-tuning records and output monitoring are part of the system’s compliance posture.</td>
+                    <td>A model that drifts silently cannot be considered safe for consequential contexts.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="evidence-panel" role="note" aria-label="Policy signals evidence panel">
+              <h3>Policy signals</h3>
+              <p>The paper connects AI architecture to the NHS DSP Toolkit, NCSC Cloud Security Principle CS-14, the EU Data Act, and Cabinet Office guidance around sovereign deployment and multi-region hosting. These are presented as design pressures that make traceability, portability, security and human accountability central to public sector AI adoption.</p>
+            </div>
+
+            <p>The key distinction is clear. Consumer AI is judged by how well it responds. Enterprise AI is judged by how well it holds up to policy, scrutiny and consequence. The architecture must support not just inference, but integrity.</p>
+          </section>
+
+          <section class="article-section" id="oracle-design" aria-labelledby="oracle-design-title">
+            <p class="kicker">Oracle AI design position</p>
+            <h2 id="oracle-design-title">Why Oracle’s AI design is intentionally different</h2>
+            <p>The source paper positions Oracle’s approach as deliberate rather than flashy. It argues that Oracle has architected AI for governments, healthcare providers, regulators and risk-sensitive institutions that need decisions, policies and outcomes to stand up to scrutiny.</p>
+            <p>It states that OCI Generative AI supports models from Cohere, Meta, Grok and Google, with more expected over time. Treat specific model availability as a check-before-use detail, because model catalogues and regional availability can change.</p>
+
+            <div class="card-grid">
+              <div class="field-card">
+                <span class="label">Architecture claim</span>
+                <h3>Isolation-first design</h3>
+                <p>The paper states that inference does not happen in shared environments, customer prompts are not used to retrain foundation models, model behaviour remains more repeatable and inspectable, and no other tenant has access to the customer’s inference trace.</p>
+              </div>
+              <div class="field-card">
+                <span class="label">Architecture claim</span>
+                <h3>Auditable conditions</h3>
+                <p>Oracle’s platform does not make probabilistic models deterministic, but it enforces repeatable conditions for how inference is invoked, secured and logged, making deployments auditable and controlled.</p>
+              </div>
+              <div class="field-card">
+                <span class="label">Architecture claim</span>
+                <h3>Sovereign containment</h3>
+                <p>The paper states that inference workloads can be hosted within the dual-region UK Government Cloud for Dedicated Cluster deployments, keeping AI interaction within sovereign boundaries.</p>
+              </div>
+              <div class="field-card">
+                <span class="label">Architecture claim</span>
+                <h3>Customer control</h3>
+                <p>External key management through BYOK and HYOK is presented as a way for customers to control encryption keys and govern access to sensitive data and infrastructure.</p>
+              </div>
+            </div>
+
+            <div class="caveat-panel" role="note" aria-label="Handling caveat">
+              <h3>Handle carefully</h3>
+              <p>Use these as internal field points, not public claims without validation. Dedicated Cluster behaviour, shared token-based sovereign roadmap items, model provider availability and private access patterns should be confirmed against current Oracle documentation before customer-facing use.</p>
+            </div>
+
+            <p>The paper also frames Oracle AI as embedded across the wider portfolio, not as a detached service. Its argument is that governed AI becomes more useful when it sits where enterprise data, workflows and decisions already live.</p>
+
+            <div class="table-wrap">
+              <table>
+                <caption>Oracle portfolio touchpoints described in the source paper</caption>
+                <thead>
+                  <tr><th scope="col">Service area</th><th scope="col">AI role described</th><th scope="col">Trust relevance</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Fusion Applications</th>
+                    <td>Predictive, assistive and generative features in ERP, HCM, SCM and CX workflows.</td>
+                    <td>Role-based access, audit trails and domain-specific prompts.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Oracle APEX</th>
+                    <td>Low-code GenAI through assistants, prompt-to-SQL and contextual app logic.</td>
+                    <td>Secure embedding close to application context.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Autonomous Database</th>
+                    <td>GenAI grounded in governed datasets using vector search and retrieval-augmented generation.</td>
+                    <td>Row-level security and lifecycle tracking are preserved.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Oracle Analytics Cloud</th>
+                    <td>Natural language questions, explainable insights and AI-driven forecasts.</td>
+                    <td>Insights appear inside existing analytics governance patterns.</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Oracle Digital Assistant</th>
+                    <td>Conversational interfaces across web and voice channels, expanding with generative capabilities.</td>
+                    <td>AI interaction becomes part of managed enterprise channels.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="article-section" id="field-framing" aria-labelledby="field-framing-title">
+            <p class="kicker">Practical field interpretation</p>
+            <h2 id="field-framing-title">Practical framing for AI conversations</h2>
+            <p>The paper’s strongest advice is tonal as much as technical: reframe, do not refute. Customer enthusiasm is not the enemy. It is a door that has already opened.</p>
+
+            <div class="card-grid three">
+              <div class="field-card">
+                <span class="label">Use when a customer says AI feels easy</span>
+                <h3>Consumer AI is the showroom. Enterprise AI is the factory floor.</h3>
+                <p>A chatbot shows what is possible. Reliable, governed and auditable value in regulated sectors requires more than a good demo.</p>
+              </div>
+              <div class="field-card">
+                <span class="label">Use when audit matters</span>
+                <h3>ChatGPT helps you think. Oracle AI helps you decide, under audit.</h3>
+                <p>This distinguishes ideation from implementation, and informal creativity from formal accountability.</p>
+              </div>
+              <div class="field-card">
+                <span class="label">Use after a prototype</span>
+                <h3>That weekend project was the prototype. Now we need the operating model.</h3>
+                <p>This respects experimentation while signalling the shift to enterprise rigour.</p>
+              </div>
+            </div>
+
+            <details>
+              <summary>Customer question: Why can’t we just plug in our PDFs and ask questions?</summary>
+              <p>You can acknowledge that this is possible, then explain that documents need to be indexed securely, grounded accurately and accessed only by the right people. This is not just search; it is a governed retrieval pipeline.</p>
+            </details>
+            <details>
+              <summary>Customer question: Why does Oracle’s GenAI seem less fluent than ChatGPT?</summary>
+              <p>The answer should separate fluency from fitness for purpose. In public services, fluency without accuracy can become a liability. The source paper’s recommended framing is to optimise for fidelity, traceability and trust over style.</p>
+            </details>
+            <details>
+              <summary>Customer concern: Why is enterprise AI slower?</summary>
+              <p>Consumer tools are pre-optimised, globally hosted and unconcerned with enterprise isolation or audit. Enterprise AI may only become fast after the controls are in place. That is a feature, not a flaw.</p>
+            </details>
+
+            <blockquote>
+              <p>Curiosity is not a problem. Curiosity without constraints is.</p>
+            </blockquote>
+          </section>
+
+          <section class="article-section" id="moving-forward" aria-labelledby="moving-forward-title">
+            <p class="kicker">Conclusion</p>
+            <h2 id="moving-forward-title">Moving the conversation forward</h2>
+            <p>Consumer-facing GenAI has shifted the cultural centre of gravity for AI. It has made AI tangible, conversational and seemingly limitless. But enterprise AI, particularly in public sector environments, demands clarity of purpose, control of infrastructure and compliance with regulation.</p>
+            <p>The source paper’s closing argument is that Oracle’s AI platform is not optimised to surprise. It is designed to satisfy scrutiny. That distinction may not win headlines, but it can win trust.</p>
+            <p>Closing the expectation gap is not only about features or frameworks. It is about helping customers understand why production AI must perform under scrutiny, scale with discipline and integrate into the policy environments they must uphold.</p>
+          </section>
+
+          <section class="article-section" id="related" aria-labelledby="related-title">
+            <p class="kicker">Related papers</p>
+            <h2 id="related-title">Continue the Enterprise AI path</h2>
+            <div class="next-prev">
+              <a class="nav-card" href="../paper-07-miracle-of-ai-probabilistic-foundations/">
+                <small>Next paper</small>
+                <strong>Paper 07 - The Miracle of AI: From Probabilistic Foundations</strong><br>
+                Explore why probabilistic systems can appear coherent, and why trust requires guardrails.
+              </a>
+              <a class="nav-card" href="../paper-08-ai-risks-and-cloud-realities/">
+                <small>Related paper</small>
+                <strong>Paper 08 - AI Risks and Cloud Realities</strong><br>
+                Reframe public fear into enterprise requirements around privacy, security, IP, misinformation and control.
+              </a>
+            </div>
+            <div class="next-prev">
+              <a class="nav-card" href="../paper-05-oci-technical-performance-is-real/">
+                <small>Previous paper</small>
+                <strong>Paper 05 - How and Why OCI’s Technical Performance Is Real</strong><br>
+                Connect AI platform conversations back to the architecture and evidence behind OCI performance.
+              </a>
+              <a class="nav-card" href="../paper-04-sovereignty-and-trust-in-cloud/">
+                <small>Context paper</small>
+                <strong>Paper 04 - Sovereignty and Trust in Cloud</strong><br>
+                Deepen the control, jurisdiction and trust themes that shape public sector AI deployment.
+              </a>
+            </div>
+          </section>
+
+          <section class="article-section" id="source-notes" aria-labelledby="source-notes-title">
+            <p class="kicker">Source and handling notes</p>
+            <h2 id="source-notes-title">Conversion notes</h2>
+            <p>This static HTML page is an editorial conversion of the source PDF, not a public marketing page. It preserves the source argument while restructuring it into web-native sections, cards, tables and field-use panels.</p>
+            <ul>
+              <li><strong>Source PDF:</strong> Paper 6 - From ChatGPT to Enterprise AI - Closing the Expectation Gap v1.0.pdf</li>
+              <li><strong>Source classification:</strong> Confidential - Oracle Internal</li>
+              <li><strong>Conversion status:</strong> Draft conversion for internal enablement review</li>
+              <li><strong>Known caveat:</strong> Model provider support, sovereign deployment availability and roadmap statements should be rechecked before use in live customer-facing materials.</li>
+            </ul>
+          </section>
+        </div>
+      </article>
+    </main>
+
+    <aside class="sidebar" aria-label="Article tools and metadata">
+      <section class="meta-card" aria-labelledby="metadata-title">
+        <h2 id="metadata-title">Metadata</h2>
+        <dl class="meta-list">
+          <div><dt>Paper</dt><dd>06</dd></div>
+          <div><dt>Title</dt><dd>From ChatGPT to Enterprise AI: Closing the Expectation Gap</dd></div>
+          <div><dt>Version</dt><dd>1.0</dd></div>
+          <div><dt>Source</dt><dd>Paper 6 - From ChatGPT to Enterprise AI - Closing the Expectation Gap v1.0.pdf</dd></div>
+          <div><dt>Copyright</dt><dd>Copyright © 2025, Oracle and/or its affiliates</dd></div>
+          <div><dt>Classification</dt><dd>Confidential - Oracle Internal</dd></div>
+          <div><dt>Route</dt><dd>/paper-06-chatgpt-to-enterprise-ai/</dd></div>
+          <div><dt>Status</dt><dd>Draft conversion</dd></div>
+          <div><dt>Reading time</dt><dd>Approximately 12 minutes</dd></div>
+        </dl>
+      </section>
+
+      <section class="tool-card" aria-labelledby="tools-title">
+        <h2 id="tools-title">Reading tools</h2>
+        <div class="tools">
+          <a class="button-link" href="../index.html">Back to index</a>
+          <button type="button" id="copy-link">Copy section link</button>
+          <button type="button" onclick="window.print()">Print or save as PDF</button>
+          <button type="button" id="expand-all">Expand all</button>
+          <button type="button" id="collapse-all">Collapse all</button>
+          <button type="button" id="reading-mode">Toggle reading mode</button>
+        </div>
+      </section>
+
+      <section class="toc-card" aria-labelledby="toc-title">
+        <h2 id="toc-title">Contents</h2>
+        <nav aria-label="Table of contents">
+          <a href="#orientation">Executive orientation</a>
+          <a href="#ai-everywhere">AI is everywhere</a>
+          <a href="#mental-model">Expectation gap</a>
+          <a href="#enterprise-friction">Enterprise friction</a>
+          <a href="#accountability">Designed for accountability</a>
+          <a href="#oracle-design">Oracle AI design</a>
+          <a href="#field-framing">Practical framing</a>
+          <a href="#moving-forward">Moving forward</a>
+          <a href="#related">Related papers</a>
+          <a href="#source-notes">Source notes</a>
+        </nav>
+      </section>
+
+      <section class="note-card" aria-labelledby="handling-title">
+        <h2 id="handling-title">Handling stance</h2>
+        <p><strong>Reframe, not refute.</strong> The strongest customer posture is to respect consumer AI enthusiasm, then show why enterprise AI needs safety features, governance and auditability.</p>
+      </section>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <p><strong>FY26 UK-PS Whitepapers Series</strong></p>
+        <p>Internal enablement experience derived from Oracle source material. Confidential - Oracle Internal.</p>
+        <p>Source: Paper 6 - From ChatGPT to Enterprise AI - Closing the Expectation Gap v1.0.pdf. Conversion version 1.0. Last reviewed 2026-06-22.</p>
+      </div>
+      <div class="wordmark" aria-hidden="true">ORACLE</div>
+    </div>
+  </footer>
+
+  <script>
+    const PAPER_META = {
+      series: "FY26 UK-PS Whitepapers Series",
+      number: "06",
+      title: "From ChatGPT to Enterprise AI: Closing the Expectation Gap",
+      subtitle: "Why Consumer Familiarity Creates Misleading Assumptions and How Oracle Architects Can Reframe the Conversation",
+      version: "1.0",
+      sourceFile: "Paper 6 - From ChatGPT to Enterprise AI - Closing the Expectation Gap v1.0.pdf",
+      classification: "Confidential - Oracle Internal",
+      copyright: "Copyright © 2025, Oracle and/or its affiliates",
+      route: "/paper-06-chatgpt-to-enterprise-ai/",
+      themes: ["Enterprise AI", "Expectation Gap", "Governance", "Public Sector", "OCI GenAI"],
+      conversionVersion: "1.0",
+      conversionStatus: "Draft",
+      lastReviewed: "2026-06-22"
+    };
+
+    const details = () => Array.from(document.querySelectorAll('details'));
+
+    document.getElementById('expand-all').addEventListener('click', () => {
+      details().forEach(item => item.open = true);
+    });
+
+    document.getElementById('collapse-all').addEventListener('click', () => {
+      details().forEach(item => item.open = false);
+    });
+
+    document.getElementById('reading-mode').addEventListener('click', () => {
+      document.body.classList.toggle('reading-mode');
+    });
+
+    document.getElementById('copy-link').addEventListener('click', async () => {
+      const activeSection = [...document.querySelectorAll('main section[id]')]
+        .filter(section => section.getBoundingClientRect().top <= 120)
+        .pop();
+      const id = activeSection ? activeSection.id : 'main-content';
+      const url = `${location.origin}${location.pathname}#${id}`;
+      try {
+        await navigator.clipboard.writeText(url);
+        document.getElementById('copy-link').textContent = 'Section link copied';
+        setTimeout(() => document.getElementById('copy-link').textContent = 'Copy section link', 1600);
+      } catch (error) {
+        location.hash = id;
+      }
+    });
+  </script>
+</body>
+</html>

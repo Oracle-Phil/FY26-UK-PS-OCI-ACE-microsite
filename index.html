@@ -1,0 +1,1662 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FY26 UK-PS Whitepapers Series | Index</title>
+    <meta name="description" content="Confidential Oracle internal index for the FY26 UK-PS Whitepapers Series.">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="classification" content="Confidential - Oracle Internal">
+    <meta name="series" content="FY26 UK-PS Whitepapers Series">
+    <meta name="conversion-version" content="1.0">
+    <style>
+        :root {
+            --series-bg: #f7f3ee;
+            --surface: #fffaf5;
+            --surface-alt: #f1ebe4;
+            --ink: #241c18;
+            --muted: #6f625a;
+            --line: #ded4ca;
+            --oracle-red-soft: #c74634;
+            --clay: #b45f36;
+            --sage: #789c96;
+            --teal-deep: #315f5b;
+            --sand: #d7b98c;
+            --charcoal: #3a3632;
+            --success-soft: #e5efe9;
+            --warning-soft: #f6ead8;
+            --risk-soft: #f3dfdc;
+            --info-soft: #e5eef0;
+            --white: #fffdf9;
+            --shadow: 0 22px 60px rgba(36, 28, 24, .10);
+            --shadow-soft: 0 10px 32px rgba(36, 28, 24, .08);
+            --radius-lg: 28px;
+            --radius-md: 18px;
+            --radius-sm: 12px;
+            --max: 1180px;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            color: var(--ink);
+            font-family: "Oracle Sans", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background:
+                radial-gradient(circle at 0 0, rgba(199, 70, 52, .12), transparent 34rem),
+                radial-gradient(circle at 82% 12%, rgba(49, 95, 91, .16), transparent 28rem),
+                linear-gradient(180deg, #fbf7f2 0%, var(--series-bg) 42%, #efe6dc 100%);
+            font-size: 17px;
+            line-height: 1.65;
+        }
+        a { color: var(--teal-deep); text-decoration-thickness: .08em; text-underline-offset: .22em; }
+        a:hover { color: var(--oracle-red-soft); }
+        :focus-visible { outline: 3px solid rgba(199, 70, 52, .62); outline-offset: 4px; border-radius: 8px; }
+        .skip-link {
+            position: absolute;
+            left: 1rem;
+            top: -5rem;
+            z-index: 100;
+            background: var(--ink);
+            color: white;
+            padding: .75rem 1rem;
+            border-radius: 0 0 12px 12px;
+        }
+        .skip-link:focus { top: 0; }
+
+        .utility-bar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 250, 245, .9);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(222, 212, 202, .85);
+        }
+        .utility-inner {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: .75rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .brand-lockup { display: flex; align-items: center; gap: .9rem; min-width: 0; }
+        .wordmark {
+            letter-spacing: .18em;
+            color: var(--oracle-red-soft);
+            font-weight: 800;
+            font-size: .95rem;
+            line-height: 1;
+        }
+        .series-label {
+            color: var(--muted);
+            font-size: .92rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .classification {
+            display: inline-flex;
+            align-items: center;
+            gap: .45rem;
+            border: 1px solid rgba(199, 70, 52, .35);
+            color: #7f2f22;
+            background: rgba(199, 70, 52, .08);
+            border-radius: 999px;
+            padding: .35rem .75rem;
+            font-size: .84rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .classification::before { content: ""; width: .48rem; height: .48rem; border-radius: 999px; background: var(--oracle-red-soft); }
+
+        header.site-header { max-width: var(--max); margin: 0 auto; padding: 2rem 1.25rem 0; }
+        .nav-shell {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin: .75rem 0 1.35rem;
+        }
+        nav.primary-nav { display: flex; gap: .35rem; flex-wrap: wrap; justify-content: flex-end; }
+        nav.primary-nav a {
+            text-decoration: none;
+            color: var(--charcoal);
+            padding: .55rem .8rem;
+            border-radius: 999px;
+            font-size: .92rem;
+        }
+        nav.primary-nav a:hover { background: rgba(49, 95, 91, .1); color: var(--teal-deep); }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.6fr) minmax(280px, .74fr);
+            gap: 1.4rem;
+            align-items: stretch;
+            margin: 0 0 2rem;
+        }
+        .hero-main, .hero-side {
+            background: rgba(255, 250, 245, .82);
+            border: 1px solid rgba(222, 212, 202, .92);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+        }
+        .hero-main { padding: clamp(1.6rem, 4vw, 3.2rem); position: relative; overflow: hidden; }
+        .hero-main::after {
+            content: "";
+            position: absolute;
+            inset: auto -8rem -10rem auto;
+            width: 24rem;
+            height: 24rem;
+            border-radius: 999px;
+            background: radial-gradient(circle, rgba(215, 185, 140, .38), transparent 68%);
+            pointer-events: none;
+        }
+        .kicker {
+            display: inline-flex;
+            gap: .5rem;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--teal-deep);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .12em;
+            font-size: .78rem;
+        }
+        .kicker::before { content: ""; width: 2.2rem; height: 2px; background: var(--teal-deep); }
+        h1 {
+            font-size: clamp(2.55rem, 7vw, 5.4rem);
+            line-height: .96;
+            letter-spacing: -.055em;
+            margin: 0 0 1.1rem;
+            max-width: 10ch;
+        }
+        .hero-lede {
+            max-width: 68ch;
+            font-size: clamp(1.08rem, 2vw, 1.32rem);
+            color: #473c36;
+            margin: 0 0 1.4rem;
+        }
+        .button-row { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.4rem; position: relative; z-index: 1; }
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .45rem;
+            min-height: 2.8rem;
+            border-radius: 999px;
+            padding: .72rem 1.05rem;
+            text-decoration: none;
+            font-weight: 800;
+            border: 1px solid transparent;
+        }
+        .button.primary { background: var(--ink); color: white; }
+        .button.secondary { background: rgba(49, 95, 91, .09); color: var(--teal-deep); border-color: rgba(49, 95, 91, .22); }
+        .button.primary:hover { background: var(--oracle-red-soft); color: white; }
+        .button.secondary:hover { background: rgba(199, 70, 52, .09); color: var(--oracle-red-soft); border-color: rgba(199, 70, 52, .28); }
+
+        .hero-side {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .meta-card {
+            background: linear-gradient(180deg, rgba(49, 95, 91, .10), rgba(255, 250, 245, .84));
+            border: 1px solid rgba(49, 95, 91, .2);
+            border-radius: 22px;
+            padding: 1.1rem;
+        }
+        .meta-card h2 { margin: 0 0 .65rem; font-size: 1rem; letter-spacing: .02em; }
+        .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .65rem; }
+        .stat {
+            background: rgba(255, 253, 249, .72);
+            border: 1px solid rgba(222, 212, 202, .7);
+            border-radius: 16px;
+            padding: .8rem;
+        }
+        .stat strong { display: block; font-size: 1.35rem; line-height: 1.1; }
+        .stat span { color: var(--muted); font-size: .82rem; }
+        .quote-card {
+            border-left: 4px solid var(--clay);
+            padding: .15rem 0 .15rem 1rem;
+            color: #4d413a;
+            font-size: .95rem;
+        }
+
+        main { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem 4rem; }
+        section.block { margin: clamp(2.5rem, 5vw, 4.5rem) 0; }
+        .section-heading {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 1rem;
+            align-items: end;
+            margin-bottom: 1rem;
+        }
+        .section-heading h2 {
+            font-size: clamp(1.75rem, 4vw, 3rem);
+            line-height: 1.05;
+            letter-spacing: -.035em;
+            margin: 0;
+        }
+        .section-heading p { margin: .55rem 0 0; color: var(--muted); max-width: 76ch; }
+        .small-note { font-size: .9rem; color: var(--muted); }
+
+        .map-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .9rem; }
+        .map-group {
+            position: relative;
+            background: rgba(255, 250, 245, .84);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            padding: 1rem;
+            min-height: 15rem;
+            box-shadow: var(--shadow-soft);
+        }
+        .map-index {
+            display: inline-grid;
+            place-items: center;
+            width: 2rem;
+            height: 2rem;
+            background: var(--teal-deep);
+            color: white;
+            border-radius: 999px;
+            font-weight: 800;
+            margin-bottom: .75rem;
+        }
+        .map-group h3 { margin: 0; font-size: 1rem; line-height: 1.2; }
+        .map-group p { margin: .5rem 0 0; color: #51463f; font-size: .92rem; }
+        .map-papers { font-weight: 800; color: var(--clay) !important; }
+        .mini-paper-links { display: flex; gap: .38rem; flex-wrap: wrap; margin-top: .75rem; }
+        .mini-paper-links a {
+            display: inline-grid;
+            place-items: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 999px;
+            border: 1px solid rgba(180, 95, 54, .28);
+            background: rgba(180, 95, 54, .08);
+            text-decoration: none;
+            font-weight: 800;
+            color: var(--clay);
+        }
+
+        .control-panel {
+            background: rgba(255, 250, 245, .86);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 1.2rem;
+        }
+        .search-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .8rem; align-items: center; }
+        label.search-label { font-weight: 800; font-size: .95rem; display: block; margin-bottom: .35rem; }
+        .search-input {
+            width: 100%;
+            border: 1px solid rgba(111, 98, 90, .24);
+            background: var(--white);
+            border-radius: 999px;
+            padding: .85rem 1rem;
+            font: inherit;
+            color: var(--ink);
+        }
+        .reset-button {
+            border: 1px solid rgba(49, 95, 91, .24);
+            background: rgba(49, 95, 91, .08);
+            color: var(--teal-deep);
+            border-radius: 999px;
+            padding: .8rem 1rem;
+            font-weight: 800;
+            cursor: pointer;
+        }
+        .filter-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+        .filter-button {
+            border: 1px solid rgba(111, 98, 90, .22);
+            background: rgba(255, 253, 249, .86);
+            color: var(--charcoal);
+            border-radius: 999px;
+            padding: .56rem .8rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .filter-button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: white; }
+        .result-line { margin: .85rem .2rem 0; color: var(--muted); font-size: .93rem; }
+
+        .papers-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+        .paper-card {
+            display: flex;
+            flex-direction: column;
+            gap: .8rem;
+            background: rgba(255, 250, 245, .86);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            padding: 1.18rem;
+            min-height: 30rem;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+        .paper-card::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: .42rem;
+            background: var(--clay);
+        }
+        .paper-card.accent-teal::before { background: var(--teal-deep); }
+        .paper-card.accent-red::before { background: var(--oracle-red-soft); }
+        .paper-card.accent-sand::before { background: var(--sand); }
+        .paper-card.accent-sage::before { background: var(--sage); }
+        .paper-card.accent-charcoal::before { background: var(--charcoal); }
+        .paper-card.accent-amber::before { background: #c58a2a; }
+        .card-topline { display: flex; justify-content: space-between; gap: .75rem; align-items: center; margin-top: .2rem; }
+        .paper-number { font-size: .83rem; font-weight: 900; color: var(--clay); letter-spacing: .08em; text-transform: uppercase; }
+        .version-pill { font-size: .78rem; font-weight: 800; color: var(--muted); background: rgba(241, 235, 228, .9); border: 1px solid rgba(222, 212, 202, .9); border-radius: 999px; padding: .25rem .55rem; white-space: nowrap; }
+        .paper-card h3 { margin: 0; font-size: clamp(1.2rem, 2vw, 1.45rem); line-height: 1.14; letter-spacing: -.02em; }
+        .paper-card .subtitle { margin: -.3rem 0 0; color: #5e5048; font-weight: 700; line-height: 1.42; }
+        .paper-card p { margin: 0; color: #4b4039; }
+        .chip-row { display: flex; flex-wrap: wrap; gap: .35rem; }
+        .chip {
+            font-size: .76rem;
+            font-weight: 800;
+            color: var(--teal-deep);
+            background: rgba(49, 95, 91, .09);
+            border: 1px solid rgba(49, 95, 91, .15);
+            border-radius: 999px;
+            padding: .24rem .5rem;
+        }
+        .best-used {
+            margin-top: auto;
+            background: rgba(241, 235, 228, .75);
+            border: 1px solid rgba(222, 212, 202, .92);
+            border-radius: 16px;
+            padding: .85rem;
+            color: #443a34;
+            font-size: .94rem;
+        }
+        .card-actions { display: flex; justify-content: space-between; align-items: center; gap: .8rem; border-top: 1px solid rgba(222, 212, 202, .86); padding-top: .85rem; }
+        .read-link { font-weight: 900; text-decoration: none; }
+        .route-label { font-size: .74rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 50%; }
+        .hidden-by-filter { display: none !important; }
+
+        .path-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .9rem; }
+        .path-card {
+            background: linear-gradient(180deg, rgba(255, 250, 245, .9), rgba(241, 235, 228, .62));
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            padding: 1rem;
+            box-shadow: var(--shadow-soft);
+        }
+        .path-card h3 { margin: 0 0 .45rem; line-height: 1.2; font-size: 1rem; }
+        .path-card p { margin: 0 0 .85rem; color: var(--muted); font-size: .92rem; }
+        .path-list { margin: 0; padding-left: 1.35rem; }
+        .path-list li { margin: .25rem 0; font-weight: 800; }
+        .path-list a { text-decoration: none; }
+
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .info-card {
+            background: rgba(255, 250, 245, .86);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            padding: 1.2rem;
+            box-shadow: var(--shadow-soft);
+        }
+        .info-card h3 { margin: 0 0 .5rem; font-size: 1.25rem; }
+        .info-card p { margin: .55rem 0; color: #4b4039; }
+        .principle-list { margin: .75rem 0 0; padding-left: 1.2rem; }
+        .principle-list li { margin: .35rem 0; }
+
+        .table-wrap {
+            overflow-x: auto;
+            background: rgba(255, 250, 245, .86);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+        }
+        table { width: 100%; border-collapse: collapse; min-width: 840px; }
+        caption { text-align: left; padding: 1rem 1rem .2rem; font-weight: 900; }
+        th, td { border-bottom: 1px solid rgba(222, 212, 202, .92); padding: .85rem 1rem; text-align: left; vertical-align: top; }
+        thead th { background: rgba(49, 95, 91, .12); color: var(--teal-deep); font-size: .86rem; text-transform: uppercase; letter-spacing: .06em; }
+        tbody th { white-space: nowrap; }
+        code { font-family: Consolas, "SFMono-Regular", Menlo, monospace; font-size: .86em; color: #5c4030; }
+
+        .source-note {
+            background: rgba(246, 234, 216, .65);
+            border: 1px solid rgba(215, 185, 140, .7);
+            border-radius: var(--radius-lg);
+            padding: 1rem 1.2rem;
+            margin-top: 1rem;
+            color: #463a31;
+        }
+        .source-note h3 { margin: 0 0 .45rem; }
+        .source-note p { margin: .35rem 0; }
+
+        footer {
+            border-top: 1px solid rgba(222, 212, 202, .95);
+            background: rgba(36, 28, 24, .94);
+            color: rgba(255, 250, 245, .9);
+        }
+        .footer-inner { max-width: var(--max); margin: 0 auto; padding: 1.35rem 1.25rem; display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start; }
+        footer p { margin: .25rem 0; color: rgba(255, 250, 245, .78); }
+        footer .classification { background: rgba(255, 250, 245, .08); color: #fffaf5; border-color: rgba(255, 250, 245, .25); }
+        footer .classification::before { background: #fffaf5; }
+
+        @media (max-width: 1050px) {
+            .hero, .info-grid { grid-template-columns: 1fr; }
+            .map-grid, .path-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .papers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 720px) {
+            body { font-size: 16px; }
+            .utility-inner, .nav-shell, .section-heading, .search-row, .footer-inner { grid-template-columns: 1fr; flex-direction: column; align-items: flex-start; }
+            .nav-shell { display: block; }
+            nav.primary-nav { justify-content: flex-start; margin-top: .75rem; }
+            .hero-main, .hero-side, .paper-card, .info-card, .control-panel { border-radius: 20px; }
+            h1 { max-width: 100%; }
+            .map-grid, .path-grid, .papers-grid { grid-template-columns: 1fr; }
+            .paper-card { min-height: unset; }
+            .card-actions { align-items: flex-start; flex-direction: column; }
+            .route-label { max-width: 100%; }
+            .stat-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { transition-duration: .001ms !important; animation-duration: .001ms !important; }
+        }
+        @media print {
+            body { background: white; color: black; font-size: 11pt; }
+            .utility-bar, nav.primary-nav, .button-row, .control-panel, .card-actions { display: none !important; }
+            header.site-header, main { max-width: none; padding: 0; }
+            .hero, .map-grid, .papers-grid, .path-grid, .info-grid { display: block; }
+            .hero-main, .hero-side, .paper-card, .path-card, .info-card, .map-group, .table-wrap, .source-note { box-shadow: none; border: 1px solid #bbb; break-inside: avoid; margin: 0 0 .7rem; }
+            a::after { content: " (" attr(href) ")"; font-size: 9pt; color: #555; }
+            footer { color: black; background: white; border-top: 1px solid #bbb; }
+            footer p { color: black; }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <div class="utility-bar" role="banner">
+        <div class="utility-inner">
+            <div class="brand-lockup">
+                <div class="wordmark" aria-label="Oracle inspired text mark">ORACLE</div>
+                <div class="series-label">FY26 UK-PS Whitepapers Series</div>
+            </div>
+            <span class="classification">Confidential - Oracle Internal</span>
+        </div>
+    </div>
+
+    <header class="site-header">
+        <div class="nav-shell">
+            <div class="small-note">Index route: <code>/index.html</code></div>
+            <nav class="primary-nav" aria-label="Primary navigation">
+                <a href="#series-map">Series map</a>
+                <a href="#all-papers">All papers</a>
+                <a href="#reading-paths">Reading paths</a>
+                <a href="#themes">Themes</a>
+                <a href="#about">About</a>
+            </nav>
+        </div>
+
+        <section class="hero" aria-labelledby="series-title">
+            <div class="hero-main">
+                <div class="kicker">Internal field papers</div>
+                <h1 id="series-title">FY26 UK-PS Whitepapers Series</h1>
+                <p class="hero-lede">A curated internal series translating OCI architecture, AI, sovereignty, public sector policy, economics, differentiation and field objections into evidence-led web experiences for UK Public Sector teams.</p>
+                <p class="hero-lede">Use this index as the front door to the full set: understand the progression, locate the right paper, and follow guided reading paths for customer, policy, AI, architecture and value conversations.</p>
+                <div class="button-row" aria-label="Hero actions">
+                    <a class="button primary" href="#all-papers">Explore the papers</a>
+                    <a class="button secondary" href="#themes">View by theme</a>
+                    <a class="button secondary" href="#reading-paths">Use reading paths</a>
+                </div>
+            </div>
+            <aside class="hero-side" aria-label="Series metadata">
+                <div class="meta-card">
+                    <h2>Series metadata</h2>
+                    <div class="stat-grid" aria-label="Series summary statistics">
+                        <div class="stat"><strong>13</strong><span>Source papers</span></div>
+                        <div class="stat"><strong>5</strong><span>Reading paths</span></div>
+                        <div class="stat"><strong>13</strong><span>Canonical routes</span></div>
+                        <div class="stat"><strong>1.0</strong><span>Index conversion</span></div>
+                    </div>
+                </div>
+                <div class="meta-card">
+                    <h2>Handling status</h2>
+                    <p><strong>Classification:</strong><br>Confidential - Oracle Internal</p>
+                    <p><strong>Status:</strong><br>Draft static HTML index</p>
+                    <p><strong>Last reviewed:</strong><br>23 June 2026</p>
+                </div>
+                <div class="quote-card">
+                    The index supports deep reading and rapid field reference without turning the series into external marketing.
+                </div>
+            </aside>
+        </section>
+    </header>
+
+    <main id="main-content">
+        <section class="block" id="series-map" aria-labelledby="series-map-heading">
+            <div class="section-heading">
+                <div>
+                    <h2 id="series-map-heading">Series map</h2>
+                    <p>A visual sequence of the full FY26 set, grouped by progression rather than alphabetical topic order.</p>
+                </div>
+                <span class="small-note">All paper numbers are direct links.</span>
+            </div>
+            <div class="map-grid">
+                
+        <section class="map-group">
+            <div class="map-index">1</div>
+            <div>
+                <h3>Market and Cloud Context</h3>
+                <p class="map-papers">Papers 1 to 3</p>
+                <p>Establish cloud history, Oracle breadth, and buyer expectation shifts.</p>
+                <div class="mini-paper-links"><a href="./paper-01-visionaries-who-shaped-our-cloud/" aria-label="Open Paper 01">01</a> <a href="./paper-02-masters-of-many-champions-of-choice/" aria-label="Open Paper 02">02</a> <a href="./paper-03-evolving-expectations-enterprise-cloud-market/" aria-label="Open Paper 03">03</a></div>
+            </div>
+        </section>
+    
+        <section class="map-group">
+            <div class="map-index">2</div>
+            <div>
+                <h3>Trust, Sovereignty, and Performance</h3>
+                <p class="map-papers">Papers 4 to 5</p>
+                <p>Explain assurance, trust and technical credibility.</p>
+                <div class="mini-paper-links"><a href="./paper-04-sovereignty-and-trust-in-cloud/" aria-label="Open Paper 04">04</a> <a href="./paper-05-oci-technical-performance-is-real/" aria-label="Open Paper 05">05</a></div>
+            </div>
+        </section>
+    
+        <section class="map-group">
+            <div class="map-index">3</div>
+            <div>
+                <h3>Enterprise AI</h3>
+                <p class="map-papers">Papers 6 to 8</p>
+                <p>Reframe AI expectations, probability, risk and governance.</p>
+                <div class="mini-paper-links"><a href="./paper-06-chatgpt-to-enterprise-ai/" aria-label="Open Paper 06">06</a> <a href="./paper-07-miracle-of-ai-probabilistic-foundations/" aria-label="Open Paper 07">07</a> <a href="./paper-08-ai-risks-and-cloud-realities/" aria-label="Open Paper 08">08</a></div>
+            </div>
+        </section>
+    
+        <section class="map-group">
+            <div class="map-index">4</div>
+            <div>
+                <h3>Public Sector Operating Context</h3>
+                <p class="map-papers">Papers 9 to 10</p>
+                <p>Map procurement mechanics and live policy reality.</p>
+                <div class="mini-paper-links"><a href="./paper-09-public-sector-procurement-mechanics/" aria-label="Open Paper 09">09</a> <a href="./paper-10-aligning-oci-uk-public-sector-policy/" aria-label="Open Paper 10">10</a></div>
+            </div>
+        </section>
+    
+        <section class="map-group">
+            <div class="map-index">5</div>
+            <div>
+                <h3>Economics and Field Narrative</h3>
+                <p class="map-papers">Papers 11 to 13</p>
+                <p>Support value, differentiation and misconception handling.</p>
+                <div class="mini-paper-links"><a href="./paper-11-real-economics-of-oci/" aria-label="Open Paper 11">11</a> <a href="./paper-12-oci-rich-differentiation/" aria-label="Open Paper 12">12</a> <a href="./paper-13-misconceptions-of-oci/" aria-label="Open Paper 13">13</a></div>
+            </div>
+        </section>
+    
+            </div>
+        </section>
+
+        <section class="block" id="themes" aria-labelledby="themes-heading">
+            <div class="section-heading">
+                <div>
+                    <h2 id="themes-heading">Find by theme</h2>
+                    <p>Filter the card grid by topic or search across titles, subtitles, summaries and field-use descriptions. Without JavaScript, all papers remain visible.</p>
+                </div>
+            </div>
+            <div class="control-panel">
+                <div class="search-row">
+                    <div>
+                        <label class="search-label" for="paper-search">Search the series</label>
+                        <input class="search-input" id="paper-search" type="search" placeholder="Try sovereignty, procurement, performance, AI risk, economics or misconceptions" autocomplete="off">
+                    </div>
+                    <button class="reset-button" type="button" id="reset-filters">Reset</button>
+                </div>
+                <div class="filter-row" role="group" aria-label="Theme filters">
+                    <button class="filter-button" type="button" data-filter="all" aria-pressed="true">All</button><button class="filter-button" type="button" data-filter="cloud history" aria-pressed="false">Cloud history</button><button class="filter-button" type="button" data-filter="competition" aria-pressed="false">Competition</button><button class="filter-button" type="button" data-filter="buyer expectations" aria-pressed="false">Buyer expectations</button><button class="filter-button" type="button" data-filter="sovereignty" aria-pressed="false">Sovereignty</button><button class="filter-button" type="button" data-filter="performance" aria-pressed="false">Performance</button><button class="filter-button" type="button" data-filter="enterprise ai" aria-pressed="false">Enterprise AI</button><button class="filter-button" type="button" data-filter="ai risk" aria-pressed="false">AI risk</button><button class="filter-button" type="button" data-filter="procurement" aria-pressed="false">Procurement</button><button class="filter-button" type="button" data-filter="policy" aria-pressed="false">Policy</button><button class="filter-button" type="button" data-filter="economics" aria-pressed="false">Economics</button><button class="filter-button" type="button" data-filter="differentiation" aria-pressed="false">Differentiation</button><button class="filter-button" type="button" data-filter="misconceptions" aria-pressed="false">Misconceptions</button><button class="filter-button" type="button" data-filter="uk public sector" aria-pressed="false">UK Public Sector</button>
+                </div>
+                <p class="result-line" id="result-count" aria-live="polite">Showing all 13 papers.</p>
+                <noscript><p class="result-line">Theme filtering requires JavaScript. All papers are shown by default.</p></noscript>
+            </div>
+        </section>
+
+        <section class="block" id="all-papers" aria-labelledby="all-papers-heading">
+            <div class="section-heading">
+                <div>
+                    <h2 id="all-papers-heading">All papers</h2>
+                    <p>Each card exposes sequence, route, version, themes, summary and best-use guidance.</p>
+                </div>
+            </div>
+            <div class="papers-grid" id="paper-grid">
+                
+        <article class="paper-card accent-clay" data-paper="01" data-themes="cloud history|competition|oci engineering|leadership|market and cloud context" data-search="the visionaries who shaped our cloud learning from the pioneers who defined the modern infrastructure landscape traces the people and milestones that shaped modern cloud infrastructure, from virtualisation and hyperscale engineering through cloud-native tooling and oracle&#x27;s gen 2 cloud. it gives the series historical grounding and helps readers understand competitors with respect and clarity. market context, competitive empathy, oci origin-story conversations, and team enablement where the history of cloud architecture matters. cloud history competition oci engineering leadership market and cloud context">
+            <div class="card-topline">
+                <span class="paper-number">Paper 01</span>
+                <span class="version-pill">v1.0 · 2025</span>
+            </div>
+            <h3>The Visionaries Who Shaped Our Cloud</h3>
+            <p class="subtitle">Learning from the Pioneers Who Defined the Modern Infrastructure Landscape</p>
+            <div class="chip-row" aria-label="Themes"><span class="chip">Cloud history</span><span class="chip">Competition</span><span class="chip">OCI Engineering</span><span class="chip">Leadership</span></div>
+            <p>Traces the people and milestones that shaped modern cloud infrastructure, from virtualisation and hyperscale engineering through cloud-native tooling and Oracle&#x27;s Gen 2 Cloud. It gives the series historical grounding and helps readers understand competitors with respect and clarity.</p>
+            <div class="best-used"><strong>Best used for:</strong> Market context, competitive empathy, OCI origin-story conversations, and team enablement where the history of cloud architecture matters.</div>
+            <div class="card-actions">
+                <a class="read-link" href="./paper-01-visionaries-who-shaped-our-cloud/">Read paper <span aria-hidden="true">›</span></a>
+                <span class="route-label">./paper-01-visionaries-who-shaped-our-cloud/</span>
+            </div>
+        </article>
+    
+        <article class="paper-card accent-clay" data-paper="02" data-themes="competition|differentiation|choice|portfolio breadth|market and cloud context" data-search="masters of many: champions of choice why oracle has so many competitors and why that fact defines who we are frames oracle&#x27;s unusually broad competitive field as a consequence of portfolio breadth rather than confusion. it shows how oracle competes across cloud, data, integration, ai, saas and industry domains while retaining a choice-led posture. resetting narrow oracle perceptions, explaining breadth with discipline, and positioning oracle as a platform of choice rather than a single-product vendor. competition differentiation choice portfolio breadth market and cloud context">
+            <div class="card-topline">
+                <span class="paper-number">Paper 02</span>
+                <span class="version-pill">v1.0 · 2026</span>
+            </div>
+            <h3>Masters of Many: Champions of Choice</h3>
+            <p class="subtitle">Why Oracle has so many competitors and why that fact defines who we are</p>
+            <div class="chip-row" aria-label="Themes"><span class="chip">Competition</span><span class="chip">Differentiation</span><span class="chip">Choice</span><span class="chip">Portfolio breadth</span></div>
+            <p>Frames Oracle&#x27;s unusually broad competitive field as a consequence of portfolio breadth rather than confusion. It shows how Oracle competes across cloud, data, integration, AI, SaaS and industry domains while retaining a choice-led posture.</p>
+            <div class="best-used"><strong>Best used for:</strong> Resetting narrow Oracle perceptions, explaining breadth with discipline, and positioning Oracle as a platform of choice rather than a single-product vendor.</div>
+            <div class="card-actions">
+                <a class="read-link" href="./paper-02-masters-of-many-champions-of-choice/">Read paper <span aria-hidden="true">›</span></a>
+                <span class="route-label">./paper-02-masters-of-many-champions-of-choice/</span>
+            </div>
+        </article>
+    
+        <article class="paper-card accent-charcoal" data-paper="03" data-themes="buyer expectations|enterprise ai|economics|sovereignty|uk public sector|market and cloud context" data-search="evolving expectations in the enterprise cloud market how ai, cost pressure, and data control are changing the cloud buyer&#x27;s mindset in uk public sector explains how cloud buying has moved beyond basic migration, agility and headline cost reduction. it sets out the newer priorities shaping uk public sector decisions, including ai capability, finops, data control, resilience, sustainability and multi-cloud hedging. opening strategic customer conversations about what cloud buyers now care about and why oci needs to be positioned against modern decision criteria. buyer expectations enterprise ai economics sovereignty uk public sector market and cloud context">
+            <div class="card-topline">
+                <span class="paper-number">Paper 03</span>
+                <span class="version-pill">v1.0 · 2025</span>
+            </div>
+            <h3>Evolving Expectations in the Enterprise Cloud Market</h3>
+            <p class="subtitle">How AI, Cost Pressure, and Data Control Are Changing the Cloud Buyer&#x27;s Mindset in UK Public Sector</p>
+            <div class="chip-row" aria-label="Themes"><span class="chip">Buyer expectations</span><span class="chip">Enterprise AI</span><span class="chip">Economics</span><span class="chip">Sovereignty</span><span class="chip">UK Public Sector</span></div>
+            <p>Explains how cloud buying has moved beyond basic migration, agility and headline cost reduction. It sets out the newer priorities shaping UK public sector decisions, including AI capability, FinOps, data control, resilience, sustainability and multi-cloud hedging.</p>
+            <div class="best-used"><strong>Best used for:</strong> Opening strategic customer conversations about what cloud buyers now care about and why OCI needs to be positioned against modern decision criteria.</div>
+            <div class="card-actions">
+                <a class="read-link" href="./paper-03-evolving-expectations-enterprise-cloud-market/">Read paper <span aria-hidden="true">›</span></a>
+                <span class="route-label">./paper-03-evolving-expectations-enterprise-cloud-market/</span>
+            </div>
+        </article>
+    
+        <article class="paper-card accent-teal" data-paper="04" data-themes="sovereignty|trust|policy|uk public sector|assurance|trust, sovereignty, and performance" data-search="sovereignty and trust in cloud how providers are tackling regulatory demands and earning customer confidence shows why sovereignty has become a strategic cloud consideration in the uk public sector. it turns questions of data location, operational access, key control, auditability and exit rights into a practical trust model for oci conversations. regulated data discussions, sovereignty framing, oc4 and dedicated region conversations, and assurance-led engagement with public sector stakeholders. sovereignty trust policy uk public sector assurance trust, sovereignty, and performance">
+            <div class="card-topline">
+                <span class="paper-number">Paper 04</span>
+                <span class="version-pill">v1.0 · 2025</span>
+            </div>
+            <h3>Sovereignty and Trust in Cloud</h3>
+            <p class="subtitle">How Providers Are Tackling Regulatory Demands and Earning Customer Confidence</p>
+            <div class="chip-row" aria-label="Themes"><span class="chip">Sovereignty</span><span class="chip">Trust</span><span class="chip">Policy</span><span class="chip">UK Public Sector</span><span class="chip">Assurance</span></div>
+            <p>Shows why sovereignty has become a strategic cloud consideration in the UK public sector. It turns questions of data location, operational access, key control, auditability and exit rights into a practical trust model for OCI conversations.</p>
+            <div class="best-used"><strong>Best used for:</strong> Regulated data discussions, sovereignty framing, OC4 and Dedicated Region conversations, and assurance-led engagement with public sector stakeholders.</div>
+            <div class="card-actions">
+                <a class="read-link" href="./paper-04-sovereignty-and-trust-in-cloud/">Read paper <span aria-hidden="true">›</span></a>
+                <span class="route-label">./paper-04-sovereignty-and-trust-in-cloud/</span>
+            </div>
+        </article>
+    
+        <article class="paper-card accent-teal" data-paper="05" data-themes="performance|architecture|evidence|oci engineering|differentiation|trust, sovereignty, and performance" data-search="how and why oci&#x27;s technical performance is real exposing the architecture, evidence, and engineering that distinguish oracle&#x27;s cloud builds the oci performance story from architecture and evidence, not from isolated benchmark claims. it connects bare metal, off-box virtualisation, rdma networking, nvme storage and database optimisation to workload-specific outcomes while preserving caveats. performance credibility, benchmark scepticism, architecture-led differentiation, and technical customer conversations where evidence must withstand scrutiny. performance architecture evidence oci engineering differentiation trust, sovereignty, and performance">
+            <div class="card-topline">
+                <span class="paper-number">Paper 05</span>
+                <span class="version-pill">v1.0 · 2025</span>
+            </div>
+            <h3>How and Why OCI&#x27;s Technical Performance Is Real</h3>
+            <p class="subtitle">Exposing the Architecture, Evidence, and Engineering That Distinguish Oracle&#x27;s Cloud</p>
+            <div class="chip-row" aria-label="Themes"><span class="chip">Performance</span><span class="chip">Architecture</span><span class="chip">Evidence</span><span class="chip">OCI Engineering</span><span class="chip">Differentiation</span></div>
+            <p>Builds the OCI performance story from architecture and evidence, not from isolated benchmark claims. It connects bare metal, off-box virtualisation, RDMA networking, NVMe storage and database optimisation to workload-specific outcomes while preserving caveats.</p>
+            <div class="best-used"><strong>Best used for:</strong> Performance credibility, benchmark scepticism, architecture-led differentiation, and technical customer conversations where evidence must withstand scrutiny.</div>
+            <div class="card-actions">
+                <a class="read-link" href="./paper-05-oci-technical-performance-is-real/">Read paper <span aria-hidden="true">›</span></a>
+                <span class="route-label">./paper-05-oci-technical-performance-is-real/</span>
+            </div>
+        </article>
+    
+        <article class="paper-card accent-red" data-paper="06" data-themes="enterprise ai|buyer expectations|governance|ai risk|trust|enterprise ai" data-search="from chatgpt to enterprise ai: closing the expectation gap why consumer familiarity creates misleading assumptions and how oracle architects can reframe the conversation explains how consumer ai tools shape expectations that do not always survive enterprise reality. it helps architects reframe enthusiasm around privacy, traceability, deployment location, auditability, model governance and accountable design. early ai discovery, correcting chatgpt-shaped assumptions, and helping non-technical stakeholders understand why enterprise ai needs stronger architecture. enterprise ai buyer expectations governance ai risk trust enterprise ai">
+            <div class="card-topline">
+                <span class="paper-number">Paper 06</span>
+                <span class="version-pill">v1.0 · 2025</span>
+            </div>
+            <h3>From ChatGPT to Enterprise AI: Closing the Expectation Gap</h3>
+            <p class="subtitle">Why Consumer Familiarity Creates Misleading Assumptions and How Oracle Architects Can Reframe the Conversation</p>
+            <div class="chip-row" aria-label="Themes"><span class="chip">Enterprise AI</span><span class="chip">Buyer expectations</span><span class="chip">Governance</span><span class="chip">AI risk</span><span class="chip">Trust</span></div>
+            <p>Explains how consumer AI tools shape expectations that do not always survive enterprise reality. It helps architects reframe enthusiasm around privacy, traceability, deployment location, auditability, model governance and accountable design.</p>
+            <div class="best-used"><strong>Best used for:</strong> Early AI discovery, correcting ChatGPT-shaped assumptions, and helping non-technical stakeholders understand why enterprise AI needs stronger architecture.</div>
+            <div class="card-actions">
+                <a class="read-link" href="./paper-06-chatgpt-to-enterprise-ai/">Read paper <span aria-hidden="true">›</span></a>
+                <span class="route-label">./paper-06-chatgpt-to-enterprise-ai/</span>
+            </div>
+        </article>
+    
+        <article class="paper-card accent-amber" data-paper="07" data-themes="enterprise ai|probability|ai risk|governance|trust|enterprise ai" data-search="the miracle of ai: from probabilistic foundations why uncertainty produces coherence, and how enterprises can harness it safely makes probabilistic ai understandable for enterprise technologists. it explains why models can produce coherent outputs, where hallucination and variability appear, and how guardrails, rag, human feedback and hybrid architecture turn probability into managed trust. explaining non-determinism, ai reliability, hallucination risk, rag patterns, and the controls needed before probabilistic ai enters production. enterprise ai probability ai risk governance trust enterprise ai">
+            <div class="card-topline">
+                <span class="paper-number">Paper 07</span>
+                <span class="version-pill">v1.0 · 2025</span>
+            </div>
+            <h3>The Miracle of AI: From Probabilistic Foundations</h3>
+            <p class="subtitle">Why Uncertainty Produces Coherence, and How Enterprises Can Harness It Safely</p>
+            <div class="chip-row" aria-label="Themes"><span class="chip">Enterprise AI</span><span class="chip">Probability</span><span class="chip">AI risk</span><span class="chip">Governance</span><span class="chip">Trust</span></div>
+            <p>Makes probabilistic AI understandable for enterprise technologists. It explains why models can produce coherent outputs, where hallucination and variability appear, and how guardrails, RAG, human feedback and hybrid architecture turn probability into managed trust.</p>
+            <div class="best-used"><strong>Best used for:</strong> Explaining non-determinism, AI reliability, hallucination risk, RAG patterns, and the controls needed before probabilistic AI enters production.</div>
+            <div class="card-actions">
+                <a class="read-link" href="./paper-07-miracle-of-ai-probabilistic-foundations/">Read paper <span aria-hidden="true">›</span></a>
+                <span class="route-label">./paper-07-miracle-of-ai-probabilistic-foundations/</span>
+            </div>
+        </article>
+    
+        <article class="paper-card accent-red" data-paper="08" data-themes="ai risk|enterprise ai|policy|trust|uk public sector|enterprise ai" data-search="ai risks and cloud realities reframing public fears as enterprise requirements translates public fears about ai into concrete enterprise requirements across jobs, sustainability, privacy, security, ip, misinformation and alignment. it keeps the tone grounded, using oci design principles to show how anxiety can become assurance. responsible ai conversations, ai risk framing, governance workshops, and public sector discussions where fear needs to be converted into practical controls. ai risk enterprise ai policy trust uk public sector enterprise ai">
+            <div class="card-topline">
+                <span class="paper-number">Paper 08</span>
+                <span class="version-pill">v1.0 · 2025</span>
+            </div>
+            <h3>AI Risks and Cloud Realities</h3>
+            <p class="subtitle">Reframing public fears as enterprise requirements</p>
+            <div class="chip-row" aria-label="Themes"><span class="chip">AI risk</span><span class="chip">Enterprise AI</span><span class="chip">Policy</span><span class="chip">Trust</span><span class="chip">UK Public Sector</span></div>
+            <p>Translates public fears about AI into concrete enterprise requirements across jobs, sustainability, privacy, security, IP, misinformation and alignment. It keeps the tone grounded, using OCI design principles to show how anxiety can become assurance.</p>
+            <div class="best-used"><strong>Best used for:</strong> Responsible AI conversations, AI risk framing, governance workshops, and public sector discussions where fear needs to be converted into practical controls.</div>
+            <div class="card-actions">
+                <a class="read-link" href="./paper-08-ai-risks-and-cloud-realities/">Read paper <span aria-hidden="true">›</span></a>
+                <span class="route-label">./paper-08-ai-risks-and-cloud-realities/</span>
+            </div>
+        </article>
+    
+        <article class="paper-card accent-sand" data-paper="09" data-themes="procurement|uk public sector|policy|assurance|economics|public sector operating context" data-search="the mechanics of public sector procurement how uk buyers choose, evaluate, and assure cloud infrastructure maps how uk public sector cloud decisions move through routes to market, decision gates, evaluation criteria and assurance checkpoints. it helps technical teams understand how architectures are justified, scrutinised and defended. procurement readiness, bid support, assurance planning, and aligning technical evidence to public sector buying mechanisms. procurement uk public sector policy assurance economics public sector operating context">
+            <div class="card-topline">
+                <span class="paper-number">Paper 09</span>
+                <span class="version-pill">v1.0 · 2025</span>
+            </div>
+            <h3>The Mechanics of Public Sector Procurement</h3>
+            <p class="subtitle">How UK Buyers Choose, Evaluate, and Assure Cloud Infrastructure</p>
+            <div class="chip-row" aria-label="Themes"><span class="chip">Procurement</span><span class="chip">UK Public Sector</span><span class="chip">Policy</span><span class="chip">Assurance</span><span class="chip">Economics</span></div>
+            <p>Maps how UK public sector cloud decisions move through routes to market, decision gates, evaluation criteria and assurance checkpoints. It helps technical teams understand how architectures are justified, scrutinised and defended.</p>
+            <div class="best-used"><strong>Best used for:</strong> Procurement readiness, bid support, assurance planning, and aligning technical evidence to public sector buying mechanisms.</div>
+            <div class="card-actions">
+                <a class="read-link" href="./paper-09-public-sector-procurement-mechanics/">Read paper <span aria-hidden="true">›</span></a>
+                <span class="route-label">./paper-09-public-sector-procurement-mechanics/</span>
+            </div>
+        </article>
+    
+        <article class="paper-card accent-sage" data-paper="10" data-themes="policy|uk public sector|sovereignty|procurement|assurance|public sector operating context" data-search="aligning oci to uk public sector policy a field guide for account cloud engineers to navigate strategy signals, sector imperatives, and architectural alignment links cross-government digital instruments and sector strategies to practical cloud architecture requirements. it supports central government, nhs, policing, defence, local government and higher education conversations without turning policy into a dry recital. policy-aware architecture, sector planning, assurance-led design, and preparing aces to speak in the language of uk public sector governance. policy uk public sector sovereignty procurement assurance public sector operating context">
+            <div class="card-topline">
+                <span class="paper-number">Paper 10</span>
+                <span class="version-pill">v1.0 · 2025</span>
+            </div>
+            <h3>Aligning OCI to UK Public Sector Policy</h3>
+            <p class="subtitle">A field guide for Account Cloud Engineers to navigate strategy signals, sector imperatives, and architectural alignment</p>
+            <div class="chip-row" aria-label="Themes"><span class="chip">Policy</span><span class="chip">UK Public Sector</span><span class="chip">Sovereignty</span><span class="chip">Procurement</span><span class="chip">Assurance</span></div>
+            <p>Links cross-government digital instruments and sector strategies to practical cloud architecture requirements. It supports central government, NHS, policing, defence, local government and higher education conversations without turning policy into a dry recital.</p>
+            <div class="best-used"><strong>Best used for:</strong> Policy-aware architecture, sector planning, assurance-led design, and preparing ACEs to speak in the language of UK public sector governance.</div>
+            <div class="card-actions">
+                <a class="read-link" href="./paper-10-aligning-oci-uk-public-sector-policy/">Read paper <span aria-hidden="true">›</span></a>
+                <span class="route-label">./paper-10-aligning-oci-uk-public-sector-policy/</span>
+            </div>
+        </article>
+    
+        <article class="paper-card accent-sand" data-paper="11" data-themes="economics|performance|procurement|differentiation|uk public sector|economics and field narrative" data-search="the real economics of oci why cloud economics is value, not cheapness separates unit price from real cloud economics. it explains hidden taxes, cost predictability, data movement, exit, sustainability and resilience, then shows where oci&#x27;s design can translate into better value without being positioned as merely cheap. finops conversations, commercial value framing, tco scrutiny, egress and cost predictability discussions, and avoiding weak cheapness positioning. economics performance procurement differentiation uk public sector economics and field narrative">
+            <div class="card-topline">
+                <span class="paper-number">Paper 11</span>
+                <span class="version-pill">v1.0 · 2026</span>
+            </div>
+            <h3>The Real Economics of OCI</h3>
+            <p class="subtitle">Why Cloud Economics is Value, Not Cheapness</p>
+            <div class="chip-row" aria-label="Themes"><span class="chip">Economics</span><span class="chip">Performance</span><span class="chip">Procurement</span><span class="chip">Differentiation</span><span class="chip">UK Public Sector</span></div>
+            <p>Separates unit price from real cloud economics. It explains hidden taxes, cost predictability, data movement, exit, sustainability and resilience, then shows where OCI&#x27;s design can translate into better value without being positioned as merely cheap.</p>
+            <div class="best-used"><strong>Best used for:</strong> FinOps conversations, commercial value framing, TCO scrutiny, egress and cost predictability discussions, and avoiding weak cheapness positioning.</div>
+            <div class="card-actions">
+                <a class="read-link" href="./paper-11-real-economics-of-oci/">Read paper <span aria-hidden="true">›</span></a>
+                <span class="route-label">./paper-11-real-economics-of-oci/</span>
+            </div>
+        </article>
+    
+        <article class="paper-card accent-clay" data-paper="12" data-themes="differentiation|performance|sovereignty|economics|misconceptions|economics and field narrative" data-search="oci&#x27;s rich differentiation why oci still stands apart as the market catches up reframes oci differentiation as composition rather than simple uniqueness. it distinguishes structural, operational and perceived differentiation, helping teams explain where oci still behaves differently as competitors close some feature gaps. nuanced differentiation, avoiding overclaiming, explaining design coherence, and connecting performance, sovereignty, economics and operational accountability. differentiation performance sovereignty economics misconceptions economics and field narrative">
+            <div class="card-topline">
+                <span class="paper-number">Paper 12</span>
+                <span class="version-pill">v2.0 · 2026</span>
+            </div>
+            <h3>OCI&#x27;s Rich Differentiation</h3>
+            <p class="subtitle">Why OCI Still Stands Apart as the Market Catches Up</p>
+            <div class="chip-row" aria-label="Themes"><span class="chip">Differentiation</span><span class="chip">Performance</span><span class="chip">Sovereignty</span><span class="chip">Economics</span><span class="chip">Misconceptions</span></div>
+            <p>Reframes OCI differentiation as composition rather than simple uniqueness. It distinguishes structural, operational and perceived differentiation, helping teams explain where OCI still behaves differently as competitors close some feature gaps.</p>
+            <div class="best-used"><strong>Best used for:</strong> Nuanced differentiation, avoiding overclaiming, explaining design coherence, and connecting performance, sovereignty, economics and operational accountability.</div>
+            <div class="card-actions">
+                <a class="read-link" href="./paper-12-oci-rich-differentiation/">Read paper <span aria-hidden="true">›</span></a>
+                <span class="route-label">./paper-12-oci-rich-differentiation/</span>
+            </div>
+        </article>
+    
+        <article class="paper-card accent-red" data-paper="13" data-themes="misconceptions|differentiation|competition|economics|field handling|economics and field narrative" data-search="misconceptions of oci why outdated assumptions about oracle are still shaping cloud conversations more than they should a field guide for recognising the misconceptions that narrow oracle before serious evaluation begins. it separates factual, architectural, commercial, relational and historic objections, then recommends response styles that rebuild trust without sounding defensive. objection handling, narrative reset, trust-building, account planning, and coaching aces to handle outdated assumptions with accuracy and restraint. misconceptions differentiation competition economics field handling economics and field narrative">
+            <div class="card-topline">
+                <span class="paper-number">Paper 13</span>
+                <span class="version-pill">v1.0 · 2026</span>
+            </div>
+            <h3>Misconceptions of OCI</h3>
+            <p class="subtitle">Why outdated assumptions about Oracle are still shaping cloud conversations more than they should</p>
+            <div class="chip-row" aria-label="Themes"><span class="chip">Misconceptions</span><span class="chip">Differentiation</span><span class="chip">Competition</span><span class="chip">Economics</span><span class="chip">Field handling</span></div>
+            <p>A field guide for recognising the misconceptions that narrow Oracle before serious evaluation begins. It separates factual, architectural, commercial, relational and historic objections, then recommends response styles that rebuild trust without sounding defensive.</p>
+            <div class="best-used"><strong>Best used for:</strong> Objection handling, narrative reset, trust-building, account planning, and coaching ACEs to handle outdated assumptions with accuracy and restraint.</div>
+            <div class="card-actions">
+                <a class="read-link" href="./paper-13-misconceptions-of-oci/">Read paper <span aria-hidden="true">›</span></a>
+                <span class="route-label">./paper-13-misconceptions-of-oci/</span>
+            </div>
+        </article>
+    
+            </div>
+        </section>
+
+        <section class="block" id="reading-paths" aria-labelledby="reading-paths-heading">
+            <div class="section-heading">
+                <div>
+                    <h2 id="reading-paths-heading">Reading paths</h2>
+                    <p>Guided routes for the most common field needs. These paths deliberately reuse papers rather than creating one-off journeys.</p>
+                </div>
+            </div>
+            <div class="path-grid">
+                
+        <article class="path-card">
+            <h3>New to the OCI narrative</h3>
+            <p>Start with history and breadth, then move into modern differentiation and misconception handling.</p>
+            <ol class="path-list"><li><a href="./paper-01-visionaries-who-shaped-our-cloud/">Paper 01</a></li><li><a href="./paper-02-masters-of-many-champions-of-choice/">Paper 02</a></li><li><a href="./paper-03-evolving-expectations-enterprise-cloud-market/">Paper 03</a></li><li><a href="./paper-12-oci-rich-differentiation/">Paper 12</a></li><li><a href="./paper-13-misconceptions-of-oci/">Paper 13</a></li></ol>
+        </article>
+    
+        <article class="path-card">
+            <h3>Preparing for UK Public Sector engagement</h3>
+            <p>Build confidence around trust, procurement, policy and value before customer or internal planning sessions.</p>
+            <ol class="path-list"><li><a href="./paper-04-sovereignty-and-trust-in-cloud/">Paper 04</a></li><li><a href="./paper-09-public-sector-procurement-mechanics/">Paper 09</a></li><li><a href="./paper-10-aligning-oci-uk-public-sector-policy/">Paper 10</a></li><li><a href="./paper-11-real-economics-of-oci/">Paper 11</a></li></ol>
+        </article>
+    
+        <article class="path-card">
+            <h3>Handling AI conversations</h3>
+            <p>Move from consumer expectations to probabilistic foundations, then into responsible AI risk framing.</p>
+            <ol class="path-list"><li><a href="./paper-06-chatgpt-to-enterprise-ai/">Paper 06</a></li><li><a href="./paper-07-miracle-of-ai-probabilistic-foundations/">Paper 07</a></li><li><a href="./paper-08-ai-risks-and-cloud-realities/">Paper 08</a></li></ol>
+        </article>
+    
+        <article class="path-card">
+            <h3>Defending OCI architecture and economics</h3>
+            <p>Connect engineering credibility to economic value, composable differentiation and objection handling.</p>
+            <ol class="path-list"><li><a href="./paper-05-oci-technical-performance-is-real/">Paper 05</a></li><li><a href="./paper-11-real-economics-of-oci/">Paper 11</a></li><li><a href="./paper-12-oci-rich-differentiation/">Paper 12</a></li><li><a href="./paper-13-misconceptions-of-oci/">Paper 13</a></li></ol>
+        </article>
+    
+        <article class="path-card">
+            <h3>Building procurement-ready confidence</h3>
+            <p>Equip teams to link sovereignty, assurance, policy alignment and cost predictability into a procurement-aware story.</p>
+            <ol class="path-list"><li><a href="./paper-04-sovereignty-and-trust-in-cloud/">Paper 04</a></li><li><a href="./paper-09-public-sector-procurement-mechanics/">Paper 09</a></li><li><a href="./paper-10-aligning-oci-uk-public-sector-policy/">Paper 10</a></li><li><a href="./paper-11-real-economics-of-oci/">Paper 11</a></li></ol>
+        </article>
+    
+            </div>
+        </section>
+
+        <section class="block" id="about" aria-labelledby="about-heading">
+            <div class="section-heading">
+                <div>
+                    <h2 id="about-heading">About this series</h2>
+                    <p>This index is designed for internal enablement and should sit beside the thirteen standalone paper folders in the same repository or static site root.</p>
+                </div>
+            </div>
+            <div class="info-grid">
+                <article class="info-card">
+                    <h3>Usage guidance</h3>
+                    <p>Use the cards to choose the right source paper for the situation. Use the theme filters when a stakeholder question cuts across the sequence, for example sovereignty, AI risk or economics.</p>
+                    <p>Keep the route pattern stable once deployed. The paper pages are expected to live in adjacent folders using the canonical numbered slugs shown in the source inventory.</p>
+                </article>
+                <article class="info-card">
+                    <h3>Editorial principles</h3>
+                    <ul class="principle-list">
+                        <li>Evidence before polish.</li>
+                        <li>Internal enablement, not public campaign language.</li>
+                        <li>Credible caveats should remain visible.</li>
+                        <li>British English and accessible static HTML.</li>
+                        <li>No external CDNs, analytics or runtime data dependencies.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="block" id="source-inventory" aria-labelledby="source-inventory-heading">
+            <div class="section-heading">
+                <div>
+                    <h2 id="source-inventory-heading">Source inventory</h2>
+                    <p>Metadata shown here follows the PDF cover where the cover and filename differ.</p>
+                </div>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <caption>FY26 UK-PS Whitepapers Series source and route inventory</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Paper</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Version</th>
+                            <th scope="col">Year</th>
+                            <th scope="col">Source PDF</th>
+                            <th scope="col">Canonical route</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+        <tr>
+            <th scope="row">Paper 01</th>
+            <td>The Visionaries Who Shaped Our Cloud</td>
+            <td>v1.0</td>
+            <td>2025</td>
+            <td><code>Paper 1 - The Visionaries Who Shaped Our Cloud v1.0.pdf</code></td>
+            <td><code>./paper-01-visionaries-who-shaped-our-cloud/</code></td>
+        </tr>
+    
+        <tr>
+            <th scope="row">Paper 02</th>
+            <td>Masters of Many: Champions of Choice</td>
+            <td>v1.0</td>
+            <td>2026</td>
+            <td><code>Paper 2 - Masters of Many  - Champions of Choice v1.0.pdf</code></td>
+            <td><code>./paper-02-masters-of-many-champions-of-choice/</code></td>
+        </tr>
+    
+        <tr>
+            <th scope="row">Paper 03</th>
+            <td>Evolving Expectations in the Enterprise Cloud Market</td>
+            <td>v1.0</td>
+            <td>2025</td>
+            <td><code>Paper 3 - Evolving Expectations in the Enterprise Cloud Market v1.0.pdf</code></td>
+            <td><code>./paper-03-evolving-expectations-enterprise-cloud-market/</code></td>
+        </tr>
+    
+        <tr>
+            <th scope="row">Paper 04</th>
+            <td>Sovereignty and Trust in Cloud</td>
+            <td>v1.0</td>
+            <td>2025</td>
+            <td><code>Paper 4 - Sovereignty and Trust in Cloud v1.0.pdf</code></td>
+            <td><code>./paper-04-sovereignty-and-trust-in-cloud/</code></td>
+        </tr>
+    
+        <tr>
+            <th scope="row">Paper 05</th>
+            <td>How and Why OCI&#x27;s Technical Performance Is Real</td>
+            <td>v1.0</td>
+            <td>2025</td>
+            <td><code>Paper 5 - How and Why OCI’s Technical Performance Is Real v1.0.pdf</code></td>
+            <td><code>./paper-05-oci-technical-performance-is-real/</code></td>
+        </tr>
+    
+        <tr>
+            <th scope="row">Paper 06</th>
+            <td>From ChatGPT to Enterprise AI: Closing the Expectation Gap</td>
+            <td>v1.0</td>
+            <td>2025</td>
+            <td><code>Paper 6 - From ChatGPT to Enterprise AI - Closing the Expectation Gap v1.0.pdf</code></td>
+            <td><code>./paper-06-chatgpt-to-enterprise-ai/</code></td>
+        </tr>
+    
+        <tr>
+            <th scope="row">Paper 07</th>
+            <td>The Miracle of AI: From Probabilistic Foundations</td>
+            <td>v1.0</td>
+            <td>2025</td>
+            <td><code>Paper 7 - The Miracle of AI From Probabilistic Foundations v1.0.pdf</code></td>
+            <td><code>./paper-07-miracle-of-ai-probabilistic-foundations/</code></td>
+        </tr>
+    
+        <tr>
+            <th scope="row">Paper 08</th>
+            <td>AI Risks and Cloud Realities</td>
+            <td>v1.0</td>
+            <td>2025</td>
+            <td><code>Paper 8 - AI Risks and Cloud Realities v1.0.pdf</code></td>
+            <td><code>./paper-08-ai-risks-and-cloud-realities/</code></td>
+        </tr>
+    
+        <tr>
+            <th scope="row">Paper 09</th>
+            <td>The Mechanics of Public Sector Procurement</td>
+            <td>v1.0</td>
+            <td>2025</td>
+            <td><code>Paper 9 - The Mechanics of Public Sector Procurement v1.0.pdf</code></td>
+            <td><code>./paper-09-public-sector-procurement-mechanics/</code></td>
+        </tr>
+    
+        <tr>
+            <th scope="row">Paper 10</th>
+            <td>Aligning OCI to UK Public Sector Policy</td>
+            <td>v1.0</td>
+            <td>2025</td>
+            <td><code>Paper 10 - Aligning OCI to UK Public Sector Policy v1.1.pdf</code></td>
+            <td><code>./paper-10-aligning-oci-uk-public-sector-policy/</code></td>
+        </tr>
+    
+        <tr>
+            <th scope="row">Paper 11</th>
+            <td>The Real Economics of OCI</td>
+            <td>v1.0</td>
+            <td>2026</td>
+            <td><code>Paper 11 - The Real Economics of OCI v1.0.pdf</code></td>
+            <td><code>./paper-11-real-economics-of-oci/</code></td>
+        </tr>
+    
+        <tr>
+            <th scope="row">Paper 12</th>
+            <td>OCI&#x27;s Rich Differentiation</td>
+            <td>v2.0</td>
+            <td>2026</td>
+            <td><code>Paper 12 - OCI&#x27;s Rich Differentiation v1.0.pdf</code></td>
+            <td><code>./paper-12-oci-rich-differentiation/</code></td>
+        </tr>
+    
+        <tr>
+            <th scope="row">Paper 13</th>
+            <td>Misconceptions of OCI</td>
+            <td>v1.0</td>
+            <td>2026</td>
+            <td><code>Paper 13 - Misconceptions of OCI v1.0.pdf</code></td>
+            <td><code>./paper-13-misconceptions-of-oci/</code></td>
+        </tr>
+    
+                    </tbody>
+                </table>
+            </div>
+            <div class="source-note">
+                <h3>Source notes</h3>
+                <p>Paper 10 source filename contains v1.1, but the PDF cover presents Version 1.0. The card uses the cover version.</p>
+                <p>Paper 12 source filename contains v1.0, but the PDF cover presents Version 2.0. The card uses the cover version.</p>
+                <p>All pages retain visible internal classification and are intended for Oracle internal use only.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div>
+                <p><strong>FY26 UK-PS Whitepapers Series</strong></p>
+                <p>Internal Oracle enablement index. Derived from the FY26 whitepaper source set and the series framework.</p>
+                <p>Series version 1.0 · Index conversion 1.0 · Last updated 23 June 2026</p>
+                <p>Source note: this page is an orientation and navigation layer, not a replacement for the source papers.</p>
+            </div>
+            <span class="classification">Confidential - Oracle Internal</span>
+        </div>
+    </footer>
+
+    <script id="series-inventory" type="application/json">{
+  &quot;series&quot;: &quot;FY26 UK-PS Whitepapers Series&quot;,
+  &quot;classification&quot;: &quot;Confidential - Oracle Internal&quot;,
+  &quot;conversionVersion&quot;: &quot;1.0&quot;,
+  &quot;conversionStatus&quot;: &quot;Draft&quot;,
+  &quot;lastReviewed&quot;: &quot;2026-06-23&quot;,
+  &quot;indexRoute&quot;: &quot;/index.html&quot;,
+  &quot;papers&quot;: [
+    {
+      &quot;number&quot;: &quot;01&quot;,
+      &quot;group&quot;: &quot;Market and Cloud Context&quot;,
+      &quot;title&quot;: &quot;The Visionaries Who Shaped Our Cloud&quot;,
+      &quot;subtitle&quot;: &quot;Learning from the Pioneers Who Defined the Modern Infrastructure Landscape&quot;,
+      &quot;version&quot;: &quot;1.0&quot;,
+      &quot;year&quot;: &quot;2025&quot;,
+      &quot;route&quot;: &quot;./paper-01-visionaries-who-shaped-our-cloud/&quot;,
+      &quot;sourceFile&quot;: &quot;Paper 1 - The Visionaries Who Shaped Our Cloud v1.0.pdf&quot;,
+      &quot;themes&quot;: [
+        &quot;Cloud history&quot;,
+        &quot;Competition&quot;,
+        &quot;OCI Engineering&quot;,
+        &quot;Leadership&quot;
+      ],
+      &quot;accent&quot;: &quot;clay&quot;,
+      &quot;summary&quot;: &quot;Traces the people and milestones that shaped modern cloud infrastructure, from virtualisation and hyperscale engineering through cloud-native tooling and Oracle&#x27;s Gen 2 Cloud. It gives the series historical grounding and helps readers understand competitors with respect and clarity.&quot;,
+      &quot;bestUsed&quot;: &quot;Market context, competitive empathy, OCI origin-story conversations, and team enablement where the history of cloud architecture matters.&quot;
+    },
+    {
+      &quot;number&quot;: &quot;02&quot;,
+      &quot;group&quot;: &quot;Market and Cloud Context&quot;,
+      &quot;title&quot;: &quot;Masters of Many: Champions of Choice&quot;,
+      &quot;subtitle&quot;: &quot;Why Oracle has so many competitors and why that fact defines who we are&quot;,
+      &quot;version&quot;: &quot;1.0&quot;,
+      &quot;year&quot;: &quot;2026&quot;,
+      &quot;route&quot;: &quot;./paper-02-masters-of-many-champions-of-choice/&quot;,
+      &quot;sourceFile&quot;: &quot;Paper 2 - Masters of Many  - Champions of Choice v1.0.pdf&quot;,
+      &quot;themes&quot;: [
+        &quot;Competition&quot;,
+        &quot;Differentiation&quot;,
+        &quot;Choice&quot;,
+        &quot;Portfolio breadth&quot;
+      ],
+      &quot;accent&quot;: &quot;clay&quot;,
+      &quot;summary&quot;: &quot;Frames Oracle&#x27;s unusually broad competitive field as a consequence of portfolio breadth rather than confusion. It shows how Oracle competes across cloud, data, integration, AI, SaaS and industry domains while retaining a choice-led posture.&quot;,
+      &quot;bestUsed&quot;: &quot;Resetting narrow Oracle perceptions, explaining breadth with discipline, and positioning Oracle as a platform of choice rather than a single-product vendor.&quot;
+    },
+    {
+      &quot;number&quot;: &quot;03&quot;,
+      &quot;group&quot;: &quot;Market and Cloud Context&quot;,
+      &quot;title&quot;: &quot;Evolving Expectations in the Enterprise Cloud Market&quot;,
+      &quot;subtitle&quot;: &quot;How AI, Cost Pressure, and Data Control Are Changing the Cloud Buyer&#x27;s Mindset in UK Public Sector&quot;,
+      &quot;version&quot;: &quot;1.0&quot;,
+      &quot;year&quot;: &quot;2025&quot;,
+      &quot;route&quot;: &quot;./paper-03-evolving-expectations-enterprise-cloud-market/&quot;,
+      &quot;sourceFile&quot;: &quot;Paper 3 - Evolving Expectations in the Enterprise Cloud Market v1.0.pdf&quot;,
+      &quot;themes&quot;: [
+        &quot;Buyer expectations&quot;,
+        &quot;Enterprise AI&quot;,
+        &quot;Economics&quot;,
+        &quot;Sovereignty&quot;,
+        &quot;UK Public Sector&quot;
+      ],
+      &quot;accent&quot;: &quot;charcoal&quot;,
+      &quot;summary&quot;: &quot;Explains how cloud buying has moved beyond basic migration, agility and headline cost reduction. It sets out the newer priorities shaping UK public sector decisions, including AI capability, FinOps, data control, resilience, sustainability and multi-cloud hedging.&quot;,
+      &quot;bestUsed&quot;: &quot;Opening strategic customer conversations about what cloud buyers now care about and why OCI needs to be positioned against modern decision criteria.&quot;
+    },
+    {
+      &quot;number&quot;: &quot;04&quot;,
+      &quot;group&quot;: &quot;Trust, Sovereignty, and Performance&quot;,
+      &quot;title&quot;: &quot;Sovereignty and Trust in Cloud&quot;,
+      &quot;subtitle&quot;: &quot;How Providers Are Tackling Regulatory Demands and Earning Customer Confidence&quot;,
+      &quot;version&quot;: &quot;1.0&quot;,
+      &quot;year&quot;: &quot;2025&quot;,
+      &quot;route&quot;: &quot;./paper-04-sovereignty-and-trust-in-cloud/&quot;,
+      &quot;sourceFile&quot;: &quot;Paper 4 - Sovereignty and Trust in Cloud v1.0.pdf&quot;,
+      &quot;themes&quot;: [
+        &quot;Sovereignty&quot;,
+        &quot;Trust&quot;,
+        &quot;Policy&quot;,
+        &quot;UK Public Sector&quot;,
+        &quot;Assurance&quot;
+      ],
+      &quot;accent&quot;: &quot;teal&quot;,
+      &quot;summary&quot;: &quot;Shows why sovereignty has become a strategic cloud consideration in the UK public sector. It turns questions of data location, operational access, key control, auditability and exit rights into a practical trust model for OCI conversations.&quot;,
+      &quot;bestUsed&quot;: &quot;Regulated data discussions, sovereignty framing, OC4 and Dedicated Region conversations, and assurance-led engagement with public sector stakeholders.&quot;
+    },
+    {
+      &quot;number&quot;: &quot;05&quot;,
+      &quot;group&quot;: &quot;Trust, Sovereignty, and Performance&quot;,
+      &quot;title&quot;: &quot;How and Why OCI&#x27;s Technical Performance Is Real&quot;,
+      &quot;subtitle&quot;: &quot;Exposing the Architecture, Evidence, and Engineering That Distinguish Oracle&#x27;s Cloud&quot;,
+      &quot;version&quot;: &quot;1.0&quot;,
+      &quot;year&quot;: &quot;2025&quot;,
+      &quot;route&quot;: &quot;./paper-05-oci-technical-performance-is-real/&quot;,
+      &quot;sourceFile&quot;: &quot;Paper 5 - How and Why OCI’s Technical Performance Is Real v1.0.pdf&quot;,
+      &quot;themes&quot;: [
+        &quot;Performance&quot;,
+        &quot;Architecture&quot;,
+        &quot;Evidence&quot;,
+        &quot;OCI Engineering&quot;,
+        &quot;Differentiation&quot;
+      ],
+      &quot;accent&quot;: &quot;teal&quot;,
+      &quot;summary&quot;: &quot;Builds the OCI performance story from architecture and evidence, not from isolated benchmark claims. It connects bare metal, off-box virtualisation, RDMA networking, NVMe storage and database optimisation to workload-specific outcomes while preserving caveats.&quot;,
+      &quot;bestUsed&quot;: &quot;Performance credibility, benchmark scepticism, architecture-led differentiation, and technical customer conversations where evidence must withstand scrutiny.&quot;
+    },
+    {
+      &quot;number&quot;: &quot;06&quot;,
+      &quot;group&quot;: &quot;Enterprise AI&quot;,
+      &quot;title&quot;: &quot;From ChatGPT to Enterprise AI: Closing the Expectation Gap&quot;,
+      &quot;subtitle&quot;: &quot;Why Consumer Familiarity Creates Misleading Assumptions and How Oracle Architects Can Reframe the Conversation&quot;,
+      &quot;version&quot;: &quot;1.0&quot;,
+      &quot;year&quot;: &quot;2025&quot;,
+      &quot;route&quot;: &quot;./paper-06-chatgpt-to-enterprise-ai/&quot;,
+      &quot;sourceFile&quot;: &quot;Paper 6 - From ChatGPT to Enterprise AI - Closing the Expectation Gap v1.0.pdf&quot;,
+      &quot;themes&quot;: [
+        &quot;Enterprise AI&quot;,
+        &quot;Buyer expectations&quot;,
+        &quot;Governance&quot;,
+        &quot;AI risk&quot;,
+        &quot;Trust&quot;
+      ],
+      &quot;accent&quot;: &quot;red&quot;,
+      &quot;summary&quot;: &quot;Explains how consumer AI tools shape expectations that do not always survive enterprise reality. It helps architects reframe enthusiasm around privacy, traceability, deployment location, auditability, model governance and accountable design.&quot;,
+      &quot;bestUsed&quot;: &quot;Early AI discovery, correcting ChatGPT-shaped assumptions, and helping non-technical stakeholders understand why enterprise AI needs stronger architecture.&quot;
+    },
+    {
+      &quot;number&quot;: &quot;07&quot;,
+      &quot;group&quot;: &quot;Enterprise AI&quot;,
+      &quot;title&quot;: &quot;The Miracle of AI: From Probabilistic Foundations&quot;,
+      &quot;subtitle&quot;: &quot;Why Uncertainty Produces Coherence, and How Enterprises Can Harness It Safely&quot;,
+      &quot;version&quot;: &quot;1.0&quot;,
+      &quot;year&quot;: &quot;2025&quot;,
+      &quot;route&quot;: &quot;./paper-07-miracle-of-ai-probabilistic-foundations/&quot;,
+      &quot;sourceFile&quot;: &quot;Paper 7 - The Miracle of AI From Probabilistic Foundations v1.0.pdf&quot;,
+      &quot;themes&quot;: [
+        &quot;Enterprise AI&quot;,
+        &quot;Probability&quot;,
+        &quot;AI risk&quot;,
+        &quot;Governance&quot;,
+        &quot;Trust&quot;
+      ],
+      &quot;accent&quot;: &quot;amber&quot;,
+      &quot;summary&quot;: &quot;Makes probabilistic AI understandable for enterprise technologists. It explains why models can produce coherent outputs, where hallucination and variability appear, and how guardrails, RAG, human feedback and hybrid architecture turn probability into managed trust.&quot;,
+      &quot;bestUsed&quot;: &quot;Explaining non-determinism, AI reliability, hallucination risk, RAG patterns, and the controls needed before probabilistic AI enters production.&quot;
+    },
+    {
+      &quot;number&quot;: &quot;08&quot;,
+      &quot;group&quot;: &quot;Enterprise AI&quot;,
+      &quot;title&quot;: &quot;AI Risks and Cloud Realities&quot;,
+      &quot;subtitle&quot;: &quot;Reframing public fears as enterprise requirements&quot;,
+      &quot;version&quot;: &quot;1.0&quot;,
+      &quot;year&quot;: &quot;2025&quot;,
+      &quot;route&quot;: &quot;./paper-08-ai-risks-and-cloud-realities/&quot;,
+      &quot;sourceFile&quot;: &quot;Paper 8 - AI Risks and Cloud Realities v1.0.pdf&quot;,
+      &quot;themes&quot;: [
+        &quot;AI risk&quot;,
+        &quot;Enterprise AI&quot;,
+        &quot;Policy&quot;,
+        &quot;Trust&quot;,
+        &quot;UK Public Sector&quot;
+      ],
+      &quot;accent&quot;: &quot;red&quot;,
+      &quot;summary&quot;: &quot;Translates public fears about AI into concrete enterprise requirements across jobs, sustainability, privacy, security, IP, misinformation and alignment. It keeps the tone grounded, using OCI design principles to show how anxiety can become assurance.&quot;,
+      &quot;bestUsed&quot;: &quot;Responsible AI conversations, AI risk framing, governance workshops, and public sector discussions where fear needs to be converted into practical controls.&quot;
+    },
+    {
+      &quot;number&quot;: &quot;09&quot;,
+      &quot;group&quot;: &quot;Public Sector Operating Context&quot;,
+      &quot;title&quot;: &quot;The Mechanics of Public Sector Procurement&quot;,
+      &quot;subtitle&quot;: &quot;How UK Buyers Choose, Evaluate, and Assure Cloud Infrastructure&quot;,
+      &quot;version&quot;: &quot;1.0&quot;,
+      &quot;year&quot;: &quot;2025&quot;,
+      &quot;route&quot;: &quot;./paper-09-public-sector-procurement-mechanics/&quot;,
+      &quot;sourceFile&quot;: &quot;Paper 9 - The Mechanics of Public Sector Procurement v1.0.pdf&quot;,
+      &quot;themes&quot;: [
+        &quot;Procurement&quot;,
+        &quot;UK Public Sector&quot;,
+        &quot;Policy&quot;,
+        &quot;Assurance&quot;,
+        &quot;Economics&quot;
+      ],
+      &quot;accent&quot;: &quot;sand&quot;,
+      &quot;summary&quot;: &quot;Maps how UK public sector cloud decisions move through routes to market, decision gates, evaluation criteria and assurance checkpoints. It helps technical teams understand how architectures are justified, scrutinised and defended.&quot;,
+      &quot;bestUsed&quot;: &quot;Procurement readiness, bid support, assurance planning, and aligning technical evidence to public sector buying mechanisms.&quot;
+    },
+    {
+      &quot;number&quot;: &quot;10&quot;,
+      &quot;group&quot;: &quot;Public Sector Operating Context&quot;,
+      &quot;title&quot;: &quot;Aligning OCI to UK Public Sector Policy&quot;,
+      &quot;subtitle&quot;: &quot;A field guide for Account Cloud Engineers to navigate strategy signals, sector imperatives, and architectural alignment&quot;,
+      &quot;version&quot;: &quot;1.0&quot;,
+      &quot;year&quot;: &quot;2025&quot;,
+      &quot;route&quot;: &quot;./paper-10-aligning-oci-uk-public-sector-policy/&quot;,
+      &quot;sourceFile&quot;: &quot;Paper 10 - Aligning OCI to UK Public Sector Policy v1.1.pdf&quot;,
+      &quot;themes&quot;: [
+        &quot;Policy&quot;,
+        &quot;UK Public Sector&quot;,
+        &quot;Sovereignty&quot;,
+        &quot;Procurement&quot;,
+        &quot;Assurance&quot;
+      ],
+      &quot;accent&quot;: &quot;sage&quot;,
+      &quot;summary&quot;: &quot;Links cross-government digital instruments and sector strategies to practical cloud architecture requirements. It supports central government, NHS, policing, defence, local government and higher education conversations without turning policy into a dry recital.&quot;,
+      &quot;bestUsed&quot;: &quot;Policy-aware architecture, sector planning, assurance-led design, and preparing ACEs to speak in the language of UK public sector governance.&quot;
+    },
+    {
+      &quot;number&quot;: &quot;11&quot;,
+      &quot;group&quot;: &quot;Economics and Field Narrative&quot;,
+      &quot;title&quot;: &quot;The Real Economics of OCI&quot;,
+      &quot;subtitle&quot;: &quot;Why Cloud Economics is Value, Not Cheapness&quot;,
+      &quot;version&quot;: &quot;1.0&quot;,
+      &quot;year&quot;: &quot;2026&quot;,
+      &quot;route&quot;: &quot;./paper-11-real-economics-of-oci/&quot;,
+      &quot;sourceFile&quot;: &quot;Paper 11 - The Real Economics of OCI v1.0.pdf&quot;,
+      &quot;themes&quot;: [
+        &quot;Economics&quot;,
+        &quot;Performance&quot;,
+        &quot;Procurement&quot;,
+        &quot;Differentiation&quot;,
+        &quot;UK Public Sector&quot;
+      ],
+      &quot;accent&quot;: &quot;sand&quot;,
+      &quot;summary&quot;: &quot;Separates unit price from real cloud economics. It explains hidden taxes, cost predictability, data movement, exit, sustainability and resilience, then shows where OCI&#x27;s design can translate into better value without being positioned as merely cheap.&quot;,
+      &quot;bestUsed&quot;: &quot;FinOps conversations, commercial value framing, TCO scrutiny, egress and cost predictability discussions, and avoiding weak cheapness positioning.&quot;
+    },
+    {
+      &quot;number&quot;: &quot;12&quot;,
+      &quot;group&quot;: &quot;Economics and Field Narrative&quot;,
+      &quot;title&quot;: &quot;OCI&#x27;s Rich Differentiation&quot;,
+      &quot;subtitle&quot;: &quot;Why OCI Still Stands Apart as the Market Catches Up&quot;,
+      &quot;version&quot;: &quot;2.0&quot;,
+      &quot;year&quot;: &quot;2026&quot;,
+      &quot;route&quot;: &quot;./paper-12-oci-rich-differentiation/&quot;,
+      &quot;sourceFile&quot;: &quot;Paper 12 - OCI&#x27;s Rich Differentiation v1.0.pdf&quot;,
+      &quot;themes&quot;: [
+        &quot;Differentiation&quot;,
+        &quot;Performance&quot;,
+        &quot;Sovereignty&quot;,
+        &quot;Economics&quot;,
+        &quot;Misconceptions&quot;
+      ],
+      &quot;accent&quot;: &quot;clay&quot;,
+      &quot;summary&quot;: &quot;Reframes OCI differentiation as composition rather than simple uniqueness. It distinguishes structural, operational and perceived differentiation, helping teams explain where OCI still behaves differently as competitors close some feature gaps.&quot;,
+      &quot;bestUsed&quot;: &quot;Nuanced differentiation, avoiding overclaiming, explaining design coherence, and connecting performance, sovereignty, economics and operational accountability.&quot;
+    },
+    {
+      &quot;number&quot;: &quot;13&quot;,
+      &quot;group&quot;: &quot;Economics and Field Narrative&quot;,
+      &quot;title&quot;: &quot;Misconceptions of OCI&quot;,
+      &quot;subtitle&quot;: &quot;Why outdated assumptions about Oracle are still shaping cloud conversations more than they should&quot;,
+      &quot;version&quot;: &quot;1.0&quot;,
+      &quot;year&quot;: &quot;2026&quot;,
+      &quot;route&quot;: &quot;./paper-13-misconceptions-of-oci/&quot;,
+      &quot;sourceFile&quot;: &quot;Paper 13 - Misconceptions of OCI v1.0.pdf&quot;,
+      &quot;themes&quot;: [
+        &quot;Misconceptions&quot;,
+        &quot;Differentiation&quot;,
+        &quot;Competition&quot;,
+        &quot;Economics&quot;,
+        &quot;Field handling&quot;
+      ],
+      &quot;accent&quot;: &quot;red&quot;,
+      &quot;summary&quot;: &quot;A field guide for recognising the misconceptions that narrow Oracle before serious evaluation begins. It separates factual, architectural, commercial, relational and historic objections, then recommends response styles that rebuild trust without sounding defensive.&quot;,
+      &quot;bestUsed&quot;: &quot;Objection handling, narrative reset, trust-building, account planning, and coaching ACEs to handle outdated assumptions with accuracy and restraint.&quot;
+    }
+  ]
+}</script>
+    <script>
+        const PAPER_INVENTORY = {
+  "series": "FY26 UK-PS Whitepapers Series",
+  "classification": "Confidential - Oracle Internal",
+  "conversionVersion": "1.0",
+  "conversionStatus": "Draft",
+  "lastReviewed": "2026-06-23",
+  "indexRoute": "/index.html",
+  "papers": [
+    {
+      "number": "01",
+      "group": "Market and Cloud Context",
+      "title": "The Visionaries Who Shaped Our Cloud",
+      "subtitle": "Learning from the Pioneers Who Defined the Modern Infrastructure Landscape",
+      "version": "1.0",
+      "year": "2025",
+      "route": "./paper-01-visionaries-who-shaped-our-cloud/",
+      "sourceFile": "Paper 1 - The Visionaries Who Shaped Our Cloud v1.0.pdf",
+      "themes": [
+        "Cloud history",
+        "Competition",
+        "OCI Engineering",
+        "Leadership"
+      ],
+      "accent": "clay",
+      "summary": "Traces the people and milestones that shaped modern cloud infrastructure, from virtualisation and hyperscale engineering through cloud-native tooling and Oracle's Gen 2 Cloud. It gives the series historical grounding and helps readers understand competitors with respect and clarity.",
+      "bestUsed": "Market context, competitive empathy, OCI origin-story conversations, and team enablement where the history of cloud architecture matters."
+    },
+    {
+      "number": "02",
+      "group": "Market and Cloud Context",
+      "title": "Masters of Many: Champions of Choice",
+      "subtitle": "Why Oracle has so many competitors and why that fact defines who we are",
+      "version": "1.0",
+      "year": "2026",
+      "route": "./paper-02-masters-of-many-champions-of-choice/",
+      "sourceFile": "Paper 2 - Masters of Many  - Champions of Choice v1.0.pdf",
+      "themes": [
+        "Competition",
+        "Differentiation",
+        "Choice",
+        "Portfolio breadth"
+      ],
+      "accent": "clay",
+      "summary": "Frames Oracle's unusually broad competitive field as a consequence of portfolio breadth rather than confusion. It shows how Oracle competes across cloud, data, integration, AI, SaaS and industry domains while retaining a choice-led posture.",
+      "bestUsed": "Resetting narrow Oracle perceptions, explaining breadth with discipline, and positioning Oracle as a platform of choice rather than a single-product vendor."
+    },
+    {
+      "number": "03",
+      "group": "Market and Cloud Context",
+      "title": "Evolving Expectations in the Enterprise Cloud Market",
+      "subtitle": "How AI, Cost Pressure, and Data Control Are Changing the Cloud Buyer's Mindset in UK Public Sector",
+      "version": "1.0",
+      "year": "2025",
+      "route": "./paper-03-evolving-expectations-enterprise-cloud-market/",
+      "sourceFile": "Paper 3 - Evolving Expectations in the Enterprise Cloud Market v1.0.pdf",
+      "themes": [
+        "Buyer expectations",
+        "Enterprise AI",
+        "Economics",
+        "Sovereignty",
+        "UK Public Sector"
+      ],
+      "accent": "charcoal",
+      "summary": "Explains how cloud buying has moved beyond basic migration, agility and headline cost reduction. It sets out the newer priorities shaping UK public sector decisions, including AI capability, FinOps, data control, resilience, sustainability and multi-cloud hedging.",
+      "bestUsed": "Opening strategic customer conversations about what cloud buyers now care about and why OCI needs to be positioned against modern decision criteria."
+    },
+    {
+      "number": "04",
+      "group": "Trust, Sovereignty, and Performance",
+      "title": "Sovereignty and Trust in Cloud",
+      "subtitle": "How Providers Are Tackling Regulatory Demands and Earning Customer Confidence",
+      "version": "1.0",
+      "year": "2025",
+      "route": "./paper-04-sovereignty-and-trust-in-cloud/",
+      "sourceFile": "Paper 4 - Sovereignty and Trust in Cloud v1.0.pdf",
+      "themes": [
+        "Sovereignty",
+        "Trust",
+        "Policy",
+        "UK Public Sector",
+        "Assurance"
+      ],
+      "accent": "teal",
+      "summary": "Shows why sovereignty has become a strategic cloud consideration in the UK public sector. It turns questions of data location, operational access, key control, auditability and exit rights into a practical trust model for OCI conversations.",
+      "bestUsed": "Regulated data discussions, sovereignty framing, OC4 and Dedicated Region conversations, and assurance-led engagement with public sector stakeholders."
+    },
+    {
+      "number": "05",
+      "group": "Trust, Sovereignty, and Performance",
+      "title": "How and Why OCI's Technical Performance Is Real",
+      "subtitle": "Exposing the Architecture, Evidence, and Engineering That Distinguish Oracle's Cloud",
+      "version": "1.0",
+      "year": "2025",
+      "route": "./paper-05-oci-technical-performance-is-real/",
+      "sourceFile": "Paper 5 - How and Why OCI’s Technical Performance Is Real v1.0.pdf",
+      "themes": [
+        "Performance",
+        "Architecture",
+        "Evidence",
+        "OCI Engineering",
+        "Differentiation"
+      ],
+      "accent": "teal",
+      "summary": "Builds the OCI performance story from architecture and evidence, not from isolated benchmark claims. It connects bare metal, off-box virtualisation, RDMA networking, NVMe storage and database optimisation to workload-specific outcomes while preserving caveats.",
+      "bestUsed": "Performance credibility, benchmark scepticism, architecture-led differentiation, and technical customer conversations where evidence must withstand scrutiny."
+    },
+    {
+      "number": "06",
+      "group": "Enterprise AI",
+      "title": "From ChatGPT to Enterprise AI: Closing the Expectation Gap",
+      "subtitle": "Why Consumer Familiarity Creates Misleading Assumptions and How Oracle Architects Can Reframe the Conversation",
+      "version": "1.0",
+      "year": "2025",
+      "route": "./paper-06-chatgpt-to-enterprise-ai/",
+      "sourceFile": "Paper 6 - From ChatGPT to Enterprise AI - Closing the Expectation Gap v1.0.pdf",
+      "themes": [
+        "Enterprise AI",
+        "Buyer expectations",
+        "Governance",
+        "AI risk",
+        "Trust"
+      ],
+      "accent": "red",
+      "summary": "Explains how consumer AI tools shape expectations that do not always survive enterprise reality. It helps architects reframe enthusiasm around privacy, traceability, deployment location, auditability, model governance and accountable design.",
+      "bestUsed": "Early AI discovery, correcting ChatGPT-shaped assumptions, and helping non-technical stakeholders understand why enterprise AI needs stronger architecture."
+    },
+    {
+      "number": "07",
+      "group": "Enterprise AI",
+      "title": "The Miracle of AI: From Probabilistic Foundations",
+      "subtitle": "Why Uncertainty Produces Coherence, and How Enterprises Can Harness It Safely",
+      "version": "1.0",
+      "year": "2025",
+      "route": "./paper-07-miracle-of-ai-probabilistic-foundations/",
+      "sourceFile": "Paper 7 - The Miracle of AI From Probabilistic Foundations v1.0.pdf",
+      "themes": [
+        "Enterprise AI",
+        "Probability",
+        "AI risk",
+        "Governance",
+        "Trust"
+      ],
+      "accent": "amber",
+      "summary": "Makes probabilistic AI understandable for enterprise technologists. It explains why models can produce coherent outputs, where hallucination and variability appear, and how guardrails, RAG, human feedback and hybrid architecture turn probability into managed trust.",
+      "bestUsed": "Explaining non-determinism, AI reliability, hallucination risk, RAG patterns, and the controls needed before probabilistic AI enters production."
+    },
+    {
+      "number": "08",
+      "group": "Enterprise AI",
+      "title": "AI Risks and Cloud Realities",
+      "subtitle": "Reframing public fears as enterprise requirements",
+      "version": "1.0",
+      "year": "2025",
+      "route": "./paper-08-ai-risks-and-cloud-realities/",
+      "sourceFile": "Paper 8 - AI Risks and Cloud Realities v1.0.pdf",
+      "themes": [
+        "AI risk",
+        "Enterprise AI",
+        "Policy",
+        "Trust",
+        "UK Public Sector"
+      ],
+      "accent": "red",
+      "summary": "Translates public fears about AI into concrete enterprise requirements across jobs, sustainability, privacy, security, IP, misinformation and alignment. It keeps the tone grounded, using OCI design principles to show how anxiety can become assurance.",
+      "bestUsed": "Responsible AI conversations, AI risk framing, governance workshops, and public sector discussions where fear needs to be converted into practical controls."
+    },
+    {
+      "number": "09",
+      "group": "Public Sector Operating Context",
+      "title": "The Mechanics of Public Sector Procurement",
+      "subtitle": "How UK Buyers Choose, Evaluate, and Assure Cloud Infrastructure",
+      "version": "1.0",
+      "year": "2025",
+      "route": "./paper-09-public-sector-procurement-mechanics/",
+      "sourceFile": "Paper 9 - The Mechanics of Public Sector Procurement v1.0.pdf",
+      "themes": [
+        "Procurement",
+        "UK Public Sector",
+        "Policy",
+        "Assurance",
+        "Economics"
+      ],
+      "accent": "sand",
+      "summary": "Maps how UK public sector cloud decisions move through routes to market, decision gates, evaluation criteria and assurance checkpoints. It helps technical teams understand how architectures are justified, scrutinised and defended.",
+      "bestUsed": "Procurement readiness, bid support, assurance planning, and aligning technical evidence to public sector buying mechanisms."
+    },
+    {
+      "number": "10",
+      "group": "Public Sector Operating Context",
+      "title": "Aligning OCI to UK Public Sector Policy",
+      "subtitle": "A field guide for Account Cloud Engineers to navigate strategy signals, sector imperatives, and architectural alignment",
+      "version": "1.0",
+      "year": "2025",
+      "route": "./paper-10-aligning-oci-uk-public-sector-policy/",
+      "sourceFile": "Paper 10 - Aligning OCI to UK Public Sector Policy v1.1.pdf",
+      "themes": [
+        "Policy",
+        "UK Public Sector",
+        "Sovereignty",
+        "Procurement",
+        "Assurance"
+      ],
+      "accent": "sage",
+      "summary": "Links cross-government digital instruments and sector strategies to practical cloud architecture requirements. It supports central government, NHS, policing, defence, local government and higher education conversations without turning policy into a dry recital.",
+      "bestUsed": "Policy-aware architecture, sector planning, assurance-led design, and preparing ACEs to speak in the language of UK public sector governance."
+    },
+    {
+      "number": "11",
+      "group": "Economics and Field Narrative",
+      "title": "The Real Economics of OCI",
+      "subtitle": "Why Cloud Economics is Value, Not Cheapness",
+      "version": "1.0",
+      "year": "2026",
+      "route": "./paper-11-real-economics-of-oci/",
+      "sourceFile": "Paper 11 - The Real Economics of OCI v1.0.pdf",
+      "themes": [
+        "Economics",
+        "Performance",
+        "Procurement",
+        "Differentiation",
+        "UK Public Sector"
+      ],
+      "accent": "sand",
+      "summary": "Separates unit price from real cloud economics. It explains hidden taxes, cost predictability, data movement, exit, sustainability and resilience, then shows where OCI's design can translate into better value without being positioned as merely cheap.",
+      "bestUsed": "FinOps conversations, commercial value framing, TCO scrutiny, egress and cost predictability discussions, and avoiding weak cheapness positioning."
+    },
+    {
+      "number": "12",
+      "group": "Economics and Field Narrative",
+      "title": "OCI's Rich Differentiation",
+      "subtitle": "Why OCI Still Stands Apart as the Market Catches Up",
+      "version": "2.0",
+      "year": "2026",
+      "route": "./paper-12-oci-rich-differentiation/",
+      "sourceFile": "Paper 12 - OCI's Rich Differentiation v1.0.pdf",
+      "themes": [
+        "Differentiation",
+        "Performance",
+        "Sovereignty",
+        "Economics",
+        "Misconceptions"
+      ],
+      "accent": "clay",
+      "summary": "Reframes OCI differentiation as composition rather than simple uniqueness. It distinguishes structural, operational and perceived differentiation, helping teams explain where OCI still behaves differently as competitors close some feature gaps.",
+      "bestUsed": "Nuanced differentiation, avoiding overclaiming, explaining design coherence, and connecting performance, sovereignty, economics and operational accountability."
+    },
+    {
+      "number": "13",
+      "group": "Economics and Field Narrative",
+      "title": "Misconceptions of OCI",
+      "subtitle": "Why outdated assumptions about Oracle are still shaping cloud conversations more than they should",
+      "version": "1.0",
+      "year": "2026",
+      "route": "./paper-13-misconceptions-of-oci/",
+      "sourceFile": "Paper 13 - Misconceptions of OCI v1.0.pdf",
+      "themes": [
+        "Misconceptions",
+        "Differentiation",
+        "Competition",
+        "Economics",
+        "Field handling"
+      ],
+      "accent": "red",
+      "summary": "A field guide for recognising the misconceptions that narrow Oracle before serious evaluation begins. It separates factual, architectural, commercial, relational and historic objections, then recommends response styles that rebuild trust without sounding defensive.",
+      "bestUsed": "Objection handling, narrative reset, trust-building, account planning, and coaching ACEs to handle outdated assumptions with accuracy and restraint."
+    }
+  ]
+};
+
+        (function () {
+            const cards = Array.from(document.querySelectorAll('.paper-card'));
+            const filterButtons = Array.from(document.querySelectorAll('.filter-button'));
+            const searchInput = document.getElementById('paper-search');
+            const resetButton = document.getElementById('reset-filters');
+            const resultCount = document.getElementById('result-count');
+            let activeFilter = 'all';
+
+            function normalise(value) {
+                return (value || '').toString().trim().toLowerCase();
+            }
+
+            function applyFilters() {
+                const query = normalise(searchInput.value);
+                let visible = 0;
+                cards.forEach(card => {
+                    const cardThemes = normalise(card.dataset.themes);
+                    const cardSearch = normalise(card.dataset.search);
+                    const themeMatch = activeFilter === 'all' || cardThemes.includes(activeFilter);
+                    const queryMatch = !query || cardSearch.includes(query);
+                    const show = themeMatch && queryMatch;
+                    card.classList.toggle('hidden-by-filter', !show);
+                    if (show) visible += 1;
+                });
+                resultCount.textContent = visible === 13 && activeFilter === 'all' && !query
+                    ? 'Showing all 13 papers.'
+                    : 'Showing ' + visible + ' of 13 papers.';
+            }
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    activeFilter = normalise(button.dataset.filter);
+                    filterButtons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+                    applyFilters();
+                });
+            });
+
+            searchInput.addEventListener('input', applyFilters);
+            resetButton.addEventListener('click', () => {
+                activeFilter = 'all';
+                searchInput.value = '';
+                filterButtons.forEach(b => b.setAttribute('aria-pressed', String(normalise(b.dataset.filter) === 'all')));
+                applyFilters();
+                searchInput.focus();
+            });
+        })();
+    </script>
+</body>
+</html>

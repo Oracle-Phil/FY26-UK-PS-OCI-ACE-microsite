@@ -1,0 +1,1166 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper 08 - AI Risks and Cloud Realities | FY26 UK-PS Whitepapers Series</title>
+  <meta name="description" content="Internal Oracle field paper converted into a static HTML article for the FY26 UK-PS Whitepapers Series, reframing public AI fears as enterprise requirements.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="classification" content="Confidential - Oracle Internal">
+  <meta name="series" content="FY26 UK-PS Whitepapers Series">
+  <meta name="paper-number" content="08">
+  <meta name="paper-version" content="1.0">
+  <meta name="conversion-version" content="1.0">
+  <style>
+    :root {
+      --series-bg: #f7f3ee;
+      --surface: #fffaf5;
+      --surface-alt: #f1ebe4;
+      --ink: #241c18;
+      --muted: #6f625a;
+      --line: #ded4ca;
+      --oracle-red-soft: #c74634;
+      --clay: #b45f36;
+      --sage: #789c96;
+      --teal-deep: #315f5b;
+      --sand: #d7b98c;
+      --charcoal: #3a3632;
+      --success-soft: #e5efe9;
+      --warning-soft: #f6ead8;
+      --risk-soft: #f3dfdc;
+      --info-soft: #e5eef0;
+      --amber-soft: #f6e2b8;
+      --paper-accent: #c74634;
+      --paper-accent-dark: #8d3329;
+      --paper-accent-soft: #f3dfdc;
+      --max-page: 1180px;
+      --measure: 76ch;
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --shadow: 0 20px 55px rgba(36, 28, 24, .10);
+      --shadow-soft: 0 10px 28px rgba(36, 28, 24, .07);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(199, 70, 52, .14), transparent 32rem),
+        radial-gradient(circle at 85% 10%, rgba(215, 185, 140, .23), transparent 26rem),
+        linear-gradient(180deg, #f9f4ee 0%, var(--series-bg) 48%, #eee7df 100%);
+      color: var(--ink);
+      font-family: "Oracle Sans", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: var(--paper-accent-dark); text-decoration-thickness: .08em; text-underline-offset: .16em; }
+    a:hover { color: var(--paper-accent); }
+    p { margin: 0 0 1.1rem; }
+    strong { font-weight: 760; }
+    small { color: var(--muted); }
+    ul, ol { margin-top: .35rem; padding-left: 1.35rem; }
+    li + li { margin-top: .35rem; }
+    ::selection { background: rgba(199,70,52,.22); }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 1rem;
+      z-index: 999;
+      padding: .75rem 1rem;
+      background: var(--ink);
+      color: #fff;
+      border-radius: 999px;
+    }
+    .skip-link:focus { left: 1rem; }
+
+    .utility {
+      border-bottom: 1px solid rgba(222, 212, 202, .8);
+      background: rgba(255, 250, 245, .82);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .utility-inner {
+      max-width: var(--max-page);
+      margin: 0 auto;
+      display: flex;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
+      padding: .72rem 1.25rem;
+      font-size: .84rem;
+      color: var(--muted);
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .78rem;
+      min-width: 0;
+      color: var(--charcoal);
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+    .wordmark {
+      color: var(--oracle-red-soft);
+      font-weight: 820;
+      letter-spacing: .16em;
+      font-size: .82rem;
+      line-height: 1;
+    }
+    .classification-pill {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      border: 1px solid rgba(199,70,52,.32);
+      background: rgba(199,70,52,.08);
+      color: var(--paper-accent-dark);
+      border-radius: 999px;
+      padding: .22rem .72rem;
+      font-weight: 720;
+      font-size: .78rem;
+    }
+
+    .page-shell { max-width: var(--max-page); margin: 0 auto; padding: 1.25rem; }
+
+    .series-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      margin: 1.15rem 0 .8rem;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+    .crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: .38rem; }
+    .crumbs a { color: var(--muted); text-decoration: none; }
+    .crumbs a:hover { color: var(--paper-accent); text-decoration: underline; }
+    .mini-links { display: flex; flex-wrap: wrap; gap: .65rem; justify-content: flex-end; }
+    .mini-links a { color: var(--muted); text-decoration: none; font-weight: 650; }
+    .mini-links a:hover { color: var(--paper-accent); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(222, 212, 202, .95);
+      background:
+        linear-gradient(135deg, rgba(255,250,245,.96) 0%, rgba(249,241,233,.92) 46%, rgba(243,223,220,.70) 100%);
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+      padding: clamp(1.4rem, 4vw, 3.4rem);
+    }
+    .hero:before {
+      content: "";
+      position: absolute;
+      right: -8rem;
+      top: -10rem;
+      width: 30rem;
+      height: 30rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(199,70,52,.22), rgba(199,70,52,0) 70%);
+      pointer-events: none;
+    }
+    .hero:after {
+      content: "";
+      position: absolute;
+      inset: auto 2rem 0 auto;
+      width: 42%;
+      height: .42rem;
+      background: linear-gradient(90deg, var(--paper-accent), var(--sand), var(--sage));
+      border-radius: 999px 999px 0 0;
+      opacity: .72;
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(250px, 340px);
+      gap: clamp(1rem, 4vw, 2.4rem);
+      align-items: end;
+    }
+    .eyebrow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .eyebrow span {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      border: 1px solid rgba(199,70,52,.30);
+      color: var(--paper-accent-dark);
+      background: rgba(255,255,255,.62);
+      padding: .27rem .75rem;
+      font-weight: 760;
+      font-size: .78rem;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.35rem, 6.2vw, 5.4rem);
+      letter-spacing: -.065em;
+      line-height: .96;
+      max-width: 11ch;
+    }
+    .subtitle {
+      margin: 1.15rem 0 0;
+      max-width: 60ch;
+      color: #4f423a;
+      font-size: clamp(1.1rem, 2.2vw, 1.42rem);
+      line-height: 1.45;
+      font-weight: 520;
+    }
+    .summary-card {
+      border: 1px solid rgba(199,70,52,.24);
+      background: rgba(255,250,245,.78);
+      border-radius: 24px;
+      padding: 1.15rem;
+      box-shadow: var(--shadow-soft);
+    }
+    .summary-card .label {
+      margin: 0 0 .45rem;
+      color: var(--paper-accent-dark);
+      font-weight: 820;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-size: .76rem;
+    }
+    .summary-card p { margin: 0; font-size: .98rem; color: #493d36; }
+
+    .article-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 292px;
+      gap: 1.35rem;
+      margin-top: 1.35rem;
+      align-items: start;
+    }
+    .article-main { min-width: 0; }
+    .side-rail {
+      position: sticky;
+      top: 4.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .panel {
+      border: 1px solid var(--line);
+      background: rgba(255,250,245,.82);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+    }
+    .panel-inner { padding: 1.15rem; }
+    .panel h2, .panel h3 { margin-top: 0; }
+    .toc-title, .tools-title, .meta-title {
+      margin: 0 0 .7rem;
+      font-size: .82rem;
+      color: var(--paper-accent-dark);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-weight: 820;
+    }
+    .toc nav { display: grid; gap: .25rem; }
+    .toc a {
+      display: block;
+      border-left: 3px solid transparent;
+      padding: .45rem .6rem .45rem .75rem;
+      color: #4f423a;
+      text-decoration: none;
+      border-radius: 0 12px 12px 0;
+      font-size: .9rem;
+      line-height: 1.28;
+    }
+    .toc a:hover { background: var(--surface-alt); border-left-color: var(--paper-accent); color: var(--ink); }
+
+    .reading-tools { display: flex; flex-wrap: wrap; gap: .52rem; }
+    .btn {
+      appearance: none;
+      border: 1px solid rgba(199,70,52,.28);
+      background: rgba(255,255,255,.70);
+      color: var(--paper-accent-dark);
+      padding: .58rem .74rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font: inherit;
+      font-size: .84rem;
+      line-height: 1;
+      font-weight: 760;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+    }
+    .btn:hover { background: var(--paper-accent-soft); }
+    .btn.primary { background: var(--paper-accent); color: #fff; border-color: var(--paper-accent); }
+    .btn.primary:hover { background: var(--paper-accent-dark); }
+
+    .metadata-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .72rem;
+    }
+    .metadata-item {
+      border-top: 1px solid var(--line);
+      padding-top: .56rem;
+      min-width: 0;
+    }
+    .metadata-item span {
+      display: block;
+      color: var(--muted);
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .055em;
+      font-weight: 780;
+      margin-bottom: .1rem;
+    }
+    .metadata-item strong { display: block; font-size: .88rem; line-height: 1.32; word-break: break-word; }
+    .wide { grid-column: 1 / -1; }
+
+    .content-card {
+      border: 1px solid var(--line);
+      background: rgba(255,250,245,.86);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 1.15rem;
+      overflow: hidden;
+    }
+    .section {
+      padding: clamp(1.25rem, 3.5vw, 2.25rem);
+    }
+    .section + .section { border-top: 1px solid var(--line); }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 1rem;
+      align-items: start;
+      margin-bottom: 1.1rem;
+    }
+    h2 {
+      margin: 0 0 .75rem;
+      font-size: clamp(1.7rem, 3.5vw, 2.65rem);
+      line-height: 1.04;
+      letter-spacing: -.035em;
+      max-width: 16ch;
+    }
+    h3 {
+      margin: 1.35rem 0 .55rem;
+      font-size: clamp(1.22rem, 2vw, 1.55rem);
+      line-height: 1.18;
+      letter-spacing: -.018em;
+    }
+    h4 {
+      margin: 1rem 0 .35rem;
+      font-size: 1rem;
+      color: var(--paper-accent-dark);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .section-kicker {
+      margin: 0 0 .4rem;
+      color: var(--paper-accent-dark);
+      font-weight: 820;
+      font-size: .76rem;
+      letter-spacing: .075em;
+      text-transform: uppercase;
+    }
+    .lead {
+      max-width: var(--measure);
+      color: #4b3f37;
+      font-size: 1.06rem;
+    }
+
+    .chips { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .9rem; }
+    .chip {
+      border: 1px solid rgba(49,95,91,.22);
+      background: var(--info-soft);
+      color: var(--teal-deep);
+      border-radius: 999px;
+      padding: .22rem .62rem;
+      font-size: .78rem;
+      font-weight: 760;
+    }
+    .chip.risk { background: var(--risk-soft); color: var(--paper-accent-dark); border-color: rgba(199,70,52,.25); }
+    .chip.warn { background: var(--warning-soft); color: #7a4a1f; border-color: rgba(180,95,54,.25); }
+    .chip.ok { background: var(--success-soft); color: #2c5e46; border-color: rgba(44,94,70,.18); }
+
+    .orientation-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .9rem;
+      margin-top: 1.2rem;
+    }
+    .mini-card {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.55);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+    }
+    .mini-card h3 { margin: 0 0 .45rem; font-size: 1.02rem; letter-spacing: -.01em; }
+    .mini-card p, .mini-card li { font-size: .92rem; line-height: 1.48; color: #51453d; }
+    .mini-card p:last-child { margin-bottom: 0; }
+    .mini-card.accent { border-color: rgba(199,70,52,.25); background: rgba(243,223,220,.56); }
+    .mini-card.sage { border-color: rgba(120,156,150,.28); background: rgba(229,238,240,.62); }
+    .mini-card.sand { border-color: rgba(215,185,140,.32); background: rgba(246,234,216,.66); }
+    .mini-card.success { border-color: rgba(120,156,150,.25); background: rgba(229,239,233,.72); }
+
+    .risk-bridge {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: .75rem;
+      align-items: stretch;
+      margin: 1.35rem 0;
+    }
+    .bridge-card {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.56);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      min-height: 9rem;
+    }
+    .bridge-card h3 { margin: 0 0 .4rem; font-size: 1.05rem; }
+    .bridge-card p { font-size: .92rem; line-height: 1.48; margin: 0; color: #51453d; }
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--paper-accent-dark);
+      font-weight: 900;
+      font-size: 1.4rem;
+      opacity: .82;
+    }
+
+    .matrix-wrap { overflow-x: auto; border-radius: 22px; border: 1px solid var(--line); background: rgba(255,255,255,.48); }
+    table { width: 100%; border-collapse: collapse; min-width: 900px; }
+    caption { text-align: left; padding: .95rem 1rem; font-weight: 820; color: var(--paper-accent-dark); background: rgba(243,223,220,.54); }
+    th, td { padding: 1rem; text-align: left; vertical-align: top; border-top: 1px solid var(--line); }
+    th {
+      background: rgba(241,235,228,.78);
+      color: var(--charcoal);
+      font-size: .84rem;
+      text-transform: uppercase;
+      letter-spacing: .055em;
+    }
+    td { font-size: .92rem; line-height: 1.45; }
+    tbody tr:nth-child(even) td { background: rgba(241,235,228,.32); }
+    .domain { font-weight: 820; color: var(--paper-accent-dark); }
+
+    .reg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .95rem;
+      margin-top: 1.05rem;
+    }
+    .reg-card {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.54);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+    }
+    .reg-card h3 { margin-top: 0; color: var(--paper-accent-dark); }
+    .reg-card p { font-size: .94rem; line-height: 1.5; color: #51453d; }
+
+    .design-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .85rem;
+      margin: 1.2rem 0 0;
+      counter-reset: design;
+    }
+    .design-item {
+      counter-increment: design;
+      border: 1px solid rgba(49,95,91,.22);
+      background: rgba(229,238,240,.68);
+      border-radius: var(--radius-md);
+      padding: 1rem 1rem 1rem 3.1rem;
+      position: relative;
+      min-height: 6.6rem;
+    }
+    .design-item:before {
+      content: counter(design);
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      width: 1.55rem;
+      height: 1.55rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--teal-deep);
+      color: #fff;
+      font-weight: 820;
+      font-size: .8rem;
+    }
+    .design-item h3 { margin: 0 0 .35rem; font-size: 1.04rem; }
+    .design-item p { margin: 0; font-size: .92rem; line-height: 1.48; color: #4c443f; }
+
+    .positioning-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: .8rem;
+      margin-top: 1.15rem;
+    }
+    .positioning-card {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.52);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+    }
+    .positioning-card h3 { margin: 0 0 .45rem; font-size: 1rem; color: var(--paper-accent-dark); }
+    .positioning-card p { margin: 0; font-size: .88rem; line-height: 1.46; color: #51453d; }
+
+    .callout {
+      border: 1px solid rgba(199,70,52,.24);
+      background: linear-gradient(135deg, rgba(243,223,220,.78), rgba(255,250,245,.74));
+      border-radius: 24px;
+      padding: 1rem 1.1rem;
+      margin: 1.15rem 0;
+    }
+    .callout h3 { margin: 0 0 .4rem; color: var(--paper-accent-dark); }
+    .callout p { margin: 0; color: #4f423a; }
+    .callout.neutral { border-color: rgba(120,156,150,.28); background: rgba(229,238,240,.66); }
+    .callout.warning { border-color: rgba(180,95,54,.28); background: rgba(246,234,216,.72); }
+
+    .series-flow {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .8rem;
+      margin-top: 1.1rem;
+    }
+    .flow-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,.54);
+      padding: 1rem;
+      position: relative;
+    }
+    .flow-card.current { border-color: rgba(199,70,52,.35); background: rgba(243,223,220,.52); }
+    .flow-card .num { color: var(--paper-accent-dark); font-weight: 820; font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; }
+    .flow-card h3 { margin: .3rem 0 .4rem; font-size: 1rem; }
+    .flow-card p { margin: 0; font-size: .88rem; line-height: 1.45; color: #51453d; }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,.52);
+      overflow: hidden;
+    }
+    details + details { margin-top: .75rem; }
+    summary {
+      cursor: pointer;
+      padding: .9rem 1rem;
+      font-weight: 800;
+      color: var(--paper-accent-dark);
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary:after { content: "+"; float: right; font-weight: 900; }
+    details[open] summary { border-bottom: 1px solid var(--line); background: rgba(241,235,228,.45); }
+    details[open] summary:after { content: "-"; }
+    details .detail-body { padding: 1rem; }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .85rem;
+      margin-top: 1rem;
+    }
+    .related-card {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.54);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      text-decoration: none;
+      color: var(--ink);
+      display: block;
+    }
+    .related-card:hover { border-color: rgba(199,70,52,.35); box-shadow: var(--shadow-soft); }
+    .related-card .num { display: block; color: var(--paper-accent-dark); font-weight: 820; font-size: .76rem; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .35rem; }
+    .related-card strong { display: block; line-height: 1.2; margin-bottom: .45rem; }
+    .related-card span { display: block; color: var(--muted); font-size: .86rem; line-height: 1.35; }
+
+    .pager {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.2rem 0;
+    }
+    .pager a {
+      border: 1px solid var(--line);
+      background: rgba(255,250,245,.82);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      text-decoration: none;
+      color: var(--ink);
+      box-shadow: var(--shadow-soft);
+    }
+    .pager a:hover { border-color: rgba(199,70,52,.35); }
+    .pager small { display: block; text-transform: uppercase; letter-spacing: .06em; font-weight: 800; color: var(--paper-accent-dark); margin-bottom: .25rem; }
+
+    footer {
+      margin-top: 1.5rem;
+      padding: 1.5rem 0 2.5rem;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+    .footer-card {
+      border: 1px solid var(--line);
+      background: rgba(255,250,245,.72);
+      border-radius: 24px;
+      padding: 1.15rem;
+    }
+
+    .anchor-link {
+      opacity: 0;
+      text-decoration: none;
+      font-size: .72em;
+      margin-left: .35rem;
+      color: var(--muted);
+    }
+    h2:hover .anchor-link, h3:hover .anchor-link { opacity: 1; }
+
+    .reading-mode .side-rail { display: none; }
+    .reading-mode .article-layout { grid-template-columns: minmax(0, 860px); justify-content: center; }
+    .reading-mode .content-card { box-shadow: none; }
+
+    @media (max-width: 1080px) {
+      .article-layout { grid-template-columns: 1fr; }
+      .side-rail { position: static; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .positioning-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .positioning-card:last-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 860px) {
+      body { font-size: 16px; }
+      .utility-inner, .series-nav { align-items: flex-start; flex-direction: column; }
+      .hero-grid { grid-template-columns: 1fr; }
+      h1 { max-width: 12ch; }
+      .orientation-grid, .reg-grid, .design-list, .series-flow, .related-grid, .pager { grid-template-columns: 1fr; }
+      .risk-bridge { grid-template-columns: 1fr; }
+      .arrow { transform: rotate(90deg); padding: .1rem; }
+      .section-head { grid-template-columns: 1fr; }
+      .side-rail { grid-template-columns: 1fr; }
+      .metadata-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 540px) {
+      .page-shell { padding: .85rem; }
+      .hero, .content-card, .panel { border-radius: 22px; }
+      .section { padding: 1rem; }
+      .positioning-grid { grid-template-columns: 1fr; }
+      .reading-tools .btn { width: 100%; justify-content: center; }
+    }
+
+    @media print {
+      body { background: #fff; color: #000; font-size: 11pt; }
+      .utility, .side-rail, .reading-tools, .mini-links, .pager { display: none !important; }
+      .page-shell { max-width: none; padding: 0; }
+      .hero, .content-card, .panel, .footer-card { box-shadow: none; border-color: #bbb; background: #fff; }
+      a { color: #000; text-decoration: none; }
+      .article-layout { display: block; }
+      details { break-inside: avoid; }
+      details:not([open]) .detail-body { display: block; }
+      summary:after { content: ""; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="utility" role="banner">
+    <div class="utility-inner">
+      <div class="brand" aria-label="Series identity">
+        <span class="wordmark">ORACLE</span>
+        <span>FY26 UK-PS Whitepapers Series</span>
+      </div>
+      <span class="classification-pill">Confidential - Oracle Internal</span>
+    </div>
+  </header>
+
+  <div class="page-shell">
+    <nav class="series-nav" aria-label="Series navigation">
+      <div class="crumbs">
+        <a href="/">Series index</a>
+        <span aria-hidden="true">/</span>
+        <a href="/paper-08-ai-risks-and-cloud-realities/">Paper 08</a>
+        <span aria-hidden="true">/</span>
+        <span>AI Risks and Cloud Realities</span>
+      </div>
+      <div class="mini-links" aria-label="Global links">
+        <a href="/">Index</a>
+        <a href="/#papers">All papers</a>
+        <a href="/#reading-paths">Reading paths</a>
+        <a href="/#themes">Themes</a>
+      </div>
+    </nav>
+
+    <section class="hero" aria-labelledby="paper-title">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span>Paper 08</span>
+            <span>Enterprise AI</span>
+            <span>AI Risk and Governance</span>
+          </div>
+          <h1 id="paper-title">AI Risks and Cloud Realities</h1>
+          <p class="subtitle">Reframing public fears as enterprise requirements.</p>
+          <div class="chips" aria-label="Themes">
+            <span class="chip risk">AI risk</span>
+            <span class="chip warn">Public fear</span>
+            <span class="chip ok">Governance</span>
+            <span class="chip">UK Public Sector</span>
+          </div>
+        </div>
+        <aside class="summary-card" aria-label="Key takeaway">
+          <p class="label">Key takeaway</p>
+          <p>AI risk conversations become more useful when they are translated into design requirements: human oversight, data protection, provenance, auditability, sovereign control, sustainability, and secure operation.</p>
+        </aside>
+      </div>
+    </section>
+
+    <div class="article-layout">
+      <main id="main" class="article-main" tabindex="-1">
+        <article class="content-card">
+          <section class="section" id="orientation">
+            <p class="section-kicker">Executive orientation</p>
+            <div class="section-head">
+              <div>
+                <h2>From anxiety to assurance <a class="anchor-link" href="#orientation" aria-label="Copy link to orientation">#</a></h2>
+                <p class="lead">This paper closes the Enterprise AI mini-series by translating the public debate about AI risk into practical requirements for architects working with UK public sector customers.</p>
+              </div>
+            </div>
+            <div class="orientation-grid">
+              <div class="mini-card accent">
+                <h3>Why this matters</h3>
+                <p>Public concern shapes enterprise hesitation. Buyers ask for proof that AI systems are lawful, explainable, secure, sustainable, and governed.</p>
+              </div>
+              <div class="mini-card sage">
+                <h3>Who should read it</h3>
+                <p>OCI Architects, ACEs, public sector sales teams, AI specialists, and anyone preparing for governance-led AI conversations.</p>
+              </div>
+              <div class="mini-card sand">
+                <h3>What it helps with</h3>
+                <p>Risk reframing, procurement readiness, assurance workshops, AI design principles, and customer conversations where concern is legitimate but loosely expressed.</p>
+              </div>
+              <div class="mini-card success">
+                <h3>What not to overclaim</h3>
+                <p>Do not imply that cloud architecture removes AI risk. The credible position is that risk becomes manageable through controls, evidence, human oversight, and governance.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="intro">
+            <p class="section-kicker">Introduction</p>
+            <h2>AI risk is now a customer requirement <a class="anchor-link" href="#intro" aria-label="Copy link to introduction">#</a></h2>
+            <p>Artificial intelligence is no longer confined to laboratories or specialist teams. It is part of everyday conversation, at work, in the media, and in family settings. Public awareness has grown rapidly, and so has concern: jobs displaced, private lives monitored, misinformation spread at scale, and powerful systems moving beyond human oversight.</p>
+            <p>The source paper notes that public surveys in 2024 showed widespread concern about AI growth, significant expected job disruption, and calls for stronger regulation. Those fears do not stay in the public sphere. They become the questions customers raise in procurement cycles, compliance workshops, board discussions, and technical design reviews.</p>
+            <div class="callout neutral">
+              <h3>Field interpretation</h3>
+              <p>When a customer expresses fear about AI, the architect’s task is not to dismiss the fear. The better move is to translate it into a requirement that can be designed, evidenced, governed, and tested.</p>
+            </div>
+          </section>
+
+          <section class="section" id="translation-model">
+            <p class="section-kicker">Experience pattern</p>
+            <h2>Public fear to enterprise requirement <a class="anchor-link" href="#translation-model" aria-label="Copy link to translation model">#</a></h2>
+            <p class="lead">Paper 08 is best read as a conversion model. It turns emotive AI narratives into architecture and governance questions.</p>
+            <div class="risk-bridge" aria-label="Risk translation pathway">
+              <div class="bridge-card">
+                <h3>1. Public fear</h3>
+                <p>The concern may be expressed emotionally: surveillance, job loss, deepfakes, cyber harm, or loss of control.</p>
+              </div>
+              <div class="arrow" aria-hidden="true">›</div>
+              <div class="bridge-card">
+                <h3>2. Enterprise requirement</h3>
+                <p>The concern becomes concrete: audit trails, lawful processing, provenance, carbon reporting, human review, or cyber resilience.</p>
+              </div>
+              <div class="arrow" aria-hidden="true">›</div>
+              <div class="bridge-card">
+                <h3>3. Cloud reality</h3>
+                <p>The answer must be architectural: controls, deployment model, logging, encryption, model lifecycle governance, and evidence.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="fear-matrix">
+            <p class="section-kicker">Core matrix</p>
+            <h2>Seven AI risk domains <a class="anchor-link" href="#fear-matrix" aria-label="Copy link to AI risk domains">#</a></h2>
+            <p class="lead">The matrix preserves the paper’s central move: each public fear has a corresponding enterprise reality and a practical design response.</p>
+            <div class="matrix-wrap" role="region" aria-label="Public fear to enterprise requirement matrix" tabindex="0">
+              <table>
+                <caption>Public fear to enterprise requirement matrix</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Risk domain</th>
+                    <th scope="col">Public fear</th>
+                    <th scope="col">Enterprise requirement</th>
+                    <th scope="col">Design response</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="domain">Job displacement</td>
+                    <td>AI will replace large numbers of jobs and remove income or purpose.</td>
+                    <td>Productivity and augmentation, with human oversight and reskilling.</td>
+                    <td>Architect for augmentation, require approval for consequential actions, capture audit trails, and support enablement pathways.</td>
+                  </tr>
+                  <tr>
+                    <td class="domain">Environmental impact</td>
+                    <td>AI data centres consume vast amounts of electricity and water.</td>
+                    <td>Renewable sourcing, carbon reporting, workload efficiency, and evidence for Greening Government commitments.</td>
+                    <td>Choose appropriate shapes, schedule intensive work intelligently, surface estimated emissions, and document carbon-aware design decisions.</td>
+                  </tr>
+                  <tr>
+                    <td class="domain">Surveillance and privacy</td>
+                    <td>AI will monitor citizens and workers constantly, eroding civil liberties.</td>
+                    <td>Lawful basis, data minimisation, audit trails, and human review of consequential decisions.</td>
+                    <td>Apply minimisation and pseudonymisation, enforce BYOK/HYOK where needed, implement DPIAs, logging, and explainability.</td>
+                  </tr>
+                  <tr>
+                    <td class="domain">Security and weaponisation</td>
+                    <td>AI will enable cyber attacks, instability, or autonomous harmful systems.</td>
+                    <td>Assurance that AI cannot be poisoned, tricked, exploited, or used beyond human command.</td>
+                    <td>Use secure-by-design patterns, isolation, least privilege, adversarial testing, continuous monitoring, human checkpoints, and stop mechanisms.</td>
+                  </tr>
+                  <tr>
+                    <td class="domain">Intellectual property and legal risk</td>
+                    <td>Models may be trained on protected work or create infringing outputs.</td>
+                    <td>Clarity on training data, provenance, liability, indemnity, and output risk.</td>
+                    <td>Use licensed or open datasets, maintain model cards, record provenance, filter outputs, clarify indemnities, and never train on customer data without explicit agreement.</td>
+                  </tr>
+                  <tr>
+                    <td class="domain">Misinformation and deepfakes</td>
+                    <td>AI will flood elections, media, and institutions with realistic falsehoods.</td>
+                    <td>Trusted communications, provenance, watermarking, and controls before citizen-facing content is released.</td>
+                    <td>Maintain provenance metadata, watermark where supported, use human approval, integrate synthetic media detection, and strengthen voice and payment verification.</td>
+                  </tr>
+                  <tr>
+                    <td class="domain">Alignment and control</td>
+                    <td>AI may pursue harmful goals or make decisions without human control.</td>
+                    <td>Explainability, bounded objectives, escalation paths, and oversight for harmful or biased outputs.</td>
+                    <td>Define guardrails, monitor drift, detect anomalous behaviour, implement rollback, and use explainability frameworks.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="callout warning">
+              <h3>Credibility caveat</h3>
+              <p>The paper’s advice is deliberately customer-centred. The strongest response is often best practice first, then a grounded explanation of how OCI can support that requirement. Avoid making the conversation sound like a product catalogue.</p>
+            </div>
+          </section>
+
+          <section class="section" id="regulation">
+            <p class="section-kicker">Regulation and governance</p>
+            <h2>Governance sets the design bar <a class="anchor-link" href="#regulation" aria-label="Copy link to regulation and governance">#</a></h2>
+            <p class="lead">The source paper treats regulation as a practical design context, not a legal footnote. The themes are convergence around accountability, transparency, and human control.</p>
+            <div class="reg-grid">
+              <div class="reg-card">
+                <h3>EU AI Act</h3>
+                <p>The Act bans certain unacceptable uses, defines high-risk obligations, and requires safeguards for generative AI. UK bodies may be indirectly affected when handling European data or collaborating with EU partners.</p>
+              </div>
+              <div class="reg-card">
+                <h3>UK approach</h3>
+                <p>The UK has not adopted a single AI law in the source paper’s framing. Existing regulators apply principles of safety, transparency, fairness, accountability, and contestability.</p>
+              </div>
+              <div class="reg-card">
+                <h3>International frameworks</h3>
+                <p>OECD, UNESCO, UN discussions, and the Bletchley Park AI Safety Summit establish expectations even where they are not binding law.</p>
+              </div>
+            </div>
+            <div class="design-list" aria-label="Design imperatives for OCI Architects">
+              <div class="design-item">
+                <h3>Demonstrable sovereignty</h3>
+                <p>Show that data sovereignty and lawful processing can be evidenced throughout the lifecycle.</p>
+              </div>
+              <div class="design-item">
+                <h3>Audit and explainability</h3>
+                <p>Build audit trails and model registries so outputs can be explained, reviewed, and challenged.</p>
+              </div>
+              <div class="design-item">
+                <h3>Human review</h3>
+                <p>Implement human-in-the-loop paths for high-impact use cases, especially where outcomes affect citizens.</p>
+              </div>
+              <div class="design-item">
+                <h3>Strictest applicable standard</h3>
+                <p>Anticipate convergence by designing to the more demanding standard, not merely the lowest applicable threshold.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="oci-positioning">
+            <p class="section-kicker">OCI positioning</p>
+            <h2>Where OCI answers the requirements <a class="anchor-link" href="#oci-positioning" aria-label="Copy link to OCI positioning">#</a></h2>
+            <p class="lead">Public fears translate into requirements for sustainability, sovereignty, security, transparency, governance, and cloud choice. OCI positioning should be presented as evidence-led support for those requirements.</p>
+            <div class="positioning-grid">
+              <div class="positioning-card">
+                <h3>Sustainability</h3>
+                <p>Oracle’s stated goals include renewable energy coverage and net zero commitments. OCI workload efficiency and environmental tooling support sustainable AI at scale.</p>
+              </div>
+              <div class="positioning-card">
+                <h3>Sovereignty</h3>
+                <p>OCI offers dual-region UK Government Cloud, Dedicated Region, Alloy, and encryption options such as BYOK and HYOK for control and residency-sensitive designs.</p>
+              </div>
+              <div class="positioning-card">
+                <h3>Security</h3>
+                <p>OCI’s second-generation architecture emphasises isolation, off-box virtualisation, dedicated network paths, strong tenant boundaries, Cloud Guard, and Audit.</p>
+              </div>
+              <div class="positioning-card">
+                <h3>Transparency</h3>
+                <p>Customer data is not used to train Oracle models without explicit agreement. Data Science explainability, registries, and logging support auditability.</p>
+              </div>
+              <div class="positioning-card">
+                <h3>Multi-cloud choice</h3>
+                <p>Oracle’s strategy spans AWS, Google Cloud, and Microsoft Azure, supporting flexibility for database services across different cloud infrastructures.</p>
+              </div>
+            </div>
+            <details open>
+              <summary>Multi-cloud examples from the source paper</summary>
+              <div class="detail-body">
+                <ul>
+                  <li><strong>Oracle Database@AWS:</strong> source-framed support for Oracle Autonomous Database and Exadata services on AWS infrastructure, with low-latency connections and unified billing or licensing.</li>
+                  <li><strong>Oracle Interconnect for Google Cloud / Oracle Database@Google Cloud:</strong> colocated Oracle services in Google Cloud regions, private interconnection, low latency, and in many cases waived cross-cloud data-transfer charges.</li>
+                  <li><strong>Oracle Database@Azure:</strong> established support for Oracle database services in Microsoft Azure regions with mature tooling and interconnectivity.</li>
+                </ul>
+              </div>
+            </details>
+          </section>
+
+          <section class="section" id="field-use">
+            <p class="section-kicker">Practical field interpretation</p>
+            <h2>How to use this paper in conversation <a class="anchor-link" href="#field-use" aria-label="Copy link to field use">#</a></h2>
+            <div class="orientation-grid">
+              <div class="mini-card accent">
+                <h3>Use when a customer asks</h3>
+                <p>“How can we adopt AI without creating unacceptable privacy, legal, cyber, or reputational risk?”</p>
+              </div>
+              <div class="mini-card sage">
+                <h3>Strongest move</h3>
+                <p>Translate the concern into a design requirement before introducing OCI capabilities.</p>
+              </div>
+              <div class="mini-card sand">
+                <h3>Handle carefully</h3>
+                <p>Do not dismiss public anxiety as irrational. It often reflects legitimate procurement and assurance questions.</p>
+              </div>
+              <div class="mini-card success">
+                <h3>Avoid saying</h3>
+                <p>“OCI solves AI risk.” A more credible version is: “OCI gives us controls and evidence to manage AI risk responsibly.”</p>
+              </div>
+            </div>
+            <div class="callout neutral">
+              <h3>Customer-centred framing</h3>
+              <p>Start with the customer’s duty of care: lawful processing, explainability, human oversight, security, sustainability, and evidence. Then map OCI to the requirements that survive that scrutiny.</p>
+            </div>
+          </section>
+
+          <section class="section" id="mini-series">
+            <p class="section-kicker">Enterprise AI mini-series</p>
+            <h2>The closing chapter of the AI sequence <a class="anchor-link" href="#mini-series" aria-label="Copy link to AI mini-series">#</a></h2>
+            <p class="lead">Paper 08 completes the AI mini-series by moving from expectations, through probability, into risk and governance.</p>
+            <div class="series-flow">
+              <a class="flow-card" href="/paper-06-chatgpt-to-enterprise-ai/">
+                <span class="num">Paper 06</span>
+                <h3>From ChatGPT to Enterprise AI</h3>
+                <p>Explains why consumer AI familiarity creates misleading assumptions about enterprise AI.</p>
+              </a>
+              <a class="flow-card" href="/paper-07-miracle-of-ai-probabilistic-foundations/">
+                <span class="num">Paper 07</span>
+                <h3>The Miracle of AI</h3>
+                <p>Shows why probabilistic systems feel powerful, why they fail, and why guardrails matter.</p>
+              </a>
+              <div class="flow-card current">
+                <span class="num">Paper 08</span>
+                <h3>AI Risks and Cloud Realities</h3>
+                <p>Turns public fears into enterprise design questions that OCI can help answer credibly.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="conclusion">
+            <p class="section-kicker">Conclusion</p>
+            <h2>Shift from anxiety to evidence <a class="anchor-link" href="#conclusion" aria-label="Copy link to conclusion">#</a></h2>
+            <p>For UK public sector buyers, AI fears translate directly into requirements for sustainability, sovereignty, auditability, and assurance. Each can be reframed as a design question: how to keep humans in the loop, reduce environmental impact, prove lawful data use, secure against attack, and ensure model decisions can be explained.</p>
+            <p>OCI provides concrete capabilities to help meet those needs, but the credible posture is disciplined. Risks are real. They become manageable when addressed through sustainable infrastructure, sovereign control, security by design, and transparent governance.</p>
+            <div class="callout">
+              <h3>Final field message</h3>
+              <p>The task for OCI Architects is to move AI conversations away from abstract fear and towards evidence-backed design. That is where trust becomes practical.</p>
+            </div>
+          </section>
+        </article>
+
+        <section class="content-card" id="related">
+          <div class="section">
+            <p class="section-kicker">Related papers</p>
+            <h2>Continue the reading path <a class="anchor-link" href="#related" aria-label="Copy link to related papers">#</a></h2>
+            <div class="related-grid">
+              <a class="related-card" href="/paper-06-chatgpt-to-enterprise-ai/">
+                <span class="num">Paper 06</span>
+                <strong>From ChatGPT to Enterprise AI</strong>
+                <span>Expectation gap, consumer AI assumptions, and accountability.</span>
+              </a>
+              <a class="related-card" href="/paper-07-miracle-of-ai-probabilistic-foundations/">
+                <span class="num">Paper 07</span>
+                <strong>The Miracle of AI</strong>
+                <span>Probability, coherence, hallucination, guardrails, and trust.</span>
+              </a>
+              <a class="related-card" href="/paper-04-sovereignty-and-trust-in-cloud/">
+                <span class="num">Paper 04</span>
+                <strong>Sovereignty and Trust in Cloud</strong>
+                <span>Jurisdiction, operational control, data residency, and trust models.</span>
+              </a>
+              <a class="related-card" href="/paper-10-aligning-oci-uk-public-sector-policy/">
+                <span class="num">Paper 10</span>
+                <strong>Aligning OCI to UK Public Sector Policy</strong>
+                <span>Policy signals, assurance expectations, and sector alignment.</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <nav class="pager" aria-label="Previous and next papers">
+          <a href="/paper-07-miracle-of-ai-probabilistic-foundations/">
+            <small>Previous paper</small>
+            <strong>Paper 07: The Miracle of AI</strong>
+          </a>
+          <a href="/paper-09-public-sector-procurement-mechanics/">
+            <small>Next paper</small>
+            <strong>Paper 09: The Mechanics of Public Sector Procurement</strong>
+          </a>
+        </nav>
+
+        <section class="content-card" id="source-notes">
+          <div class="section">
+            <p class="section-kicker">Source and handling notes</p>
+            <h2>Conversion notes <a class="anchor-link" href="#source-notes" aria-label="Copy link to source notes">#</a></h2>
+            <details open>
+              <summary>Source fidelity</summary>
+              <div class="detail-body">
+                <p>This page is an editorial conversion of <strong>Paper 8 - AI Risks and Cloud Realities v1.0.pdf</strong>. It preserves the source argument while restructuring the content into a web-native matrix, governance section, positioning cards, and field-use guidance.</p>
+              </div>
+            </details>
+            <details>
+              <summary>Known caveats</summary>
+              <div class="detail-body">
+                <p>Regulatory and service-availability statements are source-derived. Revalidate current service status, policy wording, regional availability, and external legal references before using this page for live customer commitments.</p>
+              </div>
+            </details>
+            <details>
+              <summary>Internal use</summary>
+              <div class="detail-body">
+                <p>This HTML article is for Oracle internal enablement. It is not a public Oracle web page, marketing asset, legal opinion, or formal product commitment.</p>
+              </div>
+            </details>
+          </div>
+        </section>
+      </main>
+
+      <aside class="side-rail" aria-label="Article tools and metadata">
+        <section class="panel toc" aria-labelledby="toc-title">
+          <div class="panel-inner">
+            <h2 class="toc-title" id="toc-title">Contents</h2>
+            <nav>
+              <a href="#orientation">Executive orientation</a>
+              <a href="#intro">Introduction</a>
+              <a href="#translation-model">Translation model</a>
+              <a href="#fear-matrix">Risk domains</a>
+              <a href="#regulation">Regulation and governance</a>
+              <a href="#oci-positioning">OCI positioning</a>
+              <a href="#field-use">Field use</a>
+              <a href="#mini-series">AI mini-series</a>
+              <a href="#conclusion">Conclusion</a>
+              <a href="#source-notes">Source notes</a>
+            </nav>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="tools-title">
+          <div class="panel-inner">
+            <h2 class="tools-title" id="tools-title">Reading tools</h2>
+            <div class="reading-tools">
+              <a class="btn primary" href="/">Back to index</a>
+              <button class="btn" type="button" data-print>Print / PDF</button>
+              <button class="btn" type="button" data-expand>Expand all</button>
+              <button class="btn" type="button" data-collapse>Collapse all</button>
+              <button class="btn" type="button" data-reading-mode>Reading mode</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="meta-title">
+          <div class="panel-inner">
+            <h2 class="meta-title" id="meta-title">Article metadata</h2>
+            <div class="metadata-grid">
+              <div class="metadata-item"><span>Paper</span><strong>08</strong></div>
+              <div class="metadata-item"><span>Version</span><strong>1.0</strong></div>
+              <div class="metadata-item wide"><span>Title</span><strong>AI Risks and Cloud Realities</strong></div>
+              <div class="metadata-item wide"><span>Subtitle</span><strong>Reframing public fears as enterprise requirements</strong></div>
+              <div class="metadata-item wide"><span>Source PDF</span><strong>Paper 8 - AI Risks and Cloud Realities v1.0.pdf</strong></div>
+              <div class="metadata-item"><span>Copyright</span><strong>2025</strong></div>
+              <div class="metadata-item"><span>Status</span><strong>Draft conversion</strong></div>
+              <div class="metadata-item wide"><span>Classification</span><strong>Confidential - Oracle Internal</strong></div>
+              <div class="metadata-item wide"><span>Route</span><strong>/paper-08-ai-risks-and-cloud-realities/</strong></div>
+              <div class="metadata-item"><span>Conversion</span><strong>v1.0</strong></div>
+              <div class="metadata-item"><span>Converted</span><strong>2026-06-22</strong></div>
+              <div class="metadata-item wide"><span>Themes</span><strong>Enterprise AI, AI risk, governance, sovereignty, security, UK Public Sector</strong></div>
+              <div class="metadata-item wide"><span>Reading time</span><strong>Approx. 13 minutes</strong></div>
+              <div class="metadata-item wide"><span>Caveat</span><strong>Source-derived; revalidate live policy and product claims before external use.</strong></div>
+            </div>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <footer>
+      <div class="footer-card">
+        <strong>FY26 UK-PS Whitepapers Series</strong><br>
+        Internal enablement site. Confidential - Oracle Internal. Conversion version 1.0. Last updated 2026-06-22. Source: Paper 8 - AI Risks and Cloud Realities v1.0.pdf. This page is not an official public oracle.com publication.
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const PAPER_META = {
+      series: "FY26 UK-PS Whitepapers Series",
+      number: "08",
+      title: "AI Risks and Cloud Realities",
+      subtitle: "Reframing public fears as enterprise requirements",
+      version: "1.0",
+      sourceFile: "Paper 8 - AI Risks and Cloud Realities v1.0.pdf",
+      classification: "Confidential - Oracle Internal",
+      copyright: "Copyright © 2025, Oracle and/or its affiliates",
+      route: "/paper-08-ai-risks-and-cloud-realities/",
+      themes: ["Enterprise AI", "AI risk", "Governance", "Sovereignty", "Security", "UK Public Sector"],
+      conversionVersion: "1.0",
+      conversionStatus: "Draft",
+      conversionDate: "2026-06-22",
+      lastReviewed: "2026-06-22"
+    };
+
+    document.querySelector('[data-print]')?.addEventListener('click', () => window.print());
+    document.querySelector('[data-expand]')?.addEventListener('click', () => document.querySelectorAll('details').forEach(d => d.open = true));
+    document.querySelector('[data-collapse]')?.addEventListener('click', () => document.querySelectorAll('details').forEach(d => d.open = false));
+    document.querySelector('[data-reading-mode]')?.addEventListener('click', () => document.body.classList.toggle('reading-mode'));
+
+    document.querySelectorAll('h2[id], h3[id], .anchor-link').forEach(link => {
+      if (link.classList && link.classList.contains('anchor-link')) {
+        link.addEventListener('click', async event => {
+          const href = event.currentTarget.getAttribute('href');
+          if (!href) return;
+          event.preventDefault();
+          const target = document.querySelector(href);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          try {
+            await navigator.clipboard.writeText(`${location.origin}${location.pathname}${href}`);
+            event.currentTarget.textContent = 'copied';
+            setTimeout(() => event.currentTarget.textContent = '#', 1200);
+          } catch (_) {
+            location.hash = href;
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

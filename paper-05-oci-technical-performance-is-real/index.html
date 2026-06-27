@@ -1,0 +1,1137 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper 05 - How and Why OCI's Technical Performance Is Real | FY26 UK-PS Whitepapers Series</title>
+  <meta name="description" content="Internal Oracle field paper converted into a static HTML article for the FY26 UK-PS Whitepapers Series.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="classification" content="Confidential - Oracle Internal">
+  <meta name="series" content="FY26 UK-PS Whitepapers Series">
+  <meta name="paper-number" content="05">
+  <meta name="paper-version" content="1.0">
+  <meta name="conversion-version" content="1.0">
+  <style>
+    :root {
+      --series-bg: #f7f3ee;
+      --surface: #fffaf5;
+      --surface-alt: #f1ebe4;
+      --ink: #241c18;
+      --muted: #6f625a;
+      --line: #ded4ca;
+      --oracle-red-soft: #c74634;
+      --clay: #b45f36;
+      --sage: #789c96;
+      --teal-deep: #315f5b;
+      --teal-dark: #214743;
+      --sand: #d7b98c;
+      --charcoal: #3a3632;
+      --success-soft: #e5efe9;
+      --warning-soft: #f6ead8;
+      --risk-soft: #f3dfdc;
+      --info-soft: #e5eef0;
+      --paper-accent: #315f5b;
+      --paper-accent-2: #3a3632;
+      --focus: #0f6f7b;
+      --shadow: 0 18px 52px rgba(36, 28, 24, .10);
+      --shadow-soft: 0 10px 26px rgba(36, 28, 24, .08);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --max: 1180px;
+      --measure: 76ch;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 9% 4%, rgba(49, 95, 91, .12), transparent 30rem),
+        radial-gradient(circle at 100% 0%, rgba(180, 95, 54, .10), transparent 26rem),
+        linear-gradient(180deg, #f7f3ee 0%, #f4eee7 42%, #efe7dd 100%);
+      font-family: "Oracle Sans", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: var(--teal-deep); text-decoration-thickness: .08em; text-underline-offset: .18em; }
+    a:hover { color: var(--oracle-red-soft); }
+    p, li { max-width: var(--measure); }
+    strong { font-weight: 760; }
+    small { font-size: .88rem; }
+
+    .skip-link {
+      position: absolute;
+      inset-inline-start: 1rem;
+      inset-block-start: 1rem;
+      z-index: 50;
+      transform: translateY(-160%);
+      background: var(--ink);
+      color: #fff;
+      padding: .7rem 1rem;
+      border-radius: 999px;
+    }
+    .skip-link:focus { transform: translateY(0); outline: 3px solid var(--sand); }
+
+    .utility {
+      border-bottom: 1px solid rgba(36, 28, 24, .10);
+      background: rgba(255, 250, 245, .82);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+    .utility-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .7rem 1.25rem;
+      font-size: .88rem;
+      color: var(--muted);
+    }
+    .mark {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      font-weight: 760;
+      letter-spacing: .12em;
+      color: var(--oracle-red-soft);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .mark::before {
+      content: "";
+      inline-size: 2.1rem;
+      block-size: .22rem;
+      border-radius: 999px;
+      background: currentColor;
+      box-shadow: 0 .42rem 0 rgba(199, 70, 52, .28);
+    }
+    .utility-meta {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: .75rem;
+      flex-wrap: wrap;
+      text-align: right;
+    }
+    .classification-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .25rem .7rem;
+      border: 1px solid rgba(199, 70, 52, .22);
+      border-radius: 999px;
+      background: rgba(199, 70, 52, .08);
+      color: #7b3027;
+      font-weight: 720;
+    }
+
+    .series-header {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.15rem 1.25rem .4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .series-title {
+      margin: 0;
+      color: var(--muted);
+      font-size: .95rem;
+      font-weight: 760;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .nav {
+      display: flex;
+      gap: .35rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav a, .tool-button, .section-copy {
+      appearance: none;
+      border: 1px solid rgba(36, 28, 24, .14);
+      background: rgba(255, 250, 245, .72);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: .52rem .82rem;
+      font: inherit;
+      font-size: .86rem;
+      line-height: 1;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
+    }
+    .nav a:hover, .tool-button:hover, .section-copy:hover {
+      border-color: rgba(49, 95, 91, .35);
+      background: #fff;
+      color: var(--teal-deep);
+    }
+    button:focus-visible, a:focus-visible, summary:focus-visible {
+      outline: 3px solid rgba(15, 111, 123, .36);
+      outline-offset: 3px;
+    }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem 4rem; }
+    .breadcrumb {
+      margin: 1rem 0 1.25rem;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .breadcrumb span { color: var(--ink); font-weight: 720; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(36, 28, 24, .12);
+      border-radius: calc(var(--radius-lg) + 8px);
+      background:
+        linear-gradient(135deg, rgba(255, 250, 245, .96) 0%, rgba(241, 235, 228, .96) 56%, rgba(229, 238, 240, .92) 100%);
+      box-shadow: var(--shadow);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -40% auto auto 52%;
+      inline-size: 46rem;
+      block-size: 46rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(49, 95, 91, .22), transparent 62%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -8rem -12rem auto;
+      inline-size: 28rem;
+      block-size: 28rem;
+      border-radius: 50%;
+      border: 1px solid rgba(49, 95, 91, .16);
+      box-shadow: inset 0 0 0 3rem rgba(49, 95, 91, .05), inset 0 0 0 7rem rgba(180, 95, 54, .04);
+    }
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(270px, .85fr);
+      gap: 2rem;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      align-items: stretch;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      margin: 0 0 1rem;
+      color: var(--teal-deep);
+      font-size: .84rem;
+      font-weight: 820;
+      text-transform: uppercase;
+      letter-spacing: .11em;
+    }
+    .eyebrow::before {
+      content: "05";
+      display: inline-grid;
+      place-items: center;
+      inline-size: 2.35rem;
+      block-size: 2.35rem;
+      border-radius: 50%;
+      background: var(--teal-deep);
+      color: #fff;
+      letter-spacing: 0;
+      font-weight: 820;
+    }
+    h1 {
+      margin: 0;
+      max-width: 12ch;
+      font-size: clamp(2.55rem, 7vw, 5.65rem);
+      line-height: .94;
+      letter-spacing: -.055em;
+      color: var(--ink);
+    }
+    .subtitle {
+      margin: 1.25rem 0 0;
+      max-width: 58ch;
+      color: var(--muted);
+      font-size: clamp(1.1rem, 2vw, 1.42rem);
+      line-height: 1.45;
+    }
+    .summary {
+      margin-block-start: 1.4rem;
+      max-width: 67ch;
+      color: #413833;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.55rem; }
+    .primary-action, .secondary-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      border-radius: 999px;
+      padding: .78rem 1.05rem;
+      font-weight: 760;
+      font-size: .94rem;
+      text-decoration: none;
+    }
+    .primary-action { color: #fff; background: var(--teal-deep); border: 1px solid var(--teal-deep); }
+    .primary-action:hover { color: #fff; background: var(--teal-dark); }
+    .secondary-action { color: var(--ink); background: rgba(255,255,255,.72); border: 1px solid rgba(36, 28, 24, .16); }
+
+    .key-card {
+      display: grid;
+      align-content: start;
+      gap: 1rem;
+      padding: 1.25rem;
+      border: 1px solid rgba(49, 95, 91, .22);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 250, 245, .82);
+      box-shadow: var(--shadow-soft);
+    }
+    .key-card h2 {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.2;
+      color: var(--teal-deep);
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+    .key-card p { margin: 0; color: #352d28; font-size: 1.04rem; line-height: 1.55; }
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .7rem;
+    }
+    .signal {
+      padding: .85rem;
+      border-radius: var(--radius-sm);
+      background: rgba(229, 238, 240, .9);
+      border: 1px solid rgba(49, 95, 91, .13);
+      min-height: 7rem;
+    }
+    .signal b { display: block; font-size: 1.35rem; line-height: 1; color: var(--teal-deep); margin-bottom: .32rem; }
+    .signal span { display: block; color: var(--muted); font-size: .84rem; line-height: 1.35; }
+
+    .meta-panel, .tools, .article-shell, .related, .source-notes {
+      margin-top: 1.25rem;
+      border: 1px solid rgba(36, 28, 24, .12);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 250, 245, .86);
+      box-shadow: var(--shadow-soft);
+    }
+    .meta-panel { padding: 1.2rem; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .7rem;
+    }
+    .meta-item {
+      padding: .85rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(36, 28, 24, .08);
+      background: rgba(255, 255, 255, .46);
+    }
+    .meta-item dt { margin: 0 0 .22rem; color: var(--muted); font-size: .75rem; font-weight: 780; text-transform: uppercase; letter-spacing: .06em; }
+    .meta-item dd { margin: 0; font-size: .94rem; line-height: 1.35; color: var(--ink); }
+    .theme-chips { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1rem; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: .32rem .66rem;
+      background: rgba(49, 95, 91, .10);
+      border: 1px solid rgba(49, 95, 91, .16);
+      color: var(--teal-deep);
+      font-size: .78rem;
+      font-weight: 780;
+    }
+    .chip.warning { background: var(--warning-soft); border-color: rgba(180,95,54,.22); color: #7d4328; }
+    .chip.risk { background: var(--risk-soft); border-color: rgba(199,70,52,.2); color: #7f3228; }
+
+    .tools {
+      padding: .9rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .8rem;
+      flex-wrap: wrap;
+    }
+    .tools .tool-group { display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; }
+    .tool-note { color: var(--muted); font-size: .88rem; }
+
+    .article-shell {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 1.25rem;
+      padding: 1.25rem;
+      align-items: start;
+    }
+    .toc {
+      position: sticky;
+      top: 5.1rem;
+      border: 1px solid rgba(36, 28, 24, .1);
+      border-radius: var(--radius-md);
+      background: rgba(241, 235, 228, .72);
+      padding: 1rem;
+      max-height: calc(100vh - 6rem);
+      overflow: auto;
+    }
+    .toc h2 {
+      margin: 0 0 .65rem;
+      font-size: .84rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--muted);
+    }
+    .toc ol { margin: 0; padding: 0; list-style: none; display: grid; gap: .18rem; }
+    .toc a {
+      display: block;
+      padding: .45rem .5rem;
+      border-radius: .75rem;
+      color: #3e3732;
+      text-decoration: none;
+      font-size: .9rem;
+      line-height: 1.28;
+    }
+    .toc a:hover, .toc a.active { background: rgba(49, 95, 91, .11); color: var(--teal-deep); }
+
+    article { min-width: 0; }
+    .article-section {
+      border: 1px solid rgba(36, 28, 24, .10);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, .52);
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    details.article-section > summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.35rem 1.35rem;
+      background: rgba(255, 250, 245, .92);
+      border-bottom: 1px solid rgba(36, 28, 24, .08);
+    }
+    details.article-section > summary::-webkit-details-marker { display: none; }
+    details.article-section > summary::after {
+      content: "+";
+      flex: 0 0 auto;
+      display: inline-grid;
+      place-items: center;
+      inline-size: 2rem;
+      block-size: 2rem;
+      border-radius: 50%;
+      background: rgba(49, 95, 91, .10);
+      color: var(--teal-deep);
+      font-weight: 820;
+    }
+    details[open].article-section > summary::after { content: "-"; }
+    .section-body { padding: 1.25rem 1.35rem 1.45rem; }
+    .section-heading { margin: 0; font-size: clamp(1.55rem, 3vw, 2.3rem); line-height: 1.08; letter-spacing: -.03em; }
+    .section-kicker { display: block; margin-bottom: .38rem; color: var(--teal-deep); font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 820; }
+    .section-copy { padding: .45rem .55rem; font-size: .74rem; }
+
+    .orientation-grid, .card-grid, .evidence-grid, .field-grid, .related-grid {
+      display: grid;
+      gap: .85rem;
+    }
+    .orientation-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .evidence-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .field-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .related-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card, .evidence, .caveat, .field-card, .quote-panel {
+      border: 1px solid rgba(36, 28, 24, .10);
+      border-radius: var(--radius-md);
+      background: rgba(255, 250, 245, .72);
+      padding: 1rem;
+    }
+    .card h3, .evidence h3, .field-card h3, .caveat h3 { margin: 0 0 .45rem; font-size: 1.06rem; line-height: 1.22; }
+    .card p, .evidence p, .field-card p, .caveat p { margin: .45rem 0 0; font-size: .97rem; line-height: 1.5; color: #413833; }
+    .label {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin-bottom: .58rem;
+      padding: .18rem .48rem;
+      border-radius: 999px;
+      color: var(--teal-deep);
+      background: rgba(49, 95, 91, .10);
+      border: 1px solid rgba(49, 95, 91, .14);
+      font-size: .72rem;
+      font-weight: 820;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .label.benchmark { color: #6e3b21; background: var(--warning-soft); border-color: rgba(180,95,54,.22); }
+    .label.customer { color: #315f5b; background: var(--success-soft); border-color: rgba(49,95,91,.18); }
+    .label.caveat { color: #793329; background: var(--risk-soft); border-color: rgba(199,70,52,.22); }
+    .label.guidance { color: #3a3632; background: #eee7df; border-color: rgba(58,54,50,.14); }
+
+    .numbered {
+      counter-reset: item;
+      display: grid;
+      gap: .8rem;
+      margin: 1rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .numbered li {
+      position: relative;
+      max-width: none;
+      padding: .95rem .95rem .95rem 3.25rem;
+      border: 1px solid rgba(36, 28, 24, .1);
+      border-radius: var(--radius-md);
+      background: rgba(255, 250, 245, .72);
+    }
+    .numbered li::before {
+      counter-increment: item;
+      content: counter(item);
+      position: absolute;
+      inset-inline-start: .9rem;
+      inset-block-start: .85rem;
+      display: inline-grid;
+      place-items: center;
+      inline-size: 1.75rem;
+      block-size: 1.75rem;
+      border-radius: 50%;
+      background: var(--teal-deep);
+      color: #fff;
+      font-weight: 820;
+      font-size: .86rem;
+    }
+    .numbered b { display: block; margin-bottom: .3rem; }
+    .numbered p { margin: 0; color: #413833; }
+
+    .architecture {
+      display: grid;
+      grid-template-columns: minmax(230px, .45fr) minmax(0, 1fr);
+      gap: 1rem;
+      align-items: stretch;
+    }
+    .stack-visual {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(49, 95, 91, .16);
+      background:
+        linear-gradient(180deg, rgba(49,95,91,.13), rgba(255,250,245,.72)),
+        repeating-linear-gradient(135deg, rgba(49,95,91,.06) 0 1px, transparent 1px 12px);
+      padding: 1rem;
+      display: grid;
+      align-content: center;
+      gap: .55rem;
+    }
+    .stack-layer {
+      border-radius: .95rem;
+      border: 1px solid rgba(49, 95, 91, .24);
+      background: rgba(255, 250, 245, .86);
+      padding: .7rem .75rem;
+      box-shadow: 0 8px 18px rgba(36,28,24,.06);
+    }
+    .stack-layer b { display: block; line-height: 1.18; color: var(--teal-deep); }
+    .stack-layer span { display: block; margin-top: .2rem; color: var(--muted); font-size: .78rem; line-height: 1.3; }
+
+    .data-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .85rem;
+      margin: 1rem 0;
+    }
+    .data-point {
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      background: var(--teal-deep);
+      color: #fff;
+      min-height: 8.2rem;
+    }
+    .data-point b { display: block; font-size: clamp(1.6rem, 4vw, 2.45rem); line-height: .95; letter-spacing: -.04em; }
+    .data-point span { display: block; margin-top: .45rem; color: rgba(255,255,255,.82); font-size: .88rem; line-height: 1.35; }
+
+    .caveat {
+      background: var(--risk-soft);
+      border-color: rgba(199, 70, 52, .22);
+    }
+    .quote-panel {
+      background: #efe7df;
+      border-color: rgba(49,95,91,.15);
+      padding: 1.15rem 1.2rem;
+    }
+    .quote-panel p { margin: 0; font-size: 1.08rem; color: #352d28; }
+
+    .diagnostic-list { display: grid; gap: .55rem; padding: 0; margin: .9rem 0 0; list-style: none; }
+    .diagnostic-list li {
+      max-width: none;
+      padding: .75rem .85rem;
+      border: 1px solid rgba(49,95,91,.15);
+      border-radius: var(--radius-sm);
+      background: rgba(229, 238, 240, .58);
+    }
+
+    table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    caption { caption-side: top; text-align: left; font-weight: 820; color: var(--teal-deep); margin-bottom: .6rem; }
+    th, td { padding: .78rem .7rem; text-align: left; border: 1px solid rgba(36,28,24,.12); vertical-align: top; }
+    th { background: rgba(49,95,91,.12); color: var(--teal-deep); line-height: 1.25; }
+    td { background: rgba(255,250,245,.7); }
+    .table-wrap { overflow-x: auto; border-radius: var(--radius-md); margin: 1rem 0; }
+
+    .related, .source-notes { padding: 1.2rem; }
+    .related h2, .source-notes h2 { margin: 0 0 1rem; font-size: 1.5rem; letter-spacing: -.02em; }
+    .related-card {
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(36, 28, 24, .1);
+      background: rgba(255, 255, 255, .5);
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .related-card:hover { background: #fff; color: var(--ink); }
+    .related-card b { display: block; color: var(--teal-deep); font-size: .85rem; text-transform: uppercase; letter-spacing: .06em; }
+    .related-card span { display: block; margin-top: .25rem; font-weight: 780; line-height: 1.25; }
+    .related-card small { display: block; margin-top: .55rem; color: var(--muted); line-height: 1.35; }
+
+    .pager {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .8rem;
+      margin-top: 1.25rem;
+    }
+    .pager a {
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(36,28,24,.12);
+      background: rgba(255,250,245,.76);
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .pager b { display: block; color: var(--muted); font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; }
+    .pager span { display: block; margin-top: .24rem; font-weight: 760; }
+
+    footer {
+      border-top: 1px solid rgba(36, 28, 24, .12);
+      margin-top: 3rem;
+      background: rgba(36, 28, 24, .04);
+    }
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1.7rem 1.25rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+    .footer-inner p { margin: .2rem 0; max-width: 86ch; }
+
+    .reading-mode .toc, .reading-mode .meta-panel, .reading-mode .tools, .reading-mode .series-header { display: none; }
+    .reading-mode .article-shell { display: block; max-width: 920px; margin-inline: auto; }
+    .reading-mode .hero-grid { grid-template-columns: 1fr; }
+
+    @media (max-width: 980px) {
+      .hero-grid, .article-shell, .architecture { grid-template-columns: 1fr; }
+      .toc { position: relative; top: 0; max-height: none; }
+      .meta-grid, .orientation-grid, .evidence-grid, .data-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 700px) {
+      body { font-size: 16px; }
+      .utility-inner, .series-header { align-items: flex-start; flex-direction: column; }
+      .utility-meta, .nav { justify-content: flex-start; text-align: left; }
+      .hero-grid, .article-shell { padding: 1rem; }
+      .meta-grid, .orientation-grid, .card-grid, .evidence-grid, .field-grid, .related-grid, .data-strip, .signal-grid, .pager { grid-template-columns: 1fr; }
+      h1 { max-width: 11ch; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: #fff; color: #000; font-size: 11pt; }
+      .utility, .series-header, .tools, .toc, .hero-actions, .section-copy, .skip-link { display: none !important; }
+      .container { max-width: none; padding: 0; }
+      .hero, .meta-panel, .article-shell, .article-section, .related, .source-notes { box-shadow: none; border-color: #bbb; break-inside: avoid; }
+      .hero-grid, .article-shell { display: block; }
+      details.article-section { display: block; }
+      details.article-section > summary { display: block; border-bottom: 1px solid #bbb; }
+      details.article-section > summary::after { display: none; }
+      a { color: #000; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="utility" role="banner">
+    <div class="utility-inner">
+      <div class="mark" aria-label="Oracle inspired text mark">Oracle</div>
+      <div class="utility-meta">
+        <span>FY26 UK-PS Whitepapers Series</span>
+        <span class="classification-pill">Confidential - Oracle Internal</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="series-header" aria-label="Series navigation">
+    <p class="series-title">Internal field papers for OCI, AI and UK Public Sector</p>
+    <nav class="nav" aria-label="Global navigation">
+      <a href="../index.html">Index</a>
+      <a href="../index.html#papers">All papers</a>
+      <a href="../index.html#reading-paths">Reading paths</a>
+      <a href="../index.html#themes">Themes</a>
+      <a href="../index.html#about">About this series</a>
+    </nav>
+  </header>
+
+  <main id="main-content" class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      Series / Paper 05 / <span>How and Why OCI's Technical Performance Is Real</span>
+    </nav>
+
+    <section class="hero" aria-labelledby="paper-title">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Architecture and Performance</p>
+          <h1 id="paper-title">How and Why OCI's Technical Performance Is Real</h1>
+          <p class="subtitle">Exposing the Architecture, Evidence, and Engineering That Distinguish Oracle's Cloud</p>
+          <p class="summary">A web-native field version of Paper 05, built to help OCI ACEs explain performance through architecture, evidence, workload fit and caveats, rather than through isolated benchmark claims.</p>
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="primary-action" href="#executive-orientation">Start reading</a>
+            <a class="secondary-action" href="#field-guidance">Use in the field</a>
+            <a class="secondary-action" href="#limitations">Review caveats</a>
+          </div>
+        </div>
+        <aside class="key-card" aria-labelledby="key-takeaway-title">
+          <h2 id="key-takeaway-title">Key takeaway</h2>
+          <p>OCI performance is strongest when explained as a design outcome: off-box virtualisation, RDMA-enabled networking, bare-metal options and engineered storage can reduce latency, increase throughput and improve predictability for the right workloads.</p>
+          <div class="signal-grid" aria-label="Performance evidence highlights">
+            <div class="signal"><b>5</b><span>Architectural foundations in the supplied source</span></div>
+            <div class="signal"><b>14.8m</b><span>MLPerf GPT-3 time-to-train cited in the paper</span></div>
+            <div class="signal"><b>1.3M</b><span>Block Volume IOPS per VM cited in the paper</span></div>
+            <div class="signal"><b>100 TB</b><span>Source egress comparison for UK-region data movement</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="meta-panel" aria-labelledby="metadata-title">
+      <h2 id="metadata-title" class="section-kicker">Article metadata</h2>
+      <dl class="meta-grid">
+        <div class="meta-item"><dt>Paper number</dt><dd>05</dd></div>
+        <div class="meta-item"><dt>Version</dt><dd>1.0</dd></div>
+        <div class="meta-item"><dt>Source year</dt><dd>2025</dd></div>
+        <div class="meta-item"><dt>Status</dt><dd>Draft conversion</dd></div>
+        <div class="meta-item"><dt>Source PDF</dt><dd>Paper 5 - How and Why OCI's Technical Performance Is Real v1.0.pdf</dd></div>
+        <div class="meta-item"><dt>Route</dt><dd>/paper-05-oci-technical-performance-is-real/</dd></div>
+        <div class="meta-item"><dt>Conversion version</dt><dd>1.0</dd></div>
+        <div class="meta-item"><dt>Conversion date</dt><dd>2026-06-22</dd></div>
+        <div class="meta-item"><dt>Classification</dt><dd>Confidential - Oracle Internal</dd></div>
+        <div class="meta-item"><dt>Reading time</dt><dd>Approx. 13 minutes</dd></div>
+        <div class="meta-item"><dt>Primary themes</dt><dd>Performance, architecture, evidence, OCI engineering</dd></div>
+        <div class="meta-item"><dt>Known source caveat</dt><dd>The PDF references appendix benchmark tables, but the supplied source file ends after the conclusion.</dd></div>
+      </dl>
+      <div class="theme-chips" aria-label="Theme chips">
+        <span class="chip">Performance</span>
+        <span class="chip">Architecture</span>
+        <span class="chip">Evidence</span>
+        <span class="chip">OCI Engineering</span>
+        <span class="chip warning">Benchmark Scepticism</span>
+        <span class="chip risk">Caveats</span>
+      </div>
+    </section>
+
+    <section class="tools" aria-label="Reading tools">
+      <div class="tool-group">
+        <a class="tool-button" href="../index.html">Back to index</a>
+        <button class="tool-button" type="button" data-action="print">Print / save as PDF</button>
+        <button class="tool-button" type="button" data-action="expand">Expand all</button>
+        <button class="tool-button" type="button" data-action="collapse">Collapse all</button>
+        <button class="tool-button" type="button" data-action="reading">Reading mode</button>
+      </div>
+      <span class="tool-note" id="tool-status" role="status" aria-live="polite">All content is available without external scripts.</span>
+    </section>
+
+    <div class="article-shell">
+      <aside class="toc" aria-labelledby="toc-title">
+        <h2 id="toc-title">Contents</h2>
+        <ol>
+          <li><a href="#executive-orientation">Executive orientation</a></li>
+          <li><a href="#benchmark-scepticism">Why benchmarks struggle</a></li>
+          <li><a href="#architecture">Architecture stack</a></li>
+          <li><a href="#validation">Independent validation</a></li>
+          <li><a href="#practice">Where it delivers</a></li>
+          <li><a href="#limitations">Limitations and misconceptions</a></li>
+          <li><a href="#field-guidance">Discuss without hype</a></li>
+          <li><a href="#takeaways">Key takeaways</a></li>
+          <li><a href="#conclusion">Conclusion</a></li>
+        </ol>
+      </aside>
+
+      <article>
+        <details class="article-section" id="executive-orientation" open>
+          <summary>
+            <span><span class="section-kicker">Executive orientation</span><h2 class="section-heading">Read this before using the performance story</h2></span>
+            <button class="section-copy" type="button" data-copy="#executive-orientation">Copy link</button>
+          </summary>
+          <div class="section-body">
+            <div class="orientation-grid">
+              <div class="card">
+                <span class="label">Why it matters</span>
+                <h3>Performance claims need evidence</h3>
+                <p>Public-sector platform choices must withstand procurement scrutiny. This paper exists because customers are rightly sceptical of broad cloud performance claims.</p>
+              </div>
+              <div class="card">
+                <span class="label">Who should read it</span>
+                <h3>OCI ACEs and customer-facing architects</h3>
+                <p>It is most useful for colleagues preparing for technical customer conversations where benchmark credibility, workload fit, latency or cost-performance will be challenged.</p>
+              </div>
+              <div class="card">
+                <span class="label">What it helps with</span>
+                <h3>Connecting architecture to outcomes</h3>
+                <p>The source traces the role of off-box virtualisation, flat RDMA-enabled fabric, flexible bare-metal shapes and autonomous database optimisation in reducing latency or improving throughput.</p>
+              </div>
+              <div class="card">
+                <span class="label caveat">Do not overclaim</span>
+                <h3>Not a universal win</h3>
+                <p>The source is explicit that another platform may still be the better fit. Use OCI performance as a workload-specific argument, not a claim that OCI wins everywhere.</p>
+              </div>
+            </div>
+            <div class="quote-panel" style="margin-top:1rem;">
+              <p><strong>Field principle:</strong> start from the workload outcome, then map to measurable targets, then introduce the OCI architectural capability that could help.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="article-section" id="benchmark-scepticism" open>
+          <summary>
+            <span><span class="section-kicker">Benchmark caution</span><h2 class="section-heading">Why cloud benchmarks struggle to convince</h2></span>
+            <button class="section-copy" type="button" data-copy="#benchmark-scepticism">Copy link</button>
+          </summary>
+          <div class="section-body">
+            <p>Cloud providers frequently advertise superior performance, but experienced architects know that benchmarks can be shaped by instance selection, test settings, sponsorship bias and undisclosed assumptions. The source uses that scepticism as the starting point rather than trying to dismiss it.</p>
+            <p>Technical reality adds further complexity. Cloud performance varies with hardware revisions, noisy-neighbour effects and placement within a region. Averages can look healthy while tail-latency spikes still break service-level objectives.</p>
+            <div class="card-grid">
+              <div class="field-card">
+                <span class="label benchmark">Credibility test</span>
+                <h3>Can the result be repeated?</h3>
+                <p>The source points to open, peer-reviewed suites such as MLPerf, alongside SPEC, TPC and FinOps Foundation style approaches, because disclosure and reproducibility matter more than isolated victories.</p>
+              </div>
+              <div class="field-card">
+                <span class="label benchmark">Credibility test</span>
+                <h3>Does it match the workload?</h3>
+                <p>Customers increasingly judge platforms by transparent results aligned to their own workload patterns. A benchmark win is useful only when the tested pattern resembles the production reality.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="article-section" id="architecture" open>
+          <summary>
+            <span><span class="section-kicker">Architecture stack</span><h2 class="section-heading">The design foundations behind OCI performance</h2></span>
+            <button class="section-copy" type="button" data-copy="#architecture">Copy link</button>
+          </summary>
+          <div class="section-body">
+            <div class="architecture">
+              <div class="stack-visual" aria-label="OCI performance architecture stack">
+                <div class="stack-layer"><b>Bare-metal first compute</b><span>Processor, cache and NUMA visibility</span></div>
+                <div class="stack-layer"><b>SmartNIC offload</b><span>Network and storage virtualisation off host CPU</span></div>
+                <div class="stack-layer"><b>Flat Clos fabric</b><span>Non-blocking topology and predictable hop count</span></div>
+                <div class="stack-layer"><b>End-to-end RDMA</b><span>RoCE v2 for HPC, GPU and storage paths</span></div>
+                <div class="stack-layer"><b>NVMe-everywhere storage</b><span>Local and remote flash-oriented performance</span></div>
+              </div>
+              <ol class="numbered">
+                <li><b>Bare-metal first compute</b><p>OCI exposes the whole processor to a tenant, including cores, caches and NUMA topology, removing hypervisor overhead for latency-sensitive workloads.</p></li>
+                <li><b>Off-box network and storage virtualisation</b><p>A custom SmartNIC executes virtual switching, overlay tunnelling, firewall rules and NVMe-oF target code. Moving these paths off the host CPU frees guest cores and reduces noisy-neighbour interference.</p></li>
+                <li><b>Flat, non-blocking Clos fabric</b><p>The source describes a single-tier spine-leaf network without oversubscription, with production superclusters measuring around 2 microseconds hop-to-hop latency and 400 to 800 Gbps of usable bandwidth per node.</p></li>
+                <li><b>End-to-end RDMA transport</b><p>The same RoCE v2 fabric powers HPC messaging and remote block storage. Block Volume LUNs over NVMe-oF are cited at 1.3 million IOPS per VM with sub-100 microsecond service times.</p></li>
+                <li><b>NVMe-everywhere flash storage</b><p>Bare-metal and many VM shapes include local NVMe SSD, while Block Volume is built from the same media and protocol pattern, supporting linear throughput scaling with volume size.</p></li>
+              </ol>
+            </div>
+          </div>
+        </details>
+
+        <details class="article-section" id="validation" open>
+          <summary>
+            <span><span class="section-kicker">Evidence panels</span><h2 class="section-heading">Independent validation and how to frame it</h2></span>
+            <button class="section-copy" type="button" data-copy="#validation">Copy link</button>
+          </summary>
+          <div class="section-body">
+            <p>The paper combines analyst commentary, benchmark consortia and cost-performance studies. The site keeps these as evidence panels so ACEs can pick the right proof point without collapsing the argument into one headline number.</p>
+            <div class="evidence-grid">
+              <div class="evidence">
+                <span class="label">Analyst reference</span>
+                <h3>Strategic cloud and public cloud IaaS recognition</h3>
+                <p>The source cites Gartner placing Oracle in the Leaders quadrant for Strategic Cloud Platform Services Magic Quadrant 2024 and IDC naming Oracle a Leader in the IDC MarketScape: Worldwide Public Cloud IaaS 2025.</p>
+              </div>
+              <div class="evidence">
+                <span class="label benchmark">Benchmark</span>
+                <h3>MLPerf v4.1 Training</h3>
+                <p>The paper states that an OCI supercluster of 8,192 NVIDIA H100 GPUs trained GPT-3 in 14.8 minutes, setting the best time-to-train for that model in the public results set cited by the paper.</p>
+              </div>
+              <div class="evidence">
+                <span class="label benchmark">Benchmark</span>
+                <h3>SPECpower and Exadata X10M</h3>
+                <p>The source cites AMD EPYC-based OCI nodes achieving 28.5 million ssj ops per watt and Exadata X10M disclosures showing linear throughput scaling to 192 cores per database server with flash-cache latencies under 20 microseconds.</p>
+              </div>
+            </div>
+            <div class="data-strip" aria-label="Source data points">
+              <div class="data-point"><b>8,192</b><span>NVIDIA H100 GPUs in the cited OCI MLPerf GPT-3 training result</span></div>
+              <div class="data-point"><b>2.4x</b><span>Maximum AMD shape price-performance advantage cited versus the next-closest provider</span></div>
+              <div class="data-point"><b>28.5M</b><span>SPECpower ssj ops per watt cited in the paper</span></div>
+              <div class="data-point"><b>&lt;20</b><span>Microsecond flash-cache latency cited for Exadata X10M disclosures</span></div>
+            </div>
+            <div class="caveat">
+              <span class="label caveat">Source handling note</span>
+              <h3>Appendix reference retained, appendix not present</h3>
+              <p>The PDF repeatedly refers to appendix benchmark tables and test parameters. The supplied source file available for this conversion ends at the conclusion, so this site does not invent or recreate missing appendix material.</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="article-section" id="practice" open>
+          <summary>
+            <span><span class="section-kicker">Production relevance</span><h2 class="section-heading">Where the architecture delivers in practice</h2></span>
+            <button class="section-copy" type="button" data-copy="#practice">Copy link</button>
+          </summary>
+          <div class="section-body">
+            <div class="card-grid">
+              <div class="evidence">
+                <span class="label customer">Customer example</span>
+                <h3>High-performance databases</h3>
+                <p>NHS Shared Business Services migrated its payment platform to Oracle Exadata Database Service on OCI and reported faster supplier payments and higher data-integration throughput after legacy on-premises downtime.</p>
+              </div>
+              <div class="evidence">
+                <span class="label customer">Customer example</span>
+                <h3>AI and HPC training at scale</h3>
+                <p>National Grid ESO is cited as using OCI GPU superclusters for power-forecasting models, improving accuracy by 40 percent and reducing model-run time from hours to minutes compared with its previous environment.</p>
+              </div>
+              <div class="evidence">
+                <span class="label customer">Internal reference</span>
+                <h3>Predictable bare-metal performance</h3>
+                <p>An internal, NDA-bound UK investment-analytics reference is cited as eliminating the 15 to 20 percent performance variability seen on other clouds by moving financial-risk simulations to OCI bare-metal AMD servers.</p>
+              </div>
+              <div class="evidence">
+                <span class="label customer">Economic pattern</span>
+                <h3>Low-cost egress and multi-cloud adjacency</h3>
+                <p>The source compares 100 TB outbound transfer from a UK region at about US $800 on OCI, US $7,800 on AWS and US $6,400 on Azure, and notes the OCI-Azure Interconnect for adjacent-region traffic without egress charge.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="article-section" id="limitations" open>
+          <summary>
+            <span><span class="section-kicker">Caveats and objections</span><h2 class="section-heading">Limitations and misconceptions to preserve</h2></span>
+            <button class="section-copy" type="button" data-copy="#limitations">Copy link</button>
+          </summary>
+          <div class="section-body">
+            <p>The source deliberately keeps caveats visible. That restraint is part of the credibility of the paper and should be retained in customer-facing preparation.</p>
+            <div class="field-grid">
+              <div class="field-card">
+                <span class="label caveat">Objection</span>
+                <h3>"OCI only wins in contrived benchmarks."</h3>
+                <p>Handle by pointing to reproducible suites such as MLPerf and SPEC, then move quickly to named production outcomes such as National Grid ESO and NHS Shared Business Services.</p>
+              </div>
+              <div class="field-card">
+                <span class="label caveat">Objection</span>
+                <h3>"No enterprise really needs that level of performance."</h3>
+                <p>Reframe the discussion around public-sector workloads where latency, jitter, batch windows or forecasting cycles connect directly to policy compliance, service outcomes or operational stability.</p>
+              </div>
+              <div class="field-card">
+                <span class="label caveat">Objection</span>
+                <h3>"Performance is irrelevant if features lag."</h3>
+                <p>Acknowledge that OCI's catalogue is narrower than AWS or Azure, while noting that the source says the gap has narrowed in core IaaS and data services.</p>
+              </div>
+              <div class="field-card">
+                <span class="label caveat">Handling posture</span>
+                <h3>Be candid before being persuasive</h3>
+                <p>The strongest use of this paper is not a defensive rebuttal. It is a balanced account of when OCI design choices matter and when ecosystem, region or tooling needs may point elsewhere.</p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <caption>Genuine constraints called out in the source</caption>
+                <thead>
+                  <tr><th>Constraint</th><th>Source explanation</th><th>Field handling</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Smaller ecosystem and marketplace</th><td>OCI Marketplace is cited at about 500 third-party images and SaaS connectors, compared with AWS Marketplace exceeding 12,000.</td><td>Check integration needs early and involve partners where required.</td></tr>
+                  <tr><th scope="row">Fewer public regions</th><td>As at June 2025, Oracle is cited at 54 public cloud regions, AWS at 105 and Microsoft at 78.</td><td>Validate latency, residency and sovereign-region requirements before asserting fit.</td></tr>
+                  <tr><th scope="row">Developer-tooling depth</th><td>OCI provides Terraform, Kubernetes and DevOps pipelines, but specialised workflow orchestration may require third-party products.</td><td>Distinguish core infrastructure fit from the wider developer platform preference.</td></tr>
+                  <tr><th scope="row">Compliance cadence</th><td>OCI holds major UK public-sector attestations, but may reach new niche frameworks more slowly than larger rivals.</td><td>Confirm required framework status before making assurance commitments.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+
+        <details class="article-section" id="field-guidance" open>
+          <summary>
+            <span><span class="section-kicker">Field guidance</span><h2 class="section-heading">How to discuss OCI performance without hype</h2></span>
+            <button class="section-copy" type="button" data-copy="#field-guidance">Copy link</button>
+          </summary>
+          <div class="section-body">
+            <ol class="numbered">
+              <li><b>Lead with outcomes, not components</b><p>Ask what the workload must achieve, such as millisecond response, hour-ahead forecasting accuracy or predictable month-end close. Link the need to latency, throughput or time-to-train before introducing an OCI feature.</p></li>
+              <li><b>Use diagnostic questions to uncover constraints</b><p>Establish variability tolerance, analytic cycle length, dominant cost element and regulatory limits on data movement or residency.</p></li>
+              <li><b>Position OCI through reproducible evidence</b><p>Reference independent benchmarks and named customer results rather than Oracle-authored metrics. Offer a scoped proof-of-concept so the customer can validate results under its own governance controls.</p></li>
+              <li><b>Provide balanced comparisons</b><p>Acknowledge competitor strengths, then explain how OCI addresses the specific performance gap. The tone should respect AWS, Azure and Google while clarifying where OCI behaves differently.</p></li>
+            </ol>
+            <div class="field-grid" style="margin-top:1rem;">
+              <div class="field-card">
+                <span class="label guidance">Ask</span>
+                <h3>Diagnostic questions</h3>
+                <ul class="diagnostic-list">
+                  <li>What variability in response time is acceptable before an SLA breach?</li>
+                  <li>How long does a full analytic cycle or model-training run last today?</li>
+                  <li>Which cost element dominates the budget, compute, storage or data egress?</li>
+                  <li>Are there regulatory limits on where data may transit or reside?</li>
+                </ul>
+              </div>
+              <div class="field-card">
+                <span class="label guidance">Say</span>
+                <h3>Balanced comparison language</h3>
+                <p>"AWS offers more functions in this category; OCI provides lower tail latency for tightly coupled clusters."</p>
+                <p>This kind of phrasing preserves competitor respect while making OCI's differentiator specific and testable.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="article-section" id="takeaways" open>
+          <summary>
+            <span><span class="section-kicker">ACE summary</span><h2 class="section-heading">Key takeaways for OCI ACE</h2></span>
+            <button class="section-copy" type="button" data-copy="#takeaways">Copy link</button>
+          </summary>
+          <div class="section-body">
+            <div class="card-grid">
+              <div class="card"><span class="label">Architecture</span><h3>Know the mechanism</h3><p>Understand how off-box virtualisation and RDMA fabric remove host-CPU bottlenecks and reduce jitter for AI, HPC and Exadata workloads.</p></div>
+              <div class="card"><span class="label">Evidence</span><h3>Use external proof</h3><p>Position price-performance advantage by referencing MLPerf, SPEC, TPC and independent cost studies rather than relying on authored benchmarks.</p></div>
+              <div class="card"><span class="label customer">Outcomes</span><h3>Move beyond lab tests</h3><p>Use examples such as NHS Shared Business Services and National Grid ESO to connect architectural design to production impact.</p></div>
+              <div class="card"><span class="label caveat">Integrity</span><h3>Acknowledge limits first</h3><p>Surface ecosystem size, regional coverage and tooling gaps before the customer does, then guide towards multi-cloud or partner patterns when they are the better answer.</p></div>
+              <div class="card"><span class="label guidance">Proof</span><h3>Offer a scoped PoC</h3><p>Use Terraform scripts and open monitoring so stakeholders can verify performance under their governance controls.</p></div>
+              <div class="card"><span class="label">Economics</span><h3>Connect to budget oversight</h3><p>Link lower egress pricing and OCI-Azure adjacency to the financial discipline common in UK public-sector projects.</p></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="article-section" id="conclusion" open>
+          <summary>
+            <span><span class="section-kicker">Conclusion</span><h2 class="section-heading">Performance by design, proven in the field</h2></span>
+            <button class="section-copy" type="button" data-copy="#conclusion">Copy link</button>
+          </summary>
+          <div class="section-body">
+            <p>The paper concludes that OCI price-performance should be treated as an engineering outcome, not a marketing promise. SmartNIC-based off-box virtualisation, non-blocking RDMA fabric, bare-metal tenancy and an all-NVMe storage tier are presented as design choices that reduce hidden performance taxes such as hypervisor cycles, network oversubscription and spindle latency.</p>
+            <p>The strongest closing message for ACEs is not that every workload belongs on OCI. It is that reproducible data, transparent proof-of-concept work and an honest acknowledgement of cases where another cloud may fit better can help public-sector organisations select infrastructure with trust, integrity and defensible evidence.</p>
+          </div>
+        </details>
+      </article>
+    </div>
+
+    <section class="related" aria-labelledby="related-title">
+      <h2 id="related-title">Related papers</h2>
+      <div class="related-grid">
+        <a class="related-card" href="../paper-04-sovereignty-and-trust-in-cloud/"><b>Previous paper</b><span>Paper 04 - Sovereignty and Trust in Cloud</span><small>Performance credibility often lands better when paired with trust, sovereignty and assurance language.</small></a>
+        <a class="related-card" href="../paper-11-real-economics-of-oci/"><b>Related</b><span>Paper 11 - The Real Economics of OCI</span><small>Performance and cost connect directly where throughput, egress and right-sizing affect real economics.</small></a>
+        <a class="related-card" href="../paper-12-oci-rich-differentiation/"><b>Related</b><span>Paper 12 - OCI's Rich Differentiation</span><small>Technical performance becomes a stronger narrative when treated as part of a wider differentiated platform.</small></a>
+      </div>
+      <div class="pager" aria-label="Previous and next paper navigation">
+        <a href="../paper-04-sovereignty-and-trust-in-cloud/"><b>Previous</b><span>Paper 04 - Sovereignty and Trust in Cloud</span></a>
+        <a href="../paper-06-chatgpt-to-enterprise-ai/"><b>Next</b><span>Paper 06 - From ChatGPT to Enterprise AI</span></a>
+      </div>
+    </section>
+
+    <section class="source-notes" aria-labelledby="source-title">
+      <h2 id="source-title">Source and handling notes</h2>
+      <p><strong>Source:</strong> Paper 5 - How and Why OCI's Technical Performance Is Real v1.0.pdf. Copyright © 2025, Oracle and/or its affiliates. Classification: Confidential - Oracle Internal.</p>
+      <p><strong>Conversion approach:</strong> This is an editorial HTML conversion, not a verbatim PDF transcription. The argument, caveats, evidence categories and field guidance have been preserved while restructuring the paper into web-native sections, cards, tables and reading tools.</p>
+      <p><strong>Claim discipline:</strong> Claims remain source-derived. Missing appendix material referenced by the PDF has not been invented.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <p><strong>FY26 UK-PS Whitepapers Series</strong></p>
+        <p>Internal enablement experience for Oracle Cloud Infrastructure, AI, UK Public Sector strategy, assurance, differentiation and customer conversation readiness.</p>
+        <p>Confidential - Oracle Internal. Not for public distribution.</p>
+      </div>
+      <div>
+        <p>Series version: 1.0</p>
+        <p>Last updated: 2026-06-22</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const PAPER_META = {
+      series: "FY26 UK-PS Whitepapers Series",
+      number: "05",
+      title: "How and Why OCI's Technical Performance Is Real",
+      subtitle: "Exposing the Architecture, Evidence, and Engineering That Distinguish Oracle's Cloud",
+      version: "1.0",
+      sourceFile: "Paper 5 - How and Why OCI's Technical Performance Is Real v1.0.pdf",
+      classification: "Confidential - Oracle Internal",
+      copyright: "Copyright © 2025, Oracle and/or its affiliates",
+      route: "/paper-05-oci-technical-performance-is-real/",
+      themes: ["Performance", "Architecture", "Evidence", "OCI Engineering"],
+      conversionVersion: "1.0",
+      conversionStatus: "Draft",
+      lastReviewed: "2026-06-22"
+    };
+
+    const status = document.getElementById('tool-status');
+    const sections = [...document.querySelectorAll('details.article-section')];
+
+    document.querySelectorAll('[data-action]').forEach(button => {
+      button.addEventListener('click', () => {
+        const action = button.getAttribute('data-action');
+        if (action === 'print') window.print();
+        if (action === 'expand') {
+          sections.forEach(section => section.open = true);
+          status.textContent = 'All sections expanded.';
+        }
+        if (action === 'collapse') {
+          sections.forEach(section => section.open = false);
+          status.textContent = 'All sections collapsed.';
+        }
+        if (action === 'reading') {
+          document.body.classList.toggle('reading-mode');
+          status.textContent = document.body.classList.contains('reading-mode') ? 'Reading mode enabled.' : 'Reading mode disabled.';
+        }
+      });
+    });
+
+    document.querySelectorAll('[data-copy]').forEach(button => {
+      button.addEventListener('click', async event => {
+        event.preventDefault();
+        event.stopPropagation();
+        const target = button.getAttribute('data-copy');
+        const url = `${location.origin}${location.pathname}${target}`;
+        try {
+          await navigator.clipboard.writeText(url);
+          status.textContent = 'Section link copied.';
+        } catch (e) {
+          location.hash = target;
+          status.textContent = 'Section opened. Copy the link from the address bar.';
+        }
+      });
+    });
+
+    const tocLinks = [...document.querySelectorAll('.toc a')];
+    const observedSections = tocLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
+        }
+      });
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: 0.01 });
+    observedSections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>

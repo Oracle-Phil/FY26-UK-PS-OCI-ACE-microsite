@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paper 10 - Aligning OCI to UK Public Sector Policy | FY26 UK-PS Whitepapers Series</title>
+  <meta name="description" content="Internal Oracle field paper converted into a static HTML article for the FY26 UK-PS Whitepapers Series." />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="classification" content="Confidential - Oracle Internal" />
+  <meta name="series" content="FY26 UK-PS Whitepapers Series" />
+  <meta name="paper-number" content="10" />
+  <meta name="paper-version" content="1.0" />
+  <meta name="conversion-version" content="1.0" />
+  <style>
+    :root {
+      --series-bg: #f7f3ee;
+      --surface: #fffaf5;
+      --surface-alt: #f1ebe4;
+      --ink: #241c18;
+      --muted: #6f625a;
+      --line: #ded4ca;
+      --oracle-red-soft: #c74634;
+      --clay: #b45f36;
+      --sage: #789c96;
+      --teal-deep: #315f5b;
+      --sand: #d7b98c;
+      --charcoal: #3a3632;
+      --success-soft: #e5efe9;
+      --warning-soft: #f6ead8;
+      --risk-soft: #f3dfdc;
+      --info-soft: #e5eef0;
+      --shadow: 0 20px 45px rgba(45, 36, 30, 0.08);
+      --shadow-soft: 0 10px 24px rgba(45, 36, 30, 0.06);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--series-bg);
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Oracle Sans", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at top left, rgba(120, 156, 150, 0.16), transparent 33rem),
+        radial-gradient(circle at 85% 6%, rgba(215, 185, 140, 0.22), transparent 28rem),
+        linear-gradient(180deg, #fbf7f2 0%, var(--series-bg) 58%, #f2ebe2 100%);
+      min-height: 100vh;
+    }
+
+    a { color: var(--teal-deep); text-decoration-thickness: 0.08em; text-underline-offset: 0.18em; }
+    a:hover { color: var(--oracle-red-soft); }
+
+    p { margin: 0 0 1rem; }
+    p:last-child { margin-bottom: 0; }
+
+    h1, h2, h3, h4 {
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      margin: 0 0 0.85rem;
+    }
+
+    h1 { font-size: clamp(2.65rem, 8vw, 5.4rem); max-width: 920px; }
+    h2 { font-size: clamp(1.8rem, 3.8vw, 3rem); margin-top: 0.35rem; }
+    h3 { font-size: clamp(1.28rem, 2.4vw, 1.75rem); }
+    h4 { font-size: 1.05rem; letter-spacing: -0.015em; }
+
+    ul, ol { margin: 0.2rem 0 1rem 1.35rem; padding: 0; }
+    li { margin: 0.35rem 0; }
+
+    .skip-link {
+      position: fixed;
+      left: 1rem;
+      top: -5rem;
+      z-index: 1000;
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      background: var(--ink);
+      color: #fff;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    .utility-bar {
+      border-bottom: 1px solid rgba(222, 212, 202, 0.85);
+      background: rgba(255, 250, 245, 0.86);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 900;
+    }
+
+    .utility-inner,
+    .series-header,
+    .hero,
+    .breadcrumb,
+    .page-grid,
+    .footer-inner {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .utility-inner {
+      min-height: 54px;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      color: var(--oracle-red-soft);
+      text-transform: uppercase;
+    }
+    .wordmark::before {
+      content: "";
+      width: 2.2rem;
+      height: 0.6rem;
+      border: 2px solid currentColor;
+      border-radius: 999px;
+      display: inline-block;
+    }
+
+    .classification-pill,
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      border: 1px solid rgba(199, 70, 52, 0.28);
+      background: rgba(199, 70, 52, 0.08);
+      color: #7f2e22;
+      border-radius: 999px;
+      padding: 0.28rem 0.65rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .series-header {
+      padding: 1.4rem 0 1.05rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.2rem;
+      align-items: end;
+    }
+
+    .series-title {
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    nav.primary-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      justify-content: flex-end;
+      font-size: 0.9rem;
+    }
+    nav.primary-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.35rem 0.72rem;
+      background: rgba(255,255,255,0.35);
+    }
+    nav.primary-nav a:hover { border-color: var(--sage); color: var(--teal-deep); }
+
+    .breadcrumb {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+      padding: 0.45rem 0 1rem;
+    }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb span::before { content: "/"; margin-right: 0.4rem; color: #a99e95; }
+
+    .hero {
+      padding: 1rem 0 2.8rem;
+    }
+
+    .hero-shell {
+      background:
+        linear-gradient(135deg, rgba(49,95,91,0.98), rgba(58,54,50,0.94)),
+        radial-gradient(circle at 88% 12%, rgba(215,185,140,0.32), transparent 28rem);
+      color: #fffaf5;
+      border-radius: calc(var(--radius) + 8px);
+      padding: clamp(1.4rem, 4vw, 3rem);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-shell::after {
+      content: "";
+      position: absolute;
+      inset: auto -6rem -8rem auto;
+      width: 26rem;
+      height: 26rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(215,185,140,0.28), transparent 62%);
+      pointer-events: none;
+    }
+
+    .hero-kicker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-bottom: 1rem;
+      align-items: center;
+    }
+
+    .hero .label {
+      background: rgba(255,250,245,0.12);
+      color: #fff;
+      border-color: rgba(255,250,245,0.28);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      color: rgba(255,250,245,0.82);
+      max-width: 760px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-summary {
+      max-width: 760px;
+      color: rgba(255,250,245,0.86);
+    }
+
+    .hero-bottom {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
+      gap: 1.25rem;
+      align-items: stretch;
+      margin-top: 2rem;
+    }
+
+    .takeaway,
+    .meta-panel,
+    .tools,
+    .toc,
+    .content-card,
+    .sector-card,
+    .related-card,
+    .callout,
+    .policy-node,
+    .summary-card {
+      border: 1px solid rgba(222, 212, 202, 0.82);
+      border-radius: var(--radius-sm);
+      background: rgba(255,250,245,0.86);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .takeaway {
+      background: rgba(255,250,245,0.12);
+      border-color: rgba(255,250,245,0.26);
+      color: #fff;
+      padding: 1rem;
+    }
+    .takeaway strong { display: block; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.45rem; color: #f7d8ad; }
+
+    .hero-stats {
+      display: grid;
+      gap: 0.65rem;
+    }
+    .hero-stat {
+      background: rgba(255,250,245,0.12);
+      border: 1px solid rgba(255,250,245,0.22);
+      border-radius: 16px;
+      padding: 0.8rem;
+    }
+    .hero-stat b { display: block; font-size: 1.8rem; line-height: 1; letter-spacing: -0.06em; }
+    .hero-stat span { display: block; color: rgba(255,250,245,0.76); font-size: 0.86rem; margin-top: 0.3rem; }
+
+    .page-grid {
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+      gap: 1.35rem;
+      align-items: start;
+      padding: 0 0 3rem;
+    }
+
+    aside.sidebar {
+      position: sticky;
+      top: 84px;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .meta-panel,
+    .tools,
+    .toc {
+      padding: 1rem;
+    }
+
+    .meta-panel h2,
+    .tools h2,
+    .toc h2 {
+      font-size: 0.86rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 0.75rem;
+    }
+
+    .meta-list {
+      display: grid;
+      gap: 0.55rem;
+      font-size: 0.86rem;
+    }
+    .meta-row {
+      display: grid;
+      gap: 0.1rem;
+      border-top: 1px solid rgba(222,212,202,0.62);
+      padding-top: 0.45rem;
+    }
+    .meta-row:first-child { border-top: 0; padding-top: 0; }
+    .meta-row dt { color: var(--muted); font-weight: 700; }
+    .meta-row dd { margin: 0; color: var(--ink); overflow-wrap: anywhere; }
+
+    .tools .button-grid {
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    button,
+    .button-link {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: #fffdf8;
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 0.55rem 0.8rem;
+      font: inherit;
+      font-size: 0.88rem;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+    }
+    button:hover,
+    .button-link:hover { border-color: var(--sage); color: var(--teal-deep); }
+    button.primary,
+    .button-link.primary { background: var(--teal-deep); color: #fff; border-color: var(--teal-deep); }
+
+    .toc nav { display: grid; gap: 0.4rem; }
+    .toc a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      padding: 0.32rem 0.4rem;
+      border-radius: 10px;
+    }
+    .toc a:hover,
+    .toc a.active { background: var(--info-soft); color: var(--teal-deep); }
+
+    main.article {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    section.article-section {
+      scroll-margin-top: 88px;
+    }
+
+    .content-card {
+      padding: clamp(1.2rem, 3.2vw, 2rem);
+    }
+    .content-card > *:last-child { margin-bottom: 0; }
+
+    .section-kicker {
+      color: var(--clay);
+      font-weight: 800;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .lead {
+      font-size: clamp(1.08rem, 2vw, 1.28rem);
+      color: #3b302a;
+      line-height: 1.58;
+      max-width: 72ch;
+    }
+
+    .orientation-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+      margin-top: 1.1rem;
+    }
+
+    .summary-card {
+      box-shadow: none;
+      padding: 1rem;
+      background: #fffdf9;
+    }
+    .summary-card h3 { font-size: 1.04rem; margin-bottom: 0.45rem; color: var(--teal-deep); }
+    .summary-card p { color: var(--muted); font-size: 0.95rem; }
+
+    .policy-layers {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1rem 0 1.4rem;
+    }
+
+    .policy-node {
+      background: #fffdf9;
+      box-shadow: none;
+      padding: 1.05rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .policy-node::before {
+      content: attr(data-number);
+      position: absolute;
+      right: 0.9rem;
+      top: 0.55rem;
+      font-size: 3.5rem;
+      color: rgba(120,156,150,0.14);
+      font-weight: 900;
+      line-height: 1;
+    }
+    .policy-node h3 { color: var(--teal-deep); font-size: 1.2rem; }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .study-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: #fffdf9;
+    }
+    .study-card header {
+      padding: 0.85rem 1rem;
+      background: var(--teal-deep);
+      color: #fff;
+      font-weight: 800;
+    }
+    .study-card.scan header { background: var(--clay); }
+    .study-card ul { list-style: none; margin: 0; padding: 0.6rem 1rem 0.9rem; }
+    .study-card li { margin: 0; padding: 0.38rem 0; border-bottom: 1px solid rgba(222,212,202,0.65); }
+    .study-card li:last-child { border-bottom: 0; }
+
+    .map-flow {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+    .map-col {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: #fffdf9;
+      overflow: hidden;
+    }
+    .map-col h3 {
+      margin: 0;
+      background: rgba(49,95,91,0.12);
+      color: var(--teal-deep);
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+    }
+    .map-col ul { margin: 0; padding: 0.75rem 1rem 1rem 1.2rem; font-size: 0.94rem; }
+
+    .sector-overview {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+    .sector-card {
+      box-shadow: none;
+      overflow: hidden;
+      background: #fffdf9;
+    }
+    .sector-card header {
+      background: var(--sage);
+      color: #fff;
+      padding: 0.85rem 1rem;
+    }
+    .sector-card h3 { margin: 0; font-size: 1.08rem; letter-spacing: -0.02em; }
+    .sector-card ul { padding: 0.75rem 1rem 1rem 1.2rem; margin: 0; font-size: 0.92rem; }
+
+    .sector-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin: 1rem 0;
+    }
+    .sector-filter button[aria-pressed="true"] {
+      background: var(--teal-deep);
+      color: #fff;
+      border-color: var(--teal-deep);
+    }
+
+    .sector-detail {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    details.sector-detail-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fffdf9;
+      box-shadow: var(--shadow-soft);
+      overflow: clip;
+      scroll-margin-top: 100px;
+    }
+    details.sector-detail-card[open] { background: linear-gradient(180deg, #fffdf9, #fff8ee); }
+    details.sector-detail-card summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 1.1rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      border-bottom: 1px solid transparent;
+    }
+    details.sector-detail-card summary::-webkit-details-marker { display: none; }
+    details.sector-detail-card[open] summary { border-bottom-color: var(--line); }
+    .summary-title { display: grid; gap: 0.16rem; }
+    .summary-title b { font-size: 1.25rem; letter-spacing: -0.03em; }
+    .summary-title span { color: var(--muted); font-size: 0.92rem; }
+    .summary-icon {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      flex: 0 0 auto;
+    }
+    details[open] .summary-icon { background: var(--teal-deep); color: #fff; border-color: var(--teal-deep); }
+
+    .sector-body { padding: 1.2rem; }
+    .two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .two-col > div { min-width: 0; }
+
+    .plain-card {
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(222,212,202,0.72);
+      border-radius: var(--radius-sm);
+      padding: 0.95rem;
+    }
+    .plain-card h4 { color: var(--teal-deep); margin-bottom: 0.5rem; }
+
+    .compare-table,
+    .signal-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 0;
+      font-size: 0.94rem;
+      overflow: hidden;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+    }
+    .compare-table caption,
+    .signal-table caption {
+      text-align: left;
+      font-weight: 800;
+      color: var(--clay);
+      margin-bottom: 0.5rem;
+    }
+    th, td { text-align: left; vertical-align: top; padding: 0.78rem; border-bottom: 1px solid rgba(222,212,202,0.85); }
+    th { background: rgba(49,95,91,0.12); color: var(--teal-deep); font-weight: 850; }
+    tr:nth-child(even) td { background: rgba(229, 238, 240, 0.42); }
+    tr:last-child td { border-bottom: 0; }
+
+    .theme-grid,
+    .alignment-grid,
+    .question-grid,
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+    .alignment-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .question-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .related-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .theme-item,
+    .alignment-item,
+    .question-card,
+    .related-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: #fffdf9;
+      padding: 1rem;
+      box-shadow: none;
+    }
+    .theme-item h3,
+    .alignment-item h3,
+    .question-card h3,
+    .related-card h3 { font-size: 1.06rem; color: var(--teal-deep); margin-bottom: 0.45rem; }
+    .theme-item p,
+    .alignment-item p,
+    .question-card p,
+    .related-card p { color: var(--muted); font-size: 0.93rem; }
+
+    .fit-panel {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: 1rem;
+      align-items: stretch;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #fffdf9;
+    }
+    .fit-panel .fit-title {
+      background: linear-gradient(135deg, var(--teal-deep), var(--sage));
+      color: #fff;
+      padding: 1.2rem;
+      display: grid;
+      align-content: center;
+    }
+    .fit-panel ul { padding: 1rem 1.2rem 1rem 1.4rem; margin: 0; }
+
+    .callout {
+      background: var(--warning-soft);
+      box-shadow: none;
+      padding: 1rem;
+      border-color: #ead5b6;
+      margin-top: 1rem;
+    }
+    .callout h3 { color: #76451e; font-size: 1.08rem; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.75rem; }
+    .chip { background: rgba(120,156,150,0.12); color: var(--teal-deep); border-color: rgba(120,156,150,0.32); }
+
+    .source-note {
+      font-size: 0.92rem;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .article-nav {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+    .nav-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: #fffdf9;
+      padding: 1rem;
+      text-decoration: none;
+      color: var(--ink);
+      display: grid;
+      gap: 0.25rem;
+    }
+    .nav-card span { color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 750; }
+    .nav-card b { color: var(--teal-deep); }
+
+    footer {
+      border-top: 1px solid var(--line);
+      background: rgba(255,250,245,0.74);
+      padding: 2rem 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .progress {
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background: linear-gradient(90deg, var(--oracle-red-soft), var(--sand), var(--sage));
+    }
+
+    .reading-mode main.article .content-card,
+    .reading-mode main.article details.sector-detail-card {
+      box-shadow: none;
+    }
+    .reading-mode .hero,
+    .reading-mode .series-header,
+    .reading-mode .breadcrumb { width: min(920px, calc(100% - 2rem)); }
+    .reading-mode .page-grid { grid-template-columns: minmax(0, 920px); width: min(920px, calc(100% - 2rem)); }
+    .reading-mode aside.sidebar { position: relative; top: 0; order: 2; }
+
+    @media (max-width: 1020px) {
+      body { font-size: 16px; }
+      .page-grid { grid-template-columns: 1fr; }
+      aside.sidebar { position: static; order: 2; }
+      .hero-bottom { grid-template-columns: 1fr; }
+      .sector-overview { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .theme-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .article-nav, .related-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .utility-inner { align-items: flex-start; flex-direction: column; padding: 0.7rem 0; gap: 0.45rem; }
+      .series-header { grid-template-columns: 1fr; }
+      nav.primary-nav { justify-content: flex-start; }
+      .hero-shell { border-radius: 20px; }
+      .orientation-grid,
+      .policy-layers,
+      .split-grid,
+      .map-flow,
+      .sector-overview,
+      .two-col,
+      .alignment-grid,
+      .question-grid,
+      .fit-panel { grid-template-columns: 1fr; }
+      .theme-grid { grid-template-columns: 1fr; }
+      table { display: block; overflow-x: auto; white-space: normal; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      .utility-bar, .series-header, .breadcrumb, .sidebar, .article-nav, button, .button-link, .progress { display: none !important; }
+      body { background: #fff; color: #000; font-size: 11pt; }
+      .hero-shell, .content-card, details.sector-detail-card { box-shadow: none; border: 1px solid #bbb; }
+      .hero-shell { color: #000; background: #fff; }
+      .hero .label, .takeaway, .hero-stat { color: #000; border-color: #ccc; background: #fff; }
+      .page-grid, .hero, .footer-inner { width: 100%; display: block; }
+      a { color: #000; text-decoration: none; }
+      details.sector-detail-card { break-inside: avoid; }
+      details.sector-detail-card:not([open]) .sector-body { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to article content</a>
+
+  <header class="utility-bar" aria-label="Utility bar">
+    <div class="utility-inner">
+      <div class="wordmark" aria-label="Oracle inspired text mark">Oracle</div>
+      <div>FY26 UK-PS Whitepapers Series</div>
+      <div class="classification-pill">Confidential - Oracle Internal</div>
+    </div>
+  </header>
+
+  <div class="series-header" role="banner">
+    <div>
+      <div class="series-title">Internal field papers for OCI, AI and UK Public Sector readiness</div>
+    </div>
+    <nav class="primary-nav" aria-label="Series navigation">
+      <a href="../">Index</a>
+      <a href="../#all-papers">All papers</a>
+      <a href="../#reading-paths">Reading paths</a>
+      <a href="../#themes">Themes</a>
+      <a href="#source-notes">Source notes</a>
+    </nav>
+  </div>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="../">Series</a>
+    <span>Paper 10</span>
+    <span>Aligning OCI to UK Public Sector Policy</span>
+  </nav>
+
+  <section class="hero" aria-labelledby="page-title">
+    <div class="hero-shell">
+      <div class="hero-kicker">
+        <span class="chip label">Paper 10</span>
+        <span class="chip label">Policy and Public Sector Operating Context</span>
+        <span class="chip label">Confidential - Oracle Internal</span>
+      </div>
+      <h1 id="page-title">Aligning OCI to UK Public Sector Policy</h1>
+      <p class="hero-subtitle">A field guide for Account Cloud Engineers to navigate strategy signals, sector imperatives, and architectural alignment.</p>
+      <p class="hero-summary">This web article translates the source paper into a policy-aware field reference. It keeps the emphasis on how UK public sector cloud adoption is shaped by policy, assurance and accountability, then maps those expectations to practical OCI conversation patterns.</p>
+
+      <div class="hero-bottom">
+        <div class="takeaway" role="note" aria-label="Key takeaway">
+          <strong>Key takeaway</strong>
+          Cloud proposals in UK public sector are tested against policy. ACEs do not need to become compliance officers, but they do need to recognise policy signals, bring evidence artefacts and avoid claims that imply pre-approval.
+        </div>
+        <div class="hero-stats" aria-label="Article quick facts">
+          <div class="hero-stat"><b>6</b><span>public sector domains mapped</span></div>
+          <div class="hero-stat"><b>5</b><span>recurring policy imperatives</span></div>
+          <div class="hero-stat"><b>10</b><span>canonical route in the series</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-grid">
+    <aside class="sidebar" aria-label="Article tools and metadata">
+      <section class="meta-panel" aria-labelledby="metadata-heading">
+        <h2 id="metadata-heading">Metadata</h2>
+        <dl class="meta-list">
+          <div class="meta-row"><dt>Paper</dt><dd>10</dd></div>
+          <div class="meta-row"><dt>Version</dt><dd>1.0, taken from the visible PDF cover</dd></div>
+          <div class="meta-row"><dt>Source file</dt><dd>Paper 10 - Aligning OCI to UK Public Sector Policy v1.1.pdf</dd></div>
+          <div class="meta-row"><dt>Copyright</dt><dd>Copyright © 2025, Oracle and/or its affiliates</dd></div>
+          <div class="meta-row"><dt>Classification</dt><dd>Confidential - Oracle Internal</dd></div>
+          <div class="meta-row"><dt>Route</dt><dd>/paper-10-aligning-oci-uk-public-sector-policy/</dd></div>
+          <div class="meta-row"><dt>Conversion</dt><dd>v1.0, Draft, 2026-06-23</dd></div>
+          <div class="meta-row"><dt>Reading time</dt><dd>About 21 minutes</dd></div>
+        </dl>
+        <div class="chips" aria-label="Themes">
+          <span class="chip">Policy</span>
+          <span class="chip">UK Public Sector</span>
+          <span class="chip">Assurance</span>
+          <span class="chip">OCI Alignment</span>
+        </div>
+      </section>
+
+      <section class="tools" aria-labelledby="tools-heading">
+        <h2 id="tools-heading">Reading tools</h2>
+        <div class="button-grid">
+          <a class="button-link primary" href="../">Back to index</a>
+          <button type="button" id="copy-link">Copy section link</button>
+          <button type="button" id="print-page">Print / save as PDF</button>
+          <button type="button" id="expand-all">Expand all sectors</button>
+          <button type="button" id="collapse-all">Collapse all sectors</button>
+          <button type="button" id="reading-mode">Toggle reading mode</button>
+        </div>
+      </section>
+
+      <section class="toc" aria-labelledby="toc-heading">
+        <h2 id="toc-heading">Contents</h2>
+        <nav id="toc-nav">
+          <a href="#orientation">Executive orientation</a>
+          <a href="#policy-landscape">Policy landscape</a>
+          <a href="#sector-overlay">Sector overlay</a>
+          <a href="#sector-playbooks">Sector playbooks</a>
+          <a href="#common-themes">Common themes</a>
+          <a href="#oci-alignment">How OCI aligns</a>
+          <a href="#practical-guidance">Practical guidance</a>
+          <a href="#conversation-guidance">Customer conversations</a>
+          <a href="#conclusion">Conclusion</a>
+          <a href="#related-papers">Related papers</a>
+          <a href="#source-notes">Source notes</a>
+        </nav>
+      </section>
+    </aside>
+
+    <main id="main" class="article" tabindex="-1">
+      <section id="orientation" class="article-section content-card">
+        <div class="section-kicker">Executive orientation</div>
+        <h2>Why this paper matters</h2>
+        <p class="lead">Public sector cloud adoption in the UK is shaped less by market fashion and more by policy, assurance and accountability. The paper's central message is simple: every OCI design proposal carries policy signals, and customers will test those signals before they trust the architecture.</p>
+        <div class="orientation-grid">
+          <article class="summary-card">
+            <h3>Who should read it</h3>
+            <p>Account Cloud Engineers, sales teams and leaders preparing for central government, NHS, policing, defence, local government or higher education cloud conversations.</p>
+          </article>
+          <article class="summary-card">
+            <h3>What it helps with</h3>
+            <p>Recognising the policy instruments customers cite, mapping sector-specific assurance regimes, and preparing evidence such as NCSC mappings, data flow diagrams and exit strategy notes.</p>
+          </article>
+          <article class="summary-card">
+            <h3>How to use it</h3>
+            <p>Use it as a field reference before discovery, bid shaping, architecture review or internal rehearsal. It is strongest when paired with customer-specific artefacts rather than used as a generic policy script.</p>
+          </article>
+          <article class="summary-card">
+            <h3>What not to overclaim</h3>
+            <p>Do not interpret policy on behalf of customers, imply security or sector pre-approval, or treat local autonomy as if every organisation follows the same route.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="policy-landscape" class="article-section content-card">
+        <div class="section-kicker">The policy landscape</div>
+        <h2>Two layers shape UK public sector cloud decisions</h2>
+        <p>The source paper distinguishes between cross-government instruments and sector anchor strategies. Cross-government instruments set the baseline rules of the game. Sector anchors interpret those rules through health, policing, defence, local government and higher education realities.</p>
+        <div class="policy-layers" aria-label="Two policy layers">
+          <article class="policy-node" data-number="1">
+            <h3>Cross-government instruments</h3>
+            <p>Baseline policies and standards set by the Cabinet Office and central authorities. They often carry mandatory status in central departments and exert advisory influence in other sectors.</p>
+          </article>
+          <article class="policy-node" data-number="2">
+            <h3>Sector anchor strategies</h3>
+            <p>Domain-specific strategies and assurance models that translate central instruments into sector expectations, such as DSPT in health, NPCE in policing and Defence Digital assurance.</p>
+          </article>
+        </div>
+
+        <div class="split-grid">
+          <article class="study-card">
+            <header>Cross-government instruments, study deeply</header>
+            <ul>
+              <li>Technology Code of Practice, Cabinet Office</li>
+              <li>GovS 005: Digital, CDDO</li>
+              <li>Government Service Standard, GDS</li>
+              <li>Open Standards Principles, Cabinet Office</li>
+            </ul>
+          </article>
+          <article class="study-card scan">
+            <header>Cross-government instruments, scan lightly</header>
+            <ul>
+              <li>Digital, Data and Technology Playbook, Cabinet Office</li>
+              <li>Government Cloud First policy, Cabinet Office</li>
+              <li>Government Buying Standards for ICT, Defra</li>
+              <li>Greening Government ICT Strategy 2020-2025, Cabinet Office</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="split-grid">
+          <article class="study-card">
+            <header>Sector anchors, study deeply</header>
+            <ul>
+              <li>Transforming for a Digital Future, CDDO</li>
+              <li>NHS DSPT guidance and NHS cloud security notes</li>
+              <li>National Policing Digital Strategy and NPCE</li>
+              <li>Digital Strategy for Defence and Defence Cloud Strategic Roadmap</li>
+            </ul>
+          </article>
+          <article class="study-card scan">
+            <header>Sector anchors, scan lightly</header>
+            <ul>
+              <li>Local Digital Declaration</li>
+              <li>Higher education frameworks, including Jisc and OfS</li>
+              <li>UKRI Digital Research Infrastructure overview</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="map-flow" aria-label="Policy to cloud map">
+          <div class="map-col">
+            <h3>Tier 1: Cross-government instruments</h3>
+            <ul>
+              <li>Technology Code of Practice</li>
+              <li>GovS 005: Digital</li>
+              <li>Government Service Standard</li>
+              <li>Open Standards Principles</li>
+              <li>Cloud First Policy</li>
+              <li>DDaT Playbook</li>
+              <li>GBS for ICT</li>
+              <li>Greening Government ICT Strategy</li>
+            </ul>
+          </div>
+          <div class="map-col">
+            <h3>Tier 2: Sector anchors</h3>
+            <ul>
+              <li>Transforming for a Digital Future</li>
+              <li>The Future of Healthcare</li>
+              <li>National Policing Digital Strategy</li>
+              <li>Digital Strategy for Defence</li>
+              <li>Local Digital Declaration</li>
+              <li>Higher education frameworks</li>
+            </ul>
+          </div>
+          <div class="map-col">
+            <h3>Cloud requirements in practice</h3>
+            <ul>
+              <li>Exit planning and portability</li>
+              <li>Cyber assurance and accreditation</li>
+              <li>Sustainability reporting</li>
+              <li>Resilience and multi-region design</li>
+              <li>AI accountability</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="sector-overlay" class="article-section content-card">
+        <div class="section-kicker">Sector overlay</div>
+        <h2>Each sector has a different assurance vocabulary</h2>
+        <p>The paper's sector overlay is rebuilt here as responsive HTML. It should be read as a quick orientation map, not as a substitute for customer-specific legal or assurance advice.</p>
+        <div class="sector-overview" aria-label="Sector overlay cards">
+          <article class="sector-card"><header><h3>Central Government</h3></header><ul><li>TCoP</li><li>GovS 005: Digital</li><li>Service Standard</li><li>Cloud First</li><li>Open Standards</li><li>GBS for ICT</li><li>Greening Government ICT</li></ul></article>
+          <article class="sector-card"><header><h3>NHS and Health</h3></header><ul><li>DSPT</li><li>NHS clinical safety sign-off</li><li>NHS cloud-first guidance</li><li>Hazard logs and safety cases</li></ul></article>
+          <article class="sector-card"><header><h3>Policing and Justice</h3></header><ul><li>NPCE</li><li>PASF</li><li>Home Office and MoJ digital standards</li><li>Shared policing standards</li></ul></article>
+          <article class="sector-card"><header><h3>Defence</h3></header><ul><li>Digital Strategy for Defence</li><li>Defence Cloud Strategic Roadmap</li><li>UK Security Classification Policy</li><li>Security Policy Framework</li></ul></article>
+          <article class="sector-card"><header><h3>Local Government</h3></header><ul><li>Local Digital Declaration</li><li>GDPR and Data Protection Act 2018</li><li>Cyber Essentials baseline</li><li>Local net-zero plans</li></ul></article>
+          <article class="sector-card"><header><h3>Higher Education</h3></header><ul><li>GDPR and DPA 2018</li><li>HESA data standards</li><li>Jisc frameworks</li><li>OfS digital strategy signals</li><li>UKRI Digital Research Infrastructure</li></ul></article>
+        </div>
+      </section>
+
+      <section id="sector-playbooks" class="article-section content-card">
+        <div class="section-kicker">Sector playbooks</div>
+        <h2>Signals to emphasise and areas to handle carefully</h2>
+        <p>Use the filters to move quickly between sectors. Each playbook keeps the source paper's discipline: show policy literacy, present evidence, but do not overstep into assurance ownership or compliance interpretation.</p>
+        <div class="sector-filter" aria-label="Sector filters">
+          <button type="button" data-sector-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-sector-filter="central">Central</button>
+          <button type="button" data-sector-filter="nhs">NHS</button>
+          <button type="button" data-sector-filter="policing">Policing</button>
+          <button type="button" data-sector-filter="defence">Defence</button>
+          <button type="button" data-sector-filter="local">Local Gov</button>
+          <button type="button" data-sector-filter="he">Higher Ed</button>
+        </div>
+
+        <div class="sector-detail">
+          <details class="sector-detail-card" data-sector="central" open>
+            <summary><span class="summary-title"><b>Central Government</b><span>Baseline controls and assurance tests set by Cabinet Office and CDDO.</span></span><span class="summary-icon">+</span></summary>
+            <div class="sector-body">
+              <div class="two-col">
+                <div class="plain-card"><h4>Live strategies and instruments</h4><ul><li>Transforming for a Digital Future, Roadmap for Digital and Data 2022-2025</li><li>Technology Code of Practice, mandatory under spend controls</li><li>GovS 005: Digital</li><li>Government Cloud First Policy</li><li>Government Service Standard</li><li>Open Standards Principles</li><li>GBS for ICT</li><li>Greening Government ICT Strategy</li></ul></div>
+                <div class="plain-card"><h4>Signals that matter</h4><ol><li>Cloud-first is binding, and deviation needs documented justification.</li><li>Classification rules apply, with OFFICIAL in accredited public cloud and SECRET requiring sovereign or private cloud.</li><li>Exit planning is expected.</li><li>Sustainability is mandatory.</li><li>Accessibility and interoperability are enforced.</li></ol></div>
+              </div>
+              <table class="signal-table"><caption>Central Government - field handling</caption><thead><tr><th>Emphasise</th><th>Handle carefully</th></tr></thead><tbody><tr><td>Alignment to TCoP, including user needs, open standards, cloud-first and exit.</td><td>Cost discussions, present predictability and control rather than headline savings.</td></tr><tr><td>Classification boundaries, including accredited public cloud for OFFICIAL where legal and security requirements are satisfied.</td><td>Procurement context, acknowledge controls but let commercial colleagues lead on frameworks.</td></tr><tr><td>OCI support for exit planning through migration tooling, portability and documented switching paths.</td><td>Cloud First, do not imply it is optional where Cabinet Office controls apply.</td></tr><tr><td>Sustainability evidence, carbon reporting and energy efficiency.</td><td>Security and assurance, highlight NCSC alignment but avoid pre-approval commitments.</td></tr><tr><td>Accessibility, interoperability, open APIs and inclusive design.</td><td>Over-emphasis on technology alone, decision makers are scored on compliance, resilience and governance too.</td></tr></tbody></table>
+            </div>
+          </details>
+
+          <details class="sector-detail-card" data-sector="nhs">
+            <summary><span class="summary-title"><b>NHS and Health</b><span>A tightly regulated environment shaped by data protection, clinical safety and NHS assurance.</span></span><span class="summary-icon">+</span></summary>
+            <div class="sector-body">
+              <div class="two-col">
+                <div class="plain-card"><h4>Live strategies and instruments</h4><ul><li>The Future of Healthcare: Our Vision for Digital, Data and Technology in Health and Care</li><li>NHS Cloud Security and Governance Guidance</li><li>Data Security and Protection Toolkit</li><li>Caldicott Principles and data sharing frameworks</li><li>NHSX and NHS England cloud-first guidance</li></ul></div>
+                <div class="plain-card"><h4>Signals that matter</h4><ol><li>DSPT compliance is non-negotiable.</li><li>Data residency is governed by UK GDPR and adequacy rules.</li><li>Clinical safety assurance is required for systems affecting care pathways.</li><li>Cloud-first applies in practice.</li><li>HL7 FHIR and API standards matter for interoperability.</li></ol></div>
+              </div>
+              <table class="signal-table"><caption>NHS and Health - field handling</caption><thead><tr><th>Emphasise</th><th>Handle carefully</th></tr></thead><tbody><tr><td>OCI controls that support DSPT evidence, including encryption, audit logging and secure access.</td><td>Cost, position predictability and budgeting support rather than savings as the main justification.</td></tr><tr><td>Data residency clarity for UK or adequacy-approved regions.</td><td>Procurement detail, focus on design compliance rather than route mechanics.</td></tr><tr><td>Alignment to NHS cloud-first guidance.</td><td>Assurance ownership, support Clinical Safety Officers but do not speak for them.</td></tr><tr><td>Interoperability with NHS open standards, including HL7 FHIR, APIs and identity patterns.</td><td>Security approval, present controls without suggesting approval is already granted.</td></tr><tr><td>Exit planning and portability evidence.</td><td>Legacy integration, acknowledge challenges and position OCI as part of pragmatic migration.</td></tr></tbody></table>
+            </div>
+          </details>
+
+          <details class="sector-detail-card" data-sector="policing">
+            <summary><span class="summary-title"><b>Policing and Justice</b><span>Autonomous forces operating under national strategy, shared standards and accreditation regimes.</span></span><span class="summary-icon">+</span></summary>
+            <div class="sector-body">
+              <div class="two-col">
+                <div class="plain-card"><h4>Live strategies and instruments</h4><ul><li>National Policing Digital Strategy 2025-2030</li><li>National Police Capabilities Environment</li><li>Data Protection and UK GDPR</li><li>Police Assured Secure Facilities</li><li>Home Office and MoJ digital standards</li></ul></div>
+                <div class="plain-card"><h4>Signals that matter</h4><ol><li>Cloud-first is now a policing principle where economical and secure.</li><li>NPCE accreditation governs shared services.</li><li>PASF remains relevant for secure facilities and interconnection.</li><li>Interoperability is mandated to avoid silos.</li><li>Most police workloads are OFFICIAL-SENSITIVE.</li></ol></div>
+              </div>
+              <table class="signal-table"><caption>Policing and Justice - field handling</caption><thead><tr><th>Emphasise</th><th>Handle carefully</th></tr></thead><tbody><tr><td>OCI support for cloud-first adoption and OFFICIAL-SENSITIVE assurance patterns.</td><td>Cost framing, lead with predictability and resilience rather than raw price.</td></tr><tr><td>Alignment to NPCE and PASF requirements, including accreditation artefacts.</td><td>Procurement routes, forces use CCS frameworks but route detail is not an ACE remit.</td></tr><tr><td>Interoperability with national policing standards, APIs, federated identity and data sharing.</td><td>Local autonomy, each force retains discretion and national mandates are not always uniform.</td></tr><tr><td>NCSC-aligned controls such as encryption, IAM and audit.</td><td>Assurance commitments, do not imply automatic PASF or NPCE approval.</td></tr><tr><td>Exit and portability, including secure lawful migration.</td><td>AI and ethics, acknowledge sensitivity around policing data and avoid over-claiming.</td></tr></tbody></table>
+            </div>
+          </details>
+
+          <details class="sector-detail-card" data-sector="defence">
+            <summary><span class="summary-title"><b>Defence</b><span>A policy-driven, accreditation-heavy environment where classification boundaries dominate.</span></span><span class="summary-icon">+</span></summary>
+            <div class="sector-body">
+              <div class="two-col">
+                <div class="plain-card"><h4>Live strategies and instruments</h4><ul><li>Digital Strategy for Defence</li><li>Defence Cloud Strategic Roadmap</li><li>Security Policy Framework</li><li>UK Security Classification Policy, including JSP 440</li><li>Defence Cyber Strategy</li></ul></div>
+                <div class="plain-card"><h4>Signals that matter</h4><ol><li>Cloud is strategic, not optional.</li><li>Classification rules dominate.</li><li>Accreditation is compulsory.</li><li>Data is a strategic asset.</li><li>Resilience and sustainability are explicit.</li></ol></div>
+              </div>
+              <table class="signal-table"><caption>Defence - field handling</caption><thead><tr><th>Emphasise</th><th>Handle carefully</th></tr></thead><tbody><tr><td>OCI regions and services that support OFFICIAL workloads with required assurance.</td><td>Classification boundaries, do not speculate on SECRET or TOP SECRET hosting unless formally cleared.</td></tr><tr><td>Support for the Digital Backbone vision, including interoperability, APIs and multi-domain access.</td><td>Cost narratives, Defence prioritises assurance and resilience, with savings secondary.</td></tr><tr><td>Resilience and disaster recovery evidence, including multi-region design and RTO/RPO commitments.</td><td>Accreditation ownership, explain OCI controls while leaving approvals to Defence Digital authorities.</td></tr><tr><td>Sustainability alignment and reporting against Greening Government targets.</td><td>Coalition requirements, NATO or allied integration may involve cross-border rules.</td></tr><tr><td>Data governance, tagging, classification, audit and monitoring.</td><td>Over-generalisation, MoD and prime-led projects vary by scope.</td></tr></tbody></table>
+            </div>
+          </details>
+
+          <details class="sector-detail-card" data-sector="local">
+            <summary><span class="summary-title"><b>Local Government</b><span>A voluntary but converging adopter of central standards, with significant autonomy.</span></span><span class="summary-icon">+</span></summary>
+            <div class="sector-body">
+              <div class="two-col">
+                <div class="plain-card"><h4>Live strategies and instruments</h4><ul><li>Local Digital Declaration</li><li>Technology Code of Practice, advisory for councils but often applied with central funding</li><li>UK GDPR and Data Protection Act 2018</li><li>Cyber Essentials</li><li>Greening Government ICT Strategy influences local ICT choices</li></ul></div>
+                <div class="plain-card"><h4>Signals that matter</h4><ol><li>Cloud-first is cultural, not mandated.</li><li>Data protection is binding.</li><li>Interoperability is encouraged.</li><li>Cyber resilience is expected.</li><li>Sustainability influences decisions.</li></ol></div>
+              </div>
+              <table class="signal-table"><caption>Local Government - field handling</caption><thead><tr><th>Emphasise</th><th>Handle carefully</th></tr></thead><tbody><tr><td>OCI alignment to open standards and APIs for shared services.</td><td>Procurement detail, councils use CCS frameworks variably.</td></tr><tr><td>Support for GDPR compliance and residency in UK, EU or adequate jurisdictions.</td><td>Cloud-first status, do not imply it is mandatory.</td></tr><tr><td>Controls that help achieve Cyber Essentials outcomes, including IAM, encryption and monitoring.</td><td>Local autonomy, councils set their own priorities.</td></tr><tr><td>Sustainability commitments, renewable energy data centres and carbon reporting.</td><td>Legacy environments, acknowledge incremental migration.</td></tr><tr><td>Service reuse through multi-tenant models and shared components.</td><td>Funding dependencies, central standards may apply only when funding is contingent.</td></tr></tbody></table>
+            </div>
+          </details>
+
+          <details class="sector-detail-card" data-sector="he">
+            <summary><span class="summary-title"><b>Higher Education</b><span>A decentralised, standards-aware sector influenced by Jisc, UKRI, OfS and research needs.</span></span><span class="summary-icon">+</span></summary>
+            <div class="sector-body">
+              <div class="two-col">
+                <div class="plain-card"><h4>Live strategies and instruments</h4><ul><li>UK GDPR and Data Protection Act 2018</li><li>HESA Data Standards</li><li>Office for Students Digital Strategy 2022-2025</li><li>Jisc higher education strategy and transformation frameworks</li><li>UKRI Digital Research Infrastructure Programme</li></ul></div>
+                <div class="plain-card"><h4>Signals that matter</h4><ol><li>Data protection is binding.</li><li>Research infrastructure is strategically directed.</li><li>Digital transformation frameworks are widely used.</li><li>Cloud adoption is pragmatic, not centrally mandated.</li><li>Responsible AI adoption is rising.</li></ol></div>
+              </div>
+              <table class="signal-table"><caption>Higher Education - field handling</caption><thead><tr><th>Emphasise</th><th>Handle carefully</th></tr></thead><tbody><tr><td>OCI support for GDPR compliance, lawful transfers, UK and EU data residency and encryption.</td><td>Cost, present predictability and scalability for research and teaching workloads.</td></tr><tr><td>Alignment to Jisc frameworks, open standards and digital transformation maturity.</td><td>Autonomy, each university sets its own strategy.</td></tr><tr><td>OCI relevance to research infrastructure, HPC, large-scale storage and data-intensive science.</td><td>OfS influence, acknowledge it without overstating binding authority.</td></tr><tr><td>AI governance and transparency, including audit and explainability.</td><td>Procurement channels, universities use mixed routes.</td></tr><tr><td>Portability and exit planning to avoid lock-in.</td><td>Over-generalisation, Russell Group, post-92 and FE-linked institutions differ.</td></tr></tbody></table>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section id="common-themes" class="article-section content-card">
+        <div class="section-kicker">Common themes across sectors</div>
+        <h2>Five imperatives recur in different forms</h2>
+        <p>Although each sector has its own vocabulary, the same core imperatives repeatedly shape assurance and design.</p>
+        <div class="theme-grid">
+          <article class="theme-item"><h3>Portability and exit</h3><p>Service exit, switching strategies and data export are conditions of good government and recurring procurement expectations.</p></article>
+          <article class="theme-item"><h3>Cyber assurance</h3><p>NCSC Cloud Security Principles form the baseline, then sectors translate them into DSPT, NPCE, PASF or Defence accreditation.</p></article>
+          <article class="theme-item"><h3>Sustainability</h3><p>Greening Government ICT and GBS for ICT make carbon and energy efficiency part of the evaluation fabric.</p></article>
+          <article class="theme-item"><h3>Resilience</h3><p>Continuity of service, disaster recovery objectives and fault-domain separation are recurring requirements.</p></article>
+          <article class="theme-item"><h3>AI accountability</h3><p>Explainability, auditability and human oversight surface through clinical safety, policing ethics and responsible AI frameworks.</p></article>
+        </div>
+      </section>
+
+      <section id="oci-alignment" class="article-section content-card">
+        <div class="section-kicker">How OCI aligns</div>
+        <h2>Policy expectations converge on architectural expectations</h2>
+        <p class="lead">The source paper positions OCI alignment not as a set of isolated features, but as a consequence of architecture designed around portability, assurance, sustainability, resilience and accountability.</p>
+        <div class="alignment-grid">
+          <article class="alignment-item"><h3>Portability and exit</h3><p>OCI services can be provisioned and managed through open APIs and Terraform modules. Data services provide documented export formats, supporting reversible transitions rather than lock-in.</p></article>
+          <article class="alignment-item"><h3>Cyber assurance</h3><p>Identity management, encryption, audit logging and monitoring are part of the shared responsibility model, allowing assurance discussions to be grounded in documented control mappings.</p></article>
+          <article class="alignment-item"><h3>Sustainability</h3><p>The paper highlights renewable energy use in UK regions, carbon accounting and optimisation tooling as ways to turn sustainability into a measurable design criterion.</p></article>
+          <article class="alignment-item"><h3>Resilience and multi-region design</h3><p>OCI's UK presence and availability design can be used to evidence concrete continuity patterns, including RTO/RPO design, failover architectures and tested backup strategies.</p></article>
+          <article class="alignment-item"><h3>AI accountability</h3><p>OCI AI services can be positioned around auditability, explainability, private deployment and oversight, turning AI from a governance concern into a capability that can face assurance tests.</p></article>
+          <article class="alignment-item"><h3>Evidence posture</h3><p>The strongest OCI policy story is not assertion. It is the ability to bring artefacts that help customers pass internal design authority, assurance and governance review.</p></article>
+        </div>
+        <div class="callout">
+          <h3>Role-safe framing</h3>
+          <p>Present OCI's technical alignment and evidence. Do not promise compliance outcomes, interpret regulations for customers or imply that sector assurance bodies have already approved a design.</p>
+        </div>
+      </section>
+
+      <section id="practical-guidance" class="article-section content-card">
+        <div class="section-kicker">Practical guidance</div>
+        <h2>Bring artefacts, listen for triggers and connect specifics back to common imperatives</h2>
+        <ul>
+          <li><strong>Be prepared with artefacts:</strong> data flow diagrams, NCSC mappings and exit strategy notes should be part of the standard toolkit.</li>
+          <li><strong>Listen for assurance triggers:</strong> programme boards, Caldicott Guardians, PASF, NPCE or Defence Digital usually signal that policy alignment is a gating factor.</li>
+          <li><strong>Position OCI factually:</strong> show how OCI capabilities support compliance, but avoid overstating or pre-committing to approvals.</li>
+          <li><strong>Connect sector specifics back to universal requirements:</strong> portability, cyber assurance, sustainability, resilience and accountability.</li>
+        </ul>
+        <div class="fit-panel" role="note" aria-label="OCI natural fit panel">
+          <div class="fit-title"><h3>OCI is a natural fit for UK policy</h3><p>Use this as a field memory aid, not as a compliance claim.</p></div>
+          <ul>
+            <li>Multi-region resilience in the UK aligns with continuity and DR testing.</li>
+            <li>Open interfaces and documented export paths support exit planning.</li>
+            <li>Control mappings and strong tenancy isolation support sector assurance regimes.</li>
+            <li>Region energy profiles and optimisation tools support ICT carbon reporting.</li>
+            <li>Private AI options with audit controls support explainability and governance.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="conversation-guidance" class="article-section content-card">
+        <div class="section-kicker">Implications for customer conversations</div>
+        <h2>Policy alignment is foundational, but customers own interpretation</h2>
+        <p>Customers do not expect Oracle teams to act as policy specialists. They do expect us to understand their policy pressures and design in ways that make assurance easier, not harder.</p>
+        <div class="orientation-grid">
+          <article class="summary-card"><h3>Lead with policy literacy</h3><p>Show awareness, for example by recognising DSPT obligations, without interpreting the rules on behalf of the customer.</p></article>
+          <article class="summary-card"><h3>Emphasise evidence</h3><p>Diagrams, mappings and artefacts carry more weight than assertions, especially in design authority and assurance board settings.</p></article>
+          <article class="summary-card"><h3>Frame discovery through policy</h3><p>Questions should signal that you understand the operating environment without overstepping into governance process ownership.</p></article>
+          <article class="summary-card"><h3>Stay current</h3><p>Policy moves continuously. Public sector roles require staying current with strategy and guidance as well as with OCI services.</p></article>
+        </div>
+
+        <h3 style="margin-top:1.5rem">Policy-aware discovery questions for ACEs</h3>
+        <div class="question-grid">
+          <article class="question-card"><h3>Technology Code of Practice</h3><p>Which parts of the TCoP will your design authority test most closely in this project?</p></article>
+          <article class="question-card"><h3>DSPT and data governance</h3><p>How do you expect your DSPT submission to be supported by cloud evidence this year?</p></article>
+          <article class="question-card"><h3>NPCE accreditation</h3><p>Is this workload expected to interoperate with the NPCE, and what accreditation artefacts will be needed?</p></article>
+          <article class="question-card"><h3>Resilience and RTO/RPO</h3><p>What recovery objectives has Defence Digital asked you to demonstrate, and how should we reflect them in design?</p></article>
+          <article class="question-card"><h3>Sustainability reporting</h3><p>How do you report ICT carbon impact today, and what information do you want cloud providers to provide?</p></article>
+          <article class="question-card"><h3>AI governance</h3><p>What responsible AI principles are being applied in your institution, and how should we evidence compliance?</p></article>
+        </div>
+      </section>
+
+      <section id="conclusion" class="article-section content-card">
+        <div class="section-kicker">Conclusion</div>
+        <h2>Policy is the operating context for cloud in UK public sector</h2>
+        <p>Cloud adoption in the UK public sector is shaped by Cabinet Office instruments, sector strategies and assurance frameworks. For ACEs, the value is not in memorising every strategy, but in recognising the imperatives that cut across them: portability and exit, cyber assurance, sustainability, resilience and AI accountability.</p>
+        <p>This site preserves the source paper's practical message: use policy literacy to build trust, use artefacts to make assurance easier and keep the conversation role-safe. The goal is not to turn Oracle sellers into compliance officers. The goal is to anticipate how customers will test designs and provide evidence that can withstand scrutiny.</p>
+      </section>
+
+      <section id="related-papers" class="article-section content-card">
+        <div class="section-kicker">Related papers</div>
+        <h2>Continue the reading path</h2>
+        <div class="related-grid">
+          <a class="related-card" href="../paper-09-public-sector-procurement-mechanics/"><h3>Paper 09</h3><p>The Mechanics of Public Sector Procurement. Best for understanding how buyers choose, evaluate and assure cloud infrastructure.</p></a>
+          <a class="related-card" href="../paper-04-sovereignty-and-trust-in-cloud/"><h3>Paper 04</h3><p>Sovereignty and Trust in Cloud. Best for jurisdiction, control, residency and trusted cloud conversations.</p></a>
+          <a class="related-card" href="../paper-11-real-economics-of-oci/"><h3>Paper 11</h3><p>The Real Economics of OCI. Best for linking policy, sustainability, exit risk and predictable economics.</p></a>
+        </div>
+      </section>
+
+      <section id="source-notes" class="article-section content-card">
+        <div class="section-kicker">Source and handling notes</div>
+        <h2>Conversion notes</h2>
+        <p>This HTML page is derived from <strong>Paper 10 - Aligning OCI to UK Public Sector Policy v1.1.pdf</strong> and follows the FY26 UK-PS Whitepapers Series framework. Tables and diagrams have been rebuilt as responsive HTML where feasible, with the original argument, caveats and field handling guidance preserved.</p>
+        <div class="source-note">
+          <p><strong>Known source caveat:</strong> the project filename contains <em>v1.1</em>, while the visible PDF cover and page footers show <em>Version 1.0</em>. This conversion uses Version 1.0 in the paper metadata because the visible source document displays that version.</p>
+          <p><strong>Classification:</strong> Confidential - Oracle Internal. This static site is for internal enablement only and should not be treated as an official public Oracle web property.</p>
+        </div>
+      </section>
+
+      <nav class="article-nav" aria-label="Previous and next paper navigation">
+        <a class="nav-card" href="../paper-09-public-sector-procurement-mechanics/"><span>Previous</span><b>Paper 09 - Public Sector Procurement Mechanics</b></a>
+        <a class="nav-card" href="../"><span>Index</span><b>FY26 UK-PS Whitepapers Series</b></a>
+        <a class="nav-card" href="../paper-11-real-economics-of-oci/"><span>Next</span><b>Paper 11 - The Real Economics of OCI</b></a>
+      </nav>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <strong>FY26 UK-PS Whitepapers Series</strong><br />
+        Internal Oracle field enablement site. Source material remains subject to the source document's copyright and confidentiality statement.
+      </div>
+      <div class="classification-pill">Confidential - Oracle Internal</div>
+    </div>
+  </footer>
+
+  <script>
+    const PAPER_META = {
+      series: "FY26 UK-PS Whitepapers Series",
+      number: "10",
+      title: "Aligning OCI to UK Public Sector Policy",
+      subtitle: "A field guide for Account Cloud Engineers to navigate strategy signals, sector imperatives, and architectural alignment",
+      version: "1.0",
+      sourceFile: "Paper 10 - Aligning OCI to UK Public Sector Policy v1.1.pdf",
+      classification: "Confidential - Oracle Internal",
+      copyright: "Copyright © 2025, Oracle and/or its affiliates",
+      route: "/paper-10-aligning-oci-uk-public-sector-policy/",
+      themes: ["Policy", "UK Public Sector", "Assurance", "OCI Alignment"],
+      conversionVersion: "1.0",
+      conversionStatus: "Draft",
+      conversionDate: "2026-06-23",
+      lastReviewed: "2026-06-23"
+    };
+
+    const progress = document.querySelector('.progress');
+    const tocLinks = [...document.querySelectorAll('#toc-nav a')];
+    const sections = tocLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+
+    function updateProgress() {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      const pct = max > 0 ? (doc.scrollTop / max) * 100 : 0;
+      progress.style.width = pct + '%';
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+      if (!visible) return;
+      tocLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + visible.target.id));
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0.01 });
+
+    sections.forEach(section => observer.observe(section));
+    document.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    document.getElementById('print-page').addEventListener('click', () => window.print());
+
+    document.getElementById('copy-link').addEventListener('click', async () => {
+      const active = document.querySelector('#toc-nav a.active') || document.querySelector('#toc-nav a');
+      const url = new URL(window.location.href);
+      if (active) url.hash = active.getAttribute('href');
+      try {
+        await navigator.clipboard.writeText(url.toString());
+        event.currentTarget.textContent = 'Copied';
+        setTimeout(() => event.currentTarget.textContent = 'Copy section link', 1400);
+      } catch (e) {
+        window.location.hash = url.hash;
+      }
+    });
+
+    const detailCards = [...document.querySelectorAll('details.sector-detail-card')];
+    document.getElementById('expand-all').addEventListener('click', () => detailCards.forEach(d => d.open = true));
+    document.getElementById('collapse-all').addEventListener('click', () => detailCards.forEach(d => d.open = false));
+    document.getElementById('reading-mode').addEventListener('click', () => document.body.classList.toggle('reading-mode'));
+
+    detailCards.forEach(detail => {
+      detail.addEventListener('toggle', () => {
+        const icon = detail.querySelector('.summary-icon');
+        if (icon) icon.textContent = detail.open ? '-' : '+';
+      });
+      const icon = detail.querySelector('.summary-icon');
+      if (icon) icon.textContent = detail.open ? '-' : '+';
+    });
+
+    const filterButtons = [...document.querySelectorAll('[data-sector-filter]')];
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const selected = button.dataset.sectorFilter;
+        filterButtons.forEach(btn => btn.setAttribute('aria-pressed', String(btn === button)));
+        detailCards.forEach(card => {
+          const show = selected === 'all' || card.dataset.sector === selected;
+          card.style.display = show ? '' : 'none';
+          if (show && selected !== 'all') card.open = true;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

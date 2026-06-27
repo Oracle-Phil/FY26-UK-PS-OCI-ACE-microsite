@@ -1,0 +1,1401 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paper 13 - Misconceptions of OCI | FY26 UK-PS Whitepapers Series</title>
+  <meta name="description" content="Internal Oracle field paper converted into a static HTML article for the FY26 UK-PS Whitepapers Series.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="classification" content="Confidential - Oracle Internal">
+  <meta name="series" content="FY26 UK-PS Whitepapers Series">
+  <meta name="paper-number" content="13">
+  <meta name="paper-version" content="1.0">
+  <meta name="conversion-version" content="1.0">
+  <style>
+    :root {
+      --series-bg: #f7f3ee;
+      --surface: #fffaf5;
+      --surface-alt: #f1ebe4;
+      --ink: #241c18;
+      --muted: #6f625a;
+      --line: #ded4ca;
+      --oracle-red-soft: #c74634;
+      --clay: #b45f36;
+      --sage: #789c96;
+      --teal-deep: #315f5b;
+      --sand: #d7b98c;
+      --charcoal: #3a3632;
+      --success-soft: #e5efe9;
+      --warning-soft: #f6ead8;
+      --risk-soft: #f3dfdc;
+      --info-soft: #e5eef0;
+      --shadow: 0 24px 60px rgba(58, 54, 50, 0.10);
+      --shadow-soft: 0 12px 30px rgba(58, 54, 50, 0.08);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --measure: 74ch;
+      --page-max: 1220px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--series-bg);
+      color: var(--ink);
+      font-size: 16px;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Oracle Sans", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at 9% 5%, rgba(199, 70, 52, 0.11), transparent 28rem),
+        radial-gradient(circle at 90% 11%, rgba(180, 95, 54, 0.12), transparent 30rem),
+        linear-gradient(180deg, #fbf8f3 0%, var(--series-bg) 34%, #efe8df 100%);
+      min-height: 100vh;
+    }
+
+    a { color: var(--teal-deep); text-underline-offset: 0.18em; }
+    a:hover { color: var(--oracle-red-soft); }
+
+    :focus-visible {
+      outline: 3px solid rgba(199, 70, 52, 0.55);
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -5rem;
+      z-index: 100;
+      background: var(--ink);
+      color: #fff;
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      transition: top 160ms ease;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    .utility-bar {
+      border-bottom: 1px solid rgba(222, 212, 202, 0.9);
+      background: rgba(255, 250, 245, 0.82);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 60;
+    }
+
+    .utility-inner,
+    .series-header,
+    .breadcrumb,
+    .hero,
+    .layout,
+    .footer-inner {
+      width: min(var(--page-max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .utility-inner {
+      min-height: 54px;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      min-width: fit-content;
+      color: var(--ink);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .mark::before {
+      content: "";
+      width: 2.3rem;
+      height: 0.62rem;
+      border-radius: 999px;
+      border: 2px solid var(--oracle-red-soft);
+      background: transparent;
+      display: inline-block;
+    }
+
+    .classification {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-weight: 700;
+      color: #5f3427;
+      background: rgba(199, 70, 52, 0.09);
+      border: 1px solid rgba(199, 70, 52, 0.23);
+      border-radius: 999px;
+      padding: 0.33rem 0.7rem;
+      white-space: nowrap;
+    }
+    .classification::before {
+      content: "";
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 999px;
+      background: var(--oracle-red-soft);
+    }
+
+    .series-header {
+      padding: 1.3rem 0 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    nav[aria-label="Series navigation"] {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      justify-content: flex-end;
+    }
+    nav[aria-label="Series navigation"] a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0.45rem 0.75rem;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      color: var(--charcoal);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    nav[aria-label="Series navigation"] a:hover,
+    nav[aria-label="Series navigation"] a[aria-current="page"] {
+      background: var(--surface);
+      border-color: var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .series-kicker {
+      color: var(--muted);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .breadcrumb {
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 0.4rem 0 1rem;
+    }
+    .breadcrumb ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      align-items: center;
+    }
+    .breadcrumb li:not(:last-child)::after {
+      content: "/";
+      color: rgba(111, 98, 90, 0.6);
+      margin-left: 0.45rem;
+    }
+
+    .hero {
+      padding: 2rem 0 2.5rem;
+    }
+
+    .hero-card {
+      background:
+        linear-gradient(135deg, rgba(255, 250, 245, 0.98), rgba(241, 235, 228, 0.96)),
+        radial-gradient(circle at 100% 0%, rgba(199, 70, 52, 0.12), transparent 22rem);
+      border: 1px solid rgba(222, 212, 202, 0.95);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: clamp(1.4rem, 3vw, 3rem);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 0.72rem;
+      background: linear-gradient(180deg, var(--clay), var(--oracle-red-soft), #6c5548);
+    }
+
+    .eyebrow-row {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .pill,
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      min-height: 32px;
+      padding: 0.32rem 0.72rem;
+      border-radius: 999px;
+      border: 1px solid rgba(222, 212, 202, 0.98);
+      background: rgba(255, 250, 245, 0.8);
+      color: var(--charcoal);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+    .pill.strong {
+      background: rgba(199, 70, 52, 0.10);
+      border-color: rgba(199, 70, 52, 0.22);
+      color: #6d3928;
+    }
+    .chip { font-weight: 700; color: var(--muted); }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      line-height: 1.12;
+      color: var(--ink);
+      margin: 0;
+      letter-spacing: -0.03em;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 7vw, 5.4rem);
+      max-width: 10ch;
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      font-size: clamp(1.25rem, 2.4vw, 2rem);
+      line-height: 1.25;
+      max-width: 22ch;
+      color: #4b413b;
+      font-weight: 780;
+      margin: 0 0 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-summary {
+      max-width: 66ch;
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin: 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.75fr);
+      gap: clamp(1.2rem, 3vw, 2.4rem);
+      align-items: end;
+    }
+
+    .takeaway {
+      background: #3a3632;
+      color: #fffaf5;
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+      box-shadow: var(--shadow-soft);
+    }
+    .takeaway strong {
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #f1d8c7;
+      margin-bottom: 0.45rem;
+    }
+    .takeaway p { margin: 0; font-weight: 720; line-height: 1.45; }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 290px minmax(0, 1fr);
+      gap: clamp(1.2rem, 3vw, 2rem);
+      align-items: start;
+      padding-bottom: 4rem;
+    }
+
+    .toc-wrap {
+      position: sticky;
+      top: 80px;
+      align-self: start;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .toc,
+    .tools,
+    .meta-panel,
+    .note-panel,
+    .paper-nav-card {
+      background: rgba(255, 250, 245, 0.9);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .toc { padding: 1rem; }
+    .toc h2,
+    .tools h2 {
+      font-size: 0.86rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.65rem;
+    }
+    .toc ol {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.2rem;
+    }
+    .toc a {
+      display: block;
+      padding: 0.42rem 0.52rem;
+      text-decoration: none;
+      color: var(--charcoal);
+      border-radius: 10px;
+      font-size: 0.93rem;
+      line-height: 1.35;
+      border: 1px solid transparent;
+    }
+    .toc a:hover,
+    .toc a[aria-current="true"] {
+      background: var(--surface-alt);
+      border-color: var(--line);
+      color: #5f3427;
+    }
+
+    .tools { padding: 1rem; }
+    .tool-grid { display: grid; gap: 0.45rem; }
+    button,
+    .button-link {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      min-height: 40px;
+      padding: 0.55rem 0.75rem;
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+    button:hover,
+    .button-link:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-soft);
+      background: #fff;
+      color: var(--ink);
+    }
+    button[aria-pressed="true"],
+    .filter-btn.active {
+      border-color: rgba(199, 70, 52, 0.35);
+      background: rgba(199, 70, 52, 0.11);
+      color: #6d3928;
+    }
+
+    main {
+      min-width: 0;
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .article-section,
+    .metadata-section {
+      background: rgba(255, 250, 245, 0.94);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: clamp(1.2rem, 2.5vw, 2rem);
+      overflow: clip;
+    }
+
+    .article-section h2,
+    .metadata-section h2 {
+      font-size: clamp(1.75rem, 3vw, 2.75rem);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-intro {
+      max-width: var(--measure);
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: 0 0 1.2rem;
+    }
+
+    .article-section p {
+      max-width: var(--measure);
+      margin: 0 0 1rem;
+    }
+
+    .lede {
+      font-size: 1.16rem;
+      line-height: 1.65;
+      color: #473b35;
+      font-weight: 520;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .card,
+    .signal-card,
+    .related-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.43);
+      padding: 1rem;
+      box-shadow: 0 8px 24px rgba(58, 54, 50, 0.045);
+    }
+    .card h3,
+    .signal-card h3,
+    .related-card h3 {
+      font-size: 1.12rem;
+      margin-bottom: 0.45rem;
+      letter-spacing: -0.02em;
+    }
+    .card p,
+    .signal-card p,
+    .related-card p { margin: 0; color: var(--muted); }
+
+    .callout {
+      margin: 1.2rem 0;
+      padding: 1rem 1.15rem;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(49, 95, 91, 0.22);
+      background: var(--info-soft);
+      color: #243f3c;
+    }
+    .callout strong { display: block; margin-bottom: 0.25rem; }
+
+    .warning {
+      background: var(--warning-soft);
+      border-color: rgba(180, 95, 54, 0.24);
+      color: #5c3a1f;
+    }
+
+    .meta-panel { padding: 1rem; }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+    .meta-item {
+      border: 1px solid rgba(222, 212, 202, 0.86);
+      border-radius: var(--radius-sm);
+      padding: 0.7rem;
+      background: rgba(241, 235, 228, 0.55);
+      min-width: 0;
+    }
+    .meta-item span {
+      display: block;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.075em;
+      color: var(--muted);
+      font-weight: 800;
+      margin-bottom: 0.18rem;
+    }
+    .meta-item strong {
+      display: block;
+      font-size: 0.94rem;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .taxonomy-table,
+    .compact-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.42);
+      font-size: 0.95rem;
+    }
+    .taxonomy-table th,
+    .taxonomy-table td,
+    .compact-table th,
+    .compact-table td {
+      padding: 0.85rem;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+    .taxonomy-table th,
+    .compact-table th {
+      background: rgba(49, 95, 91, 0.10);
+      color: #253f3c;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .taxonomy-table tr:nth-child(even) td,
+    .compact-table tr:nth-child(even) td { background: rgba(241, 235, 228, 0.58); }
+    .taxonomy-table tr:last-child td,
+    .compact-table tr:last-child td { border-bottom: 0; }
+
+    .type-label {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 0.2rem 0.58rem;
+      font-weight: 850;
+      font-size: 0.78rem;
+      border: 1px solid rgba(222, 212, 202, 0.95);
+      color: var(--charcoal);
+      background: #fff;
+      white-space: nowrap;
+    }
+    .type-label.factual { background: var(--info-soft); color: #234846; }
+    .type-label.architectural { background: var(--success-soft); color: #2d5148; }
+    .type-label.commercial { background: var(--warning-soft); color: #6b3b17; }
+    .type-label.relational { background: #ebe7f1; color: #46385f; }
+    .type-label.emotional { background: var(--risk-soft); color: #74352d; }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0 0 1rem;
+    }
+    .filter-btn {
+      min-height: 36px;
+      font-size: 0.86rem;
+      background: rgba(255, 250, 245, 0.72);
+    }
+
+    .misconception-grid {
+      display: grid;
+      gap: 0.82rem;
+    }
+    .misconception {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.52);
+      box-shadow: 0 8px 24px rgba(58, 54, 50, 0.04);
+      overflow: hidden;
+    }
+    .misconception[hidden] { display: none; }
+    .misconception summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 1rem 1.1rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      min-height: 74px;
+    }
+    .misconception summary::-webkit-details-marker { display: none; }
+    .misconception summary h3 {
+      font-size: 1.08rem;
+      margin: 0.25rem 0 0;
+      letter-spacing: -0.02em;
+    }
+    .misconception summary::after {
+      content: "+";
+      width: 34px;
+      height: 34px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--surface-alt);
+      border: 1px solid var(--line);
+      font-weight: 900;
+      color: var(--muted);
+    }
+    .misconception[open] summary::after { content: "-"; }
+    .misconception-body {
+      padding: 0 1.1rem 1.1rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1rem;
+    }
+    .response-box {
+      border-radius: var(--radius-sm);
+      background: rgba(241, 235, 228, 0.55);
+      border: 1px solid rgba(222, 212, 202, 0.9);
+      padding: 0.85rem;
+    }
+    .response-box strong {
+      display: block;
+      font-size: 0.78rem;
+      letter-spacing: 0.075em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+    .response-box p { margin: 0; color: #403631; }
+
+    .step-list {
+      counter-reset: step;
+      display: grid;
+      gap: 0.8rem;
+      margin: 1rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .step-list li {
+      counter-increment: step;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 1rem 1rem 1rem 4.1rem;
+      background: rgba(255,255,255,0.45);
+      position: relative;
+    }
+    .step-list li::before {
+      content: counter(step, decimal-leading-zero);
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      width: 2.15rem;
+      height: 2.15rem;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: var(--charcoal);
+      color: #fffaf5;
+      font-size: 0.82rem;
+      font-weight: 900;
+    }
+    .step-list strong { display: block; margin-bottom: 0.2rem; }
+
+    .takeaway-list {
+      display: grid;
+      gap: 0.65rem;
+      padding: 0;
+      margin: 1rem 0 0;
+      list-style: none;
+    }
+    .takeaway-list li {
+      padding: 0.85rem 0.95rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+      background: rgba(229, 239, 233, 0.55);
+      font-weight: 620;
+    }
+
+    .paper-nav {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .paper-nav-card {
+      padding: 1rem;
+      text-decoration: none;
+      color: var(--ink);
+      display: block;
+    }
+    .paper-nav-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.075em;
+      font-weight: 800;
+      margin-bottom: 0.35rem;
+    }
+    .paper-nav-card strong { display: block; font-size: 1.1rem; line-height: 1.25; }
+    .paper-nav-card p { margin: 0.45rem 0 0; color: var(--muted); }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .related-card {
+      display: block;
+      text-decoration: none;
+      color: var(--ink);
+      min-height: 100%;
+    }
+    .related-card .num {
+      display: inline-flex;
+      min-width: 2.4rem;
+      min-height: 2.4rem;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: var(--charcoal);
+      color: #fffaf5;
+      font-weight: 900;
+      margin-bottom: 0.75rem;
+    }
+
+    .source-note {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      background: rgba(36, 28, 24, 0.94);
+      color: #f7f3ee;
+    }
+    .footer-inner {
+      padding: 2rem 0;
+      display: grid;
+      gap: 0.6rem;
+    }
+    footer a { color: #f7d7c9; }
+    footer p { margin: 0; color: rgba(247, 243, 238, 0.82); }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 1020px) {
+      .hero-grid,
+      .layout { grid-template-columns: 1fr; }
+      .toc-wrap { position: static; order: 2; }
+      .meta-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid.four,
+      .related-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 720px) {
+      body { line-height: 1.6; }
+      .utility-inner,
+      .series-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      nav[aria-label="Series navigation"] { justify-content: flex-start; }
+      .grid.two,
+      .grid.three,
+      .grid.four,
+      .meta-grid,
+      .paper-nav,
+      .related-grid,
+      .misconception-body { grid-template-columns: 1fr; }
+      .hero-card { padding-left: 1.6rem; }
+      .article-section,
+      .metadata-section { border-radius: 22px; }
+      .taxonomy-table,
+      .taxonomy-table thead,
+      .taxonomy-table tbody,
+      .taxonomy-table th,
+      .taxonomy-table td,
+      .taxonomy-table tr,
+      .compact-table,
+      .compact-table thead,
+      .compact-table tbody,
+      .compact-table th,
+      .compact-table td,
+      .compact-table tr {
+        display: block;
+      }
+      .taxonomy-table thead,
+      .compact-table thead { display: none; }
+      .taxonomy-table td,
+      .compact-table td {
+        border-bottom: 1px solid var(--line);
+      }
+      .taxonomy-table td::before,
+      .compact-table td::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: var(--muted);
+        font-weight: 900;
+        margin-bottom: 0.2rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .utility-bar,
+      .series-header,
+      .breadcrumb,
+      .toc-wrap,
+      .paper-nav,
+      .related-grid,
+      .filters,
+      button,
+      .button-link { display: none !important; }
+      .hero,
+      .layout,
+      .footer-inner { width: 100%; }
+      .hero-card,
+      .article-section,
+      .metadata-section {
+        box-shadow: none;
+        border-color: #bbb;
+        break-inside: avoid;
+      }
+      .misconception { break-inside: avoid; }
+      .misconception:not([open]) .misconception-body { display: grid; }
+      footer { background: #fff; color: #000; border-top: 1px solid #999; }
+      footer p { color: #000; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <div class="utility-bar" role="banner">
+    <div class="utility-inner">
+      <div class="mark" aria-label="Oracle inspired text mark">Oracle</div>
+      <div class="series-kicker">FY26 UK-PS Whitepapers Series</div>
+      <div class="classification">Confidential - Oracle Internal</div>
+    </div>
+  </div>
+
+  <header class="series-header">
+    <div>
+      <div class="series-kicker">Internal field papers</div>
+      <strong>Economics and Field Narrative</strong>
+    </div>
+    <nav aria-label="Series navigation">
+      <a href="../index.html">Index</a>
+      <a href="../index.html#papers">All papers</a>
+      <a href="../index.html#reading-paths">Reading paths</a>
+      <a href="../index.html#themes">Themes</a>
+      <a href="#source-notes">About this page</a>
+    </nav>
+  </header>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../index.html">Series</a></li>
+      <li>Paper 13</li>
+      <li aria-current="page">Misconceptions of OCI</li>
+    </ol>
+  </nav>
+
+  <section class="hero" aria-labelledby="paper-title">
+    <div class="hero-card">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow-row">
+            <span class="pill strong">Paper 13</span>
+            <span class="pill">Misconceptions</span>
+            <span class="pill">Objection handling</span>
+            <span class="pill">Narrative correction</span>
+          </div>
+          <h1 id="paper-title">Misconceptions of OCI</h1>
+          <p class="subtitle">Why outdated assumptions about Oracle are still shaping cloud conversations more than they should</p>
+          <p class="hero-summary">A field guide for recognising the assumptions that limit fair evaluation of Oracle Cloud Infrastructure, diagnosing their source, and replacing stale mental models with current, bounded, evidence-led conversation.</p>
+        </div>
+        <aside class="takeaway" aria-label="Key takeaway">
+          <strong>Key takeaway</strong>
+          <p>Misconception handling is not rebuttal theatre. The strongest ACE response diagnoses the concern, acknowledges the truth it may once have contained, and reframes OCI through relevance, evidence and trust.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <div class="layout">
+    <aside class="toc-wrap" aria-label="Article tools and table of contents">
+      <nav class="toc" aria-label="Table of contents">
+        <h2>On this page</h2>
+        <ol>
+          <li><a href="#orientation">Executive orientation</a></li>
+          <li><a href="#metadata">Source metadata</a></li>
+          <li><a href="#persistence">Why misconceptions persist</a></li>
+          <li><a href="#taxonomy">Response taxonomy</a></li>
+          <li><a href="#decoder">Misconception decoder</a></li>
+          <li><a href="#market-signals">What the market reveals</a></li>
+          <li><a href="#ace-guidance">Practical ACE guidance</a></li>
+          <li><a href="#takeaways">Key takeaways</a></li>
+          <li><a href="#related">Related papers</a></li>
+          <li><a href="#source-notes">Source notes</a></li>
+        </ol>
+      </nav>
+      <section class="tools" aria-labelledby="tools-heading">
+        <h2 id="tools-heading">Reading tools</h2>
+        <div class="tool-grid">
+          <a class="button-link" href="../index.html">Back to index</a>
+          <button type="button" id="copyLink">Copy section link</button>
+          <button type="button" id="printPage">Print / save as PDF</button>
+          <button type="button" id="expandAll">Expand all</button>
+          <button type="button" id="collapseAll">Collapse all</button>
+        </div>
+        <p id="copyStatus" class="sr-only" aria-live="polite"></p>
+      </section>
+    </aside>
+
+    <main id="main" tabindex="-1">
+      <section class="article-section" id="orientation" aria-labelledby="orientation-heading">
+        <h2 id="orientation-heading">Executive orientation</h2>
+        <p class="lede">This paper matters because OCI is often assessed through historical assumptions before its current capability is explored. That early framing shapes meetings, shortlists, procurement confidence and trust.</p>
+        <div class="grid four" aria-label="Executive orientation cards">
+          <article class="card">
+            <h3>Why it matters</h3>
+            <p>Misconceptions are active inhibitors to fair evaluation. They narrow the conversation before architecture, economics, sovereignty, AI governance or workload fit can be discussed properly.</p>
+          </article>
+          <article class="card">
+            <h3>Who should read it</h3>
+            <p>Account Cloud Engineers, cloud sellers, public sector account teams and leaders preparing for conversations where Oracle’s current cloud position may be distorted by legacy perceptions.</p>
+          </article>
+          <article class="card">
+            <h3>What it helps with</h3>
+            <p>Diagnosing whether an objection is factual, architectural, commercial, relational or emotional, then selecting a response style that can move the conversation forward without defensiveness.</p>
+          </article>
+          <article class="card">
+            <h3>What not to overclaim</h3>
+            <p>Do not imply OCI is the answer to every cloud question. The paper explicitly favours context, customer relevance and honest boundaries over blanket superiority claims.</p>
+          </article>
+        </div>
+        <div class="callout warning">
+          <strong>Field-use discipline</strong>
+          Treat legacy concern as information, not irritation. Customers are more likely to listen when they see Oracle acknowledging history, separating what remains valid from what has changed, and explaining relevance with restraint.</div>
+      </section>
+
+      <section class="metadata-section" id="metadata" aria-labelledby="metadata-heading">
+        <h2 id="metadata-heading">Source metadata</h2>
+        <div class="meta-panel">
+          <div class="meta-grid">
+            <div class="meta-item"><span>Paper number</span><strong>13</strong></div>
+            <div class="meta-item"><span>Title</span><strong>Misconceptions of OCI</strong></div>
+            <div class="meta-item"><span>Version</span><strong>1.0</strong></div>
+            <div class="meta-item"><span>Source file</span><strong>Paper 13 - Misconceptions of OCI v1.0.pdf</strong></div>
+            <div class="meta-item"><span>Copyright</span><strong>Copyright © 2026, Oracle and/or its affiliates</strong></div>
+            <div class="meta-item"><span>Classification</span><strong>Confidential - Oracle Internal</strong></div>
+            <div class="meta-item"><span>Route</span><strong>/paper-13-misconceptions-of-oci/</strong></div>
+            <div class="meta-item"><span>Conversion</span><strong>v1.0, draft, 2026-06-23</strong></div>
+            <div class="meta-item"><span>Primary themes</span><strong>Misconceptions, objection handling, narrative</strong></div>
+            <div class="meta-item"><span>Group</span><strong>Economics and Field Narrative</strong></div>
+            <div class="meta-item"><span>Reading time</span><strong>18 to 22 minutes</strong></div>
+            <div class="meta-item"><span>Known caveat</span><strong>Internal guidance. Not public marketing copy.</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="article-section" id="persistence" aria-labelledby="persistence-heading">
+        <h2 id="persistence-heading">Why these misconceptions persist</h2>
+        <p class="section-intro">The source paper frames misconception persistence as a reputation and category-accuracy problem, not simply a lack of facts. Platform change can be faster than customer memory.</p>
+        <div class="grid three">
+          <article class="signal-card">
+            <h3>Reputation lags platform reality</h3>
+            <p>Customers cannot reassess every vendor from first principles each year. Historic associations with database, enterprise software, licensing and strong commercial control still influence cloud and AI conversations.</p>
+          </article>
+          <article class="signal-card">
+            <h3>Competitor narratives are louder</h3>
+            <p>AWS and Microsoft have benefited from repeated cloud identity reinforcement. Google benefits from strong associations with engineering, data and AI. Oracle is often judged by what customers remember first.</p>
+          </article>
+          <article class="signal-card">
+            <h3>Technical narratives need permission</h3>
+            <p>OCI’s architecture story may be accurate, but customers will not absorb it until they believe Oracle belongs in the conversation. Belonging often has to be established before differentiation can land.</p>
+          </article>
+          <article class="signal-card">
+            <h3>Competitors are genuinely strong</h3>
+            <p>Some assumptions persist because rival providers have broad ecosystems, high visibility and powerful default positions. The strongest Oracle response does not pretend those strengths are imaginary.</p>
+          </article>
+          <article class="signal-card">
+            <h3>Product breadth can arrive too soon</h3>
+            <p>A legacy mental model rarely needs an immediate catalogue walk-through. It needs help understanding why the customer’s starting frame may now be incomplete.</p>
+          </article>
+          <article class="signal-card">
+            <h3>Over-correction damages credibility</h3>
+            <p>Trying to prove Oracle wins everywhere weakens trust. Better practice is to acknowledge the core of truth, bound it, then show where OCI is materially relevant today.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="article-section" id="taxonomy" aria-labelledby="taxonomy-heading">
+        <h2 id="taxonomy-heading">Not all misconceptions should be handled the same way</h2>
+        <p class="section-intro">The paper’s response model is the core field utility of this site. It separates the surface statement from the underlying need and response style.</p>
+        <table class="taxonomy-table">
+          <thead>
+            <tr>
+              <th>Type of misconception</th>
+              <th>What it sounds like</th>
+              <th>What it really needs</th>
+              <th>Best ACE response style</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Type"><span class="type-label factual">Factual</span></td>
+              <td data-label="Sounds like">“Oracle is behind.”<br>“OCI cannot do that.”</td>
+              <td data-label="Need">Correction through credible evidence.</td>
+              <td data-label="Response">Use proof selectively. Bring facts, references and clear examples.</td>
+            </tr>
+            <tr>
+              <td data-label="Type"><span class="type-label architectural">Architectural</span></td>
+              <td data-label="Sounds like">“OCI is niche.”<br>“That only works for Oracle workloads.”</td>
+              <td data-label="Need">Reframing rather than blunt contradiction.</td>
+              <td data-label="Response">Shift the discussion to workload fit, design choices and operating model.</td>
+            </tr>
+            <tr>
+              <td data-label="Type"><span class="type-label commercial">Commercial</span></td>
+              <td data-label="Sounds like">“Oracle is expensive.”<br>“Buying from Oracle will be painful.”</td>
+              <td data-label="Need">Reassurance around route, pricing and exit.</td>
+              <td data-label="Response">Reduce ambiguity. Clarify pricing logic, buying path and portability early.</td>
+            </tr>
+            <tr>
+              <td data-label="Type"><span class="type-label relational">Relational</span></td>
+              <td data-label="Sounds like">“Oracle always makes this harder than it needs to be.”</td>
+              <td data-label="Need">A different lived experience of Oracle.</td>
+              <td data-label="Response">Show consistency, restraint, honesty and practical value over time.</td>
+            </tr>
+            <tr>
+              <td data-label="Type"><span class="type-label emotional">Emotional / historic</span></td>
+              <td data-label="Sounds like">“We’ve been burned by Oracle before.”</td>
+              <td data-label="Need">Recognition of legacy concern, not just technical rebuttal.</td>
+              <td data-label="Response">Acknowledge the history, avoid defensiveness and rebuild trust patiently.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="article-section" id="decoder" aria-labelledby="decoder-heading">
+        <h2 id="decoder-heading">Common misconceptions and how to read them</h2>
+        <p class="section-intro">Use the filters to isolate the kind of concern being signalled. Each card preserves the source paper’s practical shape: what the misconception really tells you, and how an ACE should respond.</p>
+        <div class="filters" aria-label="Filter misconceptions by type">
+          <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-btn" type="button" data-filter="factual" aria-pressed="false">Factual</button>
+          <button class="filter-btn" type="button" data-filter="architectural" aria-pressed="false">Architectural</button>
+          <button class="filter-btn" type="button" data-filter="commercial" aria-pressed="false">Commercial</button>
+          <button class="filter-btn" type="button" data-filter="relational" aria-pressed="false">Relational</button>
+          <button class="filter-btn" type="button" data-filter="emotional" aria-pressed="false">Emotional / historic</button>
+        </div>
+
+        <div class="misconception-grid">
+          <details class="misconception" data-type="architectural" open>
+            <summary><div><span class="type-label architectural">Architectural</span><h3>“Oracle is still mainly a database company”</h3></div></summary>
+            <div class="misconception-body">
+              <div class="response-box"><strong>What it signals</strong><p>The customer is reducing Oracle’s relevance to its best-known heritage. That heritage is real, but it no longer describes the whole portfolio.</p></div>
+              <div class="response-box"><strong>Field response</strong><p>Do not deny the database strength. Position it as part of a wider platform story that now includes infrastructure, data platforms, analytics, integration, AI services and industry applications.</p></div>
+            </div>
+          </details>
+
+          <details class="misconception" data-type="architectural" open>
+            <summary><div><span class="type-label architectural">Architectural</span><h3>“OCI is only relevant if the customer already runs Oracle workloads”</h3></div></summary>
+            <div class="misconception-body">
+              <div class="response-box"><strong>What it signals</strong><p>The customer is treating Oracle-native relevance as exclusive relevance. That traps OCI inside existing estates and hides broader architectural fit.</p></div>
+              <div class="response-box"><strong>Field response</strong><p>Expand the frame rather than replacing it. Oracle workloads matter, but OCI relevance also extends to AI training, HPC, latency-sensitive processing, sovereignty, deployment flexibility, multi-cloud adjacency, egress sensitivity and portability.</p></div>
+            </div>
+          </details>
+
+          <details class="misconception" data-type="factual">
+            <summary><div><span class="type-label factual">Factual</span><h3>“OCI cannot compete seriously with AWS or Azure”</h3></div></summary>
+            <div class="misconception-body">
+              <div class="response-box"><strong>What it signals</strong><p>The customer may be confusing market scale, ecosystem breadth and default familiarity with suitability for a specific workload, governance model or economic requirement.</p></div>
+              <div class="response-box"><strong>Field response</strong><p>Move from “Is OCI as big?” to “Where is OCI structurally stronger, commercially more rational or better aligned to the governance requirement?” Avoid measuring every cloud by the same silhouette.</p></div>
+            </div>
+          </details>
+
+          <details class="misconception" data-type="factual">
+            <summary><div><span class="type-label factual">Factual</span><h3>“OCI lacks the service breadth of a serious hyperscaler”</h3></div></summary>
+            <div class="misconception-body">
+              <div class="response-box"><strong>What it signals</strong><p>The customer’s awareness may lag the current platform. A quieter market profile can harden into a false belief that OCI remains narrow or incomplete.</p></div>
+              <div class="response-box"><strong>Field response</strong><p>Do not respond with defensive catalogue recitation. Ask which services matter for the workload, operating model and governance requirement, then assess OCI against that concrete scope.</p></div>
+            </div>
+          </details>
+
+          <details class="misconception" data-type="architectural">
+            <summary><div><span class="type-label architectural">Architectural</span><h3>“OCI is not a credible platform for cloud-native application development”</h3></div></summary>
+            <div class="misconception-body">
+              <div class="response-box"><strong>What it signals</strong><p>The customer may still imagine Oracle through an infrastructure-and-database lens, while associating cloud-native practice culturally with other hyperscalers.</p></div>
+              <div class="response-box"><strong>Field response</strong><p>Make OCI legible in the language of modern delivery: containers, Kubernetes, developer workflows, service integration, observability, policy control and repeatable infrastructure.</p></div>
+            </div>
+          </details>
+
+          <details class="misconception" data-type="factual">
+            <summary><div><span class="type-label factual">Factual</span><h3>“OCI performance claims are mostly marketing”</h3></div></summary>
+            <div class="misconception-body">
+              <div class="response-box"><strong>What it signals</strong><p>The scepticism is rational. The cloud market has produced selective benchmarks and fragile claims. The risk is lazy equivalence, where every performance story is treated as equally soft.</p></div>
+              <div class="response-box"><strong>Field response</strong><p>Start with agreement that performance claims should be examined critically. Then move from benchmark theatre to testable architecture: off-box virtualisation, flat RDMA-enabled networking, bare metal exposure and reduced hidden performance taxes.</p></div>
+            </div>
+          </details>
+
+          <details class="misconception" data-type="commercial">
+            <summary><div><span class="type-label commercial">Commercial</span><h3>“Oracle is expensive by default”</h3></div></summary>
+            <div class="misconception-body">
+              <div class="response-box"><strong>What it signals</strong><p>Historic commercial experience is shaping expectations around cost pressure and licensing complexity. That history should not be pretended away.</p></div>
+              <div class="response-box"><strong>Field response</strong><p>Shift from broad “cheaper than” language to workload economics, budget control and cost predictability. Explore egress, performance density, multi-cloud adjacency and forecastability rather than heroic saving claims.</p></div>
+            </div>
+          </details>
+
+          <details class="misconception" data-type="commercial">
+            <summary><div><span class="type-label commercial">Commercial</span><h3>“Oracle creates more lock-in than other cloud providers”</h3></div></summary>
+            <div class="misconception-body">
+              <div class="response-box"><strong>What it signals</strong><p>The customer is applying an older Oracle lens to cloud, while treating other provider-native adoption as if it created no switching friction.</p></div>
+              <div class="response-box"><strong>Field response</strong><p>Do not deny lock-in concerns. Make them concrete: data formats, exit processes, network penalties, operational dependency and portability. OCI’s open tooling, Terraform compatibility, distributed cloud models and database availability across other clouds can then be evaluated fairly.</p></div>
+            </div>
+          </details>
+
+          <details class="misconception" data-type="factual">
+            <summary><div><span class="type-label factual">Factual</span><h3>“Oracle is behind in AI, so it is not relevant to modern AI conversations”</h3></div></summary>
+            <div class="misconception-body">
+              <div class="response-box"><strong>What it signals</strong><p>The customer may be mistaking consumer AI visibility and media volume for enterprise AI suitability.</p></div>
+              <div class="response-box"><strong>Field response</strong><p>Distinguish mindshare from suitability. Oracle’s AI value lands where customers care about GPU capacity, governed inference, enterprise data grounding, sovereign deployment, auditability and integration with existing data and application estates.</p></div>
+            </div>
+          </details>
+
+          <details class="misconception" data-type="architectural">
+            <summary><div><span class="type-label architectural">Architectural</span><h3>“All GenAI platforms are broadly the same”</h3></div></summary>
+            <div class="misconception-body">
+              <div class="response-box"><strong>What it signals</strong><p>The customer is experiencing AI through interface rather than infrastructure. A prompt box can make very different deployment models look interchangeable.</p></div>
+              <div class="response-box"><strong>Field response</strong><p>Move the conversation towards deployment consequence: where data goes, what is logged, what can be audited, whether retrieval is governed and whether the service can remain inside a sovereign boundary.</p></div>
+            </div>
+          </details>
+
+          <details class="misconception" data-type="architectural">
+            <summary><div><span class="type-label architectural">Architectural</span><h3>“Sovereign cloud is more marketing theatre than a real customer need”</h3></div></summary>
+            <div class="misconception-body">
+              <div class="response-box"><strong>What it signals</strong><p>The customer may assume sovereignty was a provider-created category rather than a response to rising requirements around jurisdiction, access, auditability, portability and local governance.</p></div>
+              <div class="response-box"><strong>Field response</strong><p>Focus on customer need, not Oracle’s claim. Discuss jurisdiction, operator model, key control, audit visibility and reversibility. Once those requirements are recognised as real, the theatre accusation weakens.</p></div>
+            </div>
+          </details>
+
+          <details class="misconception" data-type="factual">
+            <summary><div><span class="type-label factual">Factual</span><h3>“OCI is not trusted for highly secure or regulated workloads”</h3></div></summary>
+            <div class="misconception-body">
+              <div class="response-box"><strong>What it signals</strong><p>The customer may be using brand familiarity as a shortcut for security suitability, without testing architecture, control model, visibility or assurance fit.</p></div>
+              <div class="response-box"><strong>Field response</strong><p>Avoid vague reassurance. Build confidence through specifics: segmentation, key management, access control, auditability, deployment options, support boundaries, resilience posture and evidence of suitability under scrutiny.</p></div>
+            </div>
+          </details>
+
+          <details class="misconception" data-type="architectural">
+            <summary><div><span class="type-label architectural">Architectural</span><h3>“OCI is only strong in specialist or edge scenarios”</h3></div></summary>
+            <div class="misconception-body">
+              <div class="response-box"><strong>What it signals</strong><p>The customer concedes narrow pockets of strength while missing that the related pressures are now mainstream.</p></div>
+              <div class="response-box"><strong>Field response</strong><p>Connect the apparently specialist strength back to broader customer pressures: predictable economics, sovereignty, AI governance, multi-cloud adjacency and resilience under scrutiny.</p></div>
+            </div>
+          </details>
+
+          <details class="misconception" data-type="architectural">
+            <summary><div><span class="type-label architectural">Architectural</span><h3>“Oracle’s multi-cloud strategy is reactive rather than strategic”</h3></div></summary>
+            <div class="misconception-body">
+              <div class="response-box"><strong>What it signals</strong><p>The customer may interpret Oracle’s partnerships and database availability inside rival clouds as fallback rather than customer-centred strategy.</p></div>
+              <div class="response-box"><strong>Field response</strong><p>Normalise multi-cloud without romanticising it. Present Oracle’s position as pragmatic recognition that customers want choice, adjacency and workload-specific placement without punitive compromise.</p></div>
+            </div>
+          </details>
+
+          <details class="misconception" data-type="commercial">
+            <summary><div><span class="type-label commercial">Commercial</span><h3>“Oracle is difficult to buy, engage, or progress commercially”</h3></div></summary>
+            <div class="misconception-body">
+              <div class="response-box"><strong>What it signals</strong><p>This is an engagement-flow risk. The customer may choose the path of least resistance elsewhere before OCI receives a fair technical evaluation.</p></div>
+              <div class="response-box"><strong>Field response</strong><p>Reduce ambiguity early. Understand the customer’s commercial path, clarify the expected buying route and separate cloud value from unrelated licensing anxiety wherever possible.</p></div>
+            </div>
+          </details>
+
+          <details class="misconception" data-type="emotional">
+            <summary><div><span class="type-label emotional">Emotional / historic</span><h3>“Oracle is a legal strong-arm that prioritises compliance over customer centricity”</h3></div></summary>
+            <div class="misconception-body">
+              <div class="response-box"><strong>What it signals</strong><p>This concern reaches deeper than price or procurement. It affects trust and can make helpful behaviour appear tactical rather than genuine.</p></div>
+              <div class="response-box"><strong>Field response</strong><p>Do not argue the customer out of it. Show a different experience through clarity, restraint, honesty and practical value. Relationship quality is part of the rebuttal.</p></div>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="article-section" id="market-signals" aria-labelledby="market-signals-heading">
+        <h2 id="market-signals-heading">What these misconceptions reveal about the market</h2>
+        <p class="section-intro">The paper’s conclusion is not that customers are simply wrong. It is that OCI’s challenge is category accuracy: Oracle is often judged through frames that are too old, too broad or too heavily shaped by historical stance.</p>
+        <div class="grid three">
+          <article class="card">
+            <h3>Capability visibility is not enough</h3>
+            <p>Oracle must often reset the frame before capability evidence can be heard. Product facts alone may not overcome a stale mental model.</p>
+          </article>
+          <article class="card">
+            <h3>Buyer priorities have moved</h3>
+            <p>Governance, sovereignty, AI accountability, portability, cost predictability, resilience and trust are now central buying priorities. These are areas where OCI often has something meaningful to say.</p>
+          </article>
+          <article class="card">
+            <h3>Field sequencing matters</h3>
+            <p>Teams can answer too quickly with product breadth. Better sequencing starts with the customer’s assumption, diagnoses its type, then uses evidence only where it fits.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="article-section" id="ace-guidance" aria-labelledby="ace-guidance-heading">
+        <h2 id="ace-guidance-heading">Practical guidance for Account Cloud Engineers</h2>
+        <p class="section-intro">The guidance below converts the paper into a reusable conversation method for UK Public Sector OCI engagements.</p>
+        <ol class="step-list">
+          <li><strong>Start with diagnosis.</strong>Work out whether the customer is signalling a factual concern, a commercial fear, a trust issue or simply a stale mental model.</li>
+          <li><strong>Acknowledge the origin of truth where one exists.</strong>Customers are more likely to listen once they see Oracle is not trying to erase history.</li>
+          <li><strong>Use evidence selectively.</strong>Not every proof point is needed every time. Match the evidence to the misconception in front of you.</li>
+          <li><strong>Reframe where necessary.</strong>A customer asking whether OCI is “big enough” may really need help deciding whether OCI is fit for purpose.</li>
+          <li><strong>Avoid over-correction.</strong>Oracle becomes more credible when positioned where it is genuinely strong, not when presented as the answer to every cloud question.</li>
+          <li><strong>Recognise that some misconceptions weaken through experience.</strong>Relationship quality, tone and consistency matter as much as explanation for relational and historic concerns.</li>
+        </ol>
+      </section>
+
+      <section class="article-section" id="takeaways" aria-labelledby="takeaways-heading">
+        <h2 id="takeaways-heading">Key takeaways for ACEs</h2>
+        <ul class="takeaway-list">
+          <li>Misconceptions about Oracle and OCI are not peripheral branding issues. They are active inhibitors to fair evaluation.</li>
+          <li>Persistent misconceptions often contain some historical truth, but overextend that truth into the present.</li>
+          <li>OCI should not be defended through blanket superiority claims. It should be explained through context, architecture and customer relevance.</li>
+          <li>The strongest modern OCI conversations often sit around defensible performance, explainable sovereignty, governed AI and forecastable economics.</li>
+          <li>Some misconceptions are factual. Some are emotional. Some are relational. Each requires a different handling strategy.</li>
+          <li>Trust improves when the architect helps restore accuracy rather than simply trying to win the argument.</li>
+        </ul>
+        <div class="callout">
+          <strong>Credible ambition</strong>
+          A customer does not need to leave every conversation persuaded that Oracle is the answer to every cloud question. They do need to leave with a more accurate understanding of what Oracle and OCI now are, what they are not, and where outdated assumptions may no longer serve them well.</div>
+      </section>
+
+      <section class="article-section" id="related" aria-labelledby="related-heading">
+        <h2 id="related-heading">Related papers</h2>
+        <p class="section-intro">Paper 13 is deliberately connective. It draws on Oracle breadth, performance evidence, economics and rich differentiation to help teams handle misconceptions without overclaiming.</p>
+        <div class="paper-nav" aria-label="Previous and next paper navigation">
+          <a class="paper-nav-card" href="../paper-12-oci-rich-differentiation/">
+            <span>Previous paper</span>
+            <strong>Paper 12 - OCI’s Rich Differentiation</strong>
+            <p>Explains where OCI remains meaningfully different as the market catches up.</p>
+          </a>
+          <a class="paper-nav-card" href="../index.html">
+            <span>Series navigation</span>
+            <strong>Return to the FY26 UK-PS Whitepapers Series index</strong>
+            <p>Paper 13 completes the Economics and Field Narrative group.</p>
+          </a>
+        </div>
+        <div class="related-grid" style="margin-top:1rem;">
+          <a class="related-card" href="../paper-02-masters-of-many-champions-of-choice/">
+            <span class="num">02</span>
+            <h3>Masters of Many: Champions of Choice</h3>
+            <p>Useful when the misconception is that Oracle remains a narrow database-only company.</p>
+          </a>
+          <a class="related-card" href="../paper-05-oci-technical-performance-is-real/">
+            <span class="num">05</span>
+            <h3>How and Why OCI’s Technical Performance Is Real</h3>
+            <p>Supports performance scepticism with architectural and evidence-led framing.</p>
+          </a>
+          <a class="related-card" href="../paper-11-real-economics-of-oci/">
+            <span class="num">11</span>
+            <h3>The Real Economics of OCI</h3>
+            <p>Helps counter simplistic “Oracle is expensive” narratives with workload economics.</p>
+          </a>
+          <a class="related-card" href="../paper-12-oci-rich-differentiation/">
+            <span class="num">12</span>
+            <h3>OCI’s Rich Differentiation</h3>
+            <p>Provides the mature differentiation language needed to avoid exaggerated claims.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="article-section" id="source-notes" aria-labelledby="source-notes-heading">
+        <h2 id="source-notes-heading">Source and handling notes</h2>
+        <div class="source-note">
+          <p>This standalone HTML page is derived from <strong>Paper 13 - Misconceptions of OCI v1.0.pdf</strong> and follows the FY26 UK-PS Whitepapers Series framework for article chrome, metadata, classification visibility, internal-use positioning, route naming and related-paper logic.</p>
+          <p>Source content has been reorganised into a web-native field guide. The conversion preserves the argument that misconceptions should be diagnosed and bounded rather than answered with generic superiority claims.</p>
+          <p><strong>Classification:</strong> Confidential - Oracle Internal. This page is intended for internal enablement only and should not be treated as public Oracle marketing material.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p><strong>FY26 UK-PS Whitepapers Series</strong> - Paper 13 - Misconceptions of OCI</p>
+      <p>Confidential - Oracle Internal. Internal enablement page derived from source paper content. Conversion version 1.0. Last reviewed 2026-06-23.</p>
+      <p>Copyright © 2026, Oracle and/or its affiliates. Oracle, Java, MySQL and NetSuite are registered trademarks of Oracle and/or its affiliates. Other names may be trademarks of their respective owners.</p>
+    </div>
+  </footer>
+
+  <script>
+    const PAPER_META = {
+      series: "FY26 UK-PS Whitepapers Series",
+      number: "13",
+      title: "Misconceptions of OCI",
+      subtitle: "Why outdated assumptions about Oracle are still shaping cloud conversations more than they should",
+      version: "1.0",
+      sourceFile: "Paper 13 - Misconceptions of OCI v1.0.pdf",
+      classification: "Confidential - Oracle Internal",
+      copyright: "Copyright © 2026, Oracle and/or its affiliates",
+      route: "/paper-13-misconceptions-of-oci/",
+      themes: ["Misconceptions", "Objection handling", "Narrative"],
+      conversionVersion: "1.0",
+      conversionStatus: "Draft",
+      lastReviewed: "2026-06-23"
+    };
+
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.misconception');
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        buttons.forEach(b => {
+          b.classList.toggle('active', b === button);
+          b.setAttribute('aria-pressed', b === button ? 'true' : 'false');
+        });
+        cards.forEach(card => {
+          card.hidden = !(filter === 'all' || card.dataset.type === filter);
+        });
+      });
+    });
+
+    document.getElementById('expandAll').addEventListener('click', () => {
+      cards.forEach(card => { if (!card.hidden) card.open = true; });
+    });
+    document.getElementById('collapseAll').addEventListener('click', () => {
+      cards.forEach(card => { card.open = false; });
+    });
+    document.getElementById('printPage').addEventListener('click', () => window.print());
+
+    const tocLinks = [...document.querySelectorAll('.toc a')];
+    const headings = tocLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+    let activeSection = headings[0]?.id || '';
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          activeSection = entry.target.id;
+          tocLinks.forEach(link => link.setAttribute('aria-current', link.getAttribute('href') === '#' + activeSection ? 'true' : 'false'));
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0.01 });
+    headings.forEach(heading => observer.observe(heading));
+
+    document.getElementById('copyLink').addEventListener('click', async () => {
+      const url = new URL(window.location.href);
+      url.hash = activeSection ? '#' + activeSection : '';
+      try {
+        await navigator.clipboard.writeText(url.toString());
+        document.getElementById('copyStatus').textContent = 'Section link copied';
+      } catch (err) {
+        document.getElementById('copyStatus').textContent = 'Copy failed';
+      }
+    });
+  </script>
+</body>
+</html>
