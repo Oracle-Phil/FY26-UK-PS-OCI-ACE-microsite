@@ -473,32 +473,136 @@
             footer { color: black; background: white; border-top: 1px solid #bbb; }
             footer p { color: black; }
         }
-    </style>
+    
+    .universal-shell {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      background: rgba(255, 250, 245, 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(222, 212, 202, 0.9);
+    }
+    .universal-shell-inner {
+      max-width: var(--max, var(--page-max, 1180px));
+      margin: 0 auto;
+      padding: 0.72rem clamp(1rem, 4vw, 1.5rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.7rem 1rem;
+      align-items: center;
+    }
+    .universal-brand {
+      min-width: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--ink, #241c18);
+      text-decoration: none;
+    }
+    .universal-wordmark {
+      color: var(--oracle-red-soft, #c74634);
+      font-size: 0.86rem;
+      font-weight: 900;
+      line-height: 1;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .universal-series {
+      min-width: 0;
+      color: var(--charcoal, var(--ink, #241c18));
+      font-size: 0.94rem;
+      font-weight: 760;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .universal-context {
+      color: var(--muted, #6f625a);
+      font-size: 0.86rem;
+      font-weight: 720;
+      white-space: nowrap;
+    }
+    .universal-classification {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      justify-self: end;
+      border: 1px solid rgba(199, 70, 52, 0.34);
+      color: #7f2f22;
+      background: rgba(199, 70, 52, 0.08);
+      border-radius: 999px;
+      padding: 0.35rem 0.72rem;
+      font-size: 0.8rem;
+      font-weight: 760;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    .universal-classification::before {
+      content: "";
+      width: 0.48rem;
+      height: 0.48rem;
+      border-radius: 999px;
+      background: var(--oracle-red-soft, #c74634);
+      flex: 0 0 auto;
+    }
+    .universal-nav {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .universal-nav a {
+      border: 1px solid rgba(49, 95, 91, 0.18);
+      background: rgba(255, 250, 245, 0.72);
+      color: var(--charcoal, var(--ink, #241c18));
+      border-radius: 999px;
+      padding: 0.42rem 0.72rem;
+      font-size: 0.86rem;
+      font-weight: 700;
+      line-height: 1.2;
+      text-decoration: none;
+    }
+    .universal-nav a:hover,
+    .universal-nav a:focus-visible {
+      border-color: rgba(49, 95, 91, 0.34);
+      background: var(--info-soft, #e5eef0);
+      color: var(--teal-deep, #315f5b);
+    }
+    @media (max-width: 760px) {
+      .universal-shell-inner { grid-template-columns: 1fr; }
+      .universal-brand { align-items: flex-start; flex-direction: column; gap: 0.25rem; }
+      .universal-series { white-space: normal; }
+      .universal-context { white-space: normal; }
+      .universal-classification { justify-self: start; white-space: normal; }
+      .universal-nav { justify-content: flex-start; }
+    }
+    @media print {
+      .universal-shell { display: none !important; }
+    }
+  </style>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <div class="utility-bar" role="banner">
-        <div class="utility-inner">
-            <div class="brand-lockup">
-                <div class="wordmark" aria-label="Oracle inspired text mark">ORACLE</div>
-                <div class="series-label">FY26 UK-PS Whitepapers Series</div>
-            </div>
-            <span class="classification">Confidential - Oracle Internal</span>
-        </div>
-    </div>
-
-    <header class="site-header">
-        <div class="nav-shell">
-            <div class="small-note">Index route: <code>/index.html</code></div>
-            <nav class="primary-nav" aria-label="Primary navigation">
-                <a href="#series-map">Series map</a>
+        <header class="universal-shell" role="banner">
+        <div class="universal-shell-inner">
+            <a class="universal-brand" href="#series-map" aria-label="FY26 UK-PS Whitepapers Series index">
+                <span class="universal-wordmark">ORACLE</span>
+                <span class="universal-series">FY26 UK-PS Whitepapers Series</span>
+            </a>
+            <span class="universal-classification">Confidential - Oracle Internal</span>
+            <nav class="universal-nav" aria-label="Global navigation">
+                <a href="#series-map">Index</a>
                 <a href="#all-papers">All papers</a>
                 <a href="#reading-paths">Reading paths</a>
                 <a href="#themes">Themes</a>
-                <a href="#about">About</a>
+                <a href="#about">About this series</a>
             </nav>
         </div>
+    </header>
+    <header class="site-header">
 
         <section class="hero" aria-labelledby="series-title">
             <div class="hero-main">
