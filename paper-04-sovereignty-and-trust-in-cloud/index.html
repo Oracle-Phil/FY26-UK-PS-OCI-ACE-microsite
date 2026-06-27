@@ -366,6 +366,29 @@
       letter-spacing: -.035em;
       text-wrap: balance;
     }
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin: 0 0 1rem;
+    }
+    .section-header h2 {
+      margin: 0;
+      font-size: clamp(1.65rem, 3.5vw, 2.45rem);
+      line-height: 1.05;
+      letter-spacing: -.035em;
+      text-wrap: balance;
+    }
+    .section-header .btn {
+      flex: 0 0 auto;
+      padding: .42rem .66rem;
+      border-color: rgba(49, 95, 91, .18);
+      background: rgba(255, 253, 249, .72);
+      color: var(--muted);
+      font-size: .76rem;
+      box-shadow: none;
+    }
     section.article-section > p:first-of-type { margin-top: 0; }
     h3 {
       margin: 1.4rem 0 .5rem;
@@ -656,6 +679,7 @@
       .hero-content { padding: 1.2rem; }
       .orientation-grid, .questions, .patterns, .takeaways, .models, .meta-grid, .related-grid, .stat-strip, .flow { grid-template-columns: 1fr; }
       .next-prev, .footer-inner { grid-template-columns: 1fr; flex-direction: column; }
+      .section-header { flex-direction: column; gap: .45rem; }
       h1 { font-size: clamp(2.25rem, 14vw, 3.6rem); }
       .tools { align-items: flex-start; flex-direction: column; }
     }
@@ -1984,7 +2008,6 @@
       btn.className = 'btn';
       btn.type = 'button';
       btn.textContent = 'Copy section link';
-      btn.style.marginTop = '.65rem';
       btn.addEventListener('click', async () => {
         const url = window.location.href.split('#')[0] + '#' + section.id;
         try {
@@ -1994,7 +2017,10 @@
           showToast('Copy not available');
         }
       });
-      title.insertAdjacentElement('afterend', btn);
+      const header = document.createElement('div');
+      header.className = 'section-header';
+      title.parentNode.insertBefore(header, title);
+      header.append(title, btn);
     });
 
     const tocLinks = [...document.querySelectorAll('.toc a')];

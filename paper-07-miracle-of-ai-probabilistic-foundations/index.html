@@ -472,10 +472,24 @@
     .summary-label {
       display: inline-flex;
       align-items: center;
+      flex-wrap: wrap;
       gap: .5rem;
       color: var(--muted);
       font-size: .88rem;
       font-weight: 700;
+    }
+    .summary-badge {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(154, 115, 59, .18);
+      border-radius: 999px;
+      padding: .12rem .42rem;
+      color: #73542c;
+      background: rgba(246, 234, 216, .58);
+      font-size: .68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
     }
     .summary-label::before {
       content: "";
@@ -1606,7 +1620,7 @@
           </section>
 
           <details class="reader-section" open>
-            <summary><span class="summary-label">Source-derived section</span></summary>
+            <summary><span class="summary-label">From determinism to probability <span class="summary-badge">Source-derived</span></span></summary>
             <section class="article-section" id="determinism" aria-labelledby="determinism-title">
               <div class="section-heading">
                 <h2 id="determinism-title">From determinism to probability</h2>
@@ -1624,7 +1638,7 @@
           </details>
 
           <details class="reader-section" open>
-            <summary><span class="summary-label">Source-derived section</span></summary>
+            <summary><span class="summary-label">The surprising success of probabilistic models <span class="summary-badge">Source-derived</span></span></summary>
             <section class="article-section" id="success" aria-labelledby="success-title">
               <div class="section-heading">
                 <h2 id="success-title">The surprising success of probabilistic models</h2>
@@ -1664,7 +1678,7 @@
           </details>
 
           <details class="reader-section" open>
-            <summary><span class="summary-label">Source-derived section</span></summary>
+            <summary><span class="summary-label">Limits of probability alone <span class="summary-badge">Source-derived</span></span></summary>
             <section class="article-section" id="limits" aria-labelledby="limits-title">
               <div class="section-heading">
                 <h2 id="limits-title">Limits of probability alone</h2>
@@ -1697,7 +1711,7 @@
           </details>
 
           <details class="reader-section" open>
-            <summary><span class="summary-label">Source-derived section</span></summary>
+            <summary><span class="summary-label">From probability to trust <span class="summary-badge">Source-derived</span></span></summary>
             <section class="article-section" id="trust" aria-labelledby="trust-title">
               <div class="section-heading">
                 <h2 id="trust-title">From probability to trust</h2>
@@ -1735,7 +1749,7 @@
           </details>
 
           <details class="reader-section" open>
-            <summary><span class="summary-label">Source-derived section</span></summary>
+            <summary><span class="summary-label">Parallels in technology adoption <span class="summary-badge">Source-derived</span></span></summary>
             <section class="article-section" id="parallels" aria-labelledby="parallels-title">
               <div class="section-heading">
                 <h2 id="parallels-title">Parallels in technology adoption</h2>
@@ -1761,7 +1775,7 @@
           </details>
 
           <details class="reader-section" open>
-            <summary><span class="summary-label">Source-derived section</span></summary>
+            <summary><span class="summary-label">Turning variability into value <span class="summary-badge">Source-derived</span></span></summary>
             <section class="article-section" id="value" aria-labelledby="value-title">
               <div class="section-heading">
                 <h2 id="value-title">Turning variability into value</h2>

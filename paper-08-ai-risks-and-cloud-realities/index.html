@@ -436,9 +436,9 @@
     }
 
     .matrix-wrap { overflow-x: auto; border-radius: 22px; border: 1px solid var(--line); background: rgba(255,255,255,.48); }
-    table { width: 100%; border-collapse: collapse; min-width: 900px; }
+    table { width: 100%; border-collapse: collapse; min-width: 0; table-layout: fixed; }
     caption { text-align: left; padding: .95rem 1rem; font-weight: 820; color: var(--paper-accent-dark); background: rgba(243,223,220,.54); }
-    th, td { padding: 1rem; text-align: left; vertical-align: top; border-top: 1px solid var(--line); }
+    th, td { padding: .82rem .75rem; text-align: left; vertical-align: top; border-top: 1px solid var(--line); overflow-wrap: break-word; }
     th {
       background: rgba(241,235,228,.78);
       color: var(--charcoal);
@@ -449,6 +449,10 @@
     td { font-size: .92rem; line-height: 1.45; }
     tbody tr:nth-child(even) td { background: rgba(241,235,228,.32); }
     .domain { font-weight: 820; color: var(--paper-accent-dark); }
+    .matrix-wrap th:nth-child(1), .matrix-wrap td:nth-child(1) { width: 18%; }
+    .matrix-wrap th:nth-child(2), .matrix-wrap td:nth-child(2) { width: 25%; }
+    .matrix-wrap th:nth-child(3), .matrix-wrap td:nth-child(3) { width: 25%; }
+    .matrix-wrap th:nth-child(4), .matrix-wrap td:nth-child(4) { width: 32%; }
 
     .reg-grid {
       display: grid;
@@ -645,6 +649,45 @@
       .section-head { grid-template-columns: 1fr; }
       .side-rail { grid-template-columns: 1fr; }
       .metadata-grid { grid-template-columns: 1fr; }
+      .matrix-wrap { overflow-x: visible; }
+      .matrix-wrap table,
+      .matrix-wrap thead,
+      .matrix-wrap tbody,
+      .matrix-wrap tr,
+      .matrix-wrap th,
+      .matrix-wrap td {
+        display: block;
+        width: 100%;
+      }
+      .matrix-wrap thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+      }
+      .matrix-wrap tr {
+        border-top: 1px solid var(--line);
+        padding: .75rem 0;
+      }
+      .matrix-wrap tr:first-child { border-top: 0; }
+      .matrix-wrap td {
+        border-top: 0;
+        padding: .45rem .9rem;
+      }
+      .matrix-wrap td::before {
+        display: block;
+        margin-bottom: .12rem;
+        color: var(--muted);
+        font-size: .72rem;
+        font-weight: 820;
+        letter-spacing: .055em;
+        text-transform: uppercase;
+      }
+      .matrix-wrap td:nth-child(1)::before { content: "Risk domain"; }
+      .matrix-wrap td:nth-child(2)::before { content: "Public fear"; }
+      .matrix-wrap td:nth-child(3)::before { content: "Enterprise requirement"; }
+      .matrix-wrap td:nth-child(4)::before { content: "Design response"; }
     }
     @media (max-width: 540px) {
       .page-shell { padding: .85rem; }

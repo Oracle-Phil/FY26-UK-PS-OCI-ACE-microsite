@@ -472,7 +472,7 @@
     }
     .map-core {
       display: grid;
-      grid-template-columns: repeat(7, minmax(112px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(126px, 1fr));
       gap: .65rem;
       align-items: stretch;
     }
@@ -485,6 +485,7 @@
       border: 1px solid rgba(49,95,91,.20);
       border-radius: 18px;
       background: rgba(255,250,245,.82);
+      min-width: 0;
     }
     .map-node strong { line-height: 1.15; }
     .map-node span { color: var(--muted); font-size: .82rem; margin-top: .5rem; }

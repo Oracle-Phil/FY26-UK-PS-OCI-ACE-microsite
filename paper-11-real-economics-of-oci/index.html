@@ -1454,6 +1454,55 @@
       .source-record details { border-color: #999; background: #fff; }
       .source-record details:not([open]) > .source-record__body { display: block; }
     }
+    #orientation .orientation-grid {
+      gap: 14px;
+      margin-top: 1rem;
+    }
+    #orientation .split-panel {
+      grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+      gap: 14px;
+      align-items: stretch;
+      margin: 18px 0;
+    }
+    #orientation .price-box,
+    #orientation .economics-box {
+      padding: 18px;
+      border-radius: 18px;
+    }
+    #orientation .big-word {
+      font-size: clamp(1.85rem, 3.4vw, 3rem);
+      line-height: 1;
+      letter-spacing: 0;
+      margin-bottom: .65rem;
+    }
+    #orientation .principle {
+      max-width: none;
+      margin: 18px 0 0;
+      padding: 16px 18px;
+      border-radius: 18px;
+    }
+    .table-wrap table {
+      min-width: 0;
+      table-layout: fixed;
+    }
+    .table-wrap th,
+    .table-wrap td {
+      padding: 12px 13px;
+      overflow-wrap: break-word;
+    }
+    @media (max-width: 980px) {
+      #orientation .split-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 680px) {
+      .table-wrap {
+        overflow-x: auto;
+      }
+      .table-wrap table {
+        min-width: 640px;
+      }
+    }
 </style>
 </head>
 <body>

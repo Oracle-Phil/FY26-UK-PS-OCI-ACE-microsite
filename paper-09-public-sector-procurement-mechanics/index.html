@@ -643,6 +643,14 @@
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
     }
+    .paper-nav__heading {
+      grid-column: 1 / -1;
+      color: var(--clay);
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
     .paper-nav a {
       display: block;
       border: 1px solid rgba(222,212,202,.88);
@@ -1970,6 +1978,7 @@
   </div>
 
   <nav class="paper-nav" aria-label="Previous and next paper navigation">
+    <span class="paper-nav__heading">Series sequence</span>
     <a href="../paper-08-ai-risks-and-cloud-realities/"><span>Previous paper</span><strong>Paper 08 - AI Risks and Cloud Realities</strong></a>
     <a href="../paper-10-aligning-oci-uk-public-sector-policy/"><span>Next paper</span><strong>Paper 10 - Aligning OCI to UK Public Sector Policy</strong></a>
   </nav>
