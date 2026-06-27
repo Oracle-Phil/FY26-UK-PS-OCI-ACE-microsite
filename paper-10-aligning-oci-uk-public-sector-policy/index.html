@@ -1110,6 +1110,97 @@
       .harmonised-breadcrumb,
       .universal-reader-tools { display: none !important; }
     }
+    .standard-metadata {
+      width: min(var(--max, 1180px), calc(100% - 2rem));
+      margin: 1rem auto 1.45rem;
+      padding: 1rem;
+      border: 1px solid rgba(92, 75, 57, 0.18);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,244,238,0.94));
+      box-shadow: 0 18px 44px rgba(43, 31, 22, 0.08);
+    }
+    .standard-metadata__header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.85rem;
+      border-bottom: 1px solid rgba(92, 75, 57, 0.14);
+      padding-bottom: 0.7rem;
+    }
+    .standard-metadata__eyebrow {
+      margin: 0;
+      color: var(--muted, #6f625a);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .standard-metadata h2 {
+      margin: 0;
+      color: var(--ink, #241c18);
+      font-size: clamp(1.15rem, 1.5vw, 1.55rem);
+      line-height: 1.2;
+    }
+    .standard-metadata__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 0.72rem;
+      margin: 0;
+    }
+    .standard-metadata__item {
+      min-width: 0;
+      padding: 0.72rem 0.78rem;
+      border: 1px solid rgba(92, 75, 57, 0.13);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.64);
+    }
+    .standard-metadata__item--wide { grid-column: span 2; }
+    .standard-metadata__label {
+      display: block;
+      color: var(--muted, #6f625a);
+      font-size: 0.73rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.24rem;
+    }
+    .standard-metadata__value {
+      display: block;
+      color: var(--ink, #241c18);
+      font-size: 0.9rem;
+      font-weight: 680;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+    .standard-footer {
+      margin-top: 2rem;
+      background: #241f1a;
+      color: #fffaf5;
+      border-top: 3px solid var(--hero-accent, var(--accent, #8c6f42));
+    }
+    .standard-footer__inner {
+      width: min(var(--max, 1180px), calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1.25rem 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(240px, 0.9fr);
+      gap: 1rem;
+      align-items: start;
+    }
+    .standard-footer p {
+      margin: 0.25rem 0;
+      color: rgba(255,250,245,0.82);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .standard-footer strong { color: #fffaf5; }
+    @media (max-width: 760px) {
+      .standard-metadata__header { display: block; }
+      .standard-metadata__item--wide { grid-column: span 1; }
+      .standard-footer__inner { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -1187,29 +1278,31 @@
     <span class="universal-reader-status" role="status" aria-live="polite"></span>
   </section>
 
-  <div class="page-grid">
-    <aside class="sidebar" aria-label="Article tools and metadata">
-      <section class="meta-panel" aria-labelledby="metadata-heading">
-        <h2 id="metadata-heading">Metadata</h2>
-        <dl class="meta-list">
-          <div class="meta-row"><dt>Paper</dt><dd>10</dd></div>
-          <div class="meta-row"><dt>Version</dt><dd>1.0, taken from the visible PDF cover</dd></div>
-          <div class="meta-row"><dt>Source file</dt><dd>Paper 10 - Aligning OCI to UK Public Sector Policy v1.1.pdf</dd></div>
-          <div class="meta-row"><dt>Copyright</dt><dd>Copyright © 2025, Oracle and/or its affiliates</dd></div>
-          <div class="meta-row"><dt>Classification</dt><dd>Confidential - Oracle Internal</dd></div>
-          <div class="meta-row"><dt>Route</dt><dd>/paper-10-aligning-oci-uk-public-sector-policy/</dd></div>
-          <div class="meta-row"><dt>Conversion</dt><dd>v1.0, Draft, 2026-06-23</dd></div>
-          <div class="meta-row"><dt>Reading time</dt><dd>About 21 minutes</dd></div>
-        </dl>
-        <div class="chips" aria-label="Themes">
-          <span class="chip">Policy</span>
-          <span class="chip">UK Public Sector</span>
-          <span class="chip">Assurance</span>
-          <span class="chip">OCI Alignment</span>
-        </div>
-      </section>
+  <section class="standard-metadata" id="metadata" aria-labelledby="metadata-title">
+    <div class="standard-metadata__header">
+      <p class="standard-metadata__eyebrow">Article metadata</p>
+      <h2 id="metadata-title">Source and conversion record</h2>
+    </div>
+    <dl class="standard-metadata__grid">
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Paper number</dt><dd class="standard-metadata__value">10</dd></div>
+      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Title</dt><dd class="standard-metadata__value">Aligning OCI to UK Public Sector Policy</dd></div>
+      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Subtitle</dt><dd class="standard-metadata__value">A field guide for Account Cloud Engineers to navigate strategy signals, sector imperatives, and architectural alignment.</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Version</dt><dd class="standard-metadata__value">1.0 (visible PDF cover)</dd></div>
+      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Source PDF filename</dt><dd class="standard-metadata__value">Paper 10 - Aligning OCI to UK Public Sector Policy v1.1.pdf</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Source copyright year</dt><dd class="standard-metadata__value">2025</dd></div>
+      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Classification</dt><dd class="standard-metadata__value">Confidential - Oracle Internal</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Conversion version</dt><dd class="standard-metadata__value">1.0</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Conversion date</dt><dd class="standard-metadata__value">2026-06-23</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Last reviewed date</dt><dd class="standard-metadata__value">2026-06-23</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Status</dt><dd class="standard-metadata__value">Draft</dd></div>
+      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Route</dt><dd class="standard-metadata__value">/paper-10-aligning-oci-uk-public-sector-policy/</dd></div>
+      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Primary themes</dt><dd class="standard-metadata__value">Policy, UK Public Sector, Assurance, OCI Alignment</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Reading time</dt><dd class="standard-metadata__value">About 21 minutes</dd></div>
+    </dl>
+  </section>
 
-      <section class="toc" aria-labelledby="toc-heading">
+  <div class="page-grid">
+    <aside class="sidebar" aria-label="Article tools and metadata"><section class="toc" aria-labelledby="toc-heading">
         <h2 id="toc-heading">Contents</h2>
         <nav id="toc-nav">
           <a href="#orientation">Executive orientation</a>
@@ -1552,13 +1645,17 @@
     </main>
   </div>
 
-  <footer>
-    <div class="footer-inner">
+  <footer class="standard-footer" role="contentinfo">
+    <div class="standard-footer__inner">
       <div>
-        <strong>FY26 UK-PS Whitepapers Series</strong><br />
-        Internal Oracle field enablement site. Source material remains subject to the source document's copyright and confidentiality statement.
+        <p><strong>FY26 UK-PS Whitepapers Series</strong></p>
+        <p>Paper 10 - Aligning OCI to UK Public Sector Policy</p>
+        <p><strong>Classification:</strong> Confidential - Oracle Internal. Internal Oracle enablement only; not a public Oracle web property or customer-facing publication.</p>
       </div>
-      <div class="classification-pill">Confidential - Oracle Internal</div>
+      <div>
+        <p><strong>Source:</strong> Paper 10 - Aligning OCI to UK Public Sector Policy v1.1.pdf</p>
+        <p><strong>Source copyright year:</strong> 2025. <strong>Conversion:</strong> v1.0, Draft. <strong>Last reviewed:</strong> 2026-06-23.</p>
+      </div>
     </div>
   </footer>
 

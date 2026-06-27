@@ -971,6 +971,97 @@
       .harmonised-breadcrumb,
       .universal-reader-tools { display: none !important; }
     }
+    .standard-metadata {
+      width: min(var(--max, 1180px), calc(100% - 2rem));
+      margin: 1rem auto 1.45rem;
+      padding: 1rem;
+      border: 1px solid rgba(92, 75, 57, 0.18);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,244,238,0.94));
+      box-shadow: 0 18px 44px rgba(43, 31, 22, 0.08);
+    }
+    .standard-metadata__header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.85rem;
+      border-bottom: 1px solid rgba(92, 75, 57, 0.14);
+      padding-bottom: 0.7rem;
+    }
+    .standard-metadata__eyebrow {
+      margin: 0;
+      color: var(--muted, #6f625a);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .standard-metadata h2 {
+      margin: 0;
+      color: var(--ink, #241c18);
+      font-size: clamp(1.15rem, 1.5vw, 1.55rem);
+      line-height: 1.2;
+    }
+    .standard-metadata__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 0.72rem;
+      margin: 0;
+    }
+    .standard-metadata__item {
+      min-width: 0;
+      padding: 0.72rem 0.78rem;
+      border: 1px solid rgba(92, 75, 57, 0.13);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.64);
+    }
+    .standard-metadata__item--wide { grid-column: span 2; }
+    .standard-metadata__label {
+      display: block;
+      color: var(--muted, #6f625a);
+      font-size: 0.73rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.24rem;
+    }
+    .standard-metadata__value {
+      display: block;
+      color: var(--ink, #241c18);
+      font-size: 0.9rem;
+      font-weight: 680;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+    .standard-footer {
+      margin-top: 2rem;
+      background: #241f1a;
+      color: #fffaf5;
+      border-top: 3px solid var(--hero-accent, var(--accent, #8c6f42));
+    }
+    .standard-footer__inner {
+      width: min(var(--max, 1180px), calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1.25rem 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(240px, 0.9fr);
+      gap: 1rem;
+      align-items: start;
+    }
+    .standard-footer p {
+      margin: 0.25rem 0;
+      color: rgba(255,250,245,0.82);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .standard-footer strong { color: #fffaf5; }
+    @media (max-width: 760px) {
+      .standard-metadata__header { display: block; }
+      .standard-metadata__item--wide { grid-column: span 1; }
+      .standard-footer__inner { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -1036,6 +1127,29 @@
     <button class="universal-reader-tools__button" type="button" data-expand>Expand all</button>
     <button class="universal-reader-tools__button" type="button" data-collapse>Collapse all</button>
     <span class="universal-reader-status" role="status" aria-live="polite"></span>
+  </section>
+
+  <section class="standard-metadata" id="metadata" aria-labelledby="metadata-title">
+    <div class="standard-metadata__header">
+      <p class="standard-metadata__eyebrow">Article metadata</p>
+      <h2 id="metadata-title">Source and conversion record</h2>
+    </div>
+    <dl class="standard-metadata__grid">
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Paper number</dt><dd class="standard-metadata__value">04</dd></div>
+      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Title</dt><dd class="standard-metadata__value">Sovereignty and Trust in Cloud</dd></div>
+      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Subtitle</dt><dd class="standard-metadata__value">How providers are tackling regulatory demands and earning customer confidence.</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Version</dt><dd class="standard-metadata__value">1.0</dd></div>
+      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Source PDF filename</dt><dd class="standard-metadata__value">Paper 4 - Sovereignty and Trust in Cloud v1.0.pdf</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Source copyright year</dt><dd class="standard-metadata__value">2025</dd></div>
+      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Classification</dt><dd class="standard-metadata__value">Confidential - Oracle Internal</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Conversion version</dt><dd class="standard-metadata__value">1.0</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Conversion date</dt><dd class="standard-metadata__value">22 June 2026</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Last reviewed date</dt><dd class="standard-metadata__value">TBC</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Status</dt><dd class="standard-metadata__value">Draft conversion</dd></div>
+      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Route</dt><dd class="standard-metadata__value">/paper-04-sovereignty-and-trust-in-cloud/</dd></div>
+      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Primary themes</dt><dd class="standard-metadata__value">Sovereignty, trust, assurance, UK Public Sector, OC4</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Reading time</dt><dd class="standard-metadata__value">TBC</dd></div>
+    </dl>
   </section>
 
   <div class="page">
@@ -1383,28 +1497,7 @@
         <p>Cloud sovereignty is no longer a fringe requirement in the UK public sector. It is a foundational expectation shaped by legal obligations, procurement frameworks and strategic concern over data location and access. Trust must be demonstrated through verifiable control, contractual clarity and technical readiness.</p>
         <p>The source paper positions Oracle's approach as broader than marketing language or roadmap promises. It combines a live dual-region Government Cloud operated by UK personnel, a deployable Dedicated Region model, a partner-operated option through Oracle Alloy, strong encryption, multi-cloud support and open data portability.</p>
         <p>OCI architects bridge policy and platform. By engaging early, asking the right questions and positioning the right deployment model, they can help ensure Oracle is trusted to meet sovereign expectations. The final discipline is simple: trust is not claimed, it is earned through clarity and evidence.</p>
-      </section>
-
-      <section id="metadata" class="metadata-panel" aria-labelledby="metadata-title">
-        <h2 id="metadata-title">Article metadata</h2>
-        <p class="muted">Visible metadata required by the FY26 UK-PS Whitepapers Series framework.</p>
-        <div class="meta-grid">
-          <div class="meta-item"><span>Paper number</span><strong>04</strong></div>
-          <div class="meta-item"><span>Title</span><strong>Sovereignty and Trust in Cloud</strong></div>
-          <div class="meta-item"><span>Version</span><strong>1.0</strong></div>
-          <div class="meta-item"><span>Source PDF</span><strong>Paper 4 - Sovereignty and Trust in Cloud v1.0.pdf</strong></div>
-          <div class="meta-item"><span>Copyright year</span><strong>2025</strong></div>
-          <div class="meta-item"><span>Classification</span><strong>Confidential - Oracle Internal</strong></div>
-          <div class="meta-item"><span>Conversion version</span><strong>1.0</strong></div>
-          <div class="meta-item"><span>Conversion date</span><strong>22 June 2026</strong></div>
-          <div class="meta-item"><span>Status</span><strong>Draft conversion</strong></div>
-          <div class="meta-item"><span>Route</span><strong>/paper-04-sovereignty-and-trust-in-cloud/</strong></div>
-          <div class="meta-item"><span>Primary themes</span><strong>Sovereignty, trust, assurance, UK Public Sector, OC4</strong></div>
-          <div class="meta-item"><span>Known source caveats</span><strong>Competitive comparison tables are source-stated as accurate as of July 2025.</strong></div>
-        </div>
-      </section>
-
-      <nav class="next-prev" aria-label="Previous and next papers">
+      </section><nav class="next-prev" aria-label="Previous and next papers">
         <a href="../paper-03-evolving-expectations-enterprise-cloud-market/"><span>Previous paper</span><strong>Paper 03 - Evolving Expectations in the Enterprise Cloud Market</strong></a>
         <a href="../paper-05-oci-technical-performance-is-real/"><span>Next paper</span><strong>Paper 05 - How and Why OCI's Technical Performance Is Real</strong></a>
       </nav>
@@ -1427,14 +1520,17 @@
     </main>
   </div>
 
-  <footer role="contentinfo">
-    <div class="footer-inner">
+  <footer class="standard-footer" role="contentinfo">
+    <div class="standard-footer__inner">
       <div>
         <p><strong>FY26 UK-PS Whitepapers Series</strong></p>
-        <p>Internal field papers for Oracle Cloud Infrastructure, AI, UK Public Sector strategy, assurance, differentiation and customer conversation readiness.</p>
-        <p>Source: Paper 4 - Sovereignty and Trust in Cloud v1.0.pdf. Conversion route: /paper-04-sovereignty-and-trust-in-cloud/.</p>
+        <p>Paper 04 - Sovereignty and Trust in Cloud</p>
+        <p><strong>Classification:</strong> Confidential - Oracle Internal. Internal Oracle enablement only; not a public Oracle web property or customer-facing publication.</p>
       </div>
-      <div><span class="classification-pill"><span class="dot" aria-hidden="true"></span>Confidential - Oracle Internal</span></div>
+      <div>
+        <p><strong>Source:</strong> Paper 4 - Sovereignty and Trust in Cloud v1.0.pdf</p>
+        <p><strong>Source copyright year:</strong> 2025. <strong>Conversion:</strong> v1.0, Draft conversion. <strong>Last reviewed:</strong> TBC.</p>
+      </div>
     </div>
   </footer>
 

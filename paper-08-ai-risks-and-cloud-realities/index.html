@@ -1055,6 +1055,97 @@
       .harmonised-breadcrumb,
       .universal-reader-tools { display: none !important; }
     }
+    .standard-metadata {
+      width: min(var(--max, 1180px), calc(100% - 2rem));
+      margin: 1rem auto 1.45rem;
+      padding: 1rem;
+      border: 1px solid rgba(92, 75, 57, 0.18);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,244,238,0.94));
+      box-shadow: 0 18px 44px rgba(43, 31, 22, 0.08);
+    }
+    .standard-metadata__header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.85rem;
+      border-bottom: 1px solid rgba(92, 75, 57, 0.14);
+      padding-bottom: 0.7rem;
+    }
+    .standard-metadata__eyebrow {
+      margin: 0;
+      color: var(--muted, #6f625a);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .standard-metadata h2 {
+      margin: 0;
+      color: var(--ink, #241c18);
+      font-size: clamp(1.15rem, 1.5vw, 1.55rem);
+      line-height: 1.2;
+    }
+    .standard-metadata__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 0.72rem;
+      margin: 0;
+    }
+    .standard-metadata__item {
+      min-width: 0;
+      padding: 0.72rem 0.78rem;
+      border: 1px solid rgba(92, 75, 57, 0.13);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.64);
+    }
+    .standard-metadata__item--wide { grid-column: span 2; }
+    .standard-metadata__label {
+      display: block;
+      color: var(--muted, #6f625a);
+      font-size: 0.73rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.24rem;
+    }
+    .standard-metadata__value {
+      display: block;
+      color: var(--ink, #241c18);
+      font-size: 0.9rem;
+      font-weight: 680;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+    .standard-footer {
+      margin-top: 2rem;
+      background: #241f1a;
+      color: #fffaf5;
+      border-top: 3px solid var(--hero-accent, var(--accent, #8c6f42));
+    }
+    .standard-footer__inner {
+      width: min(var(--max, 1180px), calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1.25rem 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(240px, 0.9fr);
+      gap: 1rem;
+      align-items: start;
+    }
+    .standard-footer p {
+      margin: 0.25rem 0;
+      color: rgba(255,250,245,0.82);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .standard-footer strong { color: #fffaf5; }
+    @media (max-width: 760px) {
+      .standard-metadata__header { display: block; }
+      .standard-metadata__item--wide { grid-column: span 1; }
+      .standard-footer__inner { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -1122,6 +1213,29 @@
     <button class="universal-reader-tools__button" type="button" data-collapse>Collapse all</button>
     <button class="universal-reader-tools__button" type="button" data-reading-mode>Reading mode</button>
     <span class="universal-reader-status" role="status" aria-live="polite"></span>
+  </section>
+
+  <section class="standard-metadata" id="metadata" aria-labelledby="metadata-title">
+    <div class="standard-metadata__header">
+      <p class="standard-metadata__eyebrow">Article metadata</p>
+      <h2 id="metadata-title">Source and conversion record</h2>
+    </div>
+    <dl class="standard-metadata__grid">
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Paper number</dt><dd class="standard-metadata__value">08</dd></div>
+      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Title</dt><dd class="standard-metadata__value">AI Risks and Cloud Realities</dd></div>
+      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Subtitle</dt><dd class="standard-metadata__value">Reframing public fears as enterprise requirements.</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Version</dt><dd class="standard-metadata__value">1.0</dd></div>
+      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Source PDF filename</dt><dd class="standard-metadata__value">Paper 8 - AI Risks and Cloud Realities v1.0.pdf</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Source copyright year</dt><dd class="standard-metadata__value">2025</dd></div>
+      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Classification</dt><dd class="standard-metadata__value">Confidential - Oracle Internal</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Conversion version</dt><dd class="standard-metadata__value">1.0</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Conversion date</dt><dd class="standard-metadata__value">2026-06-22</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Last reviewed date</dt><dd class="standard-metadata__value">2026-06-22</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Status</dt><dd class="standard-metadata__value">Draft conversion</dd></div>
+      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Route</dt><dd class="standard-metadata__value">/paper-08-ai-risks-and-cloud-realities/</dd></div>
+      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Primary themes</dt><dd class="standard-metadata__value">Enterprise AI, AI risk, Governance, Sovereignty, Security, UK Public Sector</dd></div>
+      <div class="standard-metadata__item"><dt class="standard-metadata__label">Reading time</dt><dd class="standard-metadata__value">Approx. 13 minutes</dd></div>
+    </dl>
   </section>
 
     <div class="article-layout">
@@ -1476,38 +1590,22 @@
               <a href="#source-notes">Source notes</a>
             </nav>
           </div>
-        </section>
-
-        <section class="panel" aria-labelledby="meta-title">
-          <div class="panel-inner">
-            <h2 class="meta-title" id="meta-title">Article metadata</h2>
-            <div class="metadata-grid">
-              <div class="metadata-item"><span>Paper</span><strong>08</strong></div>
-              <div class="metadata-item"><span>Version</span><strong>1.0</strong></div>
-              <div class="metadata-item wide"><span>Title</span><strong>AI Risks and Cloud Realities</strong></div>
-              <div class="metadata-item wide"><span>Subtitle</span><strong>Reframing public fears as enterprise requirements</strong></div>
-              <div class="metadata-item wide"><span>Source PDF</span><strong>Paper 8 - AI Risks and Cloud Realities v1.0.pdf</strong></div>
-              <div class="metadata-item"><span>Copyright</span><strong>2025</strong></div>
-              <div class="metadata-item"><span>Status</span><strong>Draft conversion</strong></div>
-              <div class="metadata-item wide"><span>Classification</span><strong>Confidential - Oracle Internal</strong></div>
-              <div class="metadata-item wide"><span>Route</span><strong>/paper-08-ai-risks-and-cloud-realities/</strong></div>
-              <div class="metadata-item"><span>Conversion</span><strong>v1.0</strong></div>
-              <div class="metadata-item"><span>Converted</span><strong>2026-06-22</strong></div>
-              <div class="metadata-item wide"><span>Themes</span><strong>Enterprise AI, AI risk, governance, sovereignty, security, UK Public Sector</strong></div>
-              <div class="metadata-item wide"><span>Reading time</span><strong>Approx. 13 minutes</strong></div>
-              <div class="metadata-item wide"><span>Caveat</span><strong>Source-derived; revalidate live policy and product claims before external use.</strong></div>
-            </div>
-          </div>
-        </section>
-      </aside>
+        </section></aside>
     </div>
 
-    <footer>
-      <div class="footer-card">
-        <strong>FY26 UK-PS Whitepapers Series</strong><br>
-        Internal enablement site. Confidential - Oracle Internal. Conversion version 1.0. Last updated 2026-06-22. Source: Paper 8 - AI Risks and Cloud Realities v1.0.pdf. This page is not an official public oracle.com publication.
+  <footer class="standard-footer" role="contentinfo">
+    <div class="standard-footer__inner">
+      <div>
+        <p><strong>FY26 UK-PS Whitepapers Series</strong></p>
+        <p>Paper 08 - AI Risks and Cloud Realities</p>
+        <p><strong>Classification:</strong> Confidential - Oracle Internal. Internal Oracle enablement only; not a public Oracle web property or customer-facing publication.</p>
       </div>
-    </footer>
+      <div>
+        <p><strong>Source:</strong> Paper 8 - AI Risks and Cloud Realities v1.0.pdf</p>
+        <p><strong>Source copyright year:</strong> 2025. <strong>Conversion:</strong> v1.0, Draft conversion. <strong>Last reviewed:</strong> 2026-06-22.</p>
+      </div>
+    </div>
+  </footer>
   </div>
 
   <script>
