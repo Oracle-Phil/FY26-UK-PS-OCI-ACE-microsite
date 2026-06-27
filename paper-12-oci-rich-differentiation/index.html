@@ -654,7 +654,7 @@
       section.article-section { break-inside: avoid; }
       a { color: #111; text-decoration: none; }
     }
-  
+
     .universal-shell {
       position: sticky;
       top: 0;
@@ -967,7 +967,7 @@
       .article-hero__metrics,
       .article-hero__micro-grid { grid-template-columns: 1fr; }
     }
-  
+
     .harmonised-breadcrumb {
       width: min(var(--max, 1180px), calc(100% - 2rem));
       margin: 0 auto;
@@ -1488,7 +1488,59 @@
       }
     }
 
-  </style>
+
+    .source-record {
+      width: min(var(--t7-max, 1180px), calc(100% - 2rem));
+      margin: clamp(1.25rem, 3vw, 2rem) auto 1rem;
+      color: var(--t7-muted, #6d6259);
+      font-size: 0.92rem;
+    }
+    .source-record details {
+      border: 1px solid rgba(109, 92, 74, 0.18);
+      border-radius: 12px;
+      background: rgba(255, 250, 245, 0.72);
+      padding: 0.7rem 0.85rem;
+    }
+    .source-record summary {
+      cursor: pointer;
+      color: var(--t7-ink, #2f2a24);
+      font-weight: 760;
+    }
+    .source-record__body { margin-top: 0.85rem; }
+    .source-record__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.55rem 0.85rem;
+      margin: 0;
+    }
+    .source-record__item {
+      margin: 0;
+      min-width: 0;
+      padding: 0.55rem 0;
+      border-top: 1px solid rgba(109, 92, 74, 0.12);
+    }
+    .source-record__item--wide { grid-column: span 2; }
+    .source-record__label {
+      color: var(--t7-muted, #6d6259);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .source-record__value {
+      margin: 0.15rem 0 0;
+      color: var(--t7-ink, #2f2a24);
+      overflow-wrap: anywhere;
+    }
+    @media (max-width: 700px) {
+      .source-record { width: calc(100% - 1rem); }
+      .source-record__item--wide { grid-column: span 1; }
+    }
+    @media print {
+      .source-record details { border-color: #999; background: #fff; }
+      .source-record details:not([open]) > .source-record__body { display: block; }
+    }
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -1555,28 +1607,6 @@
     <span class="universal-reader-status" role="status" aria-live="polite"></span>
   </section>
 
-  <section class="standard-metadata" id="metadata" aria-labelledby="metadata-title">
-    <div class="standard-metadata__header">
-      <p class="standard-metadata__eyebrow">Article metadata</p>
-      <h2 id="metadata-title">Source and conversion record</h2>
-    </div>
-    <dl class="standard-metadata__grid">
-      <div class="standard-metadata__item"><dt class="standard-metadata__label">Paper number</dt><dd class="standard-metadata__value">12</dd></div>
-      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Title</dt><dd class="standard-metadata__value">OCI's Rich Differentiation</dd></div>
-      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Subtitle</dt><dd class="standard-metadata__value">Why OCI Still Stands Apart as the Market Catches Up</dd></div>
-      <div class="standard-metadata__item"><dt class="standard-metadata__label">Version</dt><dd class="standard-metadata__value">2.0</dd></div>
-      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Source PDF filename</dt><dd class="standard-metadata__value">Paper 12 - OCI's Rich Differentiation v1.0.pdf</dd></div>
-      <div class="standard-metadata__item"><dt class="standard-metadata__label">Source copyright year</dt><dd class="standard-metadata__value">2026</dd></div>
-      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Classification</dt><dd class="standard-metadata__value">Confidential - Oracle Internal</dd></div>
-      <div class="standard-metadata__item"><dt class="standard-metadata__label">Conversion version</dt><dd class="standard-metadata__value">1.0</dd></div>
-      <div class="standard-metadata__item"><dt class="standard-metadata__label">Conversion date</dt><dd class="standard-metadata__value">2026-06-23</dd></div>
-      <div class="standard-metadata__item"><dt class="standard-metadata__label">Last reviewed date</dt><dd class="standard-metadata__value">2026-06-23</dd></div>
-      <div class="standard-metadata__item"><dt class="standard-metadata__label">Status</dt><dd class="standard-metadata__value">Draft</dd></div>
-      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Route</dt><dd class="standard-metadata__value">/paper-12-oci-rich-differentiation/</dd></div>
-      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Primary themes</dt><dd class="standard-metadata__value">Differentiation, OCI architecture, field narrative, UK Public Sector assurance</dd></div>
-      <div class="standard-metadata__item"><dt class="standard-metadata__label">Reading time</dt><dd class="standard-metadata__value">Approx. 14 minutes</dd></div>
-    </dl>
-  </section>
 
   <div class="layout">
     <main id="main" class="article-surface" tabindex="-1">
@@ -1856,8 +1886,8 @@
           <a href="/paper-04-sovereignty-and-trust-in-cloud/"><small>Paper 04</small><span>Sovereignty and Trust in Cloud</span><em>Explores the sovereignty and trust context behind public sector assurance.</em></a>
         </div>
         <div class="prev-next" aria-label="Previous and next paper navigation">
-          <a href="/paper-11-real-economics-of-oci/"><small>Previous paper</small><strong>Paper 11: The Real Economics of OCI</strong></a>
-          <a class="next" href="/paper-13-misconceptions-of-oci/"><small>Next paper</small><strong>Paper 13: Misconceptions of OCI</strong></a>
+          <a href="../paper-11-real-economics-of-oci/"><small>Previous paper</small><strong>Paper 11: The Real Economics of OCI</strong></a>
+          <a class="next" href="../paper-13-misconceptions-of-oci/"><small>Next paper</small><strong>Paper 13: Misconceptions of OCI</strong></a>
         </div>
       </section>
     </main>
@@ -1877,6 +1907,30 @@
       <a href="#source-handling">Source and handling notes</a>
     </aside>
   </div>
+
+  <section class="source-record" id="metadata" aria-label="Source and conversion record">
+    <details>
+      <summary>Source and conversion record</summary>
+      <div class="source-record__body">
+        <dl class="source-record__grid">
+              <div class="source-record__item"><dt class="source-record__label">Paper number</dt><dd class="source-record__value">12</dd></div>
+              <div class="source-record__item source-record__item--wide"><dt class="source-record__label">Title</dt><dd class="source-record__value">OCI's Rich Differentiation</dd></div>
+              <div class="source-record__item source-record__item--wide"><dt class="source-record__label">Subtitle</dt><dd class="source-record__value">Why OCI Still Stands Apart as the Market Catches Up</dd></div>
+              <div class="source-record__item"><dt class="source-record__label">Version</dt><dd class="source-record__value">2.0</dd></div>
+              <div class="source-record__item source-record__item--wide"><dt class="source-record__label">Source PDF filename</dt><dd class="source-record__value">Paper 12 - OCI's Rich Differentiation v1.0.pdf</dd></div>
+              <div class="source-record__item"><dt class="source-record__label">Source copyright year</dt><dd class="source-record__value">2026</dd></div>
+              <div class="source-record__item source-record__item--wide"><dt class="source-record__label">Classification</dt><dd class="source-record__value">Confidential - Oracle Internal</dd></div>
+              <div class="source-record__item"><dt class="source-record__label">Conversion version</dt><dd class="source-record__value">1.0</dd></div>
+              <div class="source-record__item"><dt class="source-record__label">Conversion date</dt><dd class="source-record__value">2026-06-23</dd></div>
+              <div class="source-record__item"><dt class="source-record__label">Last reviewed date</dt><dd class="source-record__value">2026-06-23</dd></div>
+              <div class="source-record__item"><dt class="source-record__label">Status</dt><dd class="source-record__value">Draft</dd></div>
+              <div class="source-record__item source-record__item--wide"><dt class="source-record__label">Route</dt><dd class="source-record__value">/paper-12-oci-rich-differentiation/</dd></div>
+              <div class="source-record__item source-record__item--wide"><dt class="source-record__label">Primary themes</dt><dd class="source-record__value">Differentiation, OCI architecture, field narrative, UK Public Sector assurance</dd></div>
+              <div class="source-record__item"><dt class="source-record__label">Reading time</dt><dd class="source-record__value">Approx. 14 minutes</dd></div>
+            </dl>
+      </div>
+    </details>
+  </section>
 
   <footer class="standard-footer" role="contentinfo">
     <div class="standard-footer__inner">

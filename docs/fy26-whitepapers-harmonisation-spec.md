@@ -33,11 +33,11 @@ Required article traits:
 
 - One `h1`, with title matching the paper title.
 - Head metadata for description, robots, classification, series, paper number, paper version, and conversion version.
-- Visible internal classification in the utility/header area, article metadata, source notes, and footer.
+- Visible internal classification in the utility/header area, source notes where applicable, and footer.
 - Series navigation back to the index and major index sections.
 - Breadcrumb in the form `Series / Paper NN / Paper Title`.
 - Hero with paper label, title, subtitle or summary, and a key takeaway or article orientation block.
-- Visible source metadata block with paper number, version, source PDF filename, copyright, classification, route, conversion version, and status/date where available.
+- Bottom source and conversion record with paper number, version, source PDF filename, copyright, classification, route, conversion version, and status/date where available.
 - Reading tools with table of contents, back-to-index, print/save as PDF, copy link where supported, and expand/collapse where the page uses `details`.
 - Source and handling notes section.
 - Footer repeating series, source/classification context, and copyright.
@@ -115,9 +115,28 @@ Article heroes should preserve each paper's editorial personality, but align to 
 
 Avoid replacing a strong article-specific hero with a generic card layout. Harmonisation should standardise structure and metadata, not flatten the editorial treatment.
 
-### Visible Metadata
+### Source And Conversion Record
 
-Each article should expose a visible metadata panel or section with:
+Reader-facing article flow should not include a prominent `Article metadata`, `Source and conversion record`, or equivalent provenance card near the hero or immediately after the hero.
+
+Source and conversion details are maintainability/provenance information. On numbered papers they should sit at the very bottom of the article flow, after article content, related-paper navigation, source notes, and handling notes, but before the footer.
+
+Preferred implementation:
+
+```html
+<section class="source-record" aria-label="Source and conversion record">
+  <details>
+    <summary>Source and conversion record</summary>
+    ...
+  </details>
+</section>
+```
+
+The `<summary>` label must be exactly:
+
+`Source and conversion record`
+
+The collapsed record should retain existing provenance fields where available:
 
 - Paper number
 - Title
@@ -127,9 +146,14 @@ Each article should expose a visible metadata panel or section with:
 - Classification
 - Route
 - Conversion version
-- Status/conversion date/reading time where already available
+- Conversion date
+- Last reviewed date
+- Status
+- Reading time
 
-Known source caveats, such as filename-version mismatches, must be preserved.
+Known source caveats, such as filename-version mismatches, must be preserved. Do not delete provenance information unless it is clearly duplicated elsewhere and removal is safer than retaining it.
+
+Classification may remain visible in the standard header and footer even when the detailed source record is collapsed.
 
 ### Reading Tools
 

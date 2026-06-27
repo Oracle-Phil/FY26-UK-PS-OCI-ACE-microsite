@@ -765,7 +765,7 @@
       details.sector-detail-card { break-inside: avoid; }
       details.sector-detail-card:not([open]) .sector-body { display: block; }
     }
-  
+
     .universal-shell {
       position: sticky;
       top: 0;
@@ -1033,7 +1033,7 @@
       .article-hero__subtitle { font-size: 1.08rem; }
       .article-hero__metrics { grid-template-columns: 1fr; }
     }
-  
+
     .harmonised-breadcrumb {
       width: min(var(--max, 1180px), calc(100% - 2rem));
       margin: 0 auto;
@@ -1554,7 +1554,59 @@
       }
     }
 
-  </style>
+
+    .source-record {
+      width: min(var(--t7-max, 1180px), calc(100% - 2rem));
+      margin: clamp(1.25rem, 3vw, 2rem) auto 1rem;
+      color: var(--t7-muted, #6d6259);
+      font-size: 0.92rem;
+    }
+    .source-record details {
+      border: 1px solid rgba(109, 92, 74, 0.18);
+      border-radius: 12px;
+      background: rgba(255, 250, 245, 0.72);
+      padding: 0.7rem 0.85rem;
+    }
+    .source-record summary {
+      cursor: pointer;
+      color: var(--t7-ink, #2f2a24);
+      font-weight: 760;
+    }
+    .source-record__body { margin-top: 0.85rem; }
+    .source-record__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.55rem 0.85rem;
+      margin: 0;
+    }
+    .source-record__item {
+      margin: 0;
+      min-width: 0;
+      padding: 0.55rem 0;
+      border-top: 1px solid rgba(109, 92, 74, 0.12);
+    }
+    .source-record__item--wide { grid-column: span 2; }
+    .source-record__label {
+      color: var(--t7-muted, #6d6259);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .source-record__value {
+      margin: 0.15rem 0 0;
+      color: var(--t7-ink, #2f2a24);
+      overflow-wrap: anywhere;
+    }
+    @media (max-width: 700px) {
+      .source-record { width: calc(100% - 1rem); }
+      .source-record__item--wide { grid-column: span 1; }
+    }
+    @media print {
+      .source-record details { border-color: #999; background: #fff; }
+      .source-record details:not([open]) > .source-record__body { display: block; }
+    }
+</style>
 </head>
 <body>
   <div class="progress" aria-hidden="true"></div>
@@ -1631,28 +1683,6 @@
     <span class="universal-reader-status" role="status" aria-live="polite"></span>
   </section>
 
-  <section class="standard-metadata" id="metadata" aria-labelledby="metadata-title">
-    <div class="standard-metadata__header">
-      <p class="standard-metadata__eyebrow">Article metadata</p>
-      <h2 id="metadata-title">Source and conversion record</h2>
-    </div>
-    <dl class="standard-metadata__grid">
-      <div class="standard-metadata__item"><dt class="standard-metadata__label">Paper number</dt><dd class="standard-metadata__value">10</dd></div>
-      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Title</dt><dd class="standard-metadata__value">Aligning OCI to UK Public Sector Policy</dd></div>
-      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Subtitle</dt><dd class="standard-metadata__value">A field guide for Account Cloud Engineers to navigate strategy signals, sector imperatives, and architectural alignment.</dd></div>
-      <div class="standard-metadata__item"><dt class="standard-metadata__label">Version</dt><dd class="standard-metadata__value">1.0 (visible PDF cover)</dd></div>
-      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Source PDF filename</dt><dd class="standard-metadata__value">Paper 10 - Aligning OCI to UK Public Sector Policy v1.1.pdf</dd></div>
-      <div class="standard-metadata__item"><dt class="standard-metadata__label">Source copyright year</dt><dd class="standard-metadata__value">2025</dd></div>
-      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Classification</dt><dd class="standard-metadata__value">Confidential - Oracle Internal</dd></div>
-      <div class="standard-metadata__item"><dt class="standard-metadata__label">Conversion version</dt><dd class="standard-metadata__value">1.0</dd></div>
-      <div class="standard-metadata__item"><dt class="standard-metadata__label">Conversion date</dt><dd class="standard-metadata__value">2026-06-23</dd></div>
-      <div class="standard-metadata__item"><dt class="standard-metadata__label">Last reviewed date</dt><dd class="standard-metadata__value">2026-06-23</dd></div>
-      <div class="standard-metadata__item"><dt class="standard-metadata__label">Status</dt><dd class="standard-metadata__value">Draft</dd></div>
-      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Route</dt><dd class="standard-metadata__value">/paper-10-aligning-oci-uk-public-sector-policy/</dd></div>
-      <div class="standard-metadata__item standard-metadata__item--wide"><dt class="standard-metadata__label">Primary themes</dt><dd class="standard-metadata__value">Policy, UK Public Sector, Assurance, OCI Alignment</dd></div>
-      <div class="standard-metadata__item"><dt class="standard-metadata__label">Reading time</dt><dd class="standard-metadata__value">About 21 minutes</dd></div>
-    </dl>
-  </section>
 
   <div class="page-grid">
     <aside class="sidebar" aria-label="Article tools and metadata"><section class="toc" aria-labelledby="toc-heading">
@@ -1997,6 +2027,30 @@
       </nav>
     </main>
   </div>
+
+  <section class="source-record" id="metadata" aria-label="Source and conversion record">
+    <details>
+      <summary>Source and conversion record</summary>
+      <div class="source-record__body">
+        <dl class="source-record__grid">
+              <div class="source-record__item"><dt class="source-record__label">Paper number</dt><dd class="source-record__value">10</dd></div>
+              <div class="source-record__item source-record__item--wide"><dt class="source-record__label">Title</dt><dd class="source-record__value">Aligning OCI to UK Public Sector Policy</dd></div>
+              <div class="source-record__item source-record__item--wide"><dt class="source-record__label">Subtitle</dt><dd class="source-record__value">A field guide for Account Cloud Engineers to navigate strategy signals, sector imperatives, and architectural alignment.</dd></div>
+              <div class="source-record__item"><dt class="source-record__label">Version</dt><dd class="source-record__value">1.0 (visible PDF cover)</dd></div>
+              <div class="source-record__item source-record__item--wide"><dt class="source-record__label">Source PDF filename</dt><dd class="source-record__value">Paper 10 - Aligning OCI to UK Public Sector Policy v1.1.pdf</dd></div>
+              <div class="source-record__item"><dt class="source-record__label">Source copyright year</dt><dd class="source-record__value">2025</dd></div>
+              <div class="source-record__item source-record__item--wide"><dt class="source-record__label">Classification</dt><dd class="source-record__value">Confidential - Oracle Internal</dd></div>
+              <div class="source-record__item"><dt class="source-record__label">Conversion version</dt><dd class="source-record__value">1.0</dd></div>
+              <div class="source-record__item"><dt class="source-record__label">Conversion date</dt><dd class="source-record__value">2026-06-23</dd></div>
+              <div class="source-record__item"><dt class="source-record__label">Last reviewed date</dt><dd class="source-record__value">2026-06-23</dd></div>
+              <div class="source-record__item"><dt class="source-record__label">Status</dt><dd class="source-record__value">Draft</dd></div>
+              <div class="source-record__item source-record__item--wide"><dt class="source-record__label">Route</dt><dd class="source-record__value">/paper-10-aligning-oci-uk-public-sector-policy/</dd></div>
+              <div class="source-record__item source-record__item--wide"><dt class="source-record__label">Primary themes</dt><dd class="source-record__value">Policy, UK Public Sector, Assurance, OCI Alignment</dd></div>
+              <div class="source-record__item"><dt class="source-record__label">Reading time</dt><dd class="source-record__value">About 21 minutes</dd></div>
+            </dl>
+      </div>
+    </details>
+  </section>
 
   <footer class="standard-footer" role="contentinfo">
     <div class="standard-footer__inner">
