@@ -828,6 +828,83 @@
     @media print {
       .universal-shell { display: none !important; }
     }
+  
+    .harmonised-breadcrumb {
+      width: min(var(--max, 1180px), calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 0.85rem 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--muted, #6f625a);
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+    .harmonised-breadcrumb a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: 780;
+    }
+    .harmonised-breadcrumb a:hover,
+    .harmonised-breadcrumb a:focus-visible { color: var(--teal-deep, #315f5b); }
+    .harmonised-breadcrumb span[aria-hidden="true"] { color: rgba(111, 98, 90, 0.62); }
+    .harmonised-breadcrumb [aria-current="page"] { color: var(--ink, #241c18); }
+
+    .universal-reader-tools {
+      width: min(var(--max, 1180px), calc(100% - 2rem));
+      margin: 1rem auto 1.35rem;
+      padding: 0.72rem;
+      border: 1px solid rgba(49, 95, 91, 0.18);
+      border-radius: 18px;
+      background: rgba(255, 250, 245, 0.78);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.48rem;
+      box-shadow: 0 10px 24px rgba(36, 28, 24, 0.06);
+    }
+    .universal-reader-tools__label {
+      color: var(--muted, #6f625a);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-right: 0.2rem;
+    }
+    .universal-reader-tools a,
+    .universal-reader-tools button {
+      appearance: none;
+      border: 1px solid rgba(49, 95, 91, 0.22);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.86);
+      color: var(--ink, #241c18);
+      padding: 0.48rem 0.78rem;
+      font: inherit;
+      font-size: 0.86rem;
+      font-weight: 740;
+      line-height: 1.2;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .universal-reader-tools a:hover,
+    .universal-reader-tools button:hover,
+    .universal-reader-tools a:focus-visible,
+    .universal-reader-tools button:focus-visible {
+      border-color: rgba(49, 95, 91, 0.4);
+      background: var(--info-soft, #e5eef0);
+      color: var(--teal-deep, #315f5b);
+    }
+    .universal-reader-status {
+      min-height: 1.2em;
+      color: var(--muted, #6f625a);
+      font-size: 0.82rem;
+      font-weight: 650;
+    }
+    @media print {
+      .harmonised-breadcrumb,
+      .universal-reader-tools { display: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -851,11 +928,15 @@
     </div>
   </header>
 
-  <div class="shell">
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="../index.html">Series</a><span>/</span><span>Paper 02</span><span>/</span><span>Masters of Many: Champions of Choice</span>
-    </nav>
+  <nav class="harmonised-breadcrumb" aria-label="Breadcrumb">
+    <a href="../index.html">Series</a>
+    <span aria-hidden="true">/</span>
+    <span>Paper 02</span>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">Masters of Many: Champions of Choice</span>
+  </nav>
 
+<div class="shell">
     <section class="hero" aria-labelledby="paper-title">
       <div class="eyebrow">
         <span class="badge clay">Paper 02</span>
@@ -891,19 +972,18 @@
       </div>
     </section>
 
-    <section class="reading-tools" aria-label="Reading tools">
-      <span class="tool-label">Reading tools</span>
-      <a class="tool-btn" href="../index.html">Back to index</a>
-      <button class="tool-btn" type="button" data-copy-page>Copy page link</button>
-      <button class="tool-btn" type="button" data-copy-section>Copy current section link</button>
-      <button class="tool-btn" type="button" data-print>Print / save as PDF</button>
-      <button class="tool-btn" type="button" data-expand>Expand all</button>
-      <button class="tool-btn" type="button" data-collapse>Collapse all</button>
-      <button class="tool-btn" type="button" data-reading-mode>Reading mode</button>
-      <span class="status-msg" role="status" aria-live="polite"></span>
-    </section>
-
-    <div class="layout">
+      <section class="universal-reader-tools" aria-label="Reading tools">
+    <span class="universal-reader-tools__label">Reading tools</span>
+    <a class="universal-reader-tools__button" href="../index.html">Back to index</a>
+    <button class="universal-reader-tools__button" type="button" data-copy-page>Copy page link</button>
+    <button class="universal-reader-tools__button" type="button" data-print>Print / save as PDF</button>
+    <button class="universal-reader-tools__button" type="button" data-expand>Expand all</button>
+    <button class="universal-reader-tools__button" type="button" data-collapse>Collapse all</button>
+    <button class="universal-reader-tools__button" type="button" data-reading-mode>Reading mode</button>
+    <button class="universal-reader-tools__button" type="button" data-copy-section>Copy current section link</button>
+    <span class="status-msg universal-reader-status" role="status" aria-live="polite"></span>
+  </section>
+<div class="layout">
       <main id="main-content">
         <article>
           <section class="article-section" id="executive-orientation">

@@ -768,6 +768,83 @@
     @media print {
       .universal-shell { display: none !important; }
     }
+  
+    .harmonised-breadcrumb {
+      width: min(var(--max, 1180px), calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 0.85rem 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--muted, #6f625a);
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+    .harmonised-breadcrumb a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: 780;
+    }
+    .harmonised-breadcrumb a:hover,
+    .harmonised-breadcrumb a:focus-visible { color: var(--teal-deep, #315f5b); }
+    .harmonised-breadcrumb span[aria-hidden="true"] { color: rgba(111, 98, 90, 0.62); }
+    .harmonised-breadcrumb [aria-current="page"] { color: var(--ink, #241c18); }
+
+    .universal-reader-tools {
+      width: min(var(--max, 1180px), calc(100% - 2rem));
+      margin: 1rem auto 1.35rem;
+      padding: 0.72rem;
+      border: 1px solid rgba(49, 95, 91, 0.18);
+      border-radius: 18px;
+      background: rgba(255, 250, 245, 0.78);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.48rem;
+      box-shadow: 0 10px 24px rgba(36, 28, 24, 0.06);
+    }
+    .universal-reader-tools__label {
+      color: var(--muted, #6f625a);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-right: 0.2rem;
+    }
+    .universal-reader-tools a,
+    .universal-reader-tools button {
+      appearance: none;
+      border: 1px solid rgba(49, 95, 91, 0.22);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.86);
+      color: var(--ink, #241c18);
+      padding: 0.48rem 0.78rem;
+      font: inherit;
+      font-size: 0.86rem;
+      font-weight: 740;
+      line-height: 1.2;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .universal-reader-tools a:hover,
+    .universal-reader-tools button:hover,
+    .universal-reader-tools a:focus-visible,
+    .universal-reader-tools button:focus-visible {
+      border-color: rgba(49, 95, 91, 0.4);
+      background: var(--info-soft, #e5eef0);
+      color: var(--teal-deep, #315f5b);
+    }
+    .universal-reader-status {
+      min-height: 1.2em;
+      color: var(--muted, #6f625a);
+      font-size: 0.82rem;
+      font-weight: 650;
+    }
+    @media print {
+      .harmonised-breadcrumb,
+      .universal-reader-tools { display: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -790,7 +867,15 @@
     </div>
   </header>
 
-  <div class="hero-wrap">
+  <nav class="harmonised-breadcrumb" aria-label="Breadcrumb">
+    <a href="../index.html">Series</a>
+    <span aria-hidden="true">/</span>
+    <span>Paper 06</span>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">From ChatGPT to Enterprise AI</span>
+  </nav>
+
+<div class="hero-wrap">
     <section class="hero" aria-labelledby="page-title">
       <div>
         <div class="eyebrow"><span class="badge">Paper 06</span><span>Enterprise AI and Accountability</span></div>
@@ -818,12 +903,22 @@
     </section>
   </div>
 
+  <section class="universal-reader-tools" aria-label="Reading tools">
+    <span class="universal-reader-tools__label">Reading tools</span>
+    <a class="universal-reader-tools__button" href="../index.html">Back to index</a>
+    <button class="universal-reader-tools__button" type="button" data-copy-page-universal>Copy page link</button>
+    <button class="universal-reader-tools__button" type="button" onclick="window.print()">Print / save as PDF</button>
+    <button class="universal-reader-tools__button" type="button" id="expand-all">Expand all</button>
+    <button class="universal-reader-tools__button" type="button" id="collapse-all">Collapse all</button>
+    <button class="universal-reader-tools__button" type="button" id="reading-mode">Reading mode</button>
+    <button class="universal-reader-tools__button" type="button" id="copy-link">Copy section link</button>
+    <span class="universal-reader-status" role="status" aria-live="polite"></span>
+  </section>
+
   <div class="layout">
     <main id="main-content" tabindex="-1">
       <article class="article-card">
         <div class="article-inner">
-          <p class="breadcrumb"><a href="../index.html">Series</a> / <a href="../index.html#paper-06">Paper 06</a> / From ChatGPT to Enterprise AI</p>
-
           <section class="article-section" id="orientation" aria-labelledby="orientation-title">
             <p class="kicker">Executive orientation</p>
             <h2 id="orientation-title">Why this paper matters</h2>
@@ -1157,18 +1252,6 @@
         </dl>
       </section>
 
-      <section class="tool-card" aria-labelledby="tools-title">
-        <h2 id="tools-title">Reading tools</h2>
-        <div class="tools">
-          <a class="button-link" href="../index.html">Back to index</a>
-          <button type="button" id="copy-link">Copy section link</button>
-          <button type="button" onclick="window.print()">Print or save as PDF</button>
-          <button type="button" id="expand-all">Expand all</button>
-          <button type="button" id="collapse-all">Collapse all</button>
-          <button type="button" id="reading-mode">Toggle reading mode</button>
-        </div>
-      </section>
-
       <section class="toc-card" aria-labelledby="toc-title">
         <h2 id="toc-title">Contents</h2>
         <nav aria-label="Table of contents">
@@ -1248,6 +1331,40 @@
         location.hash = id;
       }
     });
+  </script>
+  <script data-purpose="FY26 Tranche 2 copy page support">
+    (function () {
+      var buttons = document.querySelectorAll('[data-copy-page-universal]');
+      if (!buttons.length) return;
+      function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+          return navigator.clipboard.writeText(text).then(function () { return true; }, function () { return false; });
+        }
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', '');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
+        document.body.removeChild(textarea);
+        return Promise.resolve(ok);
+      }
+      Array.prototype.forEach.call(buttons, function (button) {
+        button.addEventListener('click', function () {
+          var row = button.closest ? button.closest('.universal-reader-tools') : null;
+          var status = row ? row.querySelector('.universal-reader-status') : null;
+          var original = button.textContent;
+          copyText(window.location.href.split('#')[0]).then(function (ok) {
+            button.textContent = ok ? 'Copied' : 'Copy failed';
+            if (status) status.textContent = ok ? 'Page link copied.' : 'Copy failed. Copy the address from the browser bar.';
+            window.setTimeout(function () { button.textContent = original; }, 1400);
+          });
+        });
+      });
+    }());
   </script>
 </body>
 </html>
