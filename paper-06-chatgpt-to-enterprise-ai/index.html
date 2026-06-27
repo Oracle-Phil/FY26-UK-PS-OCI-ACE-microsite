@@ -768,6 +768,211 @@
     @media print {
       .universal-shell { display: none !important; }
     }
+
+    .article-hero {
+      --hero-accent: var(--teal-deep, #315f5b);
+      --hero-accent-strong: var(--teal-deep, #315f5b);
+      --hero-accent-soft: rgba(49, 95, 91, 0.13);
+      position: relative;
+      overflow: hidden;
+      width: min(var(--max, var(--page-max, var(--max-page, 1180px))), calc(100% - 2rem));
+      margin: 1rem auto 0;
+      border: 1px solid rgba(222, 212, 202, 0.9);
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(255, 250, 245, 0.98), rgba(241, 235, 228, 0.94)),
+        linear-gradient(90deg, var(--hero-accent-soft), transparent 58%);
+      box-shadow: var(--shadow, var(--shadow-soft, 0 18px 48px rgba(47, 37, 31, 0.10)));
+      padding: clamp(1.25rem, 4vw, 3.5rem);
+    }
+    .article-hero--choice {
+      --hero-accent: var(--clay, #b45f36);
+      --hero-accent-strong: var(--clay-dark, var(--clay, #b45f36));
+      --hero-accent-soft: rgba(180, 95, 54, 0.14);
+    }
+    .article-hero--market {
+      --hero-accent: var(--teal-deep, #315f5b);
+      --hero-accent-strong: var(--teal-deep, #315f5b);
+      --hero-accent-soft: rgba(49, 95, 91, 0.13);
+    }
+    .article-hero--enterprise-ai {
+      --hero-accent: var(--ai-amber, var(--clay, #b45f36));
+      --hero-accent-strong: var(--ai-red, var(--clay-dark, #7d3f25));
+      --hero-accent-soft: rgba(197, 128, 45, 0.14);
+    }
+    .article-hero--probability {
+      --hero-accent: var(--amber, #c6893f);
+      --hero-accent-strong: var(--oracle-red-soft, #c74634);
+      --hero-accent-soft: rgba(198, 137, 63, 0.16);
+    }
+    .article-hero--risk {
+      --hero-accent: var(--paper-accent, var(--oracle-red-soft, #c74634));
+      --hero-accent-strong: var(--paper-accent-dark, #8d3329);
+      --hero-accent-soft: var(--paper-accent-soft, #f3dfdc);
+    }
+    .article-hero--procurement {
+      --hero-accent: var(--sand, #d7b98c);
+      --hero-accent-strong: var(--teal-deep, #315f5b);
+      --hero-accent-soft: rgba(215, 185, 140, 0.22);
+    }
+    .article-hero--differentiation {
+      --hero-accent: var(--teal-deep, #315f5b);
+      --hero-accent-strong: var(--clay-dark, var(--clay, #b45f36));
+      --hero-accent-soft: rgba(49, 95, 91, 0.13);
+    }
+    .article-hero--misconceptions {
+      --hero-accent: var(--clay, #b45f36);
+      --hero-accent-strong: var(--oracle-red-soft, #c74634);
+      --hero-accent-soft: rgba(180, 95, 54, 0.13);
+    }
+    .article-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 6px;
+      background: var(--hero-accent);
+    }
+    .article-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 0 72%, var(--hero-accent-soft) 72% 100%);
+      pointer-events: none;
+    }
+    .article-hero__grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.72fr);
+      gap: clamp(1.25rem, 4vw, 3rem);
+      align-items: stretch;
+    }
+    .article-hero__main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+    .article-hero__chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin: 0 0 1rem;
+    }
+    .article-hero__chips--tail { margin-top: 1.35rem; margin-bottom: 0; }
+    .article-hero__chip {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid color-mix(in srgb, var(--hero-accent) 32%, transparent);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--hero-accent) 10%, white);
+      color: var(--hero-accent-strong);
+      padding: 0.38rem 0.72rem;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    .article-hero__title {
+      max-width: 13ch;
+      margin: 0;
+      color: var(--ink);
+      font-size: 4.75rem;
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+    .article-hero__subtitle {
+      max-width: 62ch;
+      margin: 1.15rem 0 0;
+      color: var(--muted);
+      font-size: 1.28rem;
+      line-height: 1.46;
+      font-weight: 650;
+    }
+    .article-hero__summary {
+      max-width: 68ch;
+      margin: 1rem 0 0;
+      color: #4f463f;
+      font-size: 1.02rem;
+      line-height: 1.62;
+    }
+    .article-hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 1.35rem;
+    }
+    .article-hero__aside {
+      display: grid;
+      gap: 1rem;
+      align-content: start;
+    }
+    .article-hero__card {
+      border: 1px solid rgba(222, 212, 202, 0.92);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: 0 10px 30px rgba(58, 54, 50, 0.06);
+      padding: 1.15rem;
+    }
+    .article-hero__card--key {
+      border-color: color-mix(in srgb, var(--hero-accent) 28%, transparent);
+      background: linear-gradient(145deg, color-mix(in srgb, var(--hero-accent) 10%, white), rgba(255, 250, 245, 0.9));
+    }
+    .article-hero__label {
+      margin: 0 0 0.55rem;
+      color: var(--hero-accent-strong);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    .article-hero__card p,
+    .article-hero__micro p {
+      max-width: none;
+      margin: 0;
+    }
+    .article-hero__metrics,
+    .article-hero__micro-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+    }
+    .article-hero__metric,
+    .article-hero__micro {
+      min-height: 6.5rem;
+      border-radius: 8px;
+      background: rgba(255, 250, 245, 0.78);
+      border: 1px solid color-mix(in srgb, var(--hero-accent) 16%, transparent);
+      padding: 0.85rem;
+    }
+    .article-hero__metric b,
+    .article-hero__micro strong {
+      display: block;
+      color: var(--hero-accent-strong);
+      font-size: 1.05rem;
+      line-height: 1.15;
+      margin-bottom: 0.32rem;
+    }
+    .article-hero__metric span,
+    .article-hero__micro span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.35;
+    }
+    @media (max-width: 900px) {
+      .article-hero__grid { grid-template-columns: 1fr; }
+      .article-hero__title { max-width: none; font-size: 3.3rem; }
+    }
+    @media (max-width: 560px) {
+      .article-hero { padding: 1rem; border-radius: 18px; }
+      .article-hero__title { font-size: 2.45rem; }
+      .article-hero__subtitle { font-size: 1.08rem; }
+      .article-hero__metrics,
+      .article-hero__micro-grid { grid-template-columns: 1fr; }
+    }
   
     .harmonised-breadcrumb {
       width: min(var(--max, 1180px), calc(100% - 2rem));
@@ -876,30 +1081,35 @@
   </nav>
 
 <div class="hero-wrap">
-    <section class="hero" aria-labelledby="page-title">
-      <div>
-        <div class="eyebrow"><span class="badge">Paper 06</span><span>Enterprise AI and Accountability</span></div>
-        <h1 id="page-title">From ChatGPT to Enterprise AI</h1>
-        <p class="subtitle">Closing the Expectation Gap: why consumer familiarity creates misleading assumptions and how Oracle Architects can reframe the conversation.</p>
-        <p class="summary">This web article converts the source paper into a field-ready experience for internal use. It keeps the core argument intact: consumer GenAI has opened the door to imagination, but enterprise AI must be designed for privacy, traceability, governance and scrutiny.</p>
-        <div class="chips" aria-label="Primary themes">
-          <span class="chip">Enterprise AI</span>
-          <span class="chip">Expectation Gap</span>
-          <span class="chip">Governance</span>
-          <span class="chip">Public Sector</span>
-          <span class="chip">OCI GenAI</span>
+    <section class="article-hero article-hero--enterprise-ai" aria-labelledby="page-title">
+      <div class="article-hero__grid">
+        <div class="article-hero__main">
+          <div class="article-hero__chips" aria-label="Article context">
+            <span class="article-hero__chip">Paper 06</span>
+            <span class="article-hero__chip">Enterprise AI and Accountability</span>
+          </div>
+          <h1 id="page-title" class="article-hero__title">From ChatGPT to Enterprise AI</h1>
+          <p class="article-hero__subtitle">Closing the Expectation Gap: why consumer familiarity creates misleading assumptions and how Oracle Architects can reframe the conversation.</p>
+          <p class="article-hero__summary">This web article converts the source paper into a field-ready experience for internal use. It keeps the core argument intact: consumer GenAI has opened the door to imagination, but enterprise AI must be designed for privacy, traceability, governance and scrutiny.</p>
+          <div class="article-hero__chips article-hero__chips--tail" aria-label="Primary themes">
+            <span class="article-hero__chip">Enterprise AI</span>
+            <span class="article-hero__chip">Expectation Gap</span>
+            <span class="article-hero__chip">Governance</span>
+            <span class="article-hero__chip">Public Sector</span>
+            <span class="article-hero__chip">OCI GenAI</span>
+          </div>
         </div>
+        <aside class="article-hero__aside" aria-label="Key takeaway and best use">
+          <div class="article-hero__card article-hero__card--key">
+            <h2 class="article-hero__label">Key takeaway</h2>
+            <p>Consumer AI creates enthusiasm, but also creates the wrong default mental model. Architects should reframe, not refute, by moving the conversation from impressive demos to governed, auditable and policy-aligned AI.</p>
+          </div>
+          <div class="article-hero__card article-hero__card--mini">
+            <div class="article-hero__label">Best used for</div>
+            <p>Early AI discovery, shadow AI concerns, explaining why production AI requires infrastructure, and helping customers understand why fluency is not the same as enterprise trust.</p>
+          </div>
+        </aside>
       </div>
-      <aside class="hero-panel" aria-label="Key paper information">
-        <div class="takeaway-card">
-          <h2>Key takeaway</h2>
-          <p>Consumer AI creates enthusiasm, but also creates the wrong default mental model. Architects should reframe, not refute, by moving the conversation from impressive demos to governed, auditable and policy-aligned AI.</p>
-        </div>
-        <div class="takeaway-card">
-          <h2>Best used for</h2>
-          <p>Early AI discovery, shadow AI concerns, explaining why production AI requires infrastructure, and helping customers understand why fluency is not the same as enterprise trust.</p>
-        </div>
-      </aside>
     </section>
   </div>
 
